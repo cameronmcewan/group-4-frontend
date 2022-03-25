@@ -109,7 +109,7 @@ class Demo extends Component{
             formatter:'{c}%',
             position:"inside"
           },
-          data:
+          data:[
             {value:27, name:'BTC'},
             {value:25, name:'ETH'},
             {value:18, name:'BNB'},
