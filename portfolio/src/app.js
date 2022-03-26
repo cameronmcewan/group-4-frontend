@@ -29,8 +29,6 @@ class Demo extends Component{
     return (
       <div className="box">
         <div className="logo">
-          <img className="imglogo" src={logo} alt=""/>
-          <img className="imglogo2" src={logo2} alt=""/>
           <p className="title1">Your PortFolio</p>
           <p className="title2">You hold 1 FolioCoin in your PortFolio</p>
         </div>
