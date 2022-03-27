@@ -1,12 +1,12 @@
 import React from "react";
 import Header from './components/header/Header'
-import Pie from "./components/pie/Pie";
+import Portfolio from "./components/portfolio/PortFolio";
 
 const App = () => {
   return (
       <>
-          <Header />
-          <Pie />
+          {/* <Header /> */}
+          <Portfolio />
       </>
   )
 }

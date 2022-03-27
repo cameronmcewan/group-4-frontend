@@ -1,7 +1,7 @@
-import logo from './img/a.png';
-import logo2 from './img/Rectangle3.png';
-import React, { Component, Fragment } from 'react';
-// 引入 ECharts main module
+import React, {Component} from 'react'
+import './pie.css'
+import logo from './../../img/logo.png';
+import logo2 from './../../img/Rectangle3.png';
 import echarts from 'echarts/lib/echarts';
 import { Card } from 'antd'
 //import pie chart
@@ -12,9 +12,21 @@ import 'echarts/lib/component/legend'
 import 'echarts/lib/component/markPoint'
 import ReactEcharts from 'echarts-for-react'
 
-import './App.css';
+// const Pie = () => {
+//   return (
+//     <div>
+//         <div className="logo">
+//           <img className="imglogo" src={logo} alt=""/>
+//           <img className="imglogo2" src={logo2} alt=""/>
+//           <p className="title1">Your PortFolio</p>
+//           <p className="title2">You hold 1 FolioCoin in your PortFolio</p>
+//         </div>
 
-class Demo extends Component{
+//     </div>
+//   )
+// }
+
+class Pie extends Component{
   constructor(props) {
     super(props);
     this.state = {
@@ -29,8 +41,10 @@ class Demo extends Component{
     return (
       <div className="box">
         <div className="logo">
-          <p className="title1">Your PortFolio</p>
+          {/* <img className="imglogo" src={logo} alt=""/> */}
+          {/* <img className="imglogo2" src={logo2} alt=""/> */}
           <p className="title2">You hold 1 FolioCoin in your PortFolio</p>
+          <h2>You hold 1 FolioCoin</h2>
         </div>
         <div className="continer">
             <p className="title">FolioCoin1</p>
@@ -39,14 +53,7 @@ class Demo extends Component{
                 <ReactEcharts option={this.getOption()}/>
               </Card.Grid>
             </div>
-            <div className={this.state.hover?"active button1":"button1"} rel="btn1" onMouseEnter={this.handleMouseEnter.bind(this,'btn1')} onMouseLeave={this.handleMouseLeave.bind(this,'btn1')}>
-                <p className='t1'>Buy</p>
-                <p className='t2'>FolioCoin</p>
-            </div>
-            <div className={this.state.hover2?"active button2":"button2"} onMouseEnter={this.handleMouseEnter.bind(this,'btn2')} onMouseLeave={this.handleMouseLeave.bind(this,'btn2')}>
-                <p className='t1'>Sell</p>
-                <p className='t2'>FolioCoin</p>
-            </div>
+
         </div>
       </div>
     );
@@ -122,7 +129,6 @@ class Demo extends Component{
   }
 }
 
-
-export default Demo;
+export default PieOG;
 
 

@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import './pie.css'
 import logo from './../../img/logo.png';
 import logo2 from './../../img/Rectangle3.png';
 import echarts from 'echarts/lib/echarts';
@@ -12,21 +11,11 @@ import 'echarts/lib/component/legend'
 import 'echarts/lib/component/markPoint'
 import ReactEcharts from 'echarts-for-react'
 
-// const Pie = () => {
-//   return (
-//     <div>
-//         <div className="logo">
-//           <img className="imglogo" src={logo} alt=""/>
-//           <img className="imglogo2" src={logo2} alt=""/>
-//           <p className="title1">Your PortFolio</p>
-//           <p className="title2">You hold 1 FolioCoin in your PortFolio</p>
-//         </div>
-
-//     </div>
-//   )
-// }
 
 class Pie extends Component{
+  // props types
+
+  // state declaration
   constructor(props) {
     super(props);
     this.state = {
@@ -37,35 +26,23 @@ class Pie extends Component{
     this.handleMouseEnter = this.handleMouseEnter.bind(this)
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
   }
+  
+  // lifecycle methods
+
+
+  // render
   render(){
     return (
-      <div className="box">
-        <div className="logo">
-          {/* <img className="imglogo" src={logo} alt=""/> */}
-          {/* <img className="imglogo2" src={logo2} alt=""/> */}
-          <p className="title1">Your PortFolio</p>
-          <p className="title2">You hold 1 FolioCoin in your PortFolio</p>
-        </div>
-        <div className="continer">
-            <p className="title">FolioCoin1</p>
-            <div className="echart">
-              <Card.Grid className="pie_a">
-                <ReactEcharts option={this.getOption()}/>
-              </Card.Grid>
-            </div>
-            <div className={this.state.hover?"active button1":"button1"} rel="btn1" onMouseEnter={this.handleMouseEnter.bind(this,'btn1')} onMouseLeave={this.handleMouseLeave.bind(this,'btn1')}>
-                <p className='t1'>Buy</p>
-                <p className='t2'>FolioCoin</p>
-            </div>
-            <div className={this.state.hover2?"active button2":"button2"} onMouseEnter={this.handleMouseEnter.bind(this,'btn2')} onMouseLeave={this.handleMouseLeave.bind(this,'btn2')}>
-                <p className='t1'>Sell</p>
-                <p className='t2'>FolioCoin</p>
-            </div>
-        </div>
+      <div className="echart pie__chart">
+        <Card.Grid className="pie_a">
+          <ReactEcharts option={this.getOption()}/>
+        </Card.Grid>
       </div>
     );
   }
-  
+
+
+  // event handlers
   handleMouseEnter(e,f){  //mouse enter event
     if(e == "btn1"){
       this.setState({
@@ -136,7 +113,4 @@ class Pie extends Component{
   }
 }
 
-
 export default Pie;
-
-

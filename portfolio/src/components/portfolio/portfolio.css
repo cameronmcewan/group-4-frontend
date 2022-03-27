@@ -1,0 +1,32 @@
+/* ========= Style the pie chart ========= */
+
+.pie__chart {
+    left: calc(50% - 11rem);
+} 
+
+.echarts-for-react {
+    height: 400px !important;
+}
+  
+.active{
+    background: #598e92 !important;
+    border: 1px solid #fff;
+}
+  
+.echart{
+    width: 500px;
+    height: 500px;
+    position: relative;
+    top: 30%;
+    left: 5%;
+}  
+
+
+/* =========== Style the CTA buttons =========== */
+
+.cta {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+}
