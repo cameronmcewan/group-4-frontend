@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import logo from './../../img/logo.png';
-import logo2 from './../../img/Rectangle3.png';
+import logo from './../../assets/logo.png';
+import logo2 from './../../assets/Rectangle3.png';
 import echarts from 'echarts/lib/echarts';
 import { Card } from 'antd'
 //import pie chart
