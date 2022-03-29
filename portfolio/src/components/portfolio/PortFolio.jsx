@@ -1,19 +1,19 @@
 import React from 'react'
 import './portfolio.css'
-import Buy from './Buy'
+import {buy, callBuyContract} from './Buy'
 import Sell from './Sell'
 import Pie from './Pie'
 import Header from '../header/Header'
 
 const PortFolio = () => {
   return (
-    <div>
-        <h5>This is your</h5>
-        <h1>PortFolio</h1>
-        <h5 className="text-light">Create and buy a Folio token represented by any combination of crypto assets</h5>
+    <div className='pcontainer'>
+        <h3 className='title'>FolioCoin1</h3>
         <Pie />
-        <Buy /> 
-        <Sell /> 
+        <button className='button1 btn' onClick={buy}>Buy</button>
+        <button className='button2 btn btn-primary' onClick={Sell}>Sell</button>
+
+        
     </div>
   )
 }

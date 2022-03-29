@@ -14,9 +14,9 @@
     /* website colours */
     --color-bg: #67e7e7;
     --color-bg-variant: #6e6eee;
-    --color-primary: #744949;
+    --color-primary: #fa7c7c;
     --color-primary-variant: rgba(77, 181, 255, 0.4);
-    --color-white: #fff;
+    --color-white: #fffZ;
     --color-light: rgba(255, 255, 255, 0.6);
 
     --transition: all 400ms ease;
@@ -94,7 +94,7 @@ a:hover {
     width: max-content;
     display: inline-block;
     color: var(--color-primary);
-    padding: 0.75rem 1.2rem;  
+    padding: 0.75rem 1.2rem;
     border-radius: 0.4rem;
     cursor: pointer;
     border: 1px solid var(--color-primary);

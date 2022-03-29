@@ -1,16 +1,10 @@
 import React, {Component} from 'react'
-import logo from './../../assets/logo.png';
-import logo2 from './../../assets/Rectangle3.png';
-import echarts from 'echarts/lib/echarts';
-import { Card } from 'antd'
-//import pie chart
+import ReactEcharts from 'echarts-for-react'
 import 'echarts/lib/chart/pie'
 import 'echarts/lib/component/tooltip'
 import 'echarts/lib/component/title'
 import 'echarts/lib/component/legend'
 import 'echarts/lib/component/markPoint'
-import ReactEcharts from 'echarts-for-react'
-
 
 class Pie extends Component{
   // props types
@@ -33,11 +27,11 @@ class Pie extends Component{
   // render
   render(){
     return (
-      <div className="echart pie__chart">
-        <Card.Grid className="pie_a">
-          <ReactEcharts option={this.getOption()}/>
-        </Card.Grid>
-      </div>
+      <>
+        <div className="echart pie__chart">
+            <ReactEcharts option={this.getOption()}/>
+        </div>
+      </>
     );
   }
 
@@ -69,7 +63,7 @@ class Pie extends Component{
     let option = {
       title: {
         text: 'FolioCoin1 balance: '+this.count,
-        x: '180px',
+        x:'50%',
         y:'90%'
       },
       color:['#4271D6','#59C173','#2E374B','#BA8F03','#3E2EB9','#579DB0'],
@@ -77,9 +71,7 @@ class Pie extends Component{
         trigger: 'item',
         //Prompt box floating content formatter, supporting string templates and callback functions
         formatter: "{a} <br/>{b} : {c} ({d}%)" ,
-        borderWidth:'1px',
         borderColor:'#fff',
-        // padding:10
       },
       legend: {
         orient: 'vertical',
@@ -91,9 +83,9 @@ class Pie extends Component{
         {
           name:'',
           type:'pie',
-          radius:'70%',
-          x:'5%',
-          y:'-50px',
+          radius:'90%',
+          x:'0%',
+          y:'0%',
           label:{
             formatter:'{c}%',
             position:"inside"
