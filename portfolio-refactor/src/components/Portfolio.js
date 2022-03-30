@@ -9,12 +9,8 @@ function PortFolio() {
     <div className="pcontainer">
       <h3 className="title">FolioCoin1</h3>
       <PortfolioHeader />
-      <button className="button1 btn" onClick={buy}>
-        Buy
-      </button>
-      <button className="button2 btn btn-primary" onClick={sell}>
-        Sell
-      </button>
+      <button onClick={buy}>Buy</button>
+      <button onClick={sell}>Sell</button>
     </div>
   );
 }
