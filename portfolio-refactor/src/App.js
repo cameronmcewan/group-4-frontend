@@ -5,8 +5,8 @@ import Portfolio from "./components/Portfolio";
 function App() {
   return (
     <div>
-      <h1>Welcome to PortFolio</h1>
-      {/* <div>
+      <p>Welcome to PortFolio</p>
+      <div>
         <h5>This is your</h5>
         <h1>PortFolio</h1>
         <h5>
@@ -19,7 +19,7 @@ function App() {
       </div>
       <div>
         <Portfolio />
-      </div> */}
+      </div>
     </div>
   );
 }
