@@ -15,9 +15,7 @@ const App = () => {
       </div>
       <div className="container"> <Metamask /> </div>
       <div className="container portfolio__container">
-        <Portfolio />
       </div>
-      
       </>
   )
 }
