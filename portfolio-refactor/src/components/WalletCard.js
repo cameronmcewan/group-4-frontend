@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ethers } from "ethers";
+import Button from "@mui/material/Button";
 
 function WalletCard() {
   const [errorMessage, setErrorMessage] = useState(null);
@@ -43,9 +44,9 @@ function WalletCard() {
   return (
     <div className="walletCard">
       <h4>Connection to MetaMask using window.ethereum methods"</h4>
-      <button className="btn btn-primary" onClick={connectWalletHandler}>
+      <Button variant="contained" onClick={connectWalletHandler}>
         {connButtonText}
-      </button>
+      </Button>
       <div className="accountDisplay">
         <h3>Address: {defaultAccount}</h3>
       </div>
