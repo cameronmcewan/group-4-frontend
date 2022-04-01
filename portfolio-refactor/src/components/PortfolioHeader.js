@@ -4,7 +4,7 @@ import FolioLogo from "./../assets/FolioLogo.png";
 
 function PortfolioHeader() {
   return (
-    <header>
+    <div>
       <div className="container header__container">
         <h5>This is your</h5>
         <h1>PortFolio</h1>
@@ -14,7 +14,7 @@ function PortfolioHeader() {
         </h5>
       </div>
       <img src={FolioLogo} alt="FolioLogo" />
-    </header>
+    </div>
   );
 }
 
