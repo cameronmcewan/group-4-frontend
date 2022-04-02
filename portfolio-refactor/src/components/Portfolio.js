@@ -1,16 +1,56 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Portfolio.css";
-import { buy } from "../functions/Buy";
-import { sell } from "../functions/Sell";
 import PortfolioHeader from "./PortfolioHeader";
+import Button from "@mui/material/Button";
+import contract from "../contract.js";
+import { UserContext } from "../userContext";
 
 function PortFolio() {
+  // Get the user address from the React context
+  const userAddress = useContext(UserContext);
+
+  const buy = async () => {
+    let ethAmountInWei = 10000;
+    console.log(`Buying FOLO with ${ethAmountInWei} Wei`);
+    contract.methods
+      .buy()
+      .send({
+        from: userAddress,
+        value: ethAmountInWei,
+      })
+      .then((receipt) => {
+        console.log(receipt);
+      });
+  };
+
+  const sell = async () => {
+    // Token uses 18 decimals
+    let tokensToSell = 10000;
+    console.log(`Selling ${tokensToSell} FOLO`);
+    contract.methods
+      .sell(tokensToSell)
+      .send({
+        from: userAddress,
+      })
+      .then((receipt) => {
+        console.log(receipt);
+      });
+  };
+
   return (
     <div className="pcontainer">
       <h3 className="title">FolioCoin1</h3>
       <PortfolioHeader />
-      <button onClick={buy}>Buy</button>
-      <button onClick={sell}>Sell</button>
+      {userAddress && ( // only display buttons if user has connected to Metamask
+        <div>
+          <Button variant="contained" onClick={buy}>
+            Buy
+          </Button>
+          <Button variant="contained" onClick={sell}>
+            Sell
+          </Button>
+        </div>
+      )}
     </div>
   );
 }
