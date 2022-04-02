@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import "./Portfolio.css";
-import { sell } from "../functions/Sell";
 import PortfolioHeader from "./PortfolioHeader";
 import Button from "@mui/material/Button";
 import contract from "../contract.js";
@@ -24,16 +23,34 @@ function PortFolio() {
       });
   };
 
+  const sell = async () => {
+    // Token uses 18 decimals
+    let tokensToSell = 10000;
+    console.log(`Selling ${tokensToSell} FOLO`);
+    contract.methods
+      .sell(tokensToSell)
+      .send({
+        from: userAddress,
+      })
+      .then((receipt) => {
+        console.log(receipt);
+      });
+  };
+
   return (
     <div className="pcontainer">
       <h3 className="title">FolioCoin1</h3>
       <PortfolioHeader />
-      <Button variant="contained" onClick={buy}>
-        Buy
-      </Button>
-      <Button variant="contained" onClick={sell}>
-        Sell
-      </Button>
+      {userAddress && ( // only display buttons if user has connected to Metamask
+        <div>
+          <Button variant="contained" onClick={buy}>
+            Buy
+          </Button>
+          <Button variant="contained" onClick={sell}>
+            Sell
+          </Button>
+        </div>
+      )}
     </div>
   );
 }

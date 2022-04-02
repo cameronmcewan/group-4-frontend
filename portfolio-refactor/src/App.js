@@ -6,8 +6,8 @@ import Button from "@mui/material/Button";
 import { ethers } from "ethers";
 
 function App() {
-  const [userAddress, setUserAddress] = useState("0x");
-  const [userBalance, setUserBalance] = useState(0);
+  const [userAddress, setUserAddress] = useState();
+  const [userBalance, setUserBalance] = useState();
 
   const connectWalletHandler = () => {
     if (window.ethereum) {
@@ -46,7 +46,7 @@ function App() {
         <Button variant="contained" onClick={connectWalletHandler}>
           MetaMask
         </Button>
-        {userAddress !== "0x" && ( // Only displays the div below if the user address has been set
+        {userAddress && ( // Only displays the div below if the user address has been set
           <div>
             <h3>Address: {userAddress}</h3>
             <h3>Balance: {userBalance}</h3>
