@@ -1,19 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Portfolio.css";
 import { sell } from "../functions/Sell";
 import PortfolioHeader from "./PortfolioHeader";
 import Button from "@mui/material/Button";
 import contract from "../contract.js";
-import wallet from "../wallet";
+import { UserContext } from "../userContext";
 
 function PortFolio() {
+  // Get the user address from the React context
+  const userAddress = useContext(UserContext);
+
   const buy = async () => {
     let ethAmountInWei = 10000;
     console.log(`Buying FOLO with ${ethAmountInWei} Wei`);
     contract.methods
       .buy()
       .send({
-        from: wallet.address,
+        from: userAddress,
         value: ethAmountInWei,
       })
       .then((receipt) => {
