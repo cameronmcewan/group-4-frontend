@@ -1,6 +1,6 @@
 import React from "react";
 import "./PortfolioHeader.css";
-import FolioLogo from "./../assets/FolioLogo.png";
+import Logo from "./../assets/Folio_logo_no-bg.png";
 
 function PortfolioHeader() {
   return (
@@ -13,7 +13,7 @@ function PortfolioHeader() {
           assets
         </h5>
       </div>
-      <img src={FolioLogo} alt="FolioLogo" />
+      <img src={Logo} alt="FolioLogo" />
     </div>
   );
 }
