@@ -1,7 +1,10 @@
 header {
-  height: 100vh;
-  padding-top: 7rem;
+  background: lightcoral;
+  height: min-content;
+  display: flexbox;
+  padding-top: 1rem;
   overflow: hidden;
+  justify-content: center;
 }
 
 .header__container {

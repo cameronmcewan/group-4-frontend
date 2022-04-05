@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "./App.css";
 import Portfolio from "./components/Portfolio";
 import { UserContext } from "./userContext";
 import Button from "@mui/material/Button";
 import { ethers } from "ethers";
+import Logo from './assets/Folio_logo_no-bg.png'
 
 function App() {
   const [userAddress, setUserAddress] = useState();
@@ -34,15 +34,15 @@ function App() {
     // Sets the user address inside the React context, which can be used from any downstream component
     <UserContext.Provider value={userAddress}>
       <div>
-        <p>Welcome to PortFolio</p>
-        <div>
-          <h5>This is your</h5>
+        <header>
+
+        <h5>This is your</h5>
           <h1>PortFolio</h1>
           <h5>
             Create and buy a Folio token represented by any combination of
             crypto assets
           </h5>
-        </div>
+        </header>
         <Button variant="contained" onClick={connectWalletHandler}>
           MetaMask
         </Button>
