@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
-import PortfolioHeader from "./PortfolioHeader";
 import Button from "@mui/material/Button";
 import contract from "../helpers/contract";
 import { UserContext } from "../helpers/userContext";
 
-function PortFolio() {
+function Portfolio() {
   // Get the user address from the React context
   const userAddress = useContext(UserContext);
 
@@ -39,7 +38,6 @@ function PortFolio() {
   return (
     <div className="pcontainer">
       <h3 className="title">FolioCoin1</h3>
-      <PortfolioHeader />
       {userAddress && ( // only display buttons if user has connected to Metamask
         <div>
           <Button variant="contained" onClick={buy}>
@@ -54,4 +52,4 @@ function PortFolio() {
   );
 }
 
-export default PortFolio;
+export default Portfolio;

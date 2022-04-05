@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "../assets/Folio_logo_no-bg.png";
 
-function PortfolioHeader() {
+function Header() {
   return (
     <div>
       <img src={Logo} alt="FolioLogo" />
@@ -9,4 +9,4 @@ function PortfolioHeader() {
   );
 }
 
-export default PortfolioHeader;
+export default Header;
