@@ -3,7 +3,7 @@ import Portfolio from "./components/Portfolio";
 import { UserContext } from "./helpers/userContext";
 import Button from "@mui/material/Button";
 import { ethers } from "ethers";
-import Logo from './assets/Folio_logo_no-bg.png'
+// import Logo from './assets/Folio_logo_no-bg.png'
 
 function App() {
   const [userAddress, setUserAddress] = useState();

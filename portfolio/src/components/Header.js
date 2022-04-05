@@ -3,7 +3,7 @@ import Logo from "../assets/Folio_logo_no-bg.png";
 
 function Header() {
   return (
-    <div>
+    <div className="container">
       <img src={Logo} alt="FolioLogo" />
     </div>
   );
