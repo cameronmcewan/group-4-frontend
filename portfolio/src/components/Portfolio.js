@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import "./Portfolio.css";
 import PortfolioHeader from "./PortfolioHeader";
 import Button from "@mui/material/Button";
 import contract from "../helpers/contract";

@@ -1,5 +1,4 @@
 import React from "react";
-import "./PortfolioHeader.css";
 import Logo from "../assets/Folio_logo_no-bg.png";
 
 function PortfolioHeader() {
