@@ -1,0 +1,15 @@
+// This is the main file which imports all stylesheets. We're using SCSS here, which is similar to CSS with some extra 'superpowers'. The css.map file automatically maps the .scss file to a .css file
+
+// Import Core Stylesheet
+
+@import "./styles/core"
+
+
+// Import Layout Stylesheet
+
+@import "./styles/layout"
+
+
+// Import Components Stylesheet
+
+@import "./styles/components"
