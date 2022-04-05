@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Portfolio from "./components/Portfolio";
-import { UserContext } from "./userContext";
+import { UserContext } from "./helpers/userContext";
 import Button from "@mui/material/Button";
 import { ethers } from "ethers";
 import Logo from './assets/Folio_logo_no-bg.png'

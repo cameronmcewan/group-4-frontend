@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import "./Portfolio.css";
 import PortfolioHeader from "./PortfolioHeader";
 import Button from "@mui/material/Button";
-import contract from "../contract.js";
-import { UserContext } from "../userContext";
+import contract from "../helpers/contract";
+import { UserContext } from "../helpers/userContext";
 
 function PortFolio() {
   // Get the user address from the React context
