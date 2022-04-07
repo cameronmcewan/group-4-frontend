@@ -12,6 +12,7 @@
 
 :root {
   /* website colours */
+<<<<<<< HEAD
   background: #041580;
   background-color: #b9bedd;
   font-family: "Poppins", sans-serif;
@@ -28,6 +29,25 @@ body {
   font-family: "Poppins", sans-serif;
   background: #041580;
   color: #ffffff;
+=======
+  --color-bg: #05157c;
+  --color-bg-variant: #007f88;
+  --color-primary: #fa7c7c;
+  --color-primary-variant: rgba(77, 181, 255, 0.4);
+  --color-white: #fffZ;
+  --color-light: rgba(255, 255, 255, 0.6);
+  --transition: all 400ms ease;
+  /* width of container will change depending on screen size, using media queries */
+  --container-width-lg: 75%;
+  --container-width-md: 86%;
+  --container-width-sm: 90%;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--color-bg);
+  color: var(--color-white);
+>>>>>>> cbc3934 (scss compiles - started editing)
   line-height: 1.7;
   /* background-image: url(../src/assets/bg-texture.jpg); */
 }
@@ -43,7 +63,11 @@ html {
 
 /* =============== General styles ============== */
 .container {
+<<<<<<< HEAD
   width: 75%;
+=======
+  width: var(--container-width-lg);
+>>>>>>> cbc3934 (scss compiles - started editing)
   margin: 0 auto;
 }
 
@@ -55,7 +79,11 @@ h1 {
   font-size: 2.5rem;
 }
 
+<<<<<<< HEAD
 /* each component is wrapped in a section in its component.js file */
+=======
+/* each component is wrapped in a section in its component.jsx file */
+>>>>>>> cbc3934 (scss compiles - started editing)
 section {
   margin-top: 8rem;
 }
@@ -63,28 +91,50 @@ section {
 /* each section will contain a h2 and h5 by default */
 section > h2, section > h5 {
   text-align: center;
+<<<<<<< HEAD
   color: #ffffff;
 }
 
 section > h2 {
   color: #fa7c7c;
+=======
+  color: var(--color-light);
+}
+
+section > h2 {
+  color: var(--color-primary);
+>>>>>>> cbc3934 (scss compiles - started editing)
   margin-bottom: 3rem;
 }
 
 .text-light {
+<<<<<<< HEAD
   color: #ffffff;
+=======
+  color: var(--color-light);
+>>>>>>> cbc3934 (scss compiles - started editing)
 }
 
 /* anchor tag, color and transition */
 a {
+<<<<<<< HEAD
   color: #fa7c7c;
   -webkit-transition: all 400ms ease;
   transition: all 400ms ease;
+=======
+  color: var(--color-primary);
+  -webkit-transition: var(--transition);
+  transition: var(--transition);
+>>>>>>> cbc3934 (scss compiles - started editing)
 }
 
 /* each anchor tag will have a hover effect */
 a:hover {
+<<<<<<< HEAD
   color: #ffffff;
+=======
+  color: var(--color-white);
+>>>>>>> cbc3934 (scss compiles - started editing)
 }
 
 .btn {
@@ -92,6 +142,7 @@ a:hover {
   width: -moz-max-content;
   width: max-content;
   display: inline-block;
+<<<<<<< HEAD
   color: #fa7c7c;
   padding: 0.75rem 1.2rem;
   border-radius: 0.4rem;
@@ -99,18 +150,37 @@ a:hover {
   border: 1px solid #fa7c7c;
   -webkit-transition: all 400ms ease;
   transition: all 400ms ease;
+=======
+  color: var(--color-primary);
+  padding: 0.75rem 1.2rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  border: 1px solid var(--color-primary);
+  -webkit-transition: var(--transition);
+  transition: var(--transition);
+>>>>>>> cbc3934 (scss compiles - started editing)
 }
 
 /* buttons will have hover effect */
 .btn:hover {
+<<<<<<< HEAD
   background: #ffffff;
   color: #041580;
+=======
+  background: var(--color-white);
+  color: var(--color-bg);
+>>>>>>> cbc3934 (scss compiles - started editing)
   border-color: transparent;
 }
 
 .btn-primary {
+<<<<<<< HEAD
   background: #fa7c7c;
   color: #041580;
+=======
+  background: var(--color-primary);
+  color: var(--color-bg);
+>>>>>>> cbc3934 (scss compiles - started editing)
 }
 
 img {
@@ -120,10 +190,29 @@ img {
      object-fit: cover;
 }
 
+<<<<<<< HEAD
 /* ====== Media queries (medium devices AKA tablets) =========== */
 @media screen and (max-width: 1024px) {
   .container {
     width: 86%;
+=======
+header {
+  background: lightblue;
+}
+
+header button {
+  background: red;
+}
+
+.contact button {
+  background: blue;
+}
+
+/* ====== Media queries (medium devices AKA tablets) =========== */
+@media screen and (max-width: 1024px) {
+  .container {
+    width: var(--container-width-md);
+>>>>>>> cbc3934 (scss compiles - started editing)
   }
   section {
     margin-top: 6rem;
@@ -133,7 +222,11 @@ img {
 /* ====== Media queries (small devices AKA mobile phones) =========== */
 @media screen and (max-width: 600px) {
   .container {
+<<<<<<< HEAD
     width: 90%;
+=======
+    width: var(--container-width-sm);
+>>>>>>> cbc3934 (scss compiles - started editing)
   }
   section > h2 {
     margin-top: 2rem;
