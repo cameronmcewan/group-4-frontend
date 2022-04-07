@@ -43,7 +43,7 @@ html {
 
 /* =============== General styles ============== */
 .container {
-  width: var(--container-width-lg);
+  width: 75%;
   margin: 0 auto;
 }
 
