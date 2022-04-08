@@ -5,12 +5,10 @@ function Header() {
   return (
     <div className="header">
       <div className="column"></div>
-      <div className="column">
-        <a href="/">
-          <img className="logo" src={Logo} alt="FolioLogo" />
-        </a>
-      </div>
       <div className="column"></div>
+      <div className="column"><a href="/">
+          <img className="logo" src={Logo} alt="Logo" /></a>
+      </div>
     </div>
   );
 }
