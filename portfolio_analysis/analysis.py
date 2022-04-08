@@ -5,7 +5,6 @@ import re
 
 
 def get_close_data(files):
-
     crypto_df = pd.DataFrame()  # Instantiate crypto df
 
     # Bitcoin has the longest history so extract this date column
@@ -24,6 +23,12 @@ def remove_NaN_rows(df):
 
 
 def main():
+    """
+    1. Loops over all files in data folder
+    2. Accesses close data for each currency pair and stores in master df
+    3. Removes rows with NaN values
+    4. Saves cleaned file to "cleaned_data/crypto_data_cleaned.csv"
+    """
     mypath = "data/"
     csv_files = [f for f in listdir(mypath) if isfile(join(mypath, f))]
     crypto_df = get_close_data(csv_files)
