@@ -19,11 +19,19 @@ def get_close_data(files):
     return crypto_df
 
 
+def remove_NaN_rows(df):
+    return df.dropna(axis=0)
+
+
 def main():
     mypath = "data/"
     csv_files = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 
     crypto_df = get_close_data(csv_files)
+
+    crypto_df = remove_NaN_rows(crypto_df)
+
+    print(crypto_df)
 
 
 if __name__ == "__main__":
