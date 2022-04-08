@@ -36,10 +36,10 @@ $container-width-sm: 90%;
 
 body {
     font-family: $primary-fonts;
-    background: $bg-color;
+    // background: $bg-color;
     color: $font-color;
     line-height: 1.7;
-    /* background-image: url(../src/assets/bg-texture.jpg); */
+    background-image: url(../src/assets/waves-bg.svg);
 }
 
 /* scroll behaviour */

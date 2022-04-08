@@ -5,6 +5,8 @@ import Button from "@mui/material/Button";
 import { ethers } from "ethers";
 import Header from "./components/Header";
 import Explore from "./components/Explore";
+import Create from "./components/Create";
+import MenuBar from "./components/MenuBar";
 
 function App() {
   const [userAddress, setUserAddress] = useState();
@@ -35,8 +37,10 @@ function App() {
     // Sets the user address inside the React context, which can be used from any downstream component
     <UserContext.Provider value={userAddress}>
       <div>
+        <MenuBar />
         <Header />
         <Explore />
+        <Create />
         <Button className="" onClick={connectWalletHandler}>
           MetaMask
         </Button>
