@@ -12,21 +12,14 @@
 
 :root {
   /* website colours */
-  background: #041580;
+  background: #000a4b;
   background-color: #b9bedd;
   font-family: "Poppins", sans-serif;
 }
 
-header {
-  font-family: "Poppins", sans-serif;
-  background: #041580;
-  color: #ffffff;
-  line-height: 1.7;
-}
-
 body {
   font-family: "Poppins", sans-serif;
-  background: #041580;
+  background: #000a4b;
   color: #ffffff;
   line-height: 1.7;
   /* background-image: url(../src/assets/bg-texture.jpg); */
@@ -67,7 +60,7 @@ section > h2, section > h5 {
 }
 
 section > h2 {
-  color: #fa7c7c;
+  color: #4dffea;
   margin-bottom: 3rem;
 }
 
@@ -77,7 +70,7 @@ section > h2 {
 
 /* anchor tag, color and transition */
 a {
-  color: #fa7c7c;
+  color: #4dffea;
   -webkit-transition: all 400ms ease;
   transition: all 400ms ease;
 }
@@ -85,32 +78,6 @@ a {
 /* each anchor tag will have a hover effect */
 a:hover {
   color: #ffffff;
-}
-
-.btn {
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  display: inline-block;
-  color: #fa7c7c;
-  padding: 0.75rem 1.2rem;
-  border-radius: 0.4rem;
-  cursor: pointer;
-  border: 1px solid #fa7c7c;
-  -webkit-transition: all 400ms ease;
-  transition: all 400ms ease;
-}
-
-/* buttons will have hover effect */
-.btn:hover {
-  background: #ffffff;
-  color: #041580;
-  border-color: transparent;
-}
-
-.btn-primary {
-  background: #fa7c7c;
-  color: #041580;
 }
 
 img {
@@ -137,6 +104,39 @@ img {
   }
   section > h2 {
     margin-top: 2rem;
+  }
+}
+
+.header {
+  padding: 20px;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  background: #4dffea;
+  color: #ebeeff;
+  line-height: 1.7;
+}
+
+.logo {
+  width: 120px;
+  text-indent: -9999px;
+}
+
+.column {
+  float: left;
+  width: 33%;
+}
+
+/* Clear floats after the columns */
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
   }
 }
 /*# sourceMappingURL=app.css.map */

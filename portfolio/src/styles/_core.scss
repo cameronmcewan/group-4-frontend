@@ -2,11 +2,13 @@
 
 $primary-fonts: 'Poppins', sans-serif;
 $font-color: #ffffff;
-$header-font-color: #ffffff;
-$bg-color: #041580;
+$header-font-color: #ebeeff;
+$header-bg-color: #4dffea;
+$bg-color: #000a4b;
 $element-color: #b9bedd;
 $color-bg-variant: #057a7c;
-$color-primary: #fa7c7c;
+$color-primary: #4dffea;
+$color-secondary: #000a4b;
 $color-primary-variant: rgba(77, 181, 255, 0.4);
 $color-white: #ffffff;
 $transition: all 400ms ease;
@@ -30,13 +32,6 @@ $container-width-sm: 90%;
     background: $bg-color;
     background-color: $element-color;
     font-family: $primary-fonts;
-}
-
-header {
-    font-family: $primary-fonts;
-    background: $bg-color;
-    color: $header-font-color;
-    line-height: 1.7;
 }
 
 body {
@@ -115,8 +110,8 @@ a:hover {
 
 /* buttons will have hover effect */
 .btn:hover {
-    background: $color-white;
-    color: $bg-color;
+    background: $color-secondary;
+    color: $bg-primary;
     border-color: transparent;
 }
 

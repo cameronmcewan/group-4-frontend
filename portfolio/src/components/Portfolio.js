@@ -40,12 +40,12 @@ function Portfolio() {
       <h3 className="title">FolioCoin1</h3>
       {userAddress && ( // only display buttons if user has connected to Metamask
         <div>
-          <Button variant="contained" onClick={buy}>
+          <Button className="btn" onClick={buy}>
             Buy
           </Button>
-          <Button variant="contained" onClick={sell}>
+          <button className="btn btn-primary" onClick={sell}>
             Sell
-          </Button>
+          </button>
         </div>
       )}
     </div>

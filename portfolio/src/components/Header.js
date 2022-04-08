@@ -1,10 +1,16 @@
 import React from "react";
-import Logo from "../assets/Folio_logo_no-bg.png";
+import Logo from "./../assets/logo-light-no-bg.png";
 
 function Header() {
   return (
-    <div className="container">
-      <img src={Logo} alt="FolioLogo" />
+    <div className="header">
+      <div className="column"></div>
+      <div className="column">
+        <a href="/">
+          <img className="logo" src={Logo} alt="FolioLogo" />
+        </a>
+      </div>
+      <div className="column"></div>
     </div>
   );
 }
