@@ -3,10 +3,11 @@ import Portfolio from "./components/Portfolio";
 import { UserContext } from "./helpers/userContext";
 import Button from "@mui/material/Button";
 import { ethers } from "ethers";
-import Header from "./components/Header";
-import Explore from "./components/Explore";
-import Create from "./components/Create";
-import MenuBar from "./components/MenuBar";
+import Explore from "./routes/Explore";
+import Create from "./routes/Create";
+import { Link } from "react-router-dom";
+import Landing from "./routes/Landing";
+import { Route, Routes as Switch } from 'react-router-dom';
 
 function App() {
   const [userAddress, setUserAddress] = useState();
@@ -33,14 +34,24 @@ function App() {
       });
   };
 
+  // let routes = (
+  //   <Switch>
+  //     <Route exact path="/">
+  //       <Landing />
+  //     </Route>
+  //     <Route path="/explore">
+  //       <Explore />
+  //     </Route>
+  //     <Route path="/create">
+  //       <Create />
+  //     </Route>
+  //   </Switch>
+  // );
+
   return (
     // Sets the user address inside the React context, which can be used from any downstream component
     <UserContext.Provider value={userAddress}>
       <div>
-        <MenuBar />
-        <Header />
-        <Explore />
-        <Create />
         <Button className="" onClick={connectWalletHandler}>
           MetaMask
         </Button>
