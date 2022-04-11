@@ -7,7 +7,7 @@ $header-bg-color: #4dffea;
 $bg-color: #000a4b;
 $element-color: #b9bedd;
 $color-bg-variant: #057a7c;
-$color-primary: #4dffea;
+$color-primary: #91fff2;
 $color-secondary: #000a4b;
 $color-primary-variant: rgba(77, 181, 255, 0.4);
 $color-white: #ffffff;
@@ -111,7 +111,6 @@ a:hover {
 /* buttons will have hover effect */
 .btn:hover {
     background: $color-secondary;
-    color: $bg-primary;
     border-color: transparent;
 }
 
@@ -125,6 +124,13 @@ img {
     width: 100%;
     object-fit: cover;
 }
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
 
 
 

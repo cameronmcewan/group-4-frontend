@@ -19,10 +19,9 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background: #000a4b;
   color: #ffffff;
   line-height: 1.7;
-  /* background-image: url(../src/assets/bg-texture.jpg); */
+  background-image: url(../src/assets/waves-bg.svg);
 }
 
 /* scroll behaviour */
@@ -60,7 +59,7 @@ section > h2, section > h5 {
 }
 
 section > h2 {
-  color: #4dffea;
+  color: #91fff2;
   margin-bottom: 3rem;
 }
 
@@ -70,7 +69,7 @@ section > h2 {
 
 /* anchor tag, color and transition */
 a {
-  color: #4dffea;
+  color: #91fff2;
   -webkit-transition: all 400ms ease;
   transition: all 400ms ease;
 }
@@ -80,11 +79,42 @@ a:hover {
   color: #ffffff;
 }
 
+.btn {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  display: inline-block;
+  color: #91fff2;
+  padding: 0.75rem 1.2rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  border: 1px solid #91fff2;
+  -webkit-transition: all 400ms ease;
+  transition: all 400ms ease;
+}
+
+/* buttons will have hover effect */
+.btn:hover {
+  background: #000a4b;
+  border-color: transparent;
+}
+
+.btn-primary {
+  background: #91fff2;
+  color: #000a4b;
+}
+
 img {
   display: block;
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 /* ====== Media queries (medium devices AKA tablets) =========== */
@@ -107,36 +137,76 @@ img {
   }
 }
 
+ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 20px;
+  overflow: hidden;
+  background-color: #000a4b;
+}
+
+ul.topnav li {
+  float: left;
+}
+
+ul.topnav li a {
+  display: block;
+  color: #ffffff;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  background-size: 20px 2px, 100% 2px, 0 2px;
+  background-position: calc(20px * -1) 100%, 100% 100%, 0 100%;
+  background-repeat: no-repeat;
+  -webkit-transition: background-size 1s linear, background-position 1s linear;
+  transition: background-size 1s linear, background-position 1s linear;
+}
+
+ul.topnav li a:hover:not(.active) {
+  background-color: #000a4b;
+  opacity: 0.8;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#000a4b), to(#000a4b)), -webkit-gradient(linear, left top, left bottom, from(#91fff2), to(#91fff2)), -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ffffff));
+  background-image: linear-gradient(#000a4b, #000a4b), linear-gradient(#91fff2, #91fff2), linear-gradient(#ffffff, #ffffff);
+  background-size: 20px 2px, 0 2px, 100% 2px;
+  background-position: calc(100% + 20px) 100%, 100% 100%, 0 100%;
+}
+
+ul.topnav li.right {
+  float: right;
+}
+
 .header {
   padding: 20px;
   text-align: center;
   font-family: "Poppins", sans-serif;
-  background: #4dffea;
+  background-color: #4dffea;
   color: #ebeeff;
   line-height: 1.7;
 }
 
 .logo {
+  float: left;
   width: 120px;
   text-indent: -9999px;
+  opacity: .8;
+  -webkit-transition: .6s;
+  transition: .6s;
 }
 
-.column {
-  float: left;
-  width: 33%;
-}
-
-/* Clear floats after the columns */
-.header:after {
-  content: "";
-  display: table;
-  clear: both;
+.logo:hover {
+  opacity: 1;
+  margin-top: -5px;
+  margin-bottom: 5px;
 }
 
 /* Responsive layout - when the screen is less than 600px wide, make the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .column {
     width: 100%;
+  }
+  ul.topnav li.right,
+  ul.topnav li {
+    float: none;
   }
 }
 /*# sourceMappingURL=app.css.map */

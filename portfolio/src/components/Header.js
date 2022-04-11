@@ -46,8 +46,8 @@ const Header = props => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
+          <Link to="/"><img className="logo" src={Logo} alt="The Folio Logo" /></Link>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          <a href="/"> <img className="logo" src={Logo} alt="Logo" /> </a>
           <nav style={{
                   borderBottom: "solid 1px",
                   paddingBottom: "1rem",
