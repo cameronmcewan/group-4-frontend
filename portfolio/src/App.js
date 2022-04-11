@@ -3,13 +3,9 @@ import Portfolio from "./components/Portfolio";
 import { UserContext } from "./helpers/userContext";
 import Button from "@mui/material/Button";
 import { ethers } from "ethers";
-import Explore from "./routes/Explore";
-import Create from "./routes/Create";
-import { Link } from "react-router-dom";
-import Landing from "./routes/Landing";
-import { Route, Routes as Switch } from 'react-router-dom';
 
 function App() {
+
   const [userAddress, setUserAddress] = useState();
   const [userBalance, setUserBalance] = useState();
 

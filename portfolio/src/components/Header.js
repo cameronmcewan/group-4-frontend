@@ -7,13 +7,31 @@ import IconButton from '@mui/material/IconButton';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-// import { withRouter } from "react-router-dom";
 import Logo from '../assets/logo-light-no-bg.png'
 import { Link } from "react-router-dom";
 
+
+// const useStyles = makeStyles(theme => ({
+//   root: {
+//     flexGrow: 1
+//   },
+//   menuButton: {
+//     marginRight: theme.spacing(2)
+//   },
+//   title: {
+//     flexGrow: 1
+//   }
+// }));
+
 const Header = props => {
+
   const { history } = props;
+  // const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
+  // const open = Boolean(anchorEl);
+  // const theme = useTheme();
+  // const matches = useMediaQuery(theme.breakpoints.up('sm'));
+  // const isMobile = useMediaQuery(theme.breakpoints).down(('xs'));
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -38,9 +56,7 @@ const Header = props => {
             <Link to="/create">Create</Link>
           </nav>
           </Typography>
-
-            <div>
-              <IconButton
+            <IconButton
                 size="large"
                 edge="start"
                 color="inherit"
@@ -68,7 +84,6 @@ const Header = props => {
                 <MenuItem onClick={() => handleMenuClick('/')}>Profile</MenuItem>
                 <MenuItem onClick={() => handleMenuClick('/Account')}>My account</MenuItem>
               </Menu>
-            </div>
         </Toolbar>
       </AppBar>
     </Box>
