@@ -9,10 +9,9 @@ function App() {
 
 
   return (
-    // Sets the user address inside the React context, which can be used from any downstream component
     <>
     <Navbar />
-    
+
         <Router>
           <Routes>
             <Route path="/" element={<Landing />} />
