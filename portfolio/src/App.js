@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Landing from "./routes/Landing";
 import Explore from './routes/Explore';
 import Create from './routes/Create';
 
@@ -11,13 +12,14 @@ function App() {
     // Sets the user address inside the React context, which can be used from any downstream component
     <>
     <Navbar />
+    
         <Router>
           <Routes>
-            <Route path="/" element={<App />} />
+            <Route path="/" element={<Landing />} />
             <Route path="explore" element={<Explore />} />
             <Route path="create" element={<Create />} />
           </Routes>
-      </Router>
+        </Router>
     </>
   );
 };
