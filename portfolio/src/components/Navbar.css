@@ -1,0 +1,83 @@
+header {
+    height: 100%;
+    padding-top: 2rem;
+    padding-bottom: 0.5rem;
+    overflow: hidden;
+    background-color: rgb(117, 112, 210);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+body{
+    margin:0;
+}
+.header__container {
+    height: 100%;
+    position: relative;
+}
+
+.header__container .logo{
+    display: inline-block;
+    margin-left: 4rem;
+    margin-top:2rem;
+    float: left;
+    cursor: pointer;
+}
+.header__container .menu{
+    display: inline-block;
+    margin-left: 4rem;
+    /* margin-top: 2rem; */
+    color:#fff;
+    font-size: 28px;
+    float: left;
+}
+.menu span{
+    cursor: pointer;
+    margin-left: 5rem;
+}
+.right_button{
+    width: 285px;
+    height: 78px;
+    background: #fff;
+    box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 114.5px;
+    float: right;
+    color: #280B4D;
+    margin-right: 5rem;
+    text-align: center;
+    align-items: center;
+    font-family: 'Kantumruy';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 36px;
+    cursor: pointer;
+}
+.active{
+    position: relative;
+    text-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
+
+}
+.active:after{    
+    content: '';
+    overflow: hidden;
+    position: absolute;
+    width: 100px;
+    height: 2px;
+    top: 90%;
+    left: 0;
+    background: #fff;
+}
+.active2{
+    position: relative;
+    text-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
+
+}
+.active2:after{    
+    content: '';
+    overflow: hidden;
+    position: absolute;
+    width: 90px;
+    height: 2px;
+    top: 90%;
+    left: 0;
+    background: #fff;
+}
