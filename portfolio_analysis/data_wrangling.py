@@ -33,6 +33,10 @@ def main():
     csv_files = [f for f in listdir(mypath) if isfile(join(mypath, f))]
     crypto_df = get_close_data(csv_files)
     crypto_df = remove_NaN_rows(crypto_df)
+
+    crypto_df = crypto_df.sort_values(by='Date')  # Sorted dates to be chronological
+    crypto_df = crypto_df.reset_index(drop=True)
+
     crypto_df.to_csv("cleaned_data/crypto_data_cleaned.csv")
 
 

@@ -1,53 +1,32 @@
-import React, { useState } from "react";
-import Portfolio from "./components/Portfolio";
-import { UserContext } from "./helpers/userContext";
-import Button from "@mui/material/Button";
-import { ethers } from "ethers";
+import React from "react";
+import Navbar from "./components/Navbar";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Landing from "./routes/Landing";
+import Explore from './routes/Explore';
+import Create from './routes/Create';
 
 function App() {
 
-  const [userAddress, setUserAddress] = useState();
-  const [userBalance, setUserBalance] = useState();
-
-  const connectWalletHandler = () => {
-    if (window.ethereum) {
-      window.ethereum
-        .request({ method: "eth_requestAccounts" })
-        .then((result) => {
-          setUserAddress(result[0]);
-          getUserBalance(result[0]);
-        });
-    } else {
-      window.alert("Please install MetaMask");
-    }
-  };
-
-  const getUserBalance = (address) => {
-    window.ethereum
-      .request({ method: "eth_getBalance", params: [address, "latest"] })
-      .then((balance) => {
-        setUserBalance(ethers.utils.formatEther(balance));
-      });
-  };
-
-  // let routes = (
-  //   <Switch>
-  //     <Route exact path="/">
-  //       <Landing />
-  //     </Route>
-  //     <Route path="/explore">
-  //       <Explore />
-  //     </Route>
-  //     <Route path="/create">
-  //       <Create />
-  //     </Route>
-  //   </Switch>
-  // );
 
   return (
-    // Sets the user address inside the React context, which can be used from any downstream component
-    <UserContext.Provider value={userAddress}>
-      <div>
+    <>
+    <Navbar />
+
+        <Router>
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="explore" element={<Explore />} />
+            <Route path="create" element={<Create />} />
+          </Routes>
+        </Router>
+    </>
+  );
+};
+
+export default App;
+
+
+      {/* <div>
         <Button className="" onClick={connectWalletHandler}>
           MetaMask
         </Button>
@@ -60,9 +39,4 @@ function App() {
         <div>
           <Portfolio />
         </div>
-      </div>
-    </UserContext.Provider>
-  );
-}
-
-export default App;
+      </div> */}
