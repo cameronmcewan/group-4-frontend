@@ -21,14 +21,12 @@ body {
   font-family: "Poppins", sans-serif;
   color: #ffffff;
   line-height: 1.7;
-    /* background format*/
   background-image: url('assets/bg.svg');
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   background-color: #464646;
-  background-image: url(../src/assets/waves-bg.svg);
 }
 
 /* scroll behaviour */
