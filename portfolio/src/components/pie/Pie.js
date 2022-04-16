@@ -3,7 +3,7 @@
 import logo from '../../assets/a.png';
 import logo2 from '../../assets/Rectangle3.png';
 import React, { Component, Fragment } from 'react';
-// Introduction of the ECharts main module
+// Import the ECharts main module
 import echarts from 'echarts/lib/echarts';
 import { Card } from 'antd'
 //Import pie charts
