@@ -1,9 +1,10 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Landing from "./routes/Landing";
+import Landing from "./routes/Welcome";
 import Explore from './routes/Explore';
 import Create from './routes/Create';
+import Footer from "./components/Footer";
 
 function App() {
 
@@ -11,7 +12,6 @@ function App() {
   return (
     <>
     <Navbar />
-
         <Router>
           <Routes>
             <Route path="/" element={<Landing />} />
@@ -19,6 +19,7 @@ function App() {
             <Route path="create" element={<Create />} />
           </Routes>
         </Router>
+    <Footer />
     </>
   );
 };
