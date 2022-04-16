@@ -49,7 +49,7 @@ function Navbar() {
             <li><a href="explore">Explore</a></li>
             <li><a href="create">Create</a></li>
             <li className='right'>
-              <button className='btn btn-primary' onClick={MetaMaskClick}>{buttonText}
+              <button className='btn' onClick={MetaMaskClick}>{buttonText}
               {userAddress && ( // Only displays the div below if the user address has been set
                           <div>
                             <h3>Address: {userAddress}</h3>

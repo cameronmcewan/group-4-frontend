@@ -34,12 +34,26 @@ $container-width-sm: 90%;
     font-family: $primary-fonts;
 }
 
+html {
+    height: 100%;
+}
+
 body {
     font-family: $primary-fonts;
-    // background: $bg-color;
     color: $font-color;
     line-height: 1.7;
     background-image: url(../src/assets/waves-bg.svg);
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100;
+}
+
+footer {
+    background: $bg-color;
+    color: $header-font-color;
+    padding: 3em;
+    margin-top: auto;
 }
 
 /* scroll behaviour */
@@ -122,7 +136,7 @@ a:hover {
 
 img {
     display: block;
-    width: 100%;
+    width: 50%;
     object-fit: cover;
 }
 
