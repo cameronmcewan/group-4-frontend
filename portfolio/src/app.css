@@ -27,7 +27,7 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-color: #464646;
-  height: 1000px;
+  height: 100%;
 }
 
 /* scroll behaviour */
@@ -51,6 +51,7 @@ h1, h2, h3, h4, h5 {
 
 h1 {
   font-size: 2.5rem;
+  text-indent: 10rem;/*Adjusting the indent*/
 }
 
 /* each component is wrapped in a section in its component.js file */
@@ -148,11 +149,12 @@ ul.topnav {
   margin: 0;
   padding: 20px;
   overflow: hidden;
-  
+  /* background-color: #000a4b; */
 }
 
 ul.topnav li {
   float: left;
+  cursor: pointer;
 }
 
 ul.topnav li a {
@@ -169,6 +171,7 @@ ul.topnav li a {
 }
 
 ul.topnav li a:hover:not(.active) {
+  /* background-color: #000a4b; */
   opacity: 0.8;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#000a4b), to(#000a4b)), -webkit-gradient(linear, left top, left bottom, from(#91fff2), to(#91fff2)), -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ffffff));
   background-image: linear-gradient(#000a4b, #000a4b), linear-gradient(#91fff2, #91fff2), linear-gradient(#ffffff, #ffffff);
