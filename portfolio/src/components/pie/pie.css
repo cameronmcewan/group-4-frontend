@@ -1,0 +1,148 @@
+
+.box{
+    width: 60%;
+    height: 60%;
+    margin: 30px auto;
+    background: #B0FAFF;
+    /* padding-bottom: 50px; */
+    border:1px solid rgb(176, 250, 255)
+  }
+  .logo-pie{
+    position: relative;
+  }
+  .echarts-for-react {
+    height: 400px !important;
+  }
+  .logo-pie .imglogo{
+    z-index: 5;
+    position: absolute;
+    top: 8%;
+    left: 2%;
+    margin-top: 2%;
+    margin-left: -2%;
+    width: 100px;
+  }
+  .logo-pie .imglogo2{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 300px;
+  }
+  .title1{
+    position: absolute;
+    /* top: -25px; */
+    left: 18%;
+    top: 2rem;
+    font-family: 'Kantumruy';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 52px;
+    line-height: 60px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #333;
+  }
+  .title2{    
+    position: absolute;
+    top: 6rem;
+    left: 18%;
+    font-family: 'Kantumruy';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 30px;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.52);
+  }
+  .continer{
+    margin: 9rem auto;
+    width: 80%;
+    height: 500px;
+    background: rgba(131, 150, 205, 0.17);
+    border-radius: 70px;
+    position: relative;
+    top: 20%;
+    clear: both;
+  }
+  .continer .title{    
+    position: absolute;
+    width: 352px;
+    height: 80px;
+    left: 5%;
+    top: 5%;
+    color: #fff;
+    font-family: 'Kantumruy';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 80px;
+    margin: 0;
+  }
+  .continer .button1{
+    position: absolute;
+    width: 341px;
+    height: 130.71px;
+    left: 815px;
+    top: 530px;
+    background: #8396CD;
+    border-radius: 70px;
+    left: 60%;
+    top: 20%;
+    cursor: pointer;
+  }
+  
+  .active-pie{
+    background: #2ca132 !important;
+    border: 1px solid #fff;
+    text-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
+  }
+  .continer .button1 .t1{
+    text-align: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 40px;
+    margin: 0;
+  }
+  .continer .button1 .t2{
+    text-align: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 40px;
+    margin: 0;
+  }
+  
+  .continer .button2{
+    position: absolute;
+    width: 341px;
+    height: 130.71px;
+    left: 815px;
+    top: 530px;
+    background: #8396CD;
+    border-radius: 70px;
+    left: 60%;
+    top: 50%;
+    cursor: pointer;
+  }
+  .continer .button2 .t1{
+    text-align: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 40px;
+    margin: 0;
+  }
+  .continer .button2 .t2{
+    text-align: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 40px;
+    margin: 0;
+  }
+  .echart{
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    top: 20%;
+    left: 0%;
+  }
+  
