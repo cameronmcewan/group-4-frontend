@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Landing from "./routes/Landing";
+import Welcome from "./routes/Welcome";
 import Explore from "./routes/Explore";
 import Create from "./routes/Create";
 import { UserContext } from "./helpers/UserContext";
@@ -15,7 +15,7 @@ function App() {
       <Navbar>
         <Router>
           <Routes>
-            <Route path="/" element={<Landing />} />
+            <Route path="/" element={<Welcome />} />
             <Route path="explore" element={<Explore />} />
             <Route path="create" element={<Create />} />
           </Routes>

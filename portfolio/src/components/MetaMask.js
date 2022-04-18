@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { UserContext } from "../helpers/UserContext";
 import { ethers } from "ethers";
 
-const Metamask = () => {
+const MetaMask = () => {
   const { address, setAddress } = useContext(UserContext);
   const [userBalance, setUserBalance] = useState();
 
@@ -30,7 +30,7 @@ const Metamask = () => {
   return (
     // Sets the user address inside the React context, which can be used from any downstream component
     <button className="btn btn-primary" onClick={connectWalletHandler}>
-      <p>Connect to Metamask</p>
+      <p>Connect to MetaMask</p>
       {address && ( // Only displays the div below if the user address has been set
         <div>
           <h3>Address: {address}</h3>
@@ -41,4 +41,4 @@ const Metamask = () => {
   );
 };
 
-export default Metamask;
+export default MetaMask;
