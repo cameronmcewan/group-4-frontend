@@ -3,8 +3,18 @@ import { UserContext } from "../helpers/UserContext";
 import { ethers } from "ethers";
 
 const MetaMask = () => {
-  const { address, setAddress } = useContext(UserContext);
+  const [buttonText, setButtonText] = useState("Connect to MetaMask");
   const [userBalance, setUserBalance] = useState();
+  const { address, setAddress } = useContext(UserContext);
+
+  const handleButtonClick = () => {
+    connectWalletHandler();
+    changeText("You are connected to MetaMask");
+  };
+
+  const changeText = (text) => {
+    setButtonText(text);
+  };
 
   const connectWalletHandler = () => {
     if (window.ethereum) {
@@ -28,9 +38,8 @@ const MetaMask = () => {
   };
 
   return (
-    // Sets the user address inside the React context, which can be used from any downstream component
-    <button className="btn btn-primary" onClick={connectWalletHandler}>
-      <p>Connect to MetaMask</p>
+    <button className="btn btn-cta" onClick={handleButtonClick}>
+      <p>{buttonText}</p>
       {address && ( // Only displays the div below if the user address has been set
         <div>
           <h3>Address: {address}</h3>

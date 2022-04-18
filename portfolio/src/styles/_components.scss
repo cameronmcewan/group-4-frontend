@@ -1,11 +1,11 @@
-// ======= Header ==========
+// ======= Navbar ==========
 
 ul.topnav {
     list-style-type: none;
     margin: 0;
     padding: 20px;
     overflow: hidden;
-    background-color: $bg-color;
+    border-bottom: 1px solid $grey;
 }
 
 ul.topnav li {
@@ -14,7 +14,7 @@ ul.topnav li {
 
 ul.topnav li a {
     display: block;
-    color: $color-white;
+    color: $header-font-color;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -25,7 +25,6 @@ ul.topnav li a {
 }
 
 ul.topnav li a:hover:not(.active) {
-    background-color: $bg-color;
     opacity: 0.8;
     background-image: linear-gradient($color-secondary, $color-secondary), 
                         linear-gradient($color-primary, $color-primary), 
@@ -34,33 +33,25 @@ ul.topnav li a:hover:not(.active) {
     background-position: calc(100% + 20px) 100%, 100% 100%, 0 100%;
 }
 
-ul.topnav li a.active {
-
-}
-
 ul.topnav li.right {float: right;}
-
-.header {
-    padding: 20px;
-    text-align: center;
-    font-family: $primary-fonts;
-    background-color: $header-bg-color;
-    color: $header-font-color;
-    line-height: 1.7;
-}
 
 .logo {
     float: left;
     width: 120px; 
     text-indent: -9999px;
-    opacity: .8;
+    opacity: .6;
     transition: .6s;
+    margin-top: -6px;
 }
 
 .logo:hover {
     opacity: 1;
-    margin-top: -5px;
-    margin-bottom: 5px;
+    // margin-top: -11px;
+    // margin-bottom: 5px;
+    transform: scale(1.1);
+}
+.expandmore:hover {
+    transform: scale(2);
 }
 
 

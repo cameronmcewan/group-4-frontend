@@ -1,13 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
 
+// ~~~~~~~~ COLOR SCHEME PALETTE ~~~~~~~~~~~~
+// color-hex.com Color Palette = kuning
+
+$red: #ff0000;
+$yellow: #e5ff00;
+$blue: #0000ff;
+$grey: #eeeeee;
+$black: #000000;
+$white: #ffffff;
+
+$theme1: $red;
+
 $primary-fonts: 'Poppins', sans-serif;
+$primary-theme: #91fff2;
+$secondary-theme-color: #ffffff;
 $font-color: #ffffff;
-$header-font-color: #ebeeff;
-$header-bg-color: #4dffea;
+$header-font-color: #ffffff;
+$header-bg-color: #8886f2;
 $bg-color: #000a4b;
-$element-color: #b9bedd;
 $color-bg-variant: #057a7c;
 $color-primary: #91fff2;
+$primary-button-color: #ffffff;
 $color-secondary: #000a4b;
 $color-primary-variant: rgba(77, 181, 255, 0.4);
 $color-white: #ffffff;
@@ -30,7 +44,7 @@ $container-width-sm: 90%;
 :root {
     /* website colours */
     background: $bg-color;
-    background-color: $element-color;
+    background-color: $bg-color;
     font-family: $primary-fonts;
 }
 
@@ -42,18 +56,17 @@ body {
     font-family: $primary-fonts;
     color: $font-color;
     line-height: 1.7;
-    background-image: url(../src/assets/waves-bg.svg);
-
+    background-image: url(../src/assets/backgrounds/bg-waves-blue-yellow.svg);
     display: flex;
     flex-direction: column;
     min-height: 100;
 }
 
 footer {
-    background: $bg-color;
     color: $header-font-color;
-    padding: 3em;
+    padding: 1rem;
     margin-top: auto;
+    border-top: 1px solid $grey;
 }
 
 /* scroll behaviour */
@@ -115,23 +128,35 @@ a:hover {
 .btn {
     width: max-content;
     display: inline-block;
-    color: $color-primary;
+    color: $grey;
     padding: 0.75rem 1.2rem;
-    border-radius: 0.4rem;
+    border-radius: 1rem;
     cursor: pointer;
-    border: 1px solid $color-primary;
+    border: 1px solid $red;
     transition: $transition;
 }
 
 /* buttons will have hover effect */
 .btn:hover {
-    background: $color-secondary;
+    background: $grey;
+    color: $red;
     border-color: transparent;
 }
 
 .btn-primary {
-    background: $color-primary;
-    color: $bg-color;
+    background: $grey;
+    color: $blue;
+    border-color: transparent;
+}
+
+.btn-cta {
+    background: $red;
+    color: $grey;
+}
+.btn-cta:hover {
+    background: $yellow;
+    color: red;
+    border-color: transparent;
 }
 
 img {
@@ -146,8 +171,34 @@ ul {
     padding: 0;
 }
 
+//  ========= Tiles on Create page styling =========
 
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 3rem;
+}
 
+.col-1 {
+    flex: 1;
+}
+
+.col-2 {
+    flex: 2;
+}
+
+.block {
+    background-color: $white;
+    color: $blue;
+    padding: 1rem  3rem;
+    margin: 1rem 2rem;
+    border-radius: 0.5rem;
+    justify-content: center;
+}
+
+.row.center {
+    align-items: center;
+}
 
 /* ====== Media queries (medium devices AKA tablets) =========== */
 @media screen and (max-width: 1024px) {

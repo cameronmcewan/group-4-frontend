@@ -1,7 +1,7 @@
 import React from "react";
-import Logo from "../assets/logo-light-no-bg.png";
+import Logo from "../assets/logos/pie-chart-logo.svg";
 
-const Landing = () => {
+const Welcome = () => {
   return (
     <>
       <section>
@@ -21,4 +21,4 @@ const Landing = () => {
   );
 };
 
-export default Landing;
+export default Welcome;

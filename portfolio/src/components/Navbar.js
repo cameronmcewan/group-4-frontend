@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../assets/logo-dark-no-bg.png";
+import Logo from "../assets/logos/folio-tnr.svg";
 import MetaMask from "./MetaMask";
 
 function Navbar() {
