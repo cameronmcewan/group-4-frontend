@@ -1,5 +1,4 @@
 import React from 'react';
-import pielogo from '../assets/pie-logo1.svg';
 
 const Explore = () => {
   return (

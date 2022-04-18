@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Logo from '../assets/logo-light-no-bg.png'
 import { ethers} from 'ethers';
-import { UserContext } from '../helpers/userContext';
+import { UserContext } from '../helpers/UserContext';
 
 
 function Navbar() {
