@@ -1,18 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import Navbar from "./components/Navbar";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Landing from "./routes/Landing";
-import Explore from "./routes/Explore";
-import Create from "./routes/Create";
-import { UserContext } from "./helpers/UserContext";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Landing from "./routes/Welcome";
+import Explore from './routes/Explore';
+import Create from './routes/Create';
+import Footer from "./components/Footer";
 
 function App() {
-  const [address, setAddress] = useState();
-  const userContext = { address, setAddress };
+
 
   return (
-    <UserContext.Provider value={userContext}>
-      <Navbar>
+    <>
+    <Navbar />
         <Router>
           <Routes>
             <Route path="/" element={<Landing />} />
@@ -20,9 +19,25 @@ function App() {
             <Route path="create" element={<Create />} />
           </Routes>
         </Router>
-      </Navbar>
-    </UserContext.Provider>
+    <Footer />
+    </>
   );
-}
+};
 
 export default App;
+
+
+      {/* <div>
+        <Button className="" onClick={connectWalletHandler}>
+          MetaMask
+        </Button>
+        {userAddress && ( // Only displays the div below if the user address has been set
+          <div>
+            <h3>Address: {userAddress}</h3>
+            <h3>Balance: {userBalance}</h3>
+          </div>
+        )}
+        <div>
+          <Portfolio />
+        </div>
+      </div> */}
