@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import Logo from '../assets/logo-dark-no-bg.png'
+import Logo from '../assets/logo-light-no-bg.png'
 import { ethers} from 'ethers';
 import { UserContext } from '../helpers/UserContext';
 
@@ -49,11 +49,11 @@ function Navbar() {
             <li><a href="explore">Explore</a></li>
             <li><a href="create">Create</a></li>
             <li className='right'>
-              <button className='btn' onClick={MetaMaskClick}>{buttonText}
+              <button className='btn btn-cta' onClick={MetaMaskClick}>{buttonText}
               {userAddress && ( // Only displays the div below if the user address has been set
                           <div>
-                            <h3>Address: {userAddress}</h3>
-                            <h3>Balance: {userBalance}</h3>
+                            <h6>Address: {userAddress}</h6>
+                            <h6>Balance: {userBalance}</h6>
                           </div> )}
               </button>
             </li>
