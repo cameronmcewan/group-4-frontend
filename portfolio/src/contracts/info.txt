@@ -1,0 +1,3 @@
+Portfolio factory has been deployed on Kovan:
+
+Address: 0xeb69833E23155B7ADB37F2c4dEFE80D4EF06379D
