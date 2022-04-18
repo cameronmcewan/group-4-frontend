@@ -39,14 +39,19 @@ ul.topnav li.right {float: right;}
     float: left;
     width: 120px; 
     text-indent: -9999px;
-    opacity: .8;
+    opacity: .6;
     transition: .6s;
+    margin-top: -6px;
 }
 
 .logo:hover {
     opacity: 1;
-    margin-top: -5px;
-    margin-bottom: 5px;
+    // margin-top: -11px;
+    // margin-bottom: 5px;
+    transform: scale(1.1);
+}
+.expandmore:hover {
+    transform: scale(2);
 }
 
 

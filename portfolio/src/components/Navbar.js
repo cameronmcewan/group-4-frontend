@@ -1,64 +1,25 @@
-import React, {useState} from 'react';
-import Logo from '../assets/logo-light-no-bg.png'
-import { ethers} from 'ethers';
-import { UserContext } from '../helpers/UserContext';
-
+import React from "react";
+import Logo from "../assets/logos/folio-tnr.svg";
+import Metamask from "./MetaMask";
 
 function Navbar() {
 
-  const MetaMaskClick = () => {
-    connectWalletHandler();
-    changeText("You are connected to MetaMask");
-  };
-
-  const[click, setClick] = useState(false);
-  const handleClick = () => setClick(!click);
-
-  const [userAddress, setUserAddress] = useState();
-  const [userBalance, setUserBalance] = useState();
-
-  const connectWalletHandler = () => {
-    if (window.ethereum) {
-      window.ethereum
-        .request({ method: "eth_requestAccounts" })
-        .then((result) => {
-          setUserAddress(result[0]);
-          getUserBalance(result[0]);
-        });
-    } else {
-      window.alert("Please install MetaMask");
-    }
-  };
-
-  const getUserBalance = (address) => {
-    window.ethereum
-      .request({ method: "eth_getBalance", params: [address, "latest"] })
-      .then((balance) => {
-        setUserBalance(ethers.utils.formatEther(balance));
-      });
-  };
-
-  const [buttonText, setButtonText] = useState("Connect to MetaMask"); 
-  const changeText = (text) => setButtonText(text);
-
   return (
     <div>
-      <UserContext.Provider value={userAddress}>
-        <ul className='topnav'>
-            <a className='active' href="/"><img className='logo' src={Logo} alt="The Folio Logo" /></a>
-            <li><a href="explore">Explore</a></li>
-            <li><a href="create">Create</a></li>
-            <li className='right'>
-              <button className='btn btn-cta' onClick={MetaMaskClick}>{buttonText}
-              {userAddress && ( // Only displays the div below if the user address has been set
-                          <div>
-                            <h6>Address: {userAddress}</h6>
-                            <h6>Balance: {userBalance}</h6>
-                          </div> )}
-              </button>
-            </li>
-        </ul>
-      </UserContext.Provider>
+      <ul className="topnav">
+        <a className="active" href="/">
+          <img className="logo" src={Logo} alt="The Folio Logo" />
+        </a>
+        <li>
+          <a href="explore">Explore</a>
+        </li>
+        <li>
+          <a href="create">Create</a>
+        </li>
+        <li className="right">
+          <Metamask />
+        </li>
+      </ul>
     </div>
   );
 }

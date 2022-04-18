@@ -56,16 +56,15 @@ body {
     font-family: $primary-fonts;
     color: $font-color;
     line-height: 1.7;
-    background-image: url(../src/assets/bg-waves-blue-yellow.svg);
+    background-image: url(../src/assets/backgrounds/bg-waves-blue-yellow.svg);
     display: flex;
     flex-direction: column;
     min-height: 100;
 }
 
 footer {
-    // background: $header-bg-color;
     color: $header-font-color;
-    padding: 2rem;
+    padding: 1rem;
     margin-top: auto;
     border-top: 1px solid $grey;
 }

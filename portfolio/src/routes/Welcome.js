@@ -1,5 +1,5 @@
-import React from 'react';
-import Logo from '../assets/logo-light-no-bg.png';
+import React from "react";
+import Logo from "../assets/logos/pie-chart-logo.svg";
 
 const Landing = () => {
   return (
