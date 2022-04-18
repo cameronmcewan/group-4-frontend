@@ -22,6 +22,16 @@ def remove_NaN_rows(df):
     return df.dropna(axis=0)
 
 
+def train_test_split(df, test_size):
+    """ Generates train-test split files """
+    num_rows = df.shape[0]
+    split_idx = int(num_rows * test_size)
+    train_df = df[0:split_idx]
+    test_df = df[split_idx:]
+
+    return train_df, test_df
+
+
 def main():
     """
     1. Loops over all files in data folder
@@ -38,6 +48,12 @@ def main():
     crypto_df = crypto_df.reset_index(drop=True)
 
     crypto_df.to_csv("cleaned_data/crypto_data_cleaned.csv")
+
+    #  Train test split of 80:20
+    train_df, test_df = train_test_split(crypto_df, test_size=0.8)
+
+    train_df.to_csv("cleaned_data/crypto_data_cleaned_train.csv")
+    test_df.to_csv("cleaned_data/crypto_data_cleaned_test.csv")
 
 
 if __name__ == "__main__":
