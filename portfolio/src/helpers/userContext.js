@@ -1,8 +1,8 @@
 import React from "react";
 
 const UserContext = React.createContext({
-    address: {},
-    setAddress: () => {},
-  });
+  address: {},
+  setAddress: () => {},
+});
 
 export { UserContext };
