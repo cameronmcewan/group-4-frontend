@@ -2,18 +2,19 @@ import React, { useState, useContext } from "react";
 import { UserContext } from "../helpers/UserContext";
 import { ethers } from "ethers";
 
-const Metamask = () => {
+const MetaMask = () => {
+  const [buttonText, setButtonText] = useState("Connect to MetaMask");
+  const [userBalance, setUserBalance] = useState();
+  const { address, setAddress } = useContext(UserContext);
 
-  const MetaMaskClick = () => {
+  const handleButtonClick = () => {
     connectWalletHandler();
     changeText("You are connected to MetaMask");
   };
 
-  const [buttonText, setButtonText] = useState("Connect to MetaMask"); 
-  const changeText = (text) => setButtonText(text);
-
-  const { address, setAddress } = useContext(UserContext);
-  const [userBalance, setUserBalance] = useState();
+  const changeText = (text) => {
+    setButtonText(text);
+  };
 
   const connectWalletHandler = () => {
     if (window.ethereum) {
@@ -37,7 +38,7 @@ const Metamask = () => {
   };
 
   return (
-    <button className="btn btn-cta" onClick={MetaMaskClick}>
+    <button className="btn btn-cta" onClick={handleButtonClick}>
       <p>{buttonText}</p>
       {address && ( // Only displays the div below if the user address has been set
         <div>
@@ -49,4 +50,4 @@ const Metamask = () => {
   );
 };
 
-export default Metamask;
+export default MetaMask;

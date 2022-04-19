@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Button from "@mui/material/Button";
 import contract from "../helpers/contract";
-import { UserContext } from "../helpers/userContext";
+import { UserContext } from "../helpers/UserContext";
 
 function Portfolio() {
   // Get the user address from the React context
@@ -38,7 +38,7 @@ function Portfolio() {
   return (
     <div className="pcontainer">
       <h3 className="title">FolioCoin1</h3>
-      {userAddress && ( // only display buttons if user has connected to Metamask
+      {userAddress && ( // only display buttons if user has connected to MetaMask
         <div>
           <Button className="btn" onClick={buy}>
             Buy
