@@ -3,12 +3,14 @@ import PortfolioCard from "../components/PortfolioCard";
 import portfolioFactoryContract from "../contracts/PortfolioFactory";
 
 const Explore = () => {
-  const [portfolioAddresses, setPortfolioAddresses] = useState("");
+  const [portfolioAddresses, setPortfolioAddresses] = useState([]);
 
-  const getPortfolioAddressesFromContract = async function () {
-    // Get the first portfolio address from the portfolio factory
-    const address = await portfolioFactoryContract.portfolios(0);
-    setPortfolioAddresses(address);
+  const getTopPortfolios = async function (numPortfolios) {
+    const addresses = [];
+    for (let i = 0; i < numPortfolios; i++) {
+      addresses[i] = await portfolioFactoryContract.portfolios(i);
+    }
+    setPortfolioAddresses(addresses);
   };
 
   return (
@@ -17,14 +19,14 @@ const Explore = () => {
         Search for the name of an existing Portfolio or token to filter the
         results
       </h3>
-      <button onClick={getPortfolioAddressesFromContract}>
-        Get Portfolios
+      <button className="btn btn-cta" onClick={getTopPortfolios(5)}>
+        Load top portfolios
       </button>
-      <p>{portfolioAddresses}</p>
-      <PortfolioCard />
-      <PortfolioCard />
-      <PortfolioCard />
-      <PortfolioCard />
+      <PortfolioCard address={portfolioAddresses[0]} />
+      <PortfolioCard address={portfolioAddresses[1]} />
+      <PortfolioCard address={portfolioAddresses[2]} />
+      <PortfolioCard address={portfolioAddresses[3]} />
+      <PortfolioCard address={portfolioAddresses[4]} />
     </section>
   );
 };
