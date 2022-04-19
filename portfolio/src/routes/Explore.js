@@ -1,29 +1,32 @@
-import React from 'react';
+import React, { useState } from "react";
+import PortfolioCard from "../components/PortfolioCard";
+import portfolioFactoryContract from "../contracts/PortfolioFactory";
 
 const Explore = () => {
+  const [portfolioAddresses, setPortfolioAddresses] = useState("");
+
+  const getPortfolioAddressesFromContract = async function () {
+    // Get the first portfolio address from the portfolio factory
+    const address = await portfolioFactoryContract.portfolios(0);
+    setPortfolioAddresses(address);
+  };
+
   return (
     <section>
-      <h3>Search for the name of an existing Portfolio or token to filter the results</h3>       
-        <div className='block center'>
-          <h2>Example Portfolio 1</h2>
-        </div>
-        <header className='block center'>
-          <div>
-            <h2>Example Portfolio 2</h2>
-          </div>
-        </header>
-          <div className='block center'>
-          <h2>Example Portfolio 3</h2>
-          </div>
-          <div className='block center'>
-            <h2>Example Portfolio 4</h2>
-          </div>
+      <h3>
+        Search for the name of an existing Portfolio or token to filter the
+        results
+      </h3>
+      <button onClick={getPortfolioAddressesFromContract}>
+        Get Portfolios
+      </button>
+      <p>{portfolioAddresses}</p>
+      <PortfolioCard />
+      <PortfolioCard />
+      <PortfolioCard />
+      <PortfolioCard />
     </section>
-
-          
-
-
   );
 };
 
-export default Explore
+export default Explore;
