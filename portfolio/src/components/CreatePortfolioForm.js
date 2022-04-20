@@ -1,12 +1,14 @@
 import React, { useState, useContext } from "react";
 import portfolioFactoryContract from "../contracts/PortfolioFactory";
 import { UserContext } from "../helpers/UserContext";
+import SelectToken from "./SelectToken";
 
 const CreatePortfolioForm = () => {
 
   const { address } = useContext(UserContext);
   const [name, setName] = useState("Portfolio");
   const [symbol, setSymbol] = useState("FOLO");
+  // Chainlink (Kovan), Wrapped Ether (Kovan)
   const [tokenAddresses, setTokenAddresses] = useState(["0xa36085F69e2889c224210F603D836748e7dC0088", "0xd0A1E359811322d97991E03f863a0C30C2cF029C"]);
   const [percentageHoldings, setPercentageHoldings] = useState([40, 60]);
   const [ownerFee, setOwnerFee] = useState(100);
@@ -31,14 +33,19 @@ const CreatePortfolioForm = () => {
   };
 
   return (
-    <form className="formItem" onSubmit={handleSubmit}>
+    <>
+    <h4 className="col-2">LHS</h4>
+    <h4 className="col-1">RHS
+    <div>
+    <SelectToken />
+    </div>
+    <form className="formItem block" onSubmit={handleSubmit}>
       <label>
         Token Name:
         <input
           type="text"
           value={name}
-          onChange={e => setName(e.target.value)}
-        />
+          onChange={e => setName(e.target.value)} />
       </label>
 
       <label>
@@ -46,8 +53,7 @@ const CreatePortfolioForm = () => {
         <input
           type="text"
           value={symbol}
-          onChange={e => setSymbol(e.target.value)}
-        />
+          onChange={e => setSymbol(e.target.value)} />
       </label>
 
       <label>
@@ -55,8 +61,7 @@ const CreatePortfolioForm = () => {
         <input
           type="text"
           value={tokenAddresses}
-          onChange={e => setTokenAddresses(e.target.value)}
-        />
+          onChange={e => setTokenAddresses(e.target.value)} />
       </label>
 
       <label>
@@ -64,8 +69,7 @@ const CreatePortfolioForm = () => {
         <input
           type="text"
           value={percentageHoldings}
-          onChange={e => setPercentageHoldings(e.target.value)}
-        />
+          onChange={e => setPercentageHoldings(e.target.value)} />
       </label>
 
       <label>
@@ -73,8 +77,7 @@ const CreatePortfolioForm = () => {
         <input
           type="text"
           value={ownerFee}
-          onChange={e => setOwnerFee(e.target.value)}
-        />
+          onChange={e => setOwnerFee(e.target.value)} />
       </label>
 
       {address && (
@@ -82,6 +85,8 @@ const CreatePortfolioForm = () => {
       )}
 
     </form>
+    </h4>
+    </>
   );
 };
 

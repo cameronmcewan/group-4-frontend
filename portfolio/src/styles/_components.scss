@@ -54,6 +54,18 @@ ul.topnav li.right {float: right;}
     transform: scale(2);
 }
 
+// ========== Create page ===========
+
+.formItem {
+    width: 200px;
+    padding: 20px 20px;
+    margin: 8px 0;
+    background: $grey;
+    background-color: $grey;
+    box-sizing: border-box;
+    font-size: 1.25rem;
+  }
+
 
 /* Responsive layout - when the screen is less than 600px wide, make the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
