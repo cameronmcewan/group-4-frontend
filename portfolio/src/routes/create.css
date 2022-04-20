@@ -2,7 +2,20 @@
     position: fixed;
     top: 2rem;
     width: 100%;
+    z-index: 999;
+    background: rgba(187, 184, 184, 0.3);
 }
 .not{
     display: none;
+}
+.openmine{
+    width: 20%;
+    height: 36px;
+    line-height: 36px;
+    margin:0 auto;
+    text-align: center;
+    background: #fff;
+    border-radius: 20px;
+    color:#341956;
+    cursor: pointer;
 }

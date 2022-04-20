@@ -22,9 +22,12 @@
     background: #ccc;
     padding:1rem 2rem;
 }
-.echart{
+.echart2{
     width: 40%;
     height: 50%;
     position: absolute;
-    top: 30%;
+    top: 40%;
+  }
+  .pie_a_detail{
+
   }

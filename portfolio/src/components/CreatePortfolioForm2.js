@@ -10,22 +10,69 @@ import 'echarts/lib/component/title'
 import 'echarts/lib/component/legend'
 import 'echarts/lib/component/markPoint'
 import ReactEcharts from 'echarts-for-react'
+import Downarrow from '../assets/img/Downarrow.png'
+import Uparrow from '../assets/img/Uparrow.png'
 class CreatePortfolioForm2 extends Component
 {
   constructor(props) {
     super(props);
+    this.state = {
+        coinlist:[
+            {name:'Bitcoin (BTC)',val:'15'},
+            {name:'XRP (XRP)',val:'15'},
+            {name:'Cardano (ADA)',val:'30'},
+            {name:'Chainlink (LINK)',val:'30'},
+        ]
+    }
+    this.getOption = this.getOption.bind(this)
+    this.deccoin = this.deccoin.bind(this)
+    this.edit = this.edit.bind(this);
+    this.addnum = this.addnum.bind(this);
+    this.decnum = this.decnum.bind(this);
+    
   }
+    addnum(key,index,e){
+        let coinlist = this.state.coinlist;
+        coinlist[index][key] = (parseInt(coinlist[index][key]) + 1).toString();
+        console.log(coinlist);
+        this.setState({
+            coinlist:coinlist
+        })
+    }
+    decnum(key,index,e){
+        let coinlist = this.state.coinlist;
+        coinlist[index][key] = parseInt(coinlist[index][key]) - 1;
+        this.setState({
+            coinlist:coinlist
+        })
+        console.log(coinlist);
+    }
+    deccoin(index,e){
+        let coinlist = this.state.coinlist;
+        coinlist.splice(index,1)
+        this.setState({
+            coinlist:coinlist
+        })
+    }
+    edit(key,index,e){
+        let coinlist = this.state.coinlist;
+        coinlist[index][key] = e.target.value;
+        this.setState({
+            coinlist:coinlist
+        })
+    }
   getOption(){   //饼图的方法，
-    let data_title = ['分类一','分类二','分类三','分类四','分类五','其它'];  //饼图标题，可请求后端获取
-    let data = [  //饼图数据，可请求后端获取
-    {value:27, name:'分类一'},
-    {value:25, name:'分类二'},
-    {value:18, name:'分类三'},
-    {value:15, name:'分类四'},
-    {value:10, name:'分类五'},
-    {value:5, name:'其它'}
-    ];
-    let count = 6;
+    let coinlist = this.state.coinlist;
+    let data_title = [];
+    let data = [];
+    coinlist.map((item,index)=>{
+        data_title.push(item.name);
+        data.push({
+            name:item.name,
+            value:item.val,
+        })
+    })
+    let count = coinlist.length;
     let option = {
       title: {
         text: 'FolioCoin1 balance:  '+count,
@@ -64,25 +111,34 @@ class CreatePortfolioForm2 extends Component
     }
     return option;
   }
+    renderli(){
+        let coinlist = this.state.coinlist;
+        return coinlist.map((item,index)=>{
+            return (
+                <div className="bgin" key={index}>
+                    <span className="del" onClick={this.deccoin.bind(this,index)}>-</span>
+                    <span className="title">{item.name}</span>
+                    <div className="addrow">
+                        <input type="text" className="cart_nums" onChange={this.edit.bind(this,'val',index)} value={item.val} />
+                        <div className="goods-btn">
+                            <div data-type="add2" onClick={this.addnum.bind(this,'val',index)}>
+                                <img  src={Uparrow} />
+                            </div>
+                            <div data-type="dec2" onClick={this.decnum.bind(this,'val',index)}>
+                                <img  src={Downarrow} />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )
+        })
+    }
   render(){
       return (
           <div>
-            <div className="bgin">
-                <span className="del">-</span>
-                <span className="title">Bitcoin (BTC)</span>
-            </div>
-            <div className="bgin">
-                <span className="del">-</span>
-                <span className="title">Bitcoin (BTC)</span>
-            </div>
-            <div className="bgin">
-                <span className="del">-</span>
-                <span className="title">Bitcoin (BTC)</span>
-            </div>
-            <div className="bgin">
-                <span className="del">-</span>
-                <span className="title">Bitcoin (BTC)</span>
-            </div>
+            {
+                this.renderli()
+            }
             <Card.Grid className="pie_a">
                 <ReactEcharts option={this.getOption()}/>
             </Card.Grid>

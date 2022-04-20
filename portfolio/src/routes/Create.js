@@ -13,17 +13,25 @@ class Create extends Component
     let url = window.location.href;
     let arr = url.split('?');
     let type = '';
-    this.show = 1;
-    if(arr.length > 1){
-      this.show = 0;
-      type = arr[1];
-    }
+    this.state = {
+      show:0
+    };
+    // if(arr.length > 1){
+    //   this.show = 0;
+    //   type = arr[1];
+    // }
+    this.openAlert = this.openAlert.bind(this);
+  }
+  openAlert(){
+    this.setState({
+      show:1
+    })
   }
   render(){
     return(
       <>
       <section>
-        <div className={this.show==1?'alertW':'creatW not'}><Form></Form></div>
+        <div className={this.state.show==1?'alertW':'creatW not'}><Form></Form></div>
         <header className="block center">
           <div>
             <h1>Create a new portfolio coin</h1>
@@ -39,6 +47,7 @@ class Create extends Component
         </div>
       </section>
       <section>
+        <div className="openmine" onClick={this.openAlert.bind(this)}>Mint yout coin</div>
         <h1>Another section</h1>
         <h2>Space</h2>
       </section>
