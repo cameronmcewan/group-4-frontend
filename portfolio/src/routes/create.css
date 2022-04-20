@@ -1,0 +1,8 @@
+.alertW{
+    position: fixed;
+    top: 2rem;
+    width: 100%;
+}
+.not{
+    display: none;
+}

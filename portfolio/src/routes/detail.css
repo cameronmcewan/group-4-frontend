@@ -1,0 +1,30 @@
+.main-container{
+    width: 80%;
+    border: 1px solid #ccc;
+    height: 600px;
+    margin: 5rem auto;
+    border-radius: 30px;
+    background: rgb(135, 154, 245);
+}
+.main-container .title{
+    text-align: center;
+    height: 60px;
+    line-height: 60px;
+    font-size: 36px;
+}
+.asset-line{
+    float: right;
+}
+.asset-line li{
+    margin-top: 2rem;
+    font-size: 36px;
+    margin-right: 8rem;
+    background: #ccc;
+    padding:1rem 2rem;
+}
+.echart{
+    width: 40%;
+    height: 50%;
+    position: absolute;
+    top: 30%;
+  }

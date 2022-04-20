@@ -1,0 +1,17 @@
+section{
+    margin-top: 2rem;
+}
+.search{
+    height: 60px;
+    line-height: 60px;
+    font-size: 30px;
+    margin-left: 2rem;
+    border-radius: 20px;
+    text-indent: 2rem;
+}
+h3{
+    text-indent: 2rem;
+}
+.block{
+    cursor: pointer;
+}

@@ -6,6 +6,7 @@ import App from "./App";
 import Welcome from "./routes/Welcome";
 import Explore from "./routes/Explore";
 import Create from "./routes/Create";
+import Detail from "./routes/Detail";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -15,6 +16,7 @@ ReactDOM.render(
           <Route index element={<Welcome />} />
           <Route path="explore" element={<Explore />} />
           <Route path="create" element={<Create />} />
+          <Route path="detail" element={<Detail />} />
         </Route>
       </Routes>
     </BrowserRouter>

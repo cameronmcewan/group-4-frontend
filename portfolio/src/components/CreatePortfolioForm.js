@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import portfolioFactoryContract from "../contracts/PortfolioFactory";
+// import portfolioFactoryContract from "../contracts/PortfolioFactory";
 import { UserContext } from "../helpers/UserContext";
 
 const CreatePortfolioForm = () => {
@@ -20,14 +20,14 @@ const CreatePortfolioForm = () => {
     console.log(
       `The variables are: ${name}, ${symbol}, ${tokenAddresses}, ${percentageHoldings}, ${ownerFee}`
     );
-    portfolioFactoryContract.methods
-      .create(name, symbol, tokenAddresses, percentageHoldings, ownerFee)
-      .send({
-        from: address,
-      })
-      .then((receipt) => {
-        console.log(receipt);
-      });
+    // portfolioFactoryContract.methods
+    //   .create(name, symbol, tokenAddresses, percentageHoldings, ownerFee)
+    //   .send({
+    //     from: address,
+    //   })
+    //   .then((receipt) => {
+    //     console.log(receipt);
+    //   });
   };
 
   return (

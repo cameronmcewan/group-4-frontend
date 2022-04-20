@@ -1,0 +1,46 @@
+.bgin{
+    width: 30%;
+    background: rgb(235, 232, 238);
+    border-radius: 20px;
+    height: 60px;
+    box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
+    position: relative;
+    margin-top: 2rem;
+}
+.bgin .del{
+    position: absolute;
+    top: 1rem;
+    left: 2rem;
+    font-size: 24px;
+    background: #ccc;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: block;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+}
+.bgin .title{
+    position: absolute;
+    width: 246px;
+    height: 39px;
+    top: 0.6rem;
+    left: 5rem;
+
+    font-family: 'Kantumruy';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 36px;
+    display: flex;
+    align-items: center;
+
+    color: #341956;
+}
+.pie_a{
+    width: 30%;
+    position: absolute;
+    top: 24rem;
+    left: 30rem;
+}
