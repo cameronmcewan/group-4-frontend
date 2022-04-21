@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import portfolioFactoryContractUserProvider from "../contracts/PortfolioFactoryContractUserProvider";
+import portfolioFactoryContract from "../contracts/PortfolioFactory";
 import { UserContext } from "../helpers/UserContext";
 
 const CreatePortfolioForm = () => {
@@ -20,7 +20,7 @@ const CreatePortfolioForm = () => {
     console.log(
       `The variables are: ${name}, ${symbol}, ${tokenAddresses}, ${percentageHoldings}, ${ownerFee}`
     );
-    portfolioFactoryContractUserProvider.methods
+    portfolioFactoryContract.methods
       .create(name, symbol, tokenAddresses, percentageHoldings, ownerFee)
       .send({
         from: address,

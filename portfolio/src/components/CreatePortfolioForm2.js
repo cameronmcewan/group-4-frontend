@@ -14,7 +14,8 @@ import Downarrow from '../assets/img/Downarrow.png'
 import Uparrow from '../assets/img/Uparrow.png'
 
 
-class CreatePortfolioForm2 extends Component {
+class CreatePortfolioForm2 extends Component
+{
   constructor(props) {
     super(props);
     this.state = {
@@ -112,28 +113,28 @@ class CreatePortfolioForm2 extends Component {
     }
     return option;
   }
-  renderli() {
-    let coinlist = this.state.coinlist;
-    return coinlist.map((item, index) => {
-      return (
-        <div className="bgin" key={index}>
-          <span className="del" onClick={this.deccoin.bind(this, index)}>-</span>
-          <span className="title">{item.name}</span>
-          <div className="addrow">
-            <div className="goods-btn">
-              <div data-type="add2" onClick={this.addnum.bind(this, 'val', index)}>
-                <img className="arrow" src={Uparrow} />
-              </div>
-              <div data-type="dec2" onClick={this.decnum.bind(this, 'val', index)}>
-                <img className="arrow" src={Downarrow} />
-              </div>
-              <input type="text" className="cart_nums" onChange={this.edit.bind(this, 'val', index)} value={item.val} />
-            </div>
-          </div>
-        </div>
-      )
-    })
-  }
+    renderli(){
+        let coinlist = this.state.coinlist;
+        return coinlist.map((item,index)=>{
+            return (
+                <div className="bgin" key={index}>
+                    <span className="del" onClick={this.deccoin.bind(this,index)}>-</span>
+                    <span className="title">{item.name}</span>
+                    <div className="addrow">
+                        <div className="goods-btn">
+                            <div data-type="add2" onClick={this.addnum.bind(this,'val',index)}>
+                                <img className="arrow" src={Uparrow} />
+                            </div>
+                            <div data-type="dec2" onClick={this.decnum.bind(this,'val',index)}>
+                                <img className="arrow" src={Downarrow} />
+                            </div>
+                            <input type="text" className="cart_nums" onChange={this.edit.bind(this,'val',index)} value={item.val} />
+                        </div>
+                    </div>
+                </div>
+            )
+        })
+    }
   render() {
     return (
       <div>
