@@ -17,6 +17,7 @@ const PortfolioCard = (props) => {
   const [ethAmountInWei, setEthAmountInWei] = useState(100000000);
   const [totalSupply, setTotalSupply] = useState('');
   const [userBalance, setUserBalance] = useState('');
+  const [assetQuantities, setAssetQuantities] = useState([]);
 
 
 
@@ -36,6 +37,11 @@ const PortfolioCard = (props) => {
       setUserBalance(userBalance.toString());
     };
 
+    const getAssetHoldings = async () => {
+      const assetQuantity = await portfolioContractExternalProvider.assetQuantities(props.token.tokenAddresses[0])
+      setAssetQuantities(assetQuantity.toString())
+    }
+
     const portfolioContractExternalProvider = new ethers.Contract(
       props.token.address,
       PortfolioABI,
@@ -44,6 +50,7 @@ const PortfolioCard = (props) => {
   
     getTotalSupply(); // run it, run it
     getUserBalance();
+    getAssetHoldings();
   
     return () => {
       // this now gets called when the component unmounts
@@ -129,7 +136,8 @@ const PortfolioCard = (props) => {
       <p>Contract address: {props.token.address}</p>
       <p>
         {tokenAddresses[props.token.tokenAddresses[0]]},{" "}
-        {props.token.percentageHoldings[0]}
+
+        {assetQuantities}
       </p>
       {address && (
         <div>
