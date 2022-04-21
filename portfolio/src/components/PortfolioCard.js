@@ -38,8 +38,12 @@ const PortfolioCard = (props) => {
     };
 
     const getAssetHoldings = async () => {
-      const assetQuantity = await portfolioContractExternalProvider.assetQuantities(props.token.tokenAddresses[0])
-      setAssetQuantities(assetQuantity.toString())
+      const holdings = []
+      for (let i = 0; i < props.token.tokenAddresses.length; i++) {
+        const assetQuantity = await portfolioContractExternalProvider.assetQuantities(props.token.tokenAddresses[i])
+        holdings.push(parseInt(assetQuantity))
+      }
+      setAssetQuantities(holdings)
     }
 
     const portfolioContractExternalProvider = new ethers.Contract(
@@ -136,7 +140,6 @@ const PortfolioCard = (props) => {
       <p>Contract address: {props.token.address}</p>
       <p>
         {tokenAddresses[props.token.tokenAddresses[0]]},{" "}
-
         {assetQuantities}
       </p>
       {address && (
