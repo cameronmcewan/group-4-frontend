@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { UserContext } from "../helpers/UserContext";
 // import portfolio from "../contracts/Portfolio";
 import { ethers, BigNumber } from "ethers";
@@ -13,6 +13,8 @@ const PortfolioCard = (props) => {
     "0xa36085F69e2889c224210F603D836748e7dC0088": "LINK",
   };
   const { address } = useContext(UserContext);
+  const [tokensToSell, setTokensToSell] = useState('');
+  const [ethAmountInWei, setEthAmountInWei] = useState('');
 
   // Method for buying with Web3
   const buyWeb3 = async () => {
@@ -33,7 +35,6 @@ const PortfolioCard = (props) => {
 
   // Method for buying with Ethers
   const buyEthers = async () => {
-    let ethAmountInWei = 10000;
     console.log("BUY: Buying into contract...");
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
@@ -55,7 +56,6 @@ const PortfolioCard = (props) => {
 
   // Method for buying with Ethers
   const sellEthers = async () => {
-    let tokensToSell = BigNumber.from("100000000000000000000");
     console.log("SELL: Selling holding in contract...");
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
@@ -84,12 +84,20 @@ const PortfolioCard = (props) => {
       </p>
       {address && (
         <div>
-          <button className="btn btn-cta" onClick={buyEthers}>
-            Buy
-          </button>
-          <button className="btn btn-cta" onClick={sellEthers}>
-            Sell
-          </button>
+          <table>
+            <tr>
+              <button className="btn btn-cta" onClick={buyEthers}>
+                Buy
+              </button>
+              <input type="number" min = "0" value={ethAmountInWei} onChange={(e) => setEthAmountInWei(e.target.value)}/>
+            </tr>
+            <tr>
+              <button className="btn btn-cta" onClick={sellEthers}>
+                Sell
+              </button>
+              <input type="number" min = "0" value={tokensToSell} onChange={(e) => setTokensToSell(e.target.value)}/>
+            </tr>
+          </table>
         </div>
       )}
     </div>
