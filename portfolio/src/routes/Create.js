@@ -41,7 +41,7 @@ class Create extends Component
           <h4 className="block col-2">Your new coin:
             <CreatePortfolioForm2/>
           </h4>
-          <h4 className="col-1">
+          <h4 className="block col-1">
             <CreatePortfolioForm/>
           </h4>
         </div>
