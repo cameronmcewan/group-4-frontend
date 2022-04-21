@@ -1,18 +1,46 @@
 {
     "kovan": {
         "first": {
-            "address": "0x7FB165B3A4937DDe9AEa269B4F66A5D04772Eb9D",
-            "name": "Portfolio",
-            "symbol": "FOLO",
+            "address": "0x263845d190ecfFDf981518CA792B7294CdAadfdA",
+            "name": "OnlyWeth",
+            "symbol": "OWETH",
             "tokenAddresses": [
-                "0xa36085F69e2889c224210F603D836748e7dC0088",
                 "0xd0A1E359811322d97991E03f863a0C30C2cF029C"
             ],
             "percentageHoldings": [
-                40,
-                60
+                100
+            ],
+            "ownerFee": 0
+        },
+        "second": {
+            "address": "0x10FC9228693C70299246cf948878c79d5DBaddA3",
+            "name": "StableWeth",
+            "symbol": "SWETH",
+            "tokenAddresses": [
+                "0xd0A1E359811322d97991E03f863a0C30C2cF029C",
+                "0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa"
+            ],
+            "percentageHoldings": [
+                50,
+                50
             ],
             "ownerFee": 100
+        },
+        "third": {
+            "address": "0xDfB17101Fe816ccfD7aD22315C603Ed67c5faa51",
+            "name": "Mixture",
+            "symbol": "MIXT",
+            "tokenAddresses": [
+                "0xd0A1E359811322d97991E03f863a0C30C2cF029C",
+                "0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa",
+                "0xa36085F69e2889c224210F603D836748e7dC0088"
+            ],
+            "percentageHoldings": [
+                40,
+                40,
+                20
+            ],
+            "ownerFee": 0
         }
     }
 }
