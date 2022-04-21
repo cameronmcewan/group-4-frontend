@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect} from "react";
 import { UserContext } from "../helpers/UserContext";
 // import portfolio from "../contracts/Portfolio";
 import { ethers, BigNumber } from "ethers";
@@ -15,13 +15,37 @@ const PortfolioCard = (props) => {
   const { address } = useContext(UserContext);
   const [tokensToSell, setTokensToSell] = useState(100000000);
   const [ethAmountInWei, setEthAmountInWei] = useState(100000000);
+  const [totalSupply, setTotalSupply] = useState('');
+
+  // // Only runs once on component mount
+  // useEffect(() => {
+  //   getTotalSupply().then((fetchedTotalSupply) => setTotalSupply(fetchedTotalSupply));
+  // }, []);
+
+  useEffect(() => {
+    const getTotalSupply = async () => {
+      const totalSupply = await portfolioContractExternalProvider.totalSupply();
+      setTotalSupply(totalSupply.toString());
+    };
+
+    const portfolioContractExternalProvider = new ethers.Contract(
+      props.token.address,
+      PortfolioABI,
+      ethers.providers.getDefaultProvider("kovan")
+    );
+  
+    getTotalSupply(); // run it, run it
+  
+    return () => {
+      // this now gets called when the component unmounts
+    };
+  }, []);
 
   // Method for buying with Web3
   const buyWeb3 = async () => {
     window.ethereum.enable();
     const web3 = new Web3(window.web3.currentProvider);
     const portfolio = new web3.eth.Contract(PortfolioABI, props.token.address);
-    let ethAmountInWei = 10000;
     portfolio.methods
       .buy()
       .send({
@@ -101,6 +125,11 @@ const PortfolioCard = (props) => {
       {address && (
         <div>
           <table>
+          <tr>
+            <td>
+              Circulating Supply: {totalSupply} Tokens
+            </td>
+          </tr>
           <tr>
             <td>
               Amount (WEI) :
