@@ -16,6 +16,9 @@ const PortfolioCard = (props) => {
   const [tokensToSell, setTokensToSell] = useState(100000000);
   const [ethAmountInWei, setEthAmountInWei] = useState(100000000);
   const [totalSupply, setTotalSupply] = useState('');
+  const [userBalance, setUserBalance] = useState('');
+
+
 
   // // Only runs once on component mount
   // useEffect(() => {
@@ -28,6 +31,11 @@ const PortfolioCard = (props) => {
       setTotalSupply(totalSupply.toString());
     };
 
+    const getUserBalance = async () => {
+      const userBalance = await portfolioContractExternalProvider.balanceOf(address);
+      setUserBalance(userBalance.toString());
+    };
+
     const portfolioContractExternalProvider = new ethers.Contract(
       props.token.address,
       PortfolioABI,
@@ -35,11 +43,12 @@ const PortfolioCard = (props) => {
     );
   
     getTotalSupply(); // run it, run it
+    getUserBalance();
   
     return () => {
       // this now gets called when the component unmounts
     };
-  }, []);
+  }, [address]);  // If address changes then re-run useEffect
 
   // Method for buying with Web3
   const buyWeb3 = async () => {
@@ -127,7 +136,18 @@ const PortfolioCard = (props) => {
           <table>
           <tr>
             <td>
-              Circulating Supply: {totalSupply} Tokens
+              Circulating Supply:
+            </td>
+            <td>
+              {totalSupply} Tokens
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Your Balance :
+            </td>
+            <td>
+              {userBalance} Tokens
             </td>
           </tr>
           <tr>
