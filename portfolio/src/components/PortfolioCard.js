@@ -13,8 +13,8 @@ const PortfolioCard = (props) => {
     "0xa36085F69e2889c224210F603D836748e7dC0088": "LINK",
   };
   const { address } = useContext(UserContext);
-  const [tokensToSell, setTokensToSell] = useState('');
-  const [ethAmountInWei, setEthAmountInWei] = useState('');
+  const [tokensToSell, setTokensToSell] = useState(100000000);
+  const [ethAmountInWei, setEthAmountInWei] = useState(100000000);
 
   // Method for buying with Web3
   const buyWeb3 = async () => {
@@ -55,7 +55,7 @@ const PortfolioCard = (props) => {
   };
 
   // Method for buying with Ethers
-  const sellEthers = async () => {
+  const sellAssetsEthers = async () => {
     console.log("SELL: Selling holding in contract...");
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
@@ -69,6 +69,22 @@ const PortfolioCard = (props) => {
     const receipt = await portfolio.sellAssets(tokensToSell);
     console.log(`SELL: got receipt: ${receipt}`);
   };
+
+    // Method for buying with Ethers
+  const redeemAssetsEthers = async () => {
+      console.log("SELL: Selling holding in contract...");
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      console.log("SELL: Got provider and signer...");
+      const portfolio = new ethers.Contract(
+        props.token.address,
+        PortfolioABI,
+        signer
+      );
+      console.log("SELL: established connection to contract...");
+      const receipt = await portfolio.redeemAssets(tokensToSell);
+      console.log(`SELL: got receipt: ${receipt}`);
+    };
 
   return (
     <div className="block center">
@@ -85,18 +101,45 @@ const PortfolioCard = (props) => {
       {address && (
         <div>
           <table>
-            <tr>
-              <button className="btn btn-cta" onClick={buyEthers}>
-                Buy
-              </button>
+          <tr>
+            <td>
+              Amount (WEI) :
+            </td>
+            <td>
               <input type="number" min = "0" value={ethAmountInWei} onChange={(e) => setEthAmountInWei(e.target.value)}/>
-            </tr>
-            <tr>
-              <button className="btn btn-cta" onClick={sellEthers}>
-                Sell
+            </td>
+            <td>
+              <button className="btn btn-cta" onClick={buyEthers}>
+              Buy
               </button>
-              <input type="number" min = "0" value={tokensToSell} onChange={(e) => setTokensToSell(e.target.value)}/>
-            </tr>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Portfolio Tokens :
+            </td>
+            <td>
+            <input type="number" min = "0" value={tokensToSell} onChange={(e) => setTokensToSell(e.target.value)}/>
+            </td>
+            <td>
+            <button className="btn btn-cta" onClick={sellAssetsEthers}>
+              Sell Assets
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Portfolio Tokens :
+            </td>
+            <td>
+            <input type="number" min = "0" value={tokensToSell} onChange={(e) => setTokensToSell(e.target.value)}/>
+            </td>
+            <td>
+            <button className="btn btn-cta" onClick={redeemAssetsEthers}>
+              Redeem Assets
+            </button>
+            </td>
+          </tr>
           </table>
         </div>
       )}
