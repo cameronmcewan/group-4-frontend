@@ -17,14 +17,7 @@ const PortfolioCard = (props) => {
   const [ethAmountInWei, setEthAmountInWei] = useState(100000000);
   const [totalSupply, setTotalSupply] = useState('');
   const [userBalance, setUserBalance] = useState('');
-  const [assetQuantities, setAssetQuantities] = useState([]);
-
-
-
-  // // Only runs once on component mount
-  // useEffect(() => {
-  //   getTotalSupply().then((fetchedTotalSupply) => setTotalSupply(fetchedTotalSupply));
-  // }, []);
+  // const [assetQuantities, setAssetQuantities] = useState([]);
 
   useEffect(() => {
     const getTotalSupply = async () => {
@@ -37,14 +30,13 @@ const PortfolioCard = (props) => {
       setUserBalance(userBalance.toString());
     };
 
-    const getAssetHoldings = async () => {
-      const holdings = []
-      for (let i = 0; i < props.token.tokenAddresses.length; i++) {
-        const assetQuantity = await portfolioContractExternalProvider.assetQuantities(props.token.tokenAddresses[i])
-        holdings.push(parseInt(assetQuantity))
-      }
-      setAssetQuantities(holdings)
-    }
+    // const getAssetHoldings = async () => {
+    //   const holdings = []
+    //   for (let i = 0; i < props.token['tokenAddresses'].length; i++) {
+    //     holdings.push(parseInt(await portfolioContractExternalProvider.assetQuantities(props.token.tokenAddresses[i])))
+    //   }
+    //   setAssetQuantities(holdings)
+    // }
 
     const portfolioContractExternalProvider = new ethers.Contract(
       props.token.address,
@@ -54,7 +46,6 @@ const PortfolioCard = (props) => {
   
     getTotalSupply(); // run it, run it
     getUserBalance();
-    getAssetHoldings();
   
     return () => {
       // this now gets called when the component unmounts
@@ -137,8 +128,9 @@ const PortfolioCard = (props) => {
       </h2>
       {/* Include a pie chart or some other graphic of the contents of the portfolio */}
       <p>
-        {tokenAddresses[props.token.tokenAddresses[0]]},{" "}
-        {assetQuantities}
+        {/* {tokenAddresses[props.token.tokenAddresses[0]]},{" "} */}
+        <ul>
+        </ul>
       </p>
       {address && (
         <div>
