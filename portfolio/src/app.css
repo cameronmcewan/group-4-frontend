@@ -151,6 +151,7 @@ a:hover {
 
 img {
   display: block;
+  width: 50%;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -159,35 +160,6 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-}
-
-/* ====== Media queries (medium devices AKA tablets) =========== */
-@media screen and (max-width: 1024px) {
-  .container {
-    width: 86%;
-  }
-  section {
-    margin-top: 6rem;
-  }
-}
-
-input {
-  width: 100%;
-}
-
-input[type="text"], textarea {
-  background-color: #eeeeee;
-  border: 4px solid #eeeeee;
-  border-radius: 8px;
-}
-
-select {
-  border: 0;
-  background: transparent;
-  height: 32px;
-  border: 1px solid #d8d8d8;
-  width: 350px;
-  -webkit-appearance: none;
 }
 
 .row {
@@ -216,7 +188,7 @@ select {
   background-color: #ffffff;
   color: #0000ff;
   padding: 1rem  3rem;
-  margin: 6rem 8rem;
+  margin: 1rem 2rem;
   border-radius: 0.5rem;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -229,16 +201,14 @@ select {
           align-items: center;
 }
 
-form {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 2rem;
-  border-radius: 1rem;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+/* ====== Media queries (medium devices AKA tablets) =========== */
+@media screen and (max-width: 1024px) {
+  .container {
+    width: 86%;
+  }
+  section {
+    margin-top: 6rem;
+  }
 }
 
 input {
