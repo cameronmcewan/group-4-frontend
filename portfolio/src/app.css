@@ -69,7 +69,8 @@ h1 {
 
 /* each component is wrapped in a section in its component.js file */
 section {
-  margin-top: 8rem;
+  padding: 8rem;
+  margin-bottom: 12rem;
 }
 
 /* each section will contain a h2 and h5 by default */
@@ -79,12 +80,8 @@ section > h2, section > h5 {
 }
 
 section > h2 {
-  color: #91fff2;
-  margin-bottom: 3rem;
-}
-
-.text-light {
   color: #ffffff;
+  margin-bottom: 1rem;
 }
 
 /* anchor tag, color and transition */
@@ -100,15 +97,19 @@ a:hover {
 }
 
 .btn {
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  display: inline-block;
-  color: #eeeeee;
-  padding: 0.75rem 1.2rem;
-  border-radius: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  float: left;
+  width: 8rem;
+  padding: 1rem 1rem;
+  margin: 1rem;
+  border-radius: 1.5rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   cursor: pointer;
-  border: 1px solid #ff0000;
+  border: none;
   -webkit-transition: all 400ms ease;
   transition: all 400ms ease;
 }
@@ -117,13 +118,13 @@ a:hover {
 .btn:hover {
   background: #eeeeee;
   color: #ff0000;
-  border-color: transparent;
+  border-color: none;
 }
 
 .btn-primary {
   background: #eeeeee;
   color: #0000ff;
-  border-color: transparent;
+  border-color: none;
 }
 
 .btn-cta {
@@ -135,6 +136,17 @@ a:hover {
   background: #e5ff00;
   color: red;
   border-color: transparent;
+}
+
+.btn-scroll {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  float: left;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 img {
@@ -181,14 +193,6 @@ ul {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-}
-
-.formItem {
-  width: 200px;
-  padding: 20px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  font-size: 1.25rem;
 }
 
 .row.center {

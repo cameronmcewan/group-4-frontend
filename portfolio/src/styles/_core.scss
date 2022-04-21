@@ -96,22 +96,19 @@ h1 {
 
 /* each component is wrapped in a section in its component.js file */
 section {
-    margin-top: 8rem;
+    padding: 8rem;
+    margin-bottom: 12rem;
 }
 
 /* each section will contain a h2 and h5 by default */
 section > h2, section > h5 {
     text-align: center;
-    color: $color-white;
+    color: $white;
 }
 
 section > h2 {
-    color: $color-primary;
-    margin-bottom: 3rem;
-}
-
-.text-light {
-    color: $color-white;
+    color: $white;
+    margin-bottom: 1rem;
 }
 
 /* anchor tag, color and transition */
@@ -122,31 +119,35 @@ a {
 
 /* each anchor tag will have a hover effect */
 a:hover {
-    color: $color-white;
+    color: $white;
 }
 
+
 .btn {
-    width: max-content;
-    display: inline-block;
-    color: $grey;
-    padding: 0.75rem 1.2rem;
-    border-radius: 1rem;
+    display: flex;
+    float: left;
+    width: 8rem;
+    padding: 1rem 1rem;
+    margin: 1rem;
+    border-radius: 1.5rem;
+    justify-content: center;
     cursor: pointer;
-    border: 1px solid $red;
+    border: none;
     transition: $transition;
 }
+
 
 /* buttons will have hover effect */
 .btn:hover {
     background: $grey;
     color: $red;
-    border-color: transparent;
+    border-color: none;
 }
 
 .btn-primary {
     background: $grey;
     color: $blue;
-    border-color: transparent;
+    border-color: none;
 }
 
 .btn-cta {
@@ -158,6 +159,14 @@ a:hover {
     color: red;
     border-color: transparent;
 }
+
+.btn-scroll {
+    display: flex;
+    float: left;
+    width: 100%;
+    justify-content: center;
+}
+
 
 img {
     display: block;

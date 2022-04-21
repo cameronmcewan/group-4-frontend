@@ -2,6 +2,7 @@ import * as React from 'react';
 import './explore.css';
 import { Link } from "react-router-dom";
 const Explore = props => {
+  
   return (
     <section>
       <input type={'text'} className='search' placeholder='Search'></input>
