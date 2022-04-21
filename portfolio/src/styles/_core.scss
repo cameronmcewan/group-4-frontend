@@ -170,7 +170,6 @@ a:hover {
 
 img {
     display: block;
-    width: 50%;
     object-fit: cover;
 }
 
@@ -178,35 +177,6 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-}
-
-//  ========= Tiles on Create page styling =========
-
-.row {
-    display: flex;
-    justify-content: space-between;
-    margin: 1rem 3rem;
-}
-
-.col-1 {
-    flex: 1;
-}
-
-.col-2 {
-    flex: 2;
-}
-
-.block {
-    background-color: $white;
-    color: $blue;
-    padding: 1rem  3rem;
-    margin: 1rem 2rem;
-    border-radius: 0.5rem;
-    justify-content: center;
-}
-
-.row.center {
-    align-items: center;
 }
 
 /* ====== Media queries (medium devices AKA tablets) =========== */

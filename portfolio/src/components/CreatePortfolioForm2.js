@@ -1,7 +1,7 @@
 import React, { useState, useContext,Component } from "react";
 // import portfolioFactoryContract from "../contracts/PortfolioFactory";
 import { UserContext } from "../helpers/UserContext";
-import './CreatePortfolioForm2.css';
+import './CreatePortfolioForm2.scss';
 import { Card } from 'antd'
 //import the pie chart
 import 'echarts/lib/chart/pie'
@@ -12,6 +12,8 @@ import 'echarts/lib/component/markPoint'
 import ReactEcharts from 'echarts-for-react'
 import Downarrow from '../assets/img/Downarrow.png'
 import Uparrow from '../assets/img/Uparrow.png'
+
+
 class CreatePortfolioForm2 extends Component
 {
   constructor(props) {
@@ -119,14 +121,14 @@ class CreatePortfolioForm2 extends Component
                     <span className="del" onClick={this.deccoin.bind(this,index)}>-</span>
                     <span className="title">{item.name}</span>
                     <div className="addrow">
-                        <input type="text" className="cart_nums" onChange={this.edit.bind(this,'val',index)} value={item.val} />
                         <div className="goods-btn">
                             <div data-type="add2" onClick={this.addnum.bind(this,'val',index)}>
-                                <img  src={Uparrow} />
+                                <img className="arrow" src={Uparrow} />
                             </div>
                             <div data-type="dec2" onClick={this.decnum.bind(this,'val',index)}>
-                                <img  src={Downarrow} />
+                                <img className="arrow" src={Downarrow} />
                             </div>
+                            <input type="text" className="cart_nums" onChange={this.edit.bind(this,'val',index)} value={item.val} />
                         </div>
                     </div>
                 </div>
@@ -139,7 +141,7 @@ class CreatePortfolioForm2 extends Component
             {
                 this.renderli()
             }
-            <Card.Grid className="pie_a">
+            <Card.Grid className="pie pie_a">
                 <ReactEcharts option={this.getOption()}/>
             </Card.Grid>
           </div>
