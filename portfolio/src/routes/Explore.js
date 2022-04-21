@@ -19,10 +19,11 @@ const Explore = () => {
         Search for the name of an existing Portfolio or token to filter the
         results
       </h3>
-      {/* <button className="btn btn-cta" onClick={getTopPortfolios(5)}>
+      {/* <button className="btn btn-cta" onClick={getTopPortfolios(3)}>
         Load top portfolios
       </button> */}
       <PortfolioCard token={portfolios.kovan.first} />
+      <PortfolioCard token={portfolios.kovan.third} />
     </section>
   );
 };
