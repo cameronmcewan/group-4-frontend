@@ -136,7 +136,6 @@ const PortfolioCard = (props) => {
         {props.token.name} ({props.token.symbol})
       </h2>
       {/* Include a pie chart or some other graphic of the contents of the portfolio */}
-      <p>Contract address: {props.token.address}</p>
       <p>
         {tokenAddresses[props.token.tokenAddresses[0]]},{" "}
         {assetQuantities}
