@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { UserContext } from "../helpers/UserContext";
 // import portfolio from "../contracts/Portfolio";
-import { ethers } from "ethers";
+import { ethers, BigNumber } from "ethers";
 import PortfolioABI from "../contracts/PortfolioABI.json";
 import Web3 from "web3";
 
@@ -33,20 +33,41 @@ const PortfolioCard = (props) => {
 
   // Method for buying with Ethers
   const buyEthers = async () => {
+    let ethAmountInWei = 10000;
+    console.log("BUY: Buying into contract...");
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
+    console.log("BUY: Got provider and signer...");
     const portfolio = new ethers.Contract(
       props.token.address,
       PortfolioABI,
       signer
     );
-    let ethAmountInWei = 10000;
+    console.log("BUY: established connection to contract...");
     const tx = {
       from: address,
       value: ethAmountInWei,
     };
+    console.log(`BUY: sending tx: {from=${tx.from}, value=${tx.value}}`);
     const receipt = await portfolio.buy(tx);
-    console.log(receipt);
+    console.log(`BUY: got receipt: ${receipt}`);
+  };
+
+  // Method for buying with Ethers
+  const sellEthers = async () => {
+    let tokensToSell = BigNumber.from("100000000000000000000");
+    console.log("SELL: Selling holding in contract...");
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    console.log("SELL: Got provider and signer...");
+    const portfolio = new ethers.Contract(
+      props.token.address,
+      PortfolioABI,
+      signer
+    );
+    console.log("SELL: established connection to contract...");
+    const receipt = await portfolio.sellAssets(tokensToSell);
+    console.log(`SELL: got receipt: ${receipt}`);
   };
 
   return (
@@ -56,22 +77,19 @@ const PortfolioCard = (props) => {
       </h2>
       {address}
       {/* Include a pie chart or some other graphic of the contents of the portfolio */}
+      <p>Contract address: {props.token.address}</p>
       <p>
         {tokenAddresses[props.token.tokenAddresses[0]]},{" "}
         {props.token.percentageHoldings[0]}
-      </p>
-      <p>
-        {tokenAddresses[props.token.tokenAddresses[1]]},{" "}
-        {props.token.percentageHoldings[1]}
       </p>
       {address && (
         <div>
           <button className="btn btn-cta" onClick={buyEthers}>
             Buy
           </button>
-          {/* <button className="btn btn-cta" onClick={sell}>
-          Sell
-        </button> */}
+          <button className="btn btn-cta" onClick={sellEthers}>
+            Sell
+          </button>
         </div>
       )}
     </div>
