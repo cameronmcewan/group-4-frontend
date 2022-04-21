@@ -21,11 +21,7 @@ class Create extends Component {
     //   type = arr[1];
     // }
     this.openAlert = this.openAlert.bind(this);
-  
-    const inputEl = useRef(null);
-    const onButtonClick = () => {
-      inputEl.current.focus();
-    };
+
   }
   // openAlert(){
   //   this.setState({
