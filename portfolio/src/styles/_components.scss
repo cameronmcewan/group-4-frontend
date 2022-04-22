@@ -1,22 +1,61 @@
 // ======= Navbar ==========
+$nav-height: 100px;
 
-ul.topnav {
+nav {
+    width: 100vw;
+    height: $nav-height;
+    margin: 0 auto;
+    text-align: center;
+}
+
+nav ul {
     list-style-type: none;
-    margin: 0;
-    padding: 20px;
+    margin: 0 auto;
+    width: 100vw;
+    height: $nav-height;
     overflow: hidden;
     border-bottom: 1px solid $grey;
-}
-
-ul.topnav li {
-    float: left;
-}
-
-ul.topnav li a {
-    display: block;
-    color: $header-font-color;
     text-align: center;
-    padding: 14px 16px;
+    position: relative;
+    display: inline-block;
+}
+
+nav ul li {
+    display: inline;
+    text-align: center;
+    vertical-align: middle;
+    // height: $nav-height;
+}
+
+nav ul li a.logo {
+    display: inline-block;
+    // text-align: center;
+    // height: $nav-height;
+}
+
+nav ul li a img {
+    display: inline-block;
+    width: 100%; 
+    height: $nav-height;
+    opacity: .6;
+    transition: .6s;
+    margin: auto;
+}
+
+nav ul li a img:hover {
+    opacity: 1;
+    // margin-top: -11px;
+    // margin-bottom: 5px;
+    transform: scale(1.5);
+}
+
+li a.expandmore:hover {
+    transform: scale(2);
+}
+
+nav ul li a.tab {
+    color: $white;
+    margin: 8px 10vw;
     text-decoration: none;
     background-size: 20px 2px, 100% 2px, 0 2px;
     background-position: calc(20px * -1) 100%, 100% 100%, 0 100%;
@@ -24,7 +63,7 @@ ul.topnav li a {
     transition: background-size 1s linear, background-position 1s linear;
 }
 
-ul.topnav li a:hover:not(.active) {
+nav ul li a.tab:hover:not(.active) {
     opacity: 0.8;
     background-image: linear-gradient($color-secondary, $color-secondary), 
                         linear-gradient($color-primary, $color-primary), 
@@ -33,26 +72,14 @@ ul.topnav li a:hover:not(.active) {
     background-position: calc(100% + 20px) 100%, 100% 100%, 0 100%;
 }
 
-ul.topnav li.right {float: right;}
-
-.logo {
-    float: left;
-    width: 120px; 
-    text-indent: -9999px;
-    opacity: .6;
-    transition: .6s;
-    margin-top: -6px;
+nav ul li.right {
+    display: inline-block;
+    text-align: right;
+    position: absolute;
+    float: right;
 }
 
-.logo:hover {
-    opacity: 1;
-    // margin-top: -11px;
-    // margin-bottom: 5px;
-    transform: scale(1.1);
-}
-.expandmore:hover {
-    transform: scale(2);
-}
+
 
 // ======== Create Page =========
 
