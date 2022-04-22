@@ -1,0 +1,14 @@
+All of these details are on the Kovan network for testing purposes
+
+<---------- Factory address ----------->
+Factory address: 0xd832480Af810D66F3e0AB31303E4e61FBc2BD7eC
+
+<---------- Example portfolios below ----------->
+<---------- They have been initialised with 10000, 100000, and 1000000 Wei respectively ----------->
+Portfolio 1 (0x263845d190ecfFDf981518CA792B7294CdAadfdA):
+"OnlyWeth","OWETH",["0xd0A1E359811322d97991E03f863a0C30C2cF029C"],[100],0
+Portfolio 2 (0x10FC9228693C70299246cf948878c79d5DBaddA3):
+"StableWeth","SWETH",["0xd0A1E359811322d97991E03f863a0C30C2cF029C","0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa"],[50,50],100
+Portfolio 3 (0xDfB17101Fe816ccfD7aD22315C603Ed67c5faa51):
+"Mixture","MIXT",["0xd0A1E359811322d97991E03f863a0C30C2cF029C","0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa","0xa36085F69e2889c224210F603D836748e7dC0088"],[40,40,20],0
+
