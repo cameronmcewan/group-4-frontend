@@ -3,18 +3,20 @@ import portfolioFactoryContractUserProvider from "../contracts/PortfolioFactoryC
 import { UserContext } from "../helpers/UserContext";
 
 const CreatePortfolioForm = () => {
-
   const { address } = useContext(UserContext);
   const [name, setName] = useState("Portfolio");
   const [symbol, setSymbol] = useState("FOLO");
-  const [tokenAddresses, setTokenAddresses] = useState(["0xa36085F69e2889c224210F603D836748e7dC0088", "0xd0A1E359811322d97991E03f863a0C30C2cF029C"]);
+  const [tokenAddresses, setTokenAddresses] = useState([
+    "0xa36085F69e2889c224210F603D836748e7dC0088",
+    "0xd0A1E359811322d97991E03f863a0C30C2cF029C",
+  ]);
   const [percentageHoldings, setPercentageHoldings] = useState([40, 60]);
   const [ownerFee, setOwnerFee] = useState(100);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    createPortfolio()
-  }
+    createPortfolio();
+  };
 
   const createPortfolio = () => {
     console.log(
@@ -95,10 +97,7 @@ const CreatePortfolioForm = () => {
         </label>
       </div>
 
-      {address && (
-        <input type="submit" value="Submit" />
-      )}
-
+      {address && <input type="submit" value="Submit" />}
     </form>
   );
 };
