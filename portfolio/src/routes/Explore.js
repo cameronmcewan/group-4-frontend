@@ -3,17 +3,8 @@ import PortfolioExplore from "../components/PortfolioExplore";
 // import portfolioFactoryContract from "../contracts/PortfolioFactory";
 import portfolios from "../helpers/portfolios.json";
 import { Link } from "react-router-dom";
-
-const Explore = (props) => {
-  // const [portfolioAddresses, setPortfolioAddresses] = useState([]);
-  // const getTopPortfolios = async function (numPortfolios) {
-  //   const addresses = [];
-  //   for (let i = 0; i < numPortfolios; i++) {
-  //     addresses[i] = await portfolioFactoryContract.portfolios(i);
-  //   }
-  //   setPortfolioAddresses(addresses);
-  // };
-
+const Explore = props => {
+  
   return (
     <section>
       <input type={"text"} className="search" placeholder="Search"></input>
