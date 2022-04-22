@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import PortfolioCard from "../components/PortfolioCard";
+import PortfolioExplore from "../components/PortfolioExplore";
 // import portfolioFactoryContract from "../contracts/PortfolioFactory";
 import portfolios from "../helpers/portfolios.json";
 
@@ -19,11 +19,12 @@ const Explore = () => {
         Search for the name of an existing Portfolio or token to filter the
         results
       </h3>
-      {/* <button className="btn btn-cta" onClick={getTopPortfolios(3)}>
-        Load top portfolios
-      </button> */}
-      <PortfolioCard token={portfolios.kovan.first} />
-      <PortfolioCard token={portfolios.kovan.third} />
+      <Link to="/detail">
+        <PortfolioExplore token={portfolios.kovan.first} />
+      </Link>
+      <Link to="/detail">
+        <PortfolioExplore token={portfolios.kovan.third} />
+      </Link>
     </section>
   );
 };
