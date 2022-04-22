@@ -1,21 +1,80 @@
-.alertW{
-    position: fixed;
-    top: 2rem;
-    width: 100%;
-    z-index: 999;
-    background: rgba(187, 184, 184, 0.3);
+#step1 {
+  display: flex;
 }
-.not{
-    display: none;
+#step1 .topbox {
+  max-height: 300px;
+  overflow: auto;
+  padding: 0 10px;
 }
-.openmine{
-    width: 20%;
-    height: 36px;
-    line-height: 36px;
-    margin:0 auto;
-    text-align: center;
-    background: #fff;
-    border-radius: 20px;
-    color:#341956;
-    cursor: pointer;
+#step1 .topbox .box .line.btn-group {
+  display: flex;
+}
+#step1 .topbox .box .line.btn-group .percentage {
+  width: 60px;
+  margin: 0 10px;
+}
+#step1 .box {
+  padding: 30px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background-color: #fff;
+  flex-grow: 1;
+  margin: 0 30px;
+  display: inline-block;
+  width: 50%;
+}
+#step1 .box .MuiPaper-root {
+  margin: auto;
+}
+#step1 .box .liftline {
+  width: 100%;
+}
+#step1 .box .line {
+  color: #000;
+}
+#step1 .box .line p,
+#step1 .box .line span {
+  color: #000;
+}
+#step1 .box .line {
+  font-size: 14px;
+  line-height: 50px;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  padding-left: 10px;
+  display: flex;
+  color: #333;
+}
+#step1 .box .tit {
+  width: 120px;
+}
+#step1 .box .fr {
+  float: right;
+}
+#step1 .rightbox {
+  display: flex;
+  flex-direction: column;
+}
+#step1 .rightbox .listscroll {
+  flex-grow: 1;
+  overflow: auto;
+  max-height: 800px;
+  padding-right: 30px;
+}
+#step1 .rightbox span {
+  color: #333;
+}
+/* 强制隐藏iframe弹框 */
+iframe {
+  display: none !important;
+}
+#Step2 {
+  background-color: #fff;
+  max-width: 900px;
+  margin: auto;
+  width: 100%;
+  padding: 30px;
+}
+#Step2 .formline {
+  margin: 10px 0;
 }

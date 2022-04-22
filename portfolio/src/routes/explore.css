@@ -1,17 +1,11 @@
-section{
-    margin-top: 2rem;
-}
 .search{
-    height: 60px;
-    line-height: 60px;
-    font-size: 30px;
+    height: 2rem;
+    line-height: 2rem;
     margin-left: 2rem;
     border-radius: 20px;
     text-indent: 2rem;
+    cursor: pointer;
 }
 h3{
     text-indent: 2rem;
-}
-.block{
-    cursor: pointer;
 }
