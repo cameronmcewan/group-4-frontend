@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PortfolioExplore from "../components/PortfolioExplore";
+import { Link } from 'react-router-dom';
 // import portfolioFactoryContract from "../contracts/PortfolioFactory";
 import portfolios from "../helpers/portfolios.json";
 
