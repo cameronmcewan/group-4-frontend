@@ -234,21 +234,25 @@ nav ul li a.tab {
   background-repeat: no-repeat;
   -webkit-transition: background-size 1s linear, background-position 1s linear;
   transition: background-size 1s linear, background-position 1s linear;
+  opacity: .6;
+  -webkit-transition: .6s;
+  transition: .6s;
 }
 
-nav ul li a.tab:hover:not(.active) {
-  opacity: 0.8;
+nav ul li a.tab:hover {
   background-image: -webkit-gradient(linear, left top, left bottom, from(#000a4b), to(#000a4b)), -webkit-gradient(linear, left top, left bottom, from(#91fff2), to(#91fff2)), -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ffffff));
   background-image: linear-gradient(#000a4b, #000a4b), linear-gradient(#91fff2, #91fff2), linear-gradient(#ffffff, #ffffff);
   background-size: 20px 2px, 0 2px, 100% 2px;
   background-position: calc(100% + 20px) 100%, 100% 100%, 0 100%;
+  opacity: 1;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
 }
 
 nav ul li.right {
   display: inline-block;
   text-align: right;
   position: absolute;
-  float: right;
 }
 
 .row {

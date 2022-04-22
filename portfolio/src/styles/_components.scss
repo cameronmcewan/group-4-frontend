@@ -60,26 +60,21 @@ nav ul li a.tab {
     transition: .6s;
 }
 
-nav ul li a.tab:hover:not(.active) {
-    opacity: 0.8;
+nav ul li a.tab:hover {
     background-image: linear-gradient($color-secondary, $color-secondary), 
                         linear-gradient($color-primary, $color-primary), 
                         linear-gradient($color-white, $color-white);
     background-size: 20px 2px, 0 2px, 100% 2px;
     background-position: calc(100% + 20px) 100%, 100% 100%, 0 100%;
+    opacity: 1;
+    transform: scale(1.5);
 }
 
 nav ul li.right {
     display: inline-block;
     text-align: right;
     position: absolute;
-    float: right;
 }
-
-
-
-// ======== Create Page =========
-
 
 //  ========= Create page styling ===========
 .row {
