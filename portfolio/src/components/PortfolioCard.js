@@ -1,23 +1,15 @@
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../helpers/UserContext";
 // import portfolio from "../contracts/Portfolio";
-import { ethers, BigNumber } from "ethers";
+import { ethers } from "ethers";
 import PortfolioABI from "../contracts/PortfolioABI.json";
-import Web3 from "web3";
 
 const PortfolioCard = (props) => {
-  const tokenAddresses = {
-    "0xd0A1E359811322d97991E03f863a0C30C2cF029C": "WETH",
-    "0xA0A5aD2296b38Bd3e3Eb59AAEAF1589E8d9a29A9": "WBTC",
-    "0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa": "DAI",
-    "0xa36085F69e2889c224210F603D836748e7dC0088": "LINK",
-  };
-  const { address } = useContext(UserContext);
+  const userContext = useContext(UserContext);
   const [tokensToSell, setTokensToSell] = useState(0);
   const [ethAmountInWei, setEthAmountInWei] = useState(0);
   const [totalSupply, setTotalSupply] = useState("");
   const [userBalance, setUserBalance] = useState("");
-  // const [assetQuantities, setAssetQuantities] = useState([]);
 
   useEffect(() => {
     const getTotalSupply = async () => {
@@ -27,18 +19,10 @@ const PortfolioCard = (props) => {
 
     const getUserBalance = async () => {
       const userBalance = await portfolioContractExternalProvider.balanceOf(
-        address
+        userContext.address
       );
       setUserBalance(userBalance.toString());
     };
-
-    // const getAssetHoldings = async () => {
-    //   const holdings = []
-    //   for (let i = 0; i < props.token['tokenAddresses'].length; i++) {
-    //     holdings.push(parseInt(await portfolioContractExternalProvider.assetQuantities(props.token.tokenAddresses[i])))
-    //   }
-    //   setAssetQuantities(holdings)
-    // }
 
     const portfolioContractExternalProvider = new ethers.Contract(
       props.token.address,
@@ -46,44 +30,24 @@ const PortfolioCard = (props) => {
       ethers.providers.getDefaultProvider("kovan")
     );
 
-    getTotalSupply(); // run it, run it
+    getTotalSupply();
     getUserBalance();
 
     return () => {
       // this now gets called when the component unmounts
     };
-  }, [address]); // If address changes then re-run useEffect
+  }, [userContext.address]); // If address changes then re-run useEffect
 
-  // Method for buying with Web3
-  const buyWeb3 = async () => {
-    window.ethereum.enable();
-    const web3 = new Web3(window.web3.currentProvider);
-    const portfolio = new web3.eth.Contract(PortfolioABI, props.token.address);
-    portfolio.methods
-      .buy()
-      .send({
-        from: address,
-        value: ethAmountInWei,
-      })
-      .then((receipt) => {
-        console.log(receipt);
-      });
-  };
-
-  // Method for buying with Ethers
-  const buyEthers = async () => {
+  const buy = async () => {
     console.log("BUY: Buying into contract...");
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const signer = provider.getSigner();
-    console.log("BUY: Got provider and signer...");
     const portfolio = new ethers.Contract(
       props.token.address,
       PortfolioABI,
-      signer
+      userContext.signer
     );
     console.log("BUY: established connection to contract...");
     const tx = {
-      from: address,
+      from: userContext.address,
       value: ethAmountInWei,
     };
     console.log(`BUY: sending tx: {from=${tx.from}, value=${tx.value}}`);
@@ -91,32 +55,24 @@ const PortfolioCard = (props) => {
     console.log(`BUY: got receipt: ${receipt}`);
   };
 
-  // Method for buying with Ethers
-  const sellAssetsEthers = async () => {
+  const sellAssets = async () => {
     console.log("SELL: Selling holding in contract...");
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const signer = provider.getSigner();
-    console.log("SELL: Got provider and signer...");
     const portfolio = new ethers.Contract(
       props.token.address,
       PortfolioABI,
-      signer
+      userContext.signer
     );
     console.log("SELL: established connection to contract...");
     const receipt = await portfolio.sellAssets(tokensToSell);
     console.log(`SELL: got receipt: ${receipt}`);
   };
 
-  // Method for buying with Ethers
-  const redeemAssetsEthers = async () => {
+  const redeemAssets = async () => {
     console.log("SELL: Selling holding in contract...");
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const signer = provider.getSigner();
-    console.log("SELL: Got provider and signer...");
     const portfolio = new ethers.Contract(
       props.token.address,
       PortfolioABI,
-      signer
+      userContext.signer
     );
     console.log("SELL: established connection to contract...");
     const receipt = await portfolio.redeemAssets(tokensToSell);
@@ -133,7 +89,7 @@ const PortfolioCard = (props) => {
         {/* {tokenAddresses[props.token.tokenAddresses[0]]},{" "} */}
         <ul></ul>
       </p>
-      {address && (
+      {userContext.address && (
         <div>
           <table>
             <tr>
@@ -155,7 +111,7 @@ const PortfolioCard = (props) => {
                 />
               </td>
               <td>
-                <button className="btn btn-cta" onClick={buyEthers}>
+                <button className="btn btn-cta" onClick={buy}>
                   Buy
                 </button>
               </td>
@@ -171,7 +127,7 @@ const PortfolioCard = (props) => {
                 />
               </td>
               <td>
-                <button className="btn btn-cta" onClick={sellAssetsEthers}>
+                <button className="btn btn-cta" onClick={sellAssets}>
                   Sell Assets
                 </button>
               </td>
@@ -187,7 +143,7 @@ const PortfolioCard = (props) => {
                 />
               </td>
               <td>
-                <button className="btn btn-cta" onClick={redeemAssetsEthers}>
+                <button className="btn btn-cta" onClick={redeemAssets}>
                   Redeem Assets
                 </button>
               </td>
