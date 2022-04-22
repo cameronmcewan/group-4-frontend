@@ -1,7 +1,7 @@
 import * as React from "react";
 import "./detail.css";
 import { Card } from "antd";
-//Import pie charts
+//import pie chart
 import "echarts/lib/chart/pie";
 import "echarts/lib/component/tooltip";
 import "echarts/lib/component/title";
