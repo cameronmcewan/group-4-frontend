@@ -64,7 +64,7 @@
 #step1 .rightbox span {
   color: #333;
 }
-/* 强制隐藏iframe弹框 */
+/* Force hide iframe pop-up boxes */
 iframe {
   display: none !important;
 }
