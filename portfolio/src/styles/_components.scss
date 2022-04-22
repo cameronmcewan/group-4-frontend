@@ -24,13 +24,10 @@ nav ul li {
     display: inline;
     text-align: center;
     vertical-align: middle;
-    // height: $nav-height;
 }
 
 nav ul li a.logo {
     display: inline-block;
-    // text-align: center;
-    // height: $nav-height;
 }
 
 nav ul li a img {
@@ -44,8 +41,6 @@ nav ul li a img {
 
 nav ul li a img:hover {
     opacity: 1;
-    // margin-top: -11px;
-    // margin-bottom: 5px;
     transform: scale(1.5);
 }
 
@@ -61,28 +56,25 @@ nav ul li a.tab {
     background-position: calc(20px * -1) 100%, 100% 100%, 0 100%;
     background-repeat: no-repeat;
     transition: background-size 1s linear, background-position 1s linear;
+    opacity: .6;
+    transition: .6s;
 }
 
-nav ul li a.tab:hover:not(.active) {
-    opacity: 0.8;
+nav ul li a.tab:hover {
     background-image: linear-gradient($color-secondary, $color-secondary), 
                         linear-gradient($color-primary, $color-primary), 
                         linear-gradient($color-white, $color-white);
     background-size: 20px 2px, 0 2px, 100% 2px;
     background-position: calc(100% + 20px) 100%, 100% 100%, 0 100%;
+    opacity: 1;
+    transform: scale(1.5);
 }
 
 nav ul li.right {
     display: inline-block;
     text-align: right;
     position: absolute;
-    float: right;
 }
-
-
-
-// ======== Create Page =========
-
 
 //  ========= Create page styling ===========
 .row {
