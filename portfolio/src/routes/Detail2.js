@@ -1,13 +1,13 @@
 
 import React, { useEffect, useState, useContext, Component, useRef } from "react";
-// 引入 ECharts 主模块
+// import ECharts main module
 import * as echarts from 'echarts/lib/echarts.js'
-// 引入饼状图
+// import pie chart
 import 'echarts/lib/chart/pie';
-// 引入提示框和标题组件
+// import prompt box and header components
 import 'echarts/lib/component/tooltip';
 import 'echarts/lib/component/title';
-// 引入图例组件
+// import legend components
 import 'echarts/lib/component/legend';
 function Pie(props) {
   const [state, setState] = useState({
@@ -29,7 +29,7 @@ function Pie(props) {
     console.log(namelist)
     console.log(namelist)
     let myChart = echarts.init(document.getElementById('pie'));
-    // 绘制图表
+    // Charting
     myChart.setOption({
       tooltip: {
         trigger: 'item',
