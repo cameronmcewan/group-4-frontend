@@ -1,7 +1,7 @@
 import * as React from "react";
 import "./detail.css";
 import { Card } from "antd";
-//导入饼图
+//import pie chart
 import "echarts/lib/chart/pie";
 import "echarts/lib/component/tooltip";
 import "echarts/lib/component/title";
@@ -21,7 +21,7 @@ const getOption = () => {
     color: ["#4271D6", "#59C173", "#2E374B", "#BA8F03", "#3E2EB9", "#579DB0"],
     tooltip: {
       trigger: "item",
-      //提示框浮层内容格式器，支持字符串模板和回调函数形式。
+      //Prompt box floating content formatter with support for string templates and callback function forms.
       formatter: "{a} <br/>{b} : {c} ({d}%)",
       borderWidth: "1px",
       borderColor: "#fff",
