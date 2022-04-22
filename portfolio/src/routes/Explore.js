@@ -1,6 +1,7 @@
 import React from "react";
 import PortfolioAccordion from "../components/explore/PortfolioAccordion";
 import portfolios from "../helpers/portfolios.json";
+import { Link } from "react-router-dom";
 
 const Explore = () => {
   return (
