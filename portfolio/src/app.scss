@@ -11,3 +11,110 @@
 // Import Components Stylesheet
 @import "./styles/components";
 
+/* add */
+#step1 {
+    display: flex;
+
+    .topbox {
+        max-height: 300px;
+        overflow: auto;
+        padding: 0 10px;
+
+        .box .line.btn-group {
+            display: flex;
+
+            .percentage {
+                width: 60px;
+                margin: 0 10px;
+            }
+        }
+    }
+
+    .box {
+        padding: 30px;
+        box-sizing: border-box;
+        border-radius: 10px;
+        background-color: #fff;
+        flex-grow: 1;
+        margin: 0 30px;
+        display: inline-block;
+        width: 50%;
+
+        .MuiPaper-root {
+            margin: auto;
+        }
+
+        .liftline {
+            width: 100%;
+        }
+
+
+
+        .line {
+            color: #000;
+
+            p,
+            span {
+                color: #000
+            }
+        }
+
+        .line {
+            font-size: 14px;
+            line-height: 50px;
+            border-bottom: 1px solid #ccc;
+            width: 100%;
+            padding-left: 10px;
+            display: flex;
+            color: #333;
+
+            // .percentage {
+            //     flex-grow: 1;
+            //     margin: 0 10px;
+            //     width: auto;
+            // }
+        }
+
+        .tit {
+            width: 120px;
+        }
+
+        .fr {
+            float: right;
+        }
+    }
+
+    .rightbox {
+        display: flex;
+        flex-direction: column;
+
+        .listscroll {
+            flex-grow: 1;
+            overflow: auto;
+            max-height: 800px;
+            padding-right: 30px;
+        }
+
+        span {
+            color: #333;
+        }
+    }
+}
+
+
+/* 强制隐藏iframe弹框 */
+iframe {
+    display: none !important;
+}
+
+#Step2 {
+    background-color: #fff;
+    max-width: 900px;
+    margin: auto;
+    width: 100%;
+    padding: 30px;
+
+    .formline {
+        margin: 10px 0;
+    }
+}
