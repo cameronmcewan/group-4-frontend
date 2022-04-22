@@ -58,7 +58,7 @@ const Detail = props => {
         <div className='main-container'>
             <p className='title'>Asset1</p>
             <div className="echart2">
-                <Card.Grid className="pie_a_detail">
+                <Card.Grid className="">
                     <ReactEcharts option={getOption()}/>
                 </Card.Grid>
             </div>
