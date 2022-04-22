@@ -1,82 +1,51 @@
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../helpers/UserContext";
-// import portfolio from "../contracts/Portfolio";
 import { ethers } from "ethers";
 import PortfolioABI from "../contracts/PortfolioABI.json";
 
 const PortfolioDetail = (props) => {
   const userContext = useContext(UserContext);
+  const [portfolio, setPortfolio] = useState();
   const [tokensToSell, setTokensToSell] = useState(0);
   const [ethAmountInWei, setEthAmountInWei] = useState(0);
   const [totalSupply, setTotalSupply] = useState("");
   const [userBalance, setUserBalance] = useState("");
 
+  // Runs when component renders or userContext.address changes
   useEffect(() => {
-    const getTotalSupply = async () => {
-      const totalSupply = await portfolioContractExternalProvider.totalSupply();
-      setTotalSupply(totalSupply.toString());
-    };
-
-    const getUserBalance = async () => {
-      const userBalance = await portfolioContractExternalProvider.balanceOf(
-        userContext.address
-      );
-      setUserBalance(userBalance.toString());
-    };
-
-    const portfolioContractExternalProvider = new ethers.Contract(
+    const signerOrProvider = userContext.signer
+      ? userContext.signer
+      : ethers.providers.getDefaultProvider("kovan");
+    const portfolioContract = new ethers.Contract(
       props.token.address,
       PortfolioABI,
-      ethers.providers.getDefaultProvider("kovan")
+      signerOrProvider
     );
-
-    getTotalSupply();
-    getUserBalance();
-
-    return () => {
-      // this now gets called when the component unmounts
-    };
-  }, [userContext.address]); // If address changes then re-run useEffect
+    portfolioContract.totalSupply().then((res) => {
+      setTotalSupply(res.toString());
+    });
+    if (userContext.address) {
+      portfolioContract.balanceOf(userContext.address).then((res) => {
+        setUserBalance(res.toString());
+      });
+    }
+    setPortfolio(portfolioContract);
+  }, [userContext.address]);
 
   const buy = async () => {
-    console.log("BUY: Buying into contract...");
-    const portfolio = new ethers.Contract(
-      props.token.address,
-      PortfolioABI,
-      userContext.signer
-    );
-    console.log("BUY: established connection to contract...");
     const tx = {
       from: userContext.address,
       value: ethAmountInWei,
     };
-    console.log(`BUY: sending tx: {from=${tx.from}, value=${tx.value}}`);
-    const receipt = await portfolio.buy(tx);
-    console.log(`BUY: got receipt: ${receipt}`);
+    await portfolio.buy(tx);
   };
 
   const sellAssets = async () => {
-    console.log("SELL: Selling holding in contract...");
-    const portfolio = new ethers.Contract(
-      props.token.address,
-      PortfolioABI,
-      userContext.signer
-    );
-    console.log("SELL: established connection to contract...");
-    const receipt = await portfolio.sellAssets(tokensToSell);
-    console.log(`SELL: got receipt: ${receipt}`);
+    await portfolio.sellAssets(tokensToSell);
   };
 
   const redeemAssets = async () => {
-    console.log("SELL: Selling holding in contract...");
-    const portfolio = new ethers.Contract(
-      props.token.address,
-      PortfolioABI,
-      userContext.signer
-    );
-    console.log("SELL: established connection to contract...");
-    const receipt = await portfolio.redeemAssets(tokensToSell);
-    console.log(`SELL: got receipt: ${receipt}`);
+    await portfolio.redeemAssets(tokensToSell);
   };
 
   return (
@@ -86,15 +55,11 @@ const PortfolioDetail = (props) => {
           <h2>
             {props.token.name} ({props.token.symbol})
           </h2>
+          <p>Circulating Supply:</p>
+          <p>{totalSupply}</p>
+          <p>Your Balance :</p>
+          <p>{userBalance}</p>
           <table>
-            <tr>
-              <td>Circulating Supply:</td>
-              <td>{totalSupply} Tokens</td>
-            </tr>
-            <tr>
-              <td>Your Balance :</td>
-              <td>{userBalance} Tokens</td>
-            </tr>
             <tr>
               <td>Amount (WEI) :</td>
               <td>
