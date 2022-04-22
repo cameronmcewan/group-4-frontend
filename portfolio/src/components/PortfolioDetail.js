@@ -4,7 +4,7 @@ import { UserContext } from "../helpers/UserContext";
 import { ethers } from "ethers";
 import PortfolioABI from "../contracts/PortfolioABI.json";
 
-const PortfolioCard = (props) => {
+const PortfolioDetail = (props) => {
   const userContext = useContext(UserContext);
   const [tokensToSell, setTokensToSell] = useState(0);
   const [ethAmountInWei, setEthAmountInWei] = useState(0);
@@ -81,16 +81,11 @@ const PortfolioCard = (props) => {
 
   return (
     <div className="block center">
-      <h2>
-        {props.token.name} ({props.token.symbol})
-      </h2>
-      {/* Include a pie chart or some other graphic of the contents of the portfolio */}
-      <p>
-        {/* {tokenAddresses[props.token.tokenAddresses[0]]},{" "} */}
-        <ul></ul>
-      </p>
-      {userContext.address && (
+      {userContext.address ? (
         <div>
+          <h2>
+            {props.token.name} ({props.token.symbol})
+          </h2>
           <table>
             <tr>
               <td>Circulating Supply:</td>
@@ -150,9 +145,11 @@ const PortfolioCard = (props) => {
             </tr>
           </table>
         </div>
+      ) : (
+        <p>Please connect to Metamask</p>
       )}
     </div>
   );
 };
 
-export default PortfolioCard;
+export default PortfolioDetail;
