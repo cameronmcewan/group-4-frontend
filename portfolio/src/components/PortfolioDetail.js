@@ -1,15 +1,17 @@
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../helpers/UserContext";
 import { ethers } from "ethers";
-import PortfolioABI from "../contracts/PortfolioABI.json";
+import Portfolio from "../contracts/Portfolio.json";
 
 const PortfolioDetail = (props) => {
   const userContext = useContext(UserContext);
-  const [portfolio, setPortfolio] = useState();
+  const [portfolioContract, setPortfolioContract] = useState();
   const [tokensToSell, setTokensToSell] = useState(0);
-  const [ethAmountInWei, setEthAmountInWei] = useState(0);
+  const [weiToSpend, setEthAmountInWei] = useState(0);
   const [totalSupply, setTotalSupply] = useState("");
   const [userBalance, setUserBalance] = useState("");
+  const [tokenAddresses, setTokenAddresses] = useState([]);
+  const [percentageHoldings, setPercentageHoldings] = useState([]);
 
   // Runs when component renders or userContext.address changes
   useEffect(() => {
@@ -18,34 +20,42 @@ const PortfolioDetail = (props) => {
       : ethers.providers.getDefaultProvider("kovan");
     const portfolioContract = new ethers.Contract(
       props.token.address,
-      PortfolioABI,
+      Portfolio.abi,
       signerOrProvider
     );
-    portfolioContract.totalSupply().then((res) => {
-      setTotalSupply(res.toString());
+    portfolioContract.totalSupply().then((totalSupply) => {
+      setTotalSupply(totalSupply.toString());
     });
+    // portfolioContract.getTokenAddresses().then((tokenAddresses) => {
+    //   setTokenAddresses(tokenAddresses);
+    // });
+    // portfolioContract.getPercentageHoldings().then((percentageHoldings) => {
+    //   setPercentageHoldings(
+    //     percentageHoldings.map((holding) => holding.toNumber())
+    //   );
+    // });
     if (userContext.address) {
       portfolioContract.balanceOf(userContext.address).then((res) => {
         setUserBalance(res.toString());
       });
     }
-    setPortfolio(portfolioContract);
+    setPortfolioContract(portfolioContract);
   }, [userContext.address]);
 
   const buy = async () => {
     const tx = {
       from: userContext.address,
-      value: ethAmountInWei,
+      value: weiToSpend,
     };
-    await portfolio.buy(tx);
+    await portfolioContract.buy(tx);
   };
 
   const sellAssets = async () => {
-    await portfolio.sellAssets(tokensToSell);
+    await portfolioContract.sellAssets(tokensToSell);
   };
 
   const redeemAssets = async () => {
-    await portfolio.redeemAssets(tokensToSell);
+    await portfolioContract.redeemAssets(tokensToSell);
   };
 
   return (
@@ -66,7 +76,7 @@ const PortfolioDetail = (props) => {
                 <input
                   type="number"
                   min="0"
-                  value={ethAmountInWei}
+                  value={weiToSpend}
                   onChange={(e) => setEthAmountInWei(e.target.value)}
                 />
               </td>

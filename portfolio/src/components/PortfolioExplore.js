@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
-import PortfolioABI from "../contracts/PortfolioABI.json";
+import Portfolio from "../contracts/Portfolio.json";
 
 const PortfolioExplore = (props) => {
   const [totalSupply, setTotalSupply] = useState("");
   const portfolioContract = new ethers.Contract(
     props.token.address,
-    PortfolioABI,
+    Portfolio.abi,
     ethers.providers.getDefaultProvider("kovan")
   );
 
