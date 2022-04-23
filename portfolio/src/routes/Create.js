@@ -1,25 +1,24 @@
 import React, { useState, useContext, Component, useRef } from "react";
 import CreatePortfolioForm from '../components/CreatePortfolioForm';
 /* ========== */
-import './create.css'; 
+import './create.css';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
-import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import Delete from '@material-ui/icons/Delete';
 import SearchIcon from '@material-ui/icons/Search';
-import DirectionsIcon from '@material-ui/icons/Directions';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import LockIcon from '@material-ui/icons/Lock';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import ListItemText from '@material-ui/core/ListItemText';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
+import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 import Pie from './Detail2'
+import Pie3 from './Detail3'
 import name from './name'
 import Slider from '@material-ui/core/Slider';
 /* echart start */
@@ -59,6 +58,9 @@ const Create = () => {
   const Step3 = useRef(null);
   const FinalStep = useRef(null);
   /* add */
+  /* add */
+  const [sum, setsum] = useState(0);
+  const [tip, settip] = useState(false);
   const [list, setlist] = useState([{
     'name': 'BTS',
     'qname': 'BTS',
@@ -70,6 +72,10 @@ const Create = () => {
     name
   );
   const [searchtxt, setsearchtxt] = useState('')
+  /* token */
+  const [tokenName, settokenName] = useState('');
+  const [usertoken, setusertoken] = useState('');
+  /* your token */
   const goToBegin = () =>
     window.scrollTo({
       top: Begin.current.offsetTop,
@@ -239,8 +245,12 @@ const Create = () => {
           <FormControl fullWidth className="formline" variant="outlined">
             <InputLabel htmlFor="outlined-adornment-amount">Create a name for your ETF token</InputLabel>
             <OutlinedInput
+              defaultValue={tokenName}
               placeholder="Top 10 Index"
-              onChange={() => { }}
+              onChange={(e) => {
+                // console.log(e.target.value)
+                settokenName(e.target.value);
+              }}
               id="tokenName"
               labelWidth={240}
             />
@@ -248,9 +258,14 @@ const Create = () => {
           <FormControl fullWidth className="formline" variant="outlined">
             <InputLabel htmlFor="outlined-adornment-amount">Create a Symbol for your token</InputLabel>
             <OutlinedInput
+              defaultValue={usertoken}
               placeholder=" CT 10"
               id="userToken"
               labelWidth={240}
+              onChange={(e) => {
+                // console.log(e.target.value)
+                setusertoken(e.target.value);
+              }}
             />
           </FormControl>
         </div>
@@ -263,15 +278,61 @@ const Create = () => {
       <section ref={Step3}>
         <h2>Step 3</h2>
         <h1>Set A Fee For Your ETF Token</h1>
+        <div className="tokenline">
+          <input max={100} min={0} type='number' value={sum} onChange={(e) => {
+            console.log(e.target.value)
+            if (e.target.value > 100) {
+              setsum(100)
+            } else if (e.target.value < 0) {
+              setsum(0)
+            } else {
+              setsum(e.target.value.replace(/^(0+)|[^\d]+/g, ''))
+            }
+          }}></input>%
+          {/* <Button aria-describedby='openbtn' onClick={() => { }}>right-start</Button> */}
+          <div id="tipbox">
+            <IconButton type="button" onClick={() => {
+              let tipstate = tip;
+              settip(!tipstate)
+            }}>
+              <ErrorOutlineIcon />
+            </IconButton>
+            <div className={tip === true ? 'tipmessage show' : 'tipmessage'}>
+              tip txt value content
+            </div>
+          </div>
+        </div>
         <div className="btn-scroll">
           <button className="btn btn-cta" onClick={goToStep2}>Back</button>
           <button className="btn btn-cta" onClick={goToFinalStep}>Continue</button>
         </div>
       </section>
 
-      <section ref={FinalStep}>
+      <section ref={FinalStep} id='last'>
         <h2>Final Step</h2>
         <h1>Review And Deploy Your New ETF Token</h1>
+        <div className="btn-group">
+          <div className="btn leftbox">
+            <p>token name: {tokenName}</p>
+            <p>user token: {usertoken}</p>
+            <div><Pie3 List={list} /></div>
+            <p>Token fee {sum}%</p>
+            <button className="btn btn-cta" onClick={goToStep3}>edit token</button>
+          </div>
+          <div className="btn rightbox">
+            <p>Deplay your ETF token</p>
+            <div className="fn-clear">
+              <div className="fl">
+                Price to deplay token<br /> in USD
+              </div>
+              <div className="fr">
+                0.0123ETH<br />
+                <span className="price">$ 123</span>
+              </div>
+              <button className="btn btn-cta" onClick={() => { }}>Display</button>
+            </div>
+          </div>
+        </div>
         <div className="btn-scroll">
           <button className="btn btn-cta" onClick={goToStep3}>Back</button>
           <button className="btn btn-cta" onClick={goToFinalStep}>Deploy Token</button>
