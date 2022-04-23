@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState, useContext, Component, useRef } from "react";
 // import ECharts main module
 import * as echarts from 'echarts/lib/echarts.js'
@@ -79,18 +78,5 @@ function Pie(props) {
     </div>
   )
 }
-// class Pie extends Component {
-//   constructor(props) {
-//     super(props);
 
-//     this.state = {
-//       data1: 8,
-//       data2: 12
-//     }
-//   }
-
-//   render() {
-
-//   }
-// }
 export default Pie;

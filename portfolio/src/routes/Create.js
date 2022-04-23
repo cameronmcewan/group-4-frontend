@@ -1,33 +1,22 @@
 import React, { useState, useContext, Component, useRef } from "react";
 import CreatePortfolioForm from '../components/CreatePortfolioForm';
 /* ========== */
-import './create.css'; 
+import '../styles/create.css';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import InputBase from '@material-ui/core/InputBase';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import Delete from '@material-ui/icons/Delete';
-import SearchIcon from '@material-ui/icons/Search';
-import DirectionsIcon from '@material-ui/icons/Directions';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import LockIcon from '@material-ui/icons/Lock';
-import LockOpenIcon from '@material-ui/icons/LockOpen';
-import ListItemText from '@material-ui/core/ListItemText';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import Pie from './Detail2'
-import name from './name'
-import Slider from '@material-ui/core/Slider';
+import { Paper, InputBase, Divider, IconButton, List, ListItem, ListItemIcon, ListItemText, FormControl, InputLabel, OutlinedInput, Slider } from '@material-ui/core';
+import Delete from "@mui/icons-material/Delete";
+import LockIcon from '@mui/icons-material/Lock';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
+import SearchIcon from '@mui/icons-material/Search';
+import DirectionsIcon from '@mui/icons-material/Directions';
+import Pie from '../components/Detail2';
+import name from '../helpers/name';
 /* echart start */
-import 'echarts/lib/chart/pie'
-import 'echarts/lib/component/tooltip'
-import 'echarts/lib/component/title'
-import 'echarts/lib/component/legend'
-import 'echarts/lib/component/markPoint'
+import 'echarts/lib/chart/pie';
+import 'echarts/lib/component/tooltip';
+import 'echarts/lib/component/title';
+import 'echarts/lib/component/legend';
+import 'echarts/lib/component/markPoint';
 /* echart end */
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -119,7 +108,6 @@ const Create = () => {
       </section>
 
       <section ref={Step1}>
-        {/* <div className={this.state.show == 1 ? 'alertW' : 'creatW not'}><Form></Form></div> */}
         <h2>Step 1</h2>
         <h1>Add Crypto Tokens To Your ETF Token</h1>
         <div className="row" id="step1">

@@ -1,5 +1,5 @@
 import * as React from "react";
-import "./detail.css";
+import "../styles/detail.css";
 import { Card } from "antd";
 //import pie chart
 import "echarts/lib/chart/pie";
