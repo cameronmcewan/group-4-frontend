@@ -78,6 +78,29 @@ html {
     display: none;
 }
 
+img {
+    display: block;
+    object-fit: cover;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    display: flex;
+    width: max-content;
+    padding: 1rem 1rem;
+    margin: 1rem;
+    border-radius: 1.5rem;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    transition: $transition;
+}
+
 /* =============== General styles ============== */
 
 .container {
@@ -124,18 +147,17 @@ a:hover {
 
 
 .btn {
-    display: flex;
-    float: left;
-    width: 8rem;
+    display: inline-block;
+    width: 100%;
+    max-width: 300px;
     padding: 1rem 1rem;
     margin: 1rem;
     border-radius: 1.5rem;
-    justify-content: center;
+    // justify-content: center;
     cursor: pointer;
     border: none;
     transition: $transition;
 }
-
 
 /* buttons will have hover effect */
 .btn:hover {
@@ -165,18 +187,6 @@ a:hover {
     float: left;
     width: 100%;
     justify-content: center;
-}
-
-
-img {
-    display: block;
-    object-fit: cover;
-}
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
 }
 
 /* ====== Media queries (medium devices AKA tablets) =========== */
