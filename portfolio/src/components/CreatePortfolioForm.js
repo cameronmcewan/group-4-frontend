@@ -34,14 +34,14 @@ const CreatePortfolioForm = () => {
 
   return (
     <form className="formItem" onSubmit={handleSubmit}>
-    <div>
-      <select name="Add token" id="input7">
-        <option></option>
-        <option value="BTC">BTC</option>
-        <option value="ETH">ETH</option>
-        <option value="BNB">BNB</option>                              
-      </select>
-    </div>
+      <div>
+        <select name="Add token" id="input7">
+          <option></option>
+          <option value="BTC">BTC</option>
+          <option value="ETH">ETH</option>
+          <option value="BNB">BNB</option>
+        </select>
+      </div>
       <div>
         <label>
           Token Name:
