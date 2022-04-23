@@ -41,11 +41,11 @@ const MetaMask = () => {
 
   return (
     <button className="btn btn-cta" onClick={handleButtonClick}>
-      <p>{buttonText}</p>
+      {buttonText}
       {userContext.address && ( // Only displays the div below if the user address has been set
         <div>
-          <h3>Address: {userContext.address}</h3>
-          <h3>Balance: {userBalance}</h3>
+          <h6>Address: {userContext.address}</h6>
+          <h6>Balance: {userBalance}</h6>
         </div>
       )}
     </button>
