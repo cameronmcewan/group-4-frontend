@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import Button from "@mui/material/Button";
-// import contract from "../helpers/contract";
 import { UserContext } from "../helpers/UserContext";
 
 function Portfolio() {
@@ -10,29 +9,12 @@ function Portfolio() {
   const buy = async () => {
     let ethAmountInWei = 10000;
     console.log(`Buying FOLO with ${ethAmountInWei} Wei`);
-    // contract.methods
-    //   .buy()
-    //   .send({
-    //     from: userAddress,
-    //     value: ethAmountInWei,
-    //   })
-    //   .then((receipt) => {
-    //     console.log(receipt);
-    //   });
   };
 
   const sell = async () => {
     // Token uses 18 decimals
     let tokensToSell = 10000;
     console.log(`Selling ${tokensToSell} FOLO`);
-    // contract.methods
-    //   .sell(tokensToSell)
-    //   .send({
-    //     from: userAddress,
-    //   })
-    //   .then((receipt) => {
-    //     console.log(receipt);
-    //   });
   };
 
   return (
