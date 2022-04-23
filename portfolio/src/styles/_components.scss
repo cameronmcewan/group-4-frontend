@@ -15,7 +15,7 @@ nav ul {
     height: $nav-height;
     overflow: hidden;
     border-bottom: 1px solid $grey;
-    text-align: center;
+    text-align: left;
     position: relative;
     display: inline-block;
 }
@@ -28,15 +28,14 @@ nav ul li {
 
 nav ul li a.logo {
     display: inline-block;
+    margin: 0px 50px;
 }
 
 nav ul li a img {
-    display: inline-block;
     width: 100%; 
     height: $nav-height;
     opacity: .6;
     transition: .6s;
-    margin: auto;
 }
 
 nav ul li a img:hover {
@@ -50,7 +49,7 @@ li a.expandmore:hover {
 
 nav ul li a.tab {
     color: $white;
-    margin: 8px 10vw;
+    margin: 8px 8px;
     text-decoration: none;
     background-size: 20px 2px, 100% 2px, 0 2px;
     background-position: calc(20px * -1) 100%, 100% 100%, 0 100%;
@@ -71,9 +70,8 @@ nav ul li a.tab:hover {
 }
 
 nav ul li.right {
-    display: inline-block;
-    text-align: right;
-    position: absolute;
+    float: right;
+    position: relative;
 }
 
 //  ========= Create page styling ===========
