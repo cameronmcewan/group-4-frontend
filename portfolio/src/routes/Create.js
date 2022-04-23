@@ -18,6 +18,8 @@ import 'echarts/lib/component/title';
 import 'echarts/lib/component/legend';
 import 'echarts/lib/component/markPoint';
 /* echart end */
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: '2px 4px',
@@ -40,6 +42,8 @@ const useStyles = makeStyles((theme) => ({
 function ListItemLink(props) {
   return <ListItem button component="a" {...props} />;
 }
+
+
 const Create = () => {
 
   const Begin = useRef(null);
@@ -111,7 +115,7 @@ const Create = () => {
         <h2>Step 1</h2>
         <h1>Add Crypto Tokens To Your ETF Token</h1>
         <div className="row" id="step1">
-          <div className="col-12 box">
+          <div className="block col-12 box">
             <div className="topbox">
               {list.map((ele, i) => {
                 return (
@@ -119,7 +123,6 @@ const Create = () => {
                     <p className="line btn-group">
                       <span className="tit">{ele.name}&nbsp;<small>({ele.qname}&nbsp;)</small></span>
                       <input value={ele.rate}
-                        readOnly
                         className="percentage" placeholder="percentage" type='text'></input>%
                       {ele.state === true ? (
                         <IconButton type="button" onClick={() => {
@@ -179,6 +182,7 @@ const Create = () => {
                 placeholder="Search token"
                 inputProps={{ 'aria-label': 'search token' }}
               />
+
               <IconButton type="button" className={classes.iconButton} aria-label="search" onClick={() => {
 
                 let result = name().filter((ele) => {
@@ -188,6 +192,7 @@ const Create = () => {
               }}>
                 <SearchIcon />
               </IconButton>
+
             </Paper>
 
             <List component="nav" aria-label="secondary mailbox folders" className="listscroll">
