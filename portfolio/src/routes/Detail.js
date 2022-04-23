@@ -9,7 +9,7 @@ import "echarts/lib/component/legend";
 import "echarts/lib/component/markPoint";
 import ReactEcharts from "echarts-for-react";
 import portfolios from "../helpers/portfolios.json";
-import PortfolioDetail from "../components/PortfolioDetail";
+import PortfolioDetail from "../components/explore/PortfolioDetail";
 
 const getOption = () => {
   let option = {

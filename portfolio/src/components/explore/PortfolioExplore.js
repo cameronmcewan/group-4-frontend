@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
-import Portfolio from "../contracts/Portfolio.json";
+import Portfolio from "../../contracts/Portfolio.json";
 
 const PortfolioExplore = (props) => {
   const [totalSupply, setTotalSupply] = useState("");
@@ -17,13 +17,13 @@ const PortfolioExplore = (props) => {
   });
 
   return (
-    <div className="block center">
+    <>
       <h2>
         {props.token.name} ({props.token.symbol})
       </h2>
       <p>Circulating Supply:</p>
       <p>{totalSupply}</p>
-    </div>
+    </>
   );
 };
 

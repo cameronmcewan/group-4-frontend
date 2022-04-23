@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
-import { UserContext } from "../helpers/UserContext";
+import { UserContext } from "../../helpers/UserContext";
 import { ethers } from "ethers";
-import Portfolio from "../contracts/Portfolio.json";
+import Portfolio from "../../contracts/Portfolio.json";
 
 const PortfolioDetail = (props) => {
   const userContext = useContext(UserContext);
@@ -59,7 +59,7 @@ const PortfolioDetail = (props) => {
   };
 
   return (
-    <div className="block center">
+    <>
       {userContext.address ? (
         <div>
           <h2>
@@ -123,7 +123,7 @@ const PortfolioDetail = (props) => {
       ) : (
         <p>Please connect to Metamask</p>
       )}
-    </div>
+    </>
   );
 };
 
