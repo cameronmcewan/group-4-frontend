@@ -2,7 +2,7 @@ import React from "react";
 import PortfolioAccordion from "../components/explore/PortfolioAccordion";
 import portfolios from "../helpers/portfolios.json";
 
-const Explore = (props) => {
+const Explore = () => {
   return (
     <section>
       {/* <h3>

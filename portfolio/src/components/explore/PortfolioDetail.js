@@ -26,14 +26,14 @@ const PortfolioDetail = (props) => {
     portfolioContract.totalSupply().then((totalSupply) => {
       setTotalSupply(totalSupply.toString());
     });
-    // portfolioContract.getTokenAddresses().then((tokenAddresses) => {
-    //   setTokenAddresses(tokenAddresses);
-    // });
-    // portfolioContract.getPercentageHoldings().then((percentageHoldings) => {
-    //   setPercentageHoldings(
-    //     percentageHoldings.map((holding) => holding.toNumber())
-    //   );
-    // });
+    portfolioContract.getTokenAddresses().then((tokenAddresses) => {
+      setTokenAddresses(tokenAddresses);
+    });
+    portfolioContract.getPercentageHoldings().then((percentageHoldings) => {
+      setPercentageHoldings(
+        percentageHoldings.map((holding) => holding.toNumber())
+      );
+    });
     if (userContext.address) {
       portfolioContract.balanceOf(userContext.address).then((res) => {
         setUserBalance(res.toString());
