@@ -2,6 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../helpers/UserContext";
 import { ethers } from "ethers";
 import Portfolio from "../../contracts/Portfolio.json";
+import CustomPieChart from "./CustomPieChart";
 
 const PortfolioDetail = (props) => {
   const userContext = useContext(UserContext);
@@ -59,71 +60,70 @@ const PortfolioDetail = (props) => {
   };
 
   return (
-    <>
-      {userContext.address ? (
-        <div>
-          <h2>
-            {props.token.name} ({props.token.symbol})
-          </h2>
-          <p>Circulating Supply:</p>
-          <p>{totalSupply}</p>
-          <p>Your Balance :</p>
-          <p>{userBalance}</p>
-          <table>
-            <tr>
-              <td>Amount (WEI) :</td>
-              <td>
-                <input
-                  type="number"
-                  min="0"
-                  value={weiToSpend}
-                  onChange={(e) => setEthAmountInWei(e.target.value)}
-                />
-              </td>
-              <td>
-                <button className="btn btn-cta" onClick={buy}>
-                  Buy
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>Portfolio Tokens :</td>
-              <td>
-                <input
-                  type="number"
-                  min="0"
-                  value={tokensToSell}
-                  onChange={(e) => setTokensToSell(e.target.value)}
-                />
-              </td>
-              <td>
-                <button className="btn btn-cta" onClick={sellAssets}>
-                  Sell Assets
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>Portfolio Tokens :</td>
-              <td>
-                <input
-                  type="number"
-                  min="0"
-                  value={tokensToSell}
-                  onChange={(e) => setTokensToSell(e.target.value)}
-                />
-              </td>
-              <td>
-                <button className="btn btn-cta" onClick={redeemAssets}>
-                  Redeem Assets
-                </button>
-              </td>
-            </tr>
-          </table>
-        </div>
-      ) : (
-        <p>Please connect to Metamask</p>
-      )}
-    </>
+    <div>
+      <div style={{ float: "left", height: "500px", width: "500px" }}>
+        <CustomPieChart
+          tokenAddresses={tokenAddresses}
+          percentageHoldings={percentageHoldings}
+        />
+      </div>
+      <div style={{ float: "right" }}>
+        <p>Circulating Supply:</p>
+        <p>{totalSupply}</p>
+        <p>Your Balance:</p>
+        <p>{userBalance}</p>
+        <table>
+          <tr>
+            <td>Amount (WEI) :</td>
+            <td>
+              <input
+                type="number"
+                min="0"
+                value={weiToSpend}
+                onChange={(e) => setEthAmountInWei(e.target.value)}
+              />
+            </td>
+            <td>
+              <button className="btn btn-cta" onClick={buy}>
+                Buy
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>Portfolio Tokens :</td>
+            <td>
+              <input
+                type="number"
+                min="0"
+                value={tokensToSell}
+                onChange={(e) => setTokensToSell(e.target.value)}
+              />
+            </td>
+            <td>
+              <button className="btn btn-cta" onClick={sellAssets}>
+                Sell Assets
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>Portfolio Tokens :</td>
+            <td>
+              <input
+                type="number"
+                min="0"
+                value={tokensToSell}
+                onChange={(e) => setTokensToSell(e.target.value)}
+              />
+            </td>
+            <td>
+              <button className="btn btn-cta" onClick={redeemAssets}>
+                Redeem Assets
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
   );
 };
 
