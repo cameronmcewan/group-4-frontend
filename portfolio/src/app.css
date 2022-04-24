@@ -25,7 +25,7 @@ body {
   font-family: "Poppins", sans-serif;
   color: #ffffff;
   line-height: 1.7;
-  background-image: url(../src/assets/backgrounds/bg-blue.svg);
+  background-image: url(../src/assets/backgrounds/bg-blue-waves.svg);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -83,6 +83,11 @@ button {
   transition: all 400ms ease;
 }
 
+button:hover {
+  -webkit-box-shadow: 0 3px 30px #ffffff;
+          box-shadow: 0 3px 30px #ffffff;
+}
+
 /* =============== General styles ============== */
 .container {
   width: 75%;
@@ -94,14 +99,16 @@ h1, h2, h3, h4, h5 {
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 5rem;
+  font-weight: 600;
   text-align: center;
 }
 
 /* each component is wrapped in a section in its component.js file */
 section {
-  padding: 8rem;
-  margin-bottom: 12rem;
+  min-height: 90vh;
+  padding: 4rem;
+  padding-bottom: 12rem;
 }
 
 /* each section will contain a h2 and h5 by default */
@@ -140,10 +147,24 @@ a:hover {
   transition: all 400ms ease;
 }
 
+.hollow {
+  border: 1px solid #ffffff;
+  outline: 2px #ffffff;
+  background-color: transparent;
+  color: #ffffff;
+  background-repeat: no-repeat;
+  background: transparent no-repeat;
+  border-radius: 10rem;
+}
+
+.btn.large {
+  font-size: x-large;
+}
+
 /* buttons will have hover effect */
 .btn:hover {
   background: #eeeeee;
-  color: #ff0000;
+  color: #0000ff;
   border-color: none;
 }
 
@@ -180,13 +201,25 @@ a:hover {
   .container {
     width: 86%;
   }
+  h1 {
+    font-size: 2.5rem;
+  }
   section {
     margin-top: 6rem;
   }
 }
 
-input {
-  width: 100%;
+/* ====== Media queries (small devices AKA mobile phones) =========== */
+@media screen and (max-width: 600px) {
+  .container {
+    width: 90%;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  section > h2 {
+    margin-top: 2rem;
+  }
 }
 
 nav {
@@ -306,6 +339,13 @@ li.right a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-shadow: 0 2px 30px #000000;
+          box-shadow: 0 2px 30px #000000;
+}
+
+.block:hover {
+  -webkit-box-shadow: 0 10px 30px #000000;
+          box-shadow: 0 10px 30px #000000;
 }
 
 .row.center {
@@ -343,6 +383,17 @@ select {
   border: 1px solid #d8d8d8;
   width: 350px;
   -webkit-appearance: none;
+}
+
+.icon {
+  vertical-align: middle;
+  margin-bottom: 5px;
+}
+
+.icon:hover {
+  border-radius: 0.5rem;
+  -webkit-box-shadow: 0 2px 5px #eeeeee;
+          box-shadow: 0 2px 5px #eeeeee;
 }
 
 /* Responsive layout - when the screen is less than 600px wide, make the three columns stack on top of each other instead of next to each other */

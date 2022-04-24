@@ -1,5 +1,12 @@
 import React, { useState, useContext,  Component, useRef } from "react";
 import CreatePortfolioForm from '../components/CreatePortfolioForm';
+import LooksOneOutlinedIcon from '@mui/icons-material/LooksOneOutlined';
+import LooksTwoOutlinedIcon from '@mui/icons-material/LooksTwoOutlined';
+import Looks3OutlinedIcon from '@mui/icons-material/Looks3Outlined';
+import Looks4OutlinedIcon from '@mui/icons-material/Looks4Outlined';
+import Looks5OutlinedIcon from '@mui/icons-material/Looks5Outlined';
+import Looks6OutlinedIcon from '@mui/icons-material/Looks6Outlined';
+
 const Create = () => {
 
     const Begin = useRef(null);
@@ -44,10 +51,10 @@ const Create = () => {
     <section ref={Begin}>
     <h1>Create Your Own ETF Token</h1>
     <li className="block">
-      <ul><h2>1. Choose Crypto Tokens To Add To Your ETF Token</h2></ul>
-      <ul><h2>2. Name Your ETF Token</h2></ul>
-      <ul><h2>3. Set A Fee For Your ETF Token</h2></ul>
-      <ul><h2>4. Review Your Token And Deploy To The Kovan Testnet</h2></ul>
+      <ul><h2><LooksOneOutlinedIcon className="icon" fontSize="large"/> Choose Crypto Tokens To Add To Your ETF Token</h2></ul>
+      <ul><h2><LooksTwoOutlinedIcon className="icon" fontSize="large"/> Name Your ETF Token</h2></ul>
+      <ul><h2><Looks3OutlinedIcon className="icon" fontSize="large"/> Set A Fee For Your ETF Token</h2></ul>
+      <ul><h2><Looks4OutlinedIcon className="icon" fontSize="large"/> Review Your Token And Deploy To The Kovan Testnet</h2></ul>
     </li>
     <div className="btn-scroll">
         <button className="btn btn-cta" onClick={goToStep1}>Begin</button>
