@@ -34,21 +34,21 @@ const CreatePortfolioForm = () => {
 
   return (
     <form className="formItem" onSubmit={handleSubmit}>
-      <div>
-        <select name="Add token" id="input7">
-          <option></option>
-          <option value="BTC">BTC</option>
-          <option value="ETH">ETH</option>
-          <option value="BNB">BNB</option>
-        </select>
-      </div>
+    <div>
+      <select name="Add token" id="input7">
+        <option></option>
+        <option value="BTC">BTC</option>
+        <option value="ETH">ETH</option>
+        <option value="BNB">BNB</option>                              
+      </select>
+    </div>
       <div>
         <label>
           Token Name:
           <input
             type="text"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={e => setName(e.target.value)}
           />
         </label>
       </div>
@@ -59,9 +59,9 @@ const CreatePortfolioForm = () => {
           <input
             type="text"
             value={symbol}
-            onChange={(e) => setSymbol(e.target.value)}
-          />
-        </label>
+            onChange={e => setSymbol(e.target.value)}
+          /> 
+        </label> 
       </div>
 
       <div>
@@ -70,7 +70,7 @@ const CreatePortfolioForm = () => {
           <input
             type="text"
             value={tokenAddresses}
-            onChange={(e) => setTokenAddresses(e.target.value)}
+            onChange={e => setTokenAddresses(e.target.value)}
           />
         </label>
       </div>
@@ -81,7 +81,7 @@ const CreatePortfolioForm = () => {
           <input
             type="text"
             value={percentageHoldings}
-            onChange={(e) => setPercentageHoldings(e.target.value)}
+            onChange={e => setPercentageHoldings(e.target.value)}
           />
         </label>
       </div>
@@ -92,7 +92,7 @@ const CreatePortfolioForm = () => {
           <input
             type="text"
             value={ownerFee}
-            onChange={(e) => setOwnerFee(e.target.value)}
+            onChange={e => setOwnerFee(e.target.value)}
           />
         </label>
       </div>

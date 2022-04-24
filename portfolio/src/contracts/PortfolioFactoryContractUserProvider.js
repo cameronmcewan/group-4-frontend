@@ -1,11 +1,8 @@
 import web3 from "../helpers/web3";
-import PortfolioFactory from "./PortfolioFactory.json";
+import abi from "./PortfolioFactoryABI.json";
 
-const contractAddress = "0x46783Fc2f92AdC132F5DE2f4BDE4138e3Ed8673a";
+const contractAddress = "0xeb69833E23155B7ADB37F2c4dEFE80D4EF06379D";
 
-const portfolioFactoryContractUserProvider = new web3.eth.Contract(
-  PortfolioFactory.abi,
-  contractAddress
-);
+const portfolioFactoryContractUserProvider = new web3.eth.Contract(abi, contractAddress);
 
 export default portfolioFactoryContractUserProvider;

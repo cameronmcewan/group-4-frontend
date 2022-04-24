@@ -1,7 +1,7 @@
 {
     "kovan": {
         "first": {
-            "address": "0xd846381d6d344e6591FCf0A6b7728F74fF3AA8B4",
+            "address": "0x263845d190ecfFDf981518CA792B7294CdAadfdA",
             "name": "OnlyWeth",
             "symbol": "OWETH",
             "tokenAddresses": [
@@ -13,7 +13,7 @@
             "ownerFee": 0
         },
         "second": {
-            "address": "0x8BD114003C8A8658e1F10D6565162a953962a285",
+            "address": "0x10FC9228693C70299246cf948878c79d5DBaddA3",
             "name": "StableWeth",
             "symbol": "SWETH",
             "tokenAddresses": [
@@ -27,7 +27,7 @@
             "ownerFee": 100
         },
         "third": {
-            "address": "0xae32b7694B55C327ab220BC8eFfa2a900b79B8c9",
+            "address": "0xDfB17101Fe816ccfD7aD22315C603Ed67c5faa51",
             "name": "Mixture",
             "symbol": "MIXT",
             "tokenAddresses": [
