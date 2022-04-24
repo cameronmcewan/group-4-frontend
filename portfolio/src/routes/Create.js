@@ -60,11 +60,11 @@ const Create = () => {
   const FinalStep = useRef(null);
   /* add */
   const [sum, setsum] = useState(0);
-  /* 提示 */
+  /* Tips */
   const [tip, settip] = useState(false);
-  /* 价格 */
+  /* price */
   const [price, setprice] = useState('');
-  /* 左侧初始列表 */
+  /* Initial list on the left */
   const [list, setlist] = useState([{
     'name': 'BTS',
     'qname': 'BTS',
@@ -72,11 +72,11 @@ const Create = () => {
     'scrollval': 0,
     'state': true
   }]);
-  /* 右侧的搜索列表 */
+  /* the search list on the right */
   const [searchList, setsearchList] = useState(
     name
   );
-  /* 搜索文字 */
+  /* search text */
   const [searchtxt, setsearchtxt] = useState('')
   /* token */
   const [tokenName, settokenName] = useState('');
