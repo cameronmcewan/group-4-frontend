@@ -185,8 +185,14 @@ a:hover {
   }
 }
 
-input {
-  width: 100%;
+/* ====== Media queries (small devices AKA mobile phones) =========== */
+@media screen and (max-width: 600px) {
+  .container {
+    width: 90%;
+  }
+  section > h2 {
+    margin-top: 2rem;
+  }
 }
 
 nav {
