@@ -1,6 +1,5 @@
 import React, { useState, useContext,  Component, useRef } from "react";
 import CreatePortfolioForm from '../components/CreatePortfolioForm';
-
 const Create = () => {
 
     const Begin = useRef(null);

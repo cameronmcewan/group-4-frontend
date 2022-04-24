@@ -2,20 +2,21 @@
 $nav-height: 100px;
 
 nav {
-    width: 100vw;
+    // width: 100vw;
     height: $nav-height;
-    margin: 0 auto;
+    margin-right: 0 auto;
     text-align: center;
 }
 
 nav ul {
     list-style-type: none;
-    margin: 0 auto;
+    padding-right: 100px;
+    padding-left: 100px;
     width: 100vw;
     height: $nav-height;
     overflow: hidden;
     border-bottom: 1px solid $grey;
-    text-align: center;
+    text-align: left;
     position: relative;
     display: inline-block;
 }
@@ -26,22 +27,26 @@ nav ul li {
     vertical-align: middle;
 }
 
-nav ul li a.logo {
+nav ul li a{
     display: inline-block;
 }
 
-nav ul li a img {
+nav ul li a.logo {
     display: inline-block;
+    // margin-right: 50px;
+    margin-right: 3vw;
+}
+
+nav ul li a img {
     width: 100%; 
     height: $nav-height;
     opacity: .6;
     transition: .6s;
-    margin: auto;
 }
 
 nav ul li a img:hover {
     opacity: 1;
-    transform: scale(1.5);
+    transform: scale(1.2);
 }
 
 li a.expandmore:hover {
@@ -50,7 +55,8 @@ li a.expandmore:hover {
 
 nav ul li a.tab {
     color: $white;
-    margin: 8px 10vw;
+    margin-left: 8px;
+    margin-right: 3vw;
     text-decoration: none;
     background-size: 20px 2px, 100% 2px, 0 2px;
     background-position: calc(20px * -1) 100%, 100% 100%, 0 100%;
@@ -67,13 +73,15 @@ nav ul li a.tab:hover {
     background-size: 20px 2px, 0 2px, 100% 2px;
     background-position: calc(100% + 20px) 100%, 100% 100%, 0 100%;
     opacity: 1;
-    transform: scale(1.5);
+    transform: scale(1.2);
 }
 
 nav ul li.right {
-    display: inline-block;
-    text-align: right;
-    position: absolute;
+    float: right;
+}
+
+li.right a {
+    display: block;
 }
 
 //  ========= Create page styling ===========
@@ -142,3 +150,5 @@ select {
     ul.topnav li.right, 
     ul.topnav li {float: none;}
   }
+
+
