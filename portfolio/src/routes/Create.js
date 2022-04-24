@@ -48,9 +48,9 @@ const useStyles = makeStyles((theme) => ({
     margin: 4,
   },
 }));
-function ListItemLink(props) {
-  return <ListItem button component="a" {...props} />;
-}
+//function ListItemLink(props) {
+  //return <ListItem button component="a" {...props} />;
+//}//Search style for the list on the right
 const Create = () => {
 
   const Begin = useRef(null);
