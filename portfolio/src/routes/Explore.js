@@ -18,7 +18,7 @@ const Explore = () => {
   return (
     <>
     <section>
-      <h1>
+      <h1 className="hovereffect">
         Easy access to ready made diversified crypto investment portfolios 
       </h1>
       <div className="btn-scroll">
@@ -29,8 +29,8 @@ const Explore = () => {
         </button>
       </div>
     </section>
-    <section>
-      <h3 ref={Explore}>
+    <section ref={Explore}>
+      <h3>
         Search for the name of an existing Portfolio or token to filter the
         results
       </h3>

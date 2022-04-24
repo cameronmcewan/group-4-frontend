@@ -1,5 +1,6 @@
 import React, { useState, useContext,  Component, useRef } from "react";
 import CreatePortfolioForm from '../components/CreatePortfolioForm';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import LooksOneOutlinedIcon from '@mui/icons-material/LooksOneOutlined';
 import LooksTwoOutlinedIcon from '@mui/icons-material/LooksTwoOutlined';
 import Looks3OutlinedIcon from '@mui/icons-material/Looks3Outlined';
@@ -57,7 +58,10 @@ const Create = () => {
       <ul><h2><Looks4OutlinedIcon className="icon" fontSize="large"/> Review Your Token And Deploy To The Kovan Testnet</h2></ul>
     </li>
     <div className="btn-scroll">
-        <button className="btn btn-cta" onClick={goToStep1}>Begin</button>
+        <button className="btn hollow large" onClick={goToStep1}>
+        Start Creating!<br/>
+        <ArrowDownwardIcon />
+        </button>
     </div>
     </section>
 

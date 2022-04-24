@@ -121,6 +121,13 @@ h1 {
     font-weight: 600;
     text-align: center;
 }
+h1.hovereffect {
+    text-align: center;
+}
+h1.hovereffect:hover {
+    font-weight: 400;
+    transition: 0s;
+}
 
 /* each component is wrapped in a section in its component.js file */
 section {
@@ -152,6 +159,9 @@ a:hover {
     color: $white;
 }
 
+.light {
+    opacity: 0.4;
+}
 
 .btn {
     display: inline-block;
