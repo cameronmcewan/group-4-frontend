@@ -1,6 +1,9 @@
 #step1 {
   display: flex;
 }
+#step1 .makeStyles-root-14 {
+  width: 100%;
+}
 #step1 .topbox {
   max-height: 300px;
   overflow: auto;
@@ -64,12 +67,13 @@
 #step1 .rightbox span {
   color: #333;
 }
-/* Force hide iframe pop-up boxes */
+/* 强制隐藏iframe弹框 */
 iframe {
   display: none !important;
 }
 #Step2 {
   background-color: #fff;
+  border-radius: 6px;
   max-width: 900px;
   margin: auto;
   width: 100%;
@@ -94,6 +98,7 @@ iframe {
   display: inline-block;
   margin-right: 10px;
   text-align: center;
+  border-radius: 6px;
 }
 iframe {
   display: none !important;
@@ -122,6 +127,7 @@ iframe {
   margin: auto;
   background-color: #fff;
   display: flex;
+  border-radius: 10px;
 }
 #last .btn-group .btn {
   flex-grow: 1;
