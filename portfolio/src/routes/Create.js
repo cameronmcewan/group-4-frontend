@@ -55,9 +55,9 @@ const Create = () => {
   const Step2 = useRef(null);
   const Step3 = useRef(null);
   const FinalStep = useRef(null);
-  const [sum, setSum] = useState(0);
-  const [tip, setTip] = useState(false);
-  const [price, setPrice] = useState("");
+  const [ownerFee, setOwnerFee] = useState(0);
+  const [infoOpen, setInfoOpen] = useState(false);
+  const [initialisationAmount, setInitialisationAmount] = useState("");
   const [list, setList] = useState([
     {
       name: "BTS",
@@ -68,9 +68,9 @@ const Create = () => {
     },
   ]);
   const [searchList, setsearchList] = useState(name);
-  const [searchtxt, setsearchtxt] = useState("");
-  const [tokenName, settokenName] = useState("");
-  const [usertoken, setusertoken] = useState("");
+  const [tokenSearchText, setTokenSearchText] = useState("");
+  const [tokenName, setTokenName] = useState("");
+  const [tokenSymbol, setTokenSymbol] = useState("");
 
   const goToBegin = () =>
     window.scrollTo({
@@ -211,9 +211,9 @@ const Create = () => {
           <div className="col-12 box rightbox">
             <Paper component="form" className={classes.root}>
               <InputBase
-                defaultValue={searchtxt}
+                defaultValue={tokenSearchText}
                 onChange={(e) => {
-                  setsearchtxt(e.target.value);
+                  setTokenSearchText(e.target.value);
                 }}
                 className={classes.input}
                 placeholder="Search token"
@@ -228,7 +228,7 @@ const Create = () => {
                     return (
                       ele.name
                         .toLowerCase()
-                        .indexOf(searchtxt.toLowerCase()) !== -1
+                        .indexOf(tokenSearchText.toLowerCase()) !== -1
                     );
                   });
                   setsearchList([...result]);
@@ -287,7 +287,7 @@ const Create = () => {
               defaultValue={tokenName}
               placeholder="Top 10 Index"
               onChange={(e) => {
-                settokenName(e.target.value);
+                setTokenName(e.target.value);
               }}
               id="tokenName"
               labelWidth={240}
@@ -298,12 +298,12 @@ const Create = () => {
               Create a Symbol for your token
             </InputLabel>
             <OutlinedInput
-              defaultValue={usertoken}
+              defaultValue={tokenSymbol}
               placeholder=" CT 10"
               id="userToken"
               labelWidth={240}
               onChange={(e) => {
-                setusertoken(e.target.value);
+                setTokenSymbol(e.target.value);
               }}
             />
           </FormControl>
@@ -326,15 +326,15 @@ const Create = () => {
             max={100}
             min={0}
             type="number"
-            value={sum}
+            value={ownerFee}
             onChange={(e) => {
               console.log(e.target.value);
               if (e.target.value > 100) {
-                setSum(100);
+                setOwnerFee(100);
               } else if (e.target.value < 0) {
-                setSum(0);
+                setOwnerFee(0);
               } else {
-                setSum(e.target.value.replace(/^(0+)|[^\d]+/g, ""));
+                setOwnerFee(e.target.value.replace(/^(0+)|[^\d]+/g, ""));
               }
             }}
           ></input>
@@ -343,13 +343,15 @@ const Create = () => {
             <IconButton
               type="button"
               onClick={() => {
-                let tipstate = tip;
-                setTip(!tipstate);
+                let tipstate = infoOpen;
+                setInfoOpen(!tipstate);
               }}
             >
               <InfoOutlinedIcon />
             </IconButton>
-            <div className={tip === true ? "tipmessage show" : "tipmessage"}>
+            <div
+              className={infoOpen === true ? "tipmessage show" : "tipmessage"}
+            >
               tip txt value content
             </div>
           </div>
@@ -370,11 +372,11 @@ const Create = () => {
         <div className="btn-group">
           <div className="btn leftbox">
             <p>token name: {tokenName}</p>
-            <p>user token: {usertoken}</p>
+            <p>user token: {tokenSymbol}</p>
             <div>
               <Pie3 List={list} />
             </div>
-            <p>Token fee {sum}%</p>
+            <p>Token fee {ownerFee}%</p>
             <button className="btn btn-cta" onClick={goToStep3}>
               edit token
             </button>
@@ -400,10 +402,10 @@ const Create = () => {
                       price
                     </InputLabel>
                     <OutlinedInput
-                      defaultValue={price}
+                      defaultValue={initialisationAmount}
                       placeholder="input price"
                       onChange={(e) => {
-                        setPrice(e.target.value);
+                        setInitialisationAmount(e.target.value);
                       }}
                       labelWidth={30}
                     />
