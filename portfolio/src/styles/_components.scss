@@ -1,5 +1,16 @@
 // ======= Navbar ==========
-$nav-height: 80px;
+$nav-height: 70px;
+$nav-color: #000050; 
+
+nav {
+    background-color: $nav-color;
+    // color: $blue;
+    position: fixed;
+    // width: 100vw;
+    height: $nav-height;
+    margin-right: 0 auto;
+    text-align: center;
+}
 
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */
 .sticky {
@@ -11,21 +22,6 @@ $nav-height: 80px;
 /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
 .sticky + .content {
     padding-top: 60px;
-}
-
-.navbar {
-    background-color: $blue;
-    background: $blue;
-}
-
-nav {
-    // display: block;
-    position: fixed;
-    // width: 100vw;
-    height: $nav-height;
-    margin-right: 0 auto;
-    text-align: center;
-    background-color: $blue;
 }
 
 nav ul {
@@ -106,10 +102,18 @@ li.right a {
 
 
 // ========== Footer styling ==========
+footer {
+    color: $white;
+    background-color: $nav-color;
+    padding: 1rem;
+    margin-top: auto;
+    border-top: 1px solid $grey;
+}
 
-footer.logo {
+footer .logo {
     display: inline-block;
-    width: 2rem;
+    height: 2rem;
+    margin-right: 3vw;
 }
 
 //  ========= Create page styling ===========

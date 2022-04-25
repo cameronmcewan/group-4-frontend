@@ -36,13 +36,6 @@ body {
   min-height: 100;
 }
 
-footer {
-  color: #ffffff;
-  padding: 1rem;
-  margin-top: auto;
-  border-top: 1px solid #eeeeee;
-}
-
 /* scroll behaviour */
 html {
   scroll-behavior: smooth;
@@ -125,10 +118,6 @@ section {
   padding-bottom: 12rem;
 }
 
-.main {
-  margin-top: 100px;
-}
-
 /* each section will contain a h2 and h5 by default */
 section > h2, section > h5 {
   text-align: center;
@@ -200,16 +189,16 @@ a:hover {
   background: #ff0000;
   color: #ffffff;
   font-weight: 800;
-  -webkit-box-shadow: 5px 5px 0 #eeeeee;
-          box-shadow: 5px 5px 0 #eeeeee;
+  -webkit-box-shadow: 0 0 0 #eeeeee;
+          box-shadow: 0 0 0 #eeeeee;
 }
 
 .btn-cta:hover {
   background: #e5ff00;
   color: #ff0000;
   border-color: transparent;
-  -webkit-box-shadow: 2px 2px 5px #eeeeee;
-          box-shadow: 2px 2px 5px #eeeeee;
+  -webkit-box-shadow: 0px 0px 10px #eeeeee;
+          box-shadow: 0px 0px 10px #eeeeee;
 }
 
 .btn-scroll {
@@ -249,6 +238,14 @@ a:hover {
   }
 }
 
+nav {
+  background-color: #000050;
+  position: fixed;
+  height: 70px;
+  margin-right: 0 auto;
+  text-align: center;
+}
+
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */
 .sticky {
   position: fixed;
@@ -261,20 +258,12 @@ a:hover {
   padding-top: 60px;
 }
 
-nav {
-  display: block;
-  position: fixed;
-  height: 80px;
-  margin-right: 0 auto;
-  text-align: center;
-}
-
 nav ul {
   list-style-type: none;
   padding-right: 100px;
   padding-left: 100px;
   width: 100vw;
-  height: 80px;
+  height: 70px;
   overflow: hidden;
   border-bottom: 1px solid #eeeeee;
   text-align: left;
@@ -299,7 +288,7 @@ nav ul li a.logo {
 
 nav ul li a img {
   width: 100%;
-  height: 80px;
+  height: 70px;
   opacity: .6;
   -webkit-transition: .6s;
   transition: .6s;
@@ -349,9 +338,18 @@ li.right a {
   display: block;
 }
 
-footer.logo {
+footer {
+  color: #ffffff;
+  background-color: #000050;
+  padding: 1rem;
+  margin-top: auto;
+  border-top: 1px solid #eeeeee;
+}
+
+footer .logo {
   display: inline-block;
-  width: 2rem;
+  height: 2rem;
+  margin-right: 3vw;
 }
 
 .row {
