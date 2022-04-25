@@ -46,7 +46,7 @@ nav ul li a img {
 
 nav ul li a img:hover {
     opacity: 1;
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
 li a.expandmore:hover {
@@ -62,7 +62,7 @@ nav ul li a.tab {
     background-position: calc(20px * -1) 100%, 100% 100%, 0 100%;
     background-repeat: no-repeat;
     transition: background-size 1s linear, background-position 1s linear;
-    opacity: .6;
+    opacity: .9;
     transition: .6s;
 }
 
@@ -84,6 +84,14 @@ li.right a {
     display: block;
 }
 
+
+// ========== Footer styling ==========
+
+footer.logo {
+    display: inline-block;
+    width: 2rem;
+}
+
 //  ========= Create page styling ===========
 .row {
     display: flex;
@@ -103,7 +111,7 @@ li.right a {
     background-color: $white;
     color: $blue;
     padding: 1rem  3rem;
-    margin: 6rem 8rem;
+    margin: 1rem 4rem;
     border-radius: 0.5rem;
     justify-content: center;
     box-shadow: 0 2px 30px $black;
@@ -156,6 +164,19 @@ select {
     border-radius: 0.5rem;
     box-shadow: 0 2px 5px $grey;
 }   
+
+// ========== Welcome Page ===========
+#landing {
+    footer, nav{
+        visibility: hidden;
+        }
+        
+        .header {
+        display:none !important;
+        }
+}
+
+
 
 
 /* Responsive layout - when the screen is less than 600px wide, make the three columns stack on top of each other instead of next to each other */

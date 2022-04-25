@@ -81,11 +81,15 @@ button {
   border: none;
   -webkit-transition: all 400ms ease;
   transition: all 400ms ease;
+  -webkit-box-shadow: 8px 8px 0 #eeeeee;
+          box-shadow: 8px 8px 0 #eeeeee;
 }
 
 button:hover {
-  -webkit-box-shadow: 0 3px 30px #ffffff;
-          box-shadow: 0 3px 30px #ffffff;
+  margin-top: 1.4rem;
+  margin-left: 1.6rem;
+  -webkit-box-shadow: 0 0 10px #eeeeee;
+          box-shadow: 0 0 10px #eeeeee;
 }
 
 /* =============== General styles ============== */
@@ -177,7 +181,7 @@ a:hover {
 
 /* buttons will have hover effect */
 .btn:hover {
-  background: #eeeeee;
+  background: #ffffff;
   color: #0000ff;
   border-color: none;
 }
@@ -190,13 +194,18 @@ a:hover {
 
 .btn-cta {
   background: #ff0000;
-  color: #eeeeee;
+  color: #ffffff;
+  font-weight: 800;
+  -webkit-box-shadow: 5px 5px 0 #eeeeee;
+          box-shadow: 5px 5px 0 #eeeeee;
 }
 
 .btn-cta:hover {
   background: #e5ff00;
-  color: red;
+  color: #ff0000;
   border-color: transparent;
+  -webkit-box-shadow: 2px 2px 5px #eeeeee;
+          box-shadow: 2px 2px 5px #eeeeee;
 }
 
 .btn-scroll {
@@ -280,8 +289,8 @@ nav ul li a img {
 
 nav ul li a img:hover {
   opacity: 1;
-  -webkit-transform: scale(1.2);
-          transform: scale(1.2);
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 li a.expandmore:hover {
@@ -299,7 +308,7 @@ nav ul li a.tab {
   background-repeat: no-repeat;
   -webkit-transition: background-size 1s linear, background-position 1s linear;
   transition: background-size 1s linear, background-position 1s linear;
-  opacity: .6;
+  opacity: .9;
   -webkit-transition: .6s;
   transition: .6s;
 }
@@ -320,6 +329,11 @@ nav ul li.right {
 
 li.right a {
   display: block;
+}
+
+footer.logo {
+  display: inline-block;
+  width: 2rem;
 }
 
 .row {
@@ -348,7 +362,7 @@ li.right a {
   background-color: #ffffff;
   color: #0000ff;
   padding: 1rem  3rem;
-  margin: 6rem 8rem;
+  margin: 1rem 4rem;
   border-radius: 0.5rem;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -408,6 +422,14 @@ select {
   border-radius: 0.5rem;
   -webkit-box-shadow: 0 2px 5px #eeeeee;
           box-shadow: 0 2px 5px #eeeeee;
+}
+
+#landing footer, #landing nav {
+  visibility: hidden;
+}
+
+#landing .header {
+  display: none !important;
 }
 
 /* Responsive layout - when the screen is less than 600px wide, make the three columns stack on top of each other instead of next to each other */

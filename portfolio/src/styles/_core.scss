@@ -99,10 +99,13 @@ button {
     cursor: pointer;
     border: none;
     transition: $transition;
+    box-shadow: 8px 8px 0 $grey;
 }
 
 button:hover {
-    box-shadow: 0 3px 30px $white;
+    margin-top: 1.4rem;
+    margin-left: 1.6rem;
+    box-shadow: 0 0 10px $grey;
 }
 
 /* =============== General styles ============== */
@@ -191,7 +194,7 @@ a:hover {
 
 /* buttons will have hover effect */
 .btn:hover {
-    background: $grey;
+    background: $white;
     color: $blue;
     border-color: none;
 }
@@ -204,12 +207,16 @@ a:hover {
 
 .btn-cta {
     background: $red;
-    color: $grey;
+    color: $white;
+    font-weight: 800;
+    box-shadow: 5px 5px 0 $grey;
+
 }
 .btn-cta:hover {
     background: $yellow;
-    color: red;
+    color: $red;
     border-color: transparent;
+    box-shadow: 2px 2px 5px $grey;
 }
 
 .btn-scroll {
