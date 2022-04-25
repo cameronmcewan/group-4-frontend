@@ -1,8 +1,15 @@
-import web3 from "../helpers/web3";
-import abi from "./PortfolioFactoryABI.json";
+import { ethers } from "ethers";
+import PortfolioFactory from "./PortfolioFactory.json";
 
-const contractAddress = "0xeb69833E23155B7ADB37F2c4dEFE80D4EF06379D";
+const infuraApiKey =
+  "https://kovan.infura.io/v3/1c722de80b77412f86091fdf4d04b74b";
+const contractAddress = "0x46783Fc2f92AdC132F5DE2f4BDE4138e3Ed8673a";
+let provider = new ethers.providers.InfuraProvider("kovan", infuraApiKey);
 
-const portfolioFactoryContract = new web3.eth.Contract(abi, contractAddress);
+const portfolioFactoryContract = new ethers.Contract(
+  contractAddress,
+  PortfolioFactory.abi,
+  ethers.providers.getDefaultProvider("kovan")
+);
 
 export default portfolioFactoryContract;

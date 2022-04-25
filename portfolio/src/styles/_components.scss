@@ -1,61 +1,96 @@
 // ======= Navbar ==========
+$nav-height: 100px;
 
-ul.topnav {
+nav {
+    // width: 100vw;
+    height: $nav-height;
+    margin-right: 0 auto;
+    text-align: center;
+}
+
+nav ul {
     list-style-type: none;
-    margin: 0;
-    padding: 20px;
+    padding-right: 100px;
+    padding-left: 100px;
+    width: 100vw;
+    height: $nav-height;
     overflow: hidden;
     border-bottom: 1px solid $grey;
+    text-align: left;
+    position: relative;
+    display: inline-block;
 }
 
-ul.topnav li {
-    float: left;
-}
-
-ul.topnav li a {
-    display: block;
-    color: $header-font-color;
+nav ul li {
+    display: inline;
     text-align: center;
-    padding: 14px 16px;
+    vertical-align: middle;
+}
+
+nav ul li a{
+    display: inline-block;
+}
+
+nav ul li a.logo {
+    display: inline-block;
+    // margin-right: 50px;
+    margin-right: 3vw;
+}
+
+nav ul li a img {
+    width: 100%; 
+    height: $nav-height;
+    opacity: .6;
+    transition: .6s;
+}
+
+nav ul li a img:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+li a.expandmore:hover {
+    transform: scale(2);
+}
+
+nav ul li a.tab {
+    color: $white;
+    margin-left: 8px;
+    margin-right: 3vw;
     text-decoration: none;
     background-size: 20px 2px, 100% 2px, 0 2px;
     background-position: calc(20px * -1) 100%, 100% 100%, 0 100%;
     background-repeat: no-repeat;
     transition: background-size 1s linear, background-position 1s linear;
+    opacity: .9;
+    transition: .6s;
 }
 
-ul.topnav li a:hover:not(.active) {
-    opacity: 0.8;
+nav ul li a.tab:hover {
     background-image: linear-gradient($color-secondary, $color-secondary), 
                         linear-gradient($color-primary, $color-primary), 
                         linear-gradient($color-white, $color-white);
     background-size: 20px 2px, 0 2px, 100% 2px;
     background-position: calc(100% + 20px) 100%, 100% 100%, 0 100%;
-}
-
-ul.topnav li.right {float: right;}
-
-.logo {
-    float: left;
-    width: 120px; 
-    text-indent: -9999px;
-    opacity: .6;
-    transition: .6s;
-    margin-top: -6px;
-}
-
-.logo:hover {
     opacity: 1;
-    // margin-top: -11px;
-    // margin-bottom: 5px;
-    transform: scale(1.1);
-}
-.expandmore:hover {
-    transform: scale(2);
+    transform: scale(1.2);
 }
 
-// ======== Create Page =========
+nav ul li.right {
+    float: right;
+}
 
+li.right a {
+    display: block;
+}
+
+
+// ========== Footer styling ==========
+
+footer.logo {
+    display: inline-block;
+    width: 2rem;
+}
 
 //  ========= Create page styling ===========
 .row {
@@ -76,9 +111,16 @@ ul.topnav li.right {float: right;}
     background-color: $white;
     color: $blue;
     padding: 1rem  3rem;
-    margin: 6rem 8rem;
+    margin: 1rem 4rem;
     border-radius: 0.5rem;
     justify-content: center;
+    box-shadow: 0 2px 30px $black;
+
+}
+
+.block:hover {
+    // animation-duration: 3s;
+    box-shadow: 0 10px 30px $black;
 }
 
 .row.center {
@@ -114,6 +156,28 @@ select {
     -webkit-appearance: none;
 }
 
+.icon {
+    vertical-align: middle;
+    margin-bottom: 5px;
+} 
+.icon:hover {
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px $grey;
+}   
+
+// ========== Welcome Page ===========
+#landing {
+    footer, nav{
+        visibility: hidden;
+        }
+        
+        .header {
+        display:none !important;
+        }
+}
+
+
+
 
 /* Responsive layout - when the screen is less than 600px wide, make the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
@@ -123,3 +187,5 @@ select {
     ul.topnav li.right, 
     ul.topnav li {float: none;}
   }
+
+

@@ -5,7 +5,7 @@ import { ethers } from "ethers";
 const MetaMask = () => {
   const [buttonText, setButtonText] = useState("Connect to MetaMask");
   const [userBalance, setUserBalance] = useState();
-  const { address, setAddress } = useContext(UserContext);
+  const userContext = useContext(UserContext);
 
   const handleButtonClick = () => {
     connectWalletHandler();
@@ -18,10 +18,12 @@ const MetaMask = () => {
 
   const connectWalletHandler = () => {
     if (window.ethereum) {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      userContext.setSigner(provider.getSigner());
       window.ethereum
         .request({ method: "eth_requestAccounts" })
         .then((result) => {
-          setAddress(result[0]);
+          userContext.setAddress(result[0]);
           getUserBalance(result[0]);
         });
     } else {
@@ -39,11 +41,11 @@ const MetaMask = () => {
 
   return (
     <button className="btn btn-cta" onClick={handleButtonClick}>
-      <p>{buttonText}</p>
-      {address && ( // Only displays the div below if the user address has been set
+      {buttonText}
+      {userContext.address && ( // Only displays the div below if the user address has been set
         <div>
-          <h3>Address: {address}</h3>
-          <h3>Balance: {userBalance}</h3>
+          <h6>Address: {userContext.address}</h6>
+          <h6>Balance: {userBalance}</h6>
         </div>
       )}
     </button>
