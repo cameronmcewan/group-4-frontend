@@ -50,9 +50,9 @@ const Create = () => {
   return (
     <>
     <section ref={Begin}>
-    <h1>Create Your Own ETF Token</h1>
-    <li className="block">
-      <ul><h2><LooksOneOutlinedIcon className="icon" fontSize="large"/> Choose Crypto Tokens To Add To Your ETF Token</h2></ul>
+    <h1>Its Easy To Create Your Own ETF Token</h1>
+    <li className="">
+      <ul><h2><LooksOneOutlinedIcon className="icon" fontSize="large"/> Choose Crypto Tokens To Add To Your ETF Token</h2></ul> 
       <ul><h2><LooksTwoOutlinedIcon className="icon" fontSize="large"/> Name Your ETF Token</h2></ul>
       <ul><h2><Looks3OutlinedIcon className="icon" fontSize="large"/> Set A Fee For Your ETF Token</h2></ul>
       <ul><h2><Looks4OutlinedIcon className="icon" fontSize="large"/> Review Your Token And Deploy To The Kovan Testnet</h2></ul>
