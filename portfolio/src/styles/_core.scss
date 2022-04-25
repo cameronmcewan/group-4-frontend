@@ -56,14 +56,14 @@ body {
     font-family: $primary-fonts;
     color: $font-color;
     line-height: 1.7;
-    background-image: url(../src/assets/backgrounds/bg-blue.svg);
+    background-image: url(../src/assets/backgrounds/bg-blue-waves.svg);
     display: flex;
     flex-direction: column;
     min-height: 100;
 }
 
 footer {
-    color: $header-font-color;
+    color: $white;
     padding: 1rem;
     margin-top: auto;
     border-top: 1px solid $grey;
@@ -99,6 +99,13 @@ button {
     cursor: pointer;
     border: none;
     transition: $transition;
+    box-shadow: 8px 8px 0 $grey;
+}
+
+button:hover {
+    margin-top: 1.4rem;
+    margin-left: 1.6rem;
+    box-shadow: 0 0 10px $grey;
 }
 
 /* =============== General styles ============== */
@@ -113,14 +120,24 @@ h1, h2, h3, h4, h5 {
 }
 
 h1 {
-    font-size: 2.5rem;
+    font-size: 5rem;
+    font-weight: 600;
     text-align: center;
+}
+h1.hovereffect {
+    text-align: center;
+}
+h1.hovereffect:hover {
+    font-weight: 400;
+    transition: 0s;
 }
 
 /* each component is wrapped in a section in its component.js file */
 section {
-    padding: 8rem;
-    margin-bottom: 12rem;
+    min-height: 90vh;
+    padding: 4rem;
+    padding-bottom: 12rem;
+    // margin-bottom: 12rem;
 }
 
 /* each section will contain a h2 and h5 by default */
@@ -145,6 +162,9 @@ a:hover {
     color: $white;
 }
 
+.light {
+    opacity: 0.4;
+}
 
 .btn {
     display: inline-block;
@@ -153,16 +173,29 @@ a:hover {
     padding: 1rem 1rem;
     margin: 1rem;
     border-radius: 1.5rem;
-    // justify-content: center;
     cursor: pointer;
     border: none;
     transition: $transition;
 }
 
+.hollow {
+    border: 1px solid $white;
+    outline: 2px $white;
+    background-color: transparent;
+    color: $white;
+    background-repeat:no-repeat;
+    background: transparent no-repeat;
+    border-radius: 10rem;
+}
+
+.btn.large { 
+    font-size: x-large;
+}
+
 /* buttons will have hover effect */
 .btn:hover {
-    background: $grey;
-    color: $red;
+    background: $white;
+    color: $blue;
     border-color: none;
 }
 
@@ -174,12 +207,16 @@ a:hover {
 
 .btn-cta {
     background: $red;
-    color: $grey;
+    color: $white;
+    font-weight: 800;
+    box-shadow: 5px 5px 0 $grey;
+
 }
 .btn-cta:hover {
     background: $yellow;
-    color: red;
+    color: $red;
     border-color: transparent;
+    box-shadow: 2px 2px 5px $grey;
 }
 
 .btn-scroll {
@@ -195,6 +232,10 @@ a:hover {
         width: $container-width-md;
     }
 
+    h1 {
+        font-size: 2.5rem;
+    }
+
     section {
         margin-top: 6rem;
     }
@@ -204,6 +245,10 @@ a:hover {
 @media screen and (max-width: 600px) {
     .container {
         width: $container-width-sm;
+    }
+
+    h1 {
+        font-size: 2rem;
     }
 
     section > h2 {

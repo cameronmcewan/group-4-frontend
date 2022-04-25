@@ -25,7 +25,7 @@ body {
   font-family: "Poppins", sans-serif;
   color: #ffffff;
   line-height: 1.7;
-  background-image: url(../src/assets/backgrounds/bg-blue.svg);
+  background-image: url(../src/assets/backgrounds/bg-blue-waves.svg);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -81,6 +81,15 @@ button {
   border: none;
   -webkit-transition: all 400ms ease;
   transition: all 400ms ease;
+  -webkit-box-shadow: 8px 8px 0 #eeeeee;
+          box-shadow: 8px 8px 0 #eeeeee;
+}
+
+button:hover {
+  margin-top: 1.4rem;
+  margin-left: 1.6rem;
+  -webkit-box-shadow: 0 0 10px #eeeeee;
+          box-shadow: 0 0 10px #eeeeee;
 }
 
 /* =============== General styles ============== */
@@ -94,14 +103,26 @@ h1, h2, h3, h4, h5 {
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 5rem;
+  font-weight: 600;
   text-align: center;
+}
+
+h1.hovereffect {
+  text-align: center;
+}
+
+h1.hovereffect:hover {
+  font-weight: 400;
+  -webkit-transition: 0s;
+  transition: 0s;
 }
 
 /* each component is wrapped in a section in its component.js file */
 section {
-  padding: 8rem;
-  margin-bottom: 12rem;
+  min-height: 90vh;
+  padding: 4rem;
+  padding-bottom: 12rem;
 }
 
 /* each section will contain a h2 and h5 by default */
@@ -127,6 +148,10 @@ a:hover {
   color: #ffffff;
 }
 
+.light {
+  opacity: 0.4;
+}
+
 .btn {
   display: inline-block;
   width: 100%;
@@ -140,10 +165,24 @@ a:hover {
   transition: all 400ms ease;
 }
 
+.hollow {
+  border: 1px solid #ffffff;
+  outline: 2px #ffffff;
+  background-color: transparent;
+  color: #ffffff;
+  background-repeat: no-repeat;
+  background: transparent no-repeat;
+  border-radius: 10rem;
+}
+
+.btn.large {
+  font-size: x-large;
+}
+
 /* buttons will have hover effect */
 .btn:hover {
-  background: #eeeeee;
-  color: #ff0000;
+  background: #ffffff;
+  color: #0000ff;
   border-color: none;
 }
 
@@ -155,13 +194,18 @@ a:hover {
 
 .btn-cta {
   background: #ff0000;
-  color: #eeeeee;
+  color: #ffffff;
+  font-weight: 800;
+  -webkit-box-shadow: 5px 5px 0 #eeeeee;
+          box-shadow: 5px 5px 0 #eeeeee;
 }
 
 .btn-cta:hover {
   background: #e5ff00;
-  color: red;
+  color: #ff0000;
   border-color: transparent;
+  -webkit-box-shadow: 2px 2px 5px #eeeeee;
+          box-shadow: 2px 2px 5px #eeeeee;
 }
 
 .btn-scroll {
@@ -180,13 +224,25 @@ a:hover {
   .container {
     width: 86%;
   }
+  h1 {
+    font-size: 2.5rem;
+  }
   section {
     margin-top: 6rem;
   }
 }
 
-input {
-  width: 100%;
+/* ====== Media queries (small devices AKA mobile phones) =========== */
+@media screen and (max-width: 600px) {
+  .container {
+    width: 90%;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  section > h2 {
+    margin-top: 2rem;
+  }
 }
 
 nav {
@@ -233,8 +289,8 @@ nav ul li a img {
 
 nav ul li a img:hover {
   opacity: 1;
-  -webkit-transform: scale(1.2);
-          transform: scale(1.2);
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 li a.expandmore:hover {
@@ -252,7 +308,7 @@ nav ul li a.tab {
   background-repeat: no-repeat;
   -webkit-transition: background-size 1s linear, background-position 1s linear;
   transition: background-size 1s linear, background-position 1s linear;
-  opacity: .6;
+  opacity: .9;
   -webkit-transition: .6s;
   transition: .6s;
 }
@@ -273,6 +329,11 @@ nav ul li.right {
 
 li.right a {
   display: block;
+}
+
+footer.logo {
+  display: inline-block;
+  width: 2rem;
 }
 
 .row {
@@ -301,11 +362,18 @@ li.right a {
   background-color: #ffffff;
   color: #0000ff;
   padding: 1rem  3rem;
-  margin: 6rem 8rem;
+  margin: 1rem 4rem;
   border-radius: 0.5rem;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-shadow: 0 2px 30px #000000;
+          box-shadow: 0 2px 30px #000000;
+}
+
+.block:hover {
+  -webkit-box-shadow: 0 10px 30px #000000;
+          box-shadow: 0 10px 30px #000000;
 }
 
 .row.center {
@@ -343,6 +411,25 @@ select {
   border: 1px solid #d8d8d8;
   width: 350px;
   -webkit-appearance: none;
+}
+
+.icon {
+  vertical-align: middle;
+  margin-bottom: 5px;
+}
+
+.icon:hover {
+  border-radius: 0.5rem;
+  -webkit-box-shadow: 0 2px 5px #eeeeee;
+          box-shadow: 0 2px 5px #eeeeee;
+}
+
+#landing footer, #landing nav {
+  visibility: hidden;
+}
+
+#landing .header {
+  display: none !important;
 }
 
 /* Responsive layout - when the screen is less than 600px wide, make the three columns stack on top of each other instead of next to each other */

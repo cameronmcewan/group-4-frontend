@@ -11,7 +11,7 @@ const PortfolioAccordion = (props) => {
   const userContext = useContext(UserContext);
 
   return (
-    <Accordion>
+    <Accordion className="block">
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1bh-content"

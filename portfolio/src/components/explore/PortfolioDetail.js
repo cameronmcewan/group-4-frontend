@@ -60,14 +60,14 @@ const PortfolioDetail = (props) => {
   };
 
   return (
-    <div>
-      <div style={{ float: "left", height: "500px", width: "500px" }}>
+    <div className="row">
+      <div className="col-2" style={{ height: "500px", width: "400px" }}>
         <CustomPieChart
           tokenAddresses={tokenAddresses}
           percentageHoldings={percentageHoldings}
         />
       </div>
-      <div style={{ float: "right" }}>
+      <div className="block col-1">
         <p>Circulating Supply:</p>
         <p>{totalSupply}</p>
         <p>Your Balance:</p>
