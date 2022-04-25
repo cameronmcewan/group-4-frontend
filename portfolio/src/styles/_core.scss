@@ -62,7 +62,13 @@ body {
     min-height: 100;
 }
 
+nav {
+    background-color: $blue;
+    color: $blue;
+}
+
 footer {
+    min-height: $nav-height;
     color: $white;
     padding: 1rem;
     margin-top: auto;
@@ -139,6 +145,7 @@ section {
     padding-bottom: 12rem;
     // margin-bottom: 12rem;
 }
+
 
 /* each section will contain a h2 and h5 by default */
 section > h2, section > h5 {

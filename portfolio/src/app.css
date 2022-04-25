@@ -125,6 +125,10 @@ section {
   padding-bottom: 12rem;
 }
 
+.main {
+  margin-top: 100px;
+}
+
 /* each section will contain a h2 and h5 by default */
 section > h2, section > h5 {
   text-align: center;
@@ -245,8 +249,22 @@ a:hover {
   }
 }
 
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 60px;
+}
+
 nav {
-  height: 100px;
+  display: block;
+  position: fixed;
+  height: 80px;
   margin-right: 0 auto;
   text-align: center;
 }
@@ -256,7 +274,7 @@ nav ul {
   padding-right: 100px;
   padding-left: 100px;
   width: 100vw;
-  height: 100px;
+  height: 80px;
   overflow: hidden;
   border-bottom: 1px solid #eeeeee;
   text-align: left;
@@ -281,7 +299,7 @@ nav ul li a.logo {
 
 nav ul li a img {
   width: 100%;
-  height: 100px;
+  height: 80px;
   opacity: .6;
   -webkit-transition: .6s;
   transition: .6s;
