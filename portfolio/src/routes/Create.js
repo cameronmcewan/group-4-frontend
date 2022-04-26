@@ -291,18 +291,23 @@ const Create = () => {
         <h1>{stepThreeText}</h1>
         <div className="tokenline">
           <input
-            max={100}
-            min={0}
             type="number"
+            max="100"
+            min="0"
+            step="0.01"
+            placeholder="0.00"
             value={ownerFee}
             onChange={(e) => {
-              console.log(e.target.value);
               if (e.target.value > 100) {
                 setOwnerFee(100);
               } else if (e.target.value < 0) {
                 setOwnerFee(0);
               } else {
-                setOwnerFee(e.target.value.replace(/^(0+)|[^\d]+/g, ""));
+                if (e.target.value.includes(".")) {
+                  setOwnerFee(parseFloat(e.target.value).toFixed(2));
+                } else {
+                  setOwnerFee(parseFloat(e.target.value));
+                }
               }
             }}
           ></input>
@@ -320,7 +325,10 @@ const Create = () => {
             <div
               className={infoOpen === true ? "tipmessage show" : "tipmessage"}
             >
-              tip txt value content
+              This fee will be paid to the owner of the portfolio every time
+              someone buys into the portfolio. For example, if the fee is 1%,
+              the owner will receive 1% of the assets bought when someone buys
+              into the portfolio. Rounded to 2 d.p.
             </div>
           </div>
         </div>
