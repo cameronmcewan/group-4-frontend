@@ -57,41 +57,19 @@ ul {
   padding: 0;
 }
 
-button {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  padding: 1rem 1rem;
-  margin: 1rem;
-  border-radius: 1.5rem;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  cursor: pointer;
-  border: none;
-  -webkit-transition: all 400ms ease;
-  transition: all 400ms ease;
-  -webkit-box-shadow: 8px 8px 0 #eeeeee;
-          box-shadow: 8px 8px 0 #eeeeee;
-}
-
-button:hover {
-  margin-top: 1.4rem;
-  margin-left: 1.6rem;
-  -webkit-box-shadow: 0 0 10px #eeeeee;
-          box-shadow: 0 0 10px #eeeeee;
-}
-
 /* =============== General styles ============== */
 .container {
   width: 75%;
   margin: 0 auto;
+  margin-top: 4rem;
+  margin-bottom: 10rem;
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-weight: 500;
 }
 
@@ -126,6 +104,7 @@ section > h2, section > h5 {
 
 section > h2 {
   color: #ffffff;
+  margin-top: 3rem;
   margin-bottom: 1rem;
 }
 
@@ -145,17 +124,25 @@ a:hover {
   opacity: 0.4;
 }
 
-.btn {
+button {
   display: inline-block;
   width: 100%;
-  max-width: 300px;
+  max-width: 250px;
   padding: 1rem 1rem;
   margin: 1rem;
   border-radius: 1.5rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   cursor: pointer;
   border: none;
   -webkit-transition: all 400ms ease;
   transition: all 400ms ease;
+}
+
+button:hover {
+  -webkit-box-shadow: 0 0 10px #eeeeee;
+          box-shadow: 0 0 10px #eeeeee;
 }
 
 .hollow {
@@ -166,23 +153,61 @@ a:hover {
   background-repeat: no-repeat;
   background: transparent no-repeat;
   border-radius: 10rem;
+  -webkit-box-shadow: 4px 4px 0 #eeeeee;
+          box-shadow: 4px 4px 0 #eeeeee;
 }
 
-.btn.large {
+button.metamask {
+  max-width: 400px;
+}
+
+button.large {
   font-size: x-large;
 }
 
-/* buttons will have hover effect */
-.btn:hover {
+.btn-primary {
   background: #ffffff;
   color: #0000ff;
   border-color: none;
+  border-radius: 10rem;
+  -webkit-box-shadow: 4px 4px 0 #eeeeee;
+          box-shadow: 4px 4px 0 #eeeeee;
 }
 
-.btn-primary {
-  background: #eeeeee;
+.btn-secondary {
+  border: 1px solid #ffffff;
+  background-color: transparent;
+  color: #ffffff;
+  border-radius: 10rem;
+  background-repeat: no-repeat;
+  background: transparent no-repeat;
+  -webkit-box-shadow: 4px 4px 0 #eeeeee;
+          box-shadow: 4px 4px 0 #eeeeee;
+}
+
+/* buttons will have hover effect */
+button.large:hover {
+  background: #ffffff;
   color: #0000ff;
   border-color: none;
+  -webkit-box-shadow: 4px 4px 0 #eeeeee, 0 0 5px #eeeeee;
+          box-shadow: 4px 4px 0 #eeeeee, 0 0 5px #eeeeee;
+}
+
+.btn-primary:hover {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid #eeeeee;
+  -webkit-box-shadow: 4px 4px 0 #eeeeee, 0 0 5px #eeeeee;
+          box-shadow: 4px 4px 0 #eeeeee, 0 0 5px #eeeeee;
+}
+
+.btn-secondary:hover {
+  background: #ffffff;
+  color: #0000ff;
+  border: 1px solid #eeeeee;
+  -webkit-box-shadow: 4px 4px 0 #eeeeee, 0 0 5px #eeeeee;
+          box-shadow: 4px 4px 0 #eeeeee, 0 0 5px #eeeeee;
 }
 
 .btn-cta {
@@ -241,7 +266,7 @@ a:hover {
 nav {
   background-color: #000050;
   position: fixed;
-  height: 70px;
+  height: 80px;
   margin-right: 0 auto;
   text-align: center;
 }
@@ -263,7 +288,7 @@ nav ul {
   padding-right: 100px;
   padding-left: 100px;
   width: 100vw;
-  height: 70px;
+  height: 80px;
   overflow: hidden;
   border-bottom: 1px solid #eeeeee;
   text-align: left;
@@ -284,12 +309,14 @@ nav ul li a {
 nav ul li a.logo {
   display: inline-block;
   margin-right: 3vw;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
 
 nav ul li a img {
   width: 100%;
-  height: 70px;
-  opacity: .6;
+  height: 80px;
+  opacity: 1;
   -webkit-transition: .6s;
   transition: .6s;
 }

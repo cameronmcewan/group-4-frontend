@@ -83,33 +83,20 @@ ul {
     padding: 0;
 }
 
-button {
-    display: flex;
-    width: max-content;
-    padding: 1rem 1rem;
-    margin: 1rem;
-    border-radius: 1.5rem;
-    justify-content: center;
-    cursor: pointer;
-    border: none;
-    transition: $transition;
-    box-shadow: 8px 8px 0 $grey;
-}
-
-button:hover {
-    margin-top: 1.4rem;
-    margin-left: 1.6rem;
-    box-shadow: 0 0 10px $grey;
-}
-
 /* =============== General styles ============== */
 
 .container {
     width: $container-width-lg;
     margin: 0 auto;
+    margin-top: 4rem;
+    margin-bottom: 10rem;
 }
 
-h1, h2, h3, h4, h5 {
+h1, 
+h2, 
+h3, 
+h4, 
+h5 {
     font-weight: 500;
 }
 
@@ -143,6 +130,7 @@ section > h2, section > h5 {
 
 section > h2 {
     color: $white;
+    margin-top: 3rem;
     margin-bottom: 1rem;
 }
 
@@ -161,16 +149,20 @@ a:hover {
     opacity: 0.4;
 }
 
-.btn {
+button {
     display: inline-block;
     width: 100%;
-    max-width: 300px;
+    max-width: 250px;
     padding: 1rem 1rem;
     margin: 1rem;
     border-radius: 1.5rem;
+    justify-content: center;
     cursor: pointer;
     border: none;
     transition: $transition;
+}
+button:hover {
+    box-shadow: 0 0 10px $grey;
 }
 
 .hollow {
@@ -181,25 +173,56 @@ a:hover {
     background-repeat:no-repeat;
     background: transparent no-repeat;
     border-radius: 10rem;
+    box-shadow: 4px 4px 0 $grey;
 }
 
-.btn.large { 
+button.metamask {
+    max-width: 400px;
+}
+
+
+button.large { 
     font-size: x-large;
 }
 
-/* buttons will have hover effect */
-.btn:hover {
+.btn-primary {
     background: $white;
     color: $blue;
     border-color: none;
+    border-radius: 10rem;
+    box-shadow: 4px 4px 0 $grey;
 }
 
-.btn-primary {
-    background: $grey;
+.btn-secondary {
+    border: 1px solid $white;
+    background-color: transparent;
+    color: $white;
+    border-radius: 10rem;
+    background-repeat:no-repeat;
+    background: transparent no-repeat;
+    box-shadow: 4px 4px 0 $grey;
+}
+
+/* buttons will have hover effect */
+button.large:hover {
+    background: $white;
     color: $blue;
     border-color: none;
+    box-shadow: 4px 4px 0 $grey, 0 0 5px $grey;
 }
 
+.btn-primary:hover {    
+    background: transparent;
+    color: $white;
+    border: 1px solid $grey;
+    box-shadow: 4px 4px 0 $grey, 0 0 5px $grey;
+}
+.btn-secondary:hover {
+    background: $white;
+    color: $blue;
+    border: 1px solid $grey;
+    box-shadow: 4px 4px 0 $grey, 0 0 5px $grey;
+}
 .btn-cta {
     background: $red;
     color: $white;
