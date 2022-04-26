@@ -49,7 +49,7 @@ const Create = () => {
   const StepTwo = useRef(null);
   const stepTwoText = "Name your PortFolio";
   const StepThree = useRef(null);
-  const stepThreeText = "Set a fee for using your PortFolio";
+  const stepThreeText = "Set a fee for your PortFolio";
   const StepFour = useRef(null);
   const stepFourText = "Deploy your PortFolio";
   const StepFive = useRef(null);
@@ -252,12 +252,10 @@ const Create = () => {
         <h1>{stepTwoText}</h1>
         <div id="Step2">
           <FormControl fullWidth className="formline" variant="outlined">
-            <InputLabel htmlFor="outlined-adornment-amount">
-              Create a name for your ETF token
-            </InputLabel>
+            <InputLabel htmlFor="outlined-adornment-amount">Name</InputLabel>
             <OutlinedInput
               defaultValue={tokenName}
-              placeholder="Top 10 Index"
+              placeholder="DeFi Index"
               onChange={(e) => {
                 setTokenName(e.target.value);
               }}
@@ -266,12 +264,10 @@ const Create = () => {
             />
           </FormControl>
           <FormControl fullWidth className="formline" variant="outlined">
-            <InputLabel htmlFor="outlined-adornment-amount">
-              Create a Symbol for your token
-            </InputLabel>
+            <InputLabel htmlFor="outlined-adornment-amount">Symbol</InputLabel>
             <OutlinedInput
               defaultValue={tokenSymbol}
-              placeholder=" CT 10"
+              placeholder="DFIX"
               id="userToken"
               labelWidth={240}
               onChange={(e) => {
