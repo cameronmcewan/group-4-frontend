@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-      <nav className="navbar sticky">
+      <nav>
           <ul>
             <li>
               <Link className="logo" to="/">
@@ -23,7 +23,6 @@ function Navbar() {
             </li>
           </ul>  
       </nav>
-
   );
 }
 
