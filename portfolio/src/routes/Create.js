@@ -1,15 +1,12 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import "./Create.css";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
 import IconButton from "@material-ui/core/IconButton";
-import Delete from "@material-ui/icons/Delete";
-import SearchIcon from "@material-ui/icons/Search";
+import DeleteIcon from "@material-ui/icons/Delete";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import LockIcon from "@material-ui/icons/Lock";
-import LockOpenIcon from "@material-ui/icons/LockOpen";
 import ListItemText from "@material-ui/core/ListItemText";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -17,8 +14,11 @@ import OutlinedInput from "@material-ui/core/OutlinedInput";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import YingtongPie from "../components/YingtongPie";
 import YingtongPie2 from "../components/YingtongPie2";
-import name from "../helpers/name";
+import KovanTokens from "../helpers/KovanTokens";
 import Slider from "@material-ui/core/Slider";
+import { UserContext } from "../helpers/UserContext";
+import { ethers } from "ethers";
+import PortfolioFactory from "../contracts/PortfolioFactory.json";
 import "echarts/lib/chart/pie";
 import "echarts/lib/component/tooltip";
 import "echarts/lib/component/title";
@@ -45,32 +45,38 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ListItemLink(props) {
-  return <ListItem button component="a" {...props} />;
-}
-
 const Create = () => {
+  const userContext = useContext(UserContext);
+
   const Begin = useRef(null);
-  const Step1 = useRef(null);
-  const Step2 = useRef(null);
-  const Step3 = useRef(null);
-  const FinalStep = useRef(null);
-  const [ownerFee, setOwnerFee] = useState(0);
-  const [infoOpen, setInfoOpen] = useState(false);
-  const [initialisationAmount, setInitialisationAmount] = useState("");
-  const [list, setList] = useState([
-    {
-      name: "BTS",
-      qname: "BTS",
-      rate: 0,
-      scrollval: 0,
-      state: true,
-    },
-  ]);
-  const [searchList, setsearchList] = useState(name);
-  const [tokenSearchText, setTokenSearchText] = useState("");
+  const StepOne = useRef(null);
+  const stepOneText = "Add tokens to your PortFolio";
+  const StepTwo = useRef(null);
+  const stepTwoText = "Name your PortFolio";
+  const StepThree = useRef(null);
+  const stepThreeText = "Set a fee for your PortFolio";
+  const StepFour = useRef(null);
+  const stepFourText = "Deploy your PortFolio";
+  const StepFive = useRef(null);
+  const stepFiveText = "Initialise your PortFolio";
+
   const [tokenName, setTokenName] = useState("");
   const [tokenSymbol, setTokenSymbol] = useState("");
+  const [ownerFee, setOwnerFee] = useState(0);
+  const [initialisationAmount, setInitialisationAmount] = useState("");
+
+  // Each selected token looks like:
+  // {
+  //   name: "BTS",
+  //   qname: "BTS",
+  //   weightVal: 0,
+  //   scrollVal: 0
+  // }
+  const [selectedTokenList, setSelectedTokenList] = useState([]);
+  const [searchList, setSearchList] = useState(KovanTokens);
+  const [tokenSearchText, setTokenSearchText] = useState("");
+
+  const [infoOpen, setInfoOpen] = useState(false);
 
   const goToBegin = () =>
     window.scrollTo({
@@ -80,47 +86,120 @@ const Create = () => {
 
   const goToStep1 = () =>
     window.scrollTo({
-      top: Step1.current.offsetTop,
+      top: StepOne.current.offsetTop,
       behavior: "smooth",
     });
 
   const goToStep2 = () =>
     window.scrollTo({
-      top: Step2.current.offsetTop,
+      top: StepTwo.current.offsetTop,
       behavior: "smooth",
     });
 
   const goToStep3 = () =>
     window.scrollTo({
-      top: Step3.current.offsetTop,
+      top: StepThree.current.offsetTop,
       behavior: "smooth",
     });
 
-  const goToFinalStep = () =>
+  const goToStep4 = () =>
     window.scrollTo({
-      top: FinalStep.current.offsetTop,
+      top: StepFour.current.offsetTop,
       behavior: "smooth",
     });
-  function valuetext(value) {
-    return `${value}%`;
-  }
+
+  const goToStep5 = () =>
+    window.scrollTo({
+      top: StepFive.current.offsetTop,
+      behavior: "smooth",
+    });
+
+  useEffect(() => {
+    let nameResults = KovanTokens().filter((ele) => {
+      return (
+        ele.name.toLowerCase().indexOf(tokenSearchText.toLowerCase()) !== -1
+      );
+    });
+    let qnameResults = KovanTokens().filter((ele) => {
+      return (
+        ele.qname.toLowerCase().indexOf(tokenSearchText.toLowerCase()) !== -1
+      );
+    });
+    if (nameResults.length !== 0) {
+      setSearchList([...nameResults]);
+    } else {
+      setSearchList([...qnameResults]);
+    }
+  }, [tokenSearchText]);
+
+  const deployPortfolio = async () => {
+    console.log("DEPLOY: function called");
+    const portfolioFactory = new ethers.Contract(
+      "0x46783Fc2f92AdC132F5DE2f4BDE4138e3Ed8673a",
+      PortfolioFactory.abi,
+      userContext.signer
+    );
+    let tokenAddresses = selectedTokenList.map((token) => token.address);
+    console.log(`DEPLOY: tokenAddresses length = ${tokenAddresses.length}`);
+    console.log(`DEPLOY: tokenAddresses first address = ${tokenAddresses[0]}`);
+    let percentageHoldings = standardiseHoldings(
+      selectedTokenList.map((token) => token.weightVal)
+    );
+    console.log(
+      `DEPLOY: percentageHoldings length = ${percentageHoldings.length}`
+    );
+    percentageHoldings.map((holding) => {
+      console.log(`DEPLOY: percentageHolding values = ${holding}`);
+    });
+
+    await portfolioFactory.create(
+      tokenName,
+      tokenSymbol,
+      tokenAddresses,
+      percentageHoldings,
+      ownerFee
+    );
+  };
+
+  const standardiseHoldings = (tokenWeights) => {
+    let weightSum = tokenWeights.reduce(
+      (accumulator, current) => accumulator + current
+    );
+    console.log(`DEPLOY: sum of holdings = ${weightSum}`);
+    let percentageHoldings = tokenWeights.map((weight) =>
+      Math.round((weight * 100) / weightSum)
+    );
+    let percentageSum = percentageHoldings.reduce(
+      (accumulator, current) => accumulator + current
+    );
+    if (percentageSum >= 100) {
+      percentageHoldings[0] -= percentageSum - 100;
+    } else if (percentageSum <= 100) {
+      percentageHoldings[0] += 100 - percentageSum;
+    }
+    return percentageHoldings;
+  };
+
   const classes = useStyles();
   return (
     <>
       <section ref={Begin}>
-        <h1>Create Your Own ETF Token</h1>
-        <li className="block">
+        <h1>Create a PortFolio</h1>
+        <li className="createblock">
           <ul>
-            <h2>1. Choose Crypto Tokens To Add To Your ETF Token</h2>
+            <h2>1. {stepOneText}</h2>
           </ul>
           <ul>
-            <h2>2. Name Your ETF Token</h2>
+            <h2>2. {stepTwoText}</h2>
           </ul>
           <ul>
-            <h2>3. Set A Fee For Your ETF Token</h2>
+            <h2>3. {stepThreeText}</h2>
           </ul>
           <ul>
-            <h2>4. Review Your Token And Deploy To The Kovan Testnet</h2>
+            <h2>4. {stepFourText}</h2>
+          </ul>
+          <ul>
+            <h2>5. {stepFiveText}</h2>
           </ul>
         </li>
         <div className="btn-scroll">
@@ -130,83 +209,47 @@ const Create = () => {
         </div>
       </section>
 
-      <section ref={Step1}>
+      <section ref={StepOne}>
         <h2>Step 1</h2>
-        <h1>Add Crypto Tokens To Your ETF Token</h1>
+        <h1>{stepOneText}</h1>
         <div className="row" id="step1">
           <div className="col-12 box">
             <div className="topbox">
-              {list.map((ele, i) => {
+              {selectedTokenList.map((ele, i) => {
                 return (
                   <div className="mainbox" key={i}>
                     <p className="line btn-group">
-                      <span className="tit">
-                        {ele.name}&nbsp;<small>({ele.qname}&nbsp;)</small>
+                      <span>
+                        {ele.name}&nbsp;<small>({ele.qname})</small>
                       </span>
-                      <input
-                        value={ele.rate}
-                        readOnly
-                        className="percentage"
-                        placeholder="percentage"
-                        type="text"
-                      ></input>
-                      %
-                      {ele.state === true ? (
-                        <IconButton
-                          type="button"
-                          onClick={() => {
-                            let datalist = list;
-                            datalist[i].state = false;
-                            setsearchList([...datalist]);
-                          }}
-                        >
-                          <LockIcon />
-                        </IconButton>
-                      ) : (
-                        <IconButton
-                          type="button"
-                          onClick={() => {
-                            let datalist = list;
-                            datalist[i].state = true;
-                            setsearchList([...datalist]);
-                          }}
-                        >
-                          <LockOpenIcon />
-                        </IconButton>
-                      )}
                       <IconButton
                         type="button"
                         onClick={() => {
-                          let datalist = list;
-                          datalist.splice(i, 1);
-                          setsearchList([...datalist]);
+                          let selectedTokens = selectedTokenList;
+                          selectedTokens.splice(i, 1);
+                          setSearchList([...selectedTokens]);
                         }}
                       >
-                        <Delete />
+                        <DeleteIcon />
                       </IconButton>
                     </p>
                     <Slider
-                      disabled={ele.state}
-                      defaultValue={ele.scrollval}
-                      getAriaValueText={valuetext}
+                      defaultValue={ele.scrollVal}
                       aria-labelledby="discrete-slider-custom"
                       step={1}
                       min={0}
                       max={100}
-                      valueLabelDisplay="auto"
                       onChange={(event, newValue) => {
-                        if (ele.state === false) {
-                          let mainlist = list;
-                          mainlist[i].rate = newValue;
-                          setList([...mainlist]);
-                        }
+                        let tokenList = selectedTokenList;
+                        tokenList[i].weightVal = newValue;
+                        setSelectedTokenList([...tokenList]);
                       }}
                     />
                   </div>
                 );
               })}
             </div>
-            <YingtongPie List={list} />
+            <YingtongPie List={selectedTokenList} />
           </div>
           <div className="col-12 box rightbox">
             <Paper component="form" className={classes.root}>
@@ -219,23 +262,6 @@ const Create = () => {
                 placeholder="Search token"
                 inputProps={{ "aria-label": "search token" }}
               />
-              <IconButton
-                type="button"
-                className={classes.iconButton}
-                aria-label="search"
-                onClick={() => {
-                  let result = name().filter((ele) => {
-                    return (
-                      ele.name
-                        .toLowerCase()
-                        .indexOf(tokenSearchText.toLowerCase()) !== -1
-                    );
-                  });
-                  setsearchList([...result]);
-                }}
-              >
-                <SearchIcon />
-              </IconButton>
             </Paper>
 
             <List
@@ -249,12 +275,11 @@ const Create = () => {
                     <ListItem
                       button
                       onClick={() => {
-                        let listdata = list;
+                        let listdata = selectedTokenList;
                         let result = ele;
-                        result.rate = "0";
-                        result.scrollval = "0";
-                        result.state = false;
-                        setList([...listdata, result]);
+                        result.weightVal = "0";
+                        result.scrollVal = "0";
+                        setSelectedTokenList([...listdata, result]);
                       }}
                     >
                       <ListItemText primary={ele.name} />
@@ -275,17 +300,15 @@ const Create = () => {
         </div>
       </section>
 
-      <section ref={Step2}>
+      <section ref={StepTwo}>
         <h2>Step 2</h2>
-        <h1>Add Basic Details</h1>
+        <h1>{stepTwoText}</h1>
         <div id="Step2">
           <FormControl fullWidth className="formline" variant="outlined">
-            <InputLabel htmlFor="outlined-adornment-amount">
-              Create a name for your ETF token
-            </InputLabel>
+            <InputLabel htmlFor="outlined-adornment-amount">Name</InputLabel>
             <OutlinedInput
               defaultValue={tokenName}
-              placeholder="Top 10 Index"
+              placeholder="DeFi Index"
               onChange={(e) => {
                 setTokenName(e.target.value);
               }}
@@ -294,12 +317,10 @@ const Create = () => {
             />
           </FormControl>
           <FormControl fullWidth className="formline" variant="outlined">
-            <InputLabel htmlFor="outlined-adornment-amount">
-              Create a Symbol for your token
-            </InputLabel>
+            <InputLabel htmlFor="outlined-adornment-amount">Symbol</InputLabel>
             <OutlinedInput
               defaultValue={tokenSymbol}
-              placeholder=" CT 10"
+              placeholder="DFIX"
               id="userToken"
               labelWidth={240}
               onChange={(e) => {
@@ -318,23 +339,28 @@ const Create = () => {
         </div>
       </section>
 
-      <section ref={Step3}>
+      <section ref={StepThree}>
         <h2>Step 3</h2>
-        <h1>Set A Fee For Your ETF Token</h1>
+        <h1>{stepThreeText}</h1>
         <div className="tokenline">
           <input
-            max={100}
-            min={0}
             type="number"
+            max="100"
+            min="0"
+            step="0.01"
+            placeholder="0.00"
             value={ownerFee}
             onChange={(e) => {
-              console.log(e.target.value);
               if (e.target.value > 100) {
                 setOwnerFee(100);
               } else if (e.target.value < 0) {
                 setOwnerFee(0);
               } else {
-                setOwnerFee(e.target.value.replace(/^(0+)|[^\d]+/g, ""));
+                if (e.target.value.includes(".")) {
+                  setOwnerFee(parseFloat(e.target.value).toFixed(2));
+                } else {
+                  setOwnerFee(parseFloat(e.target.value));
+                }
               }
             }}
           ></input>
@@ -352,7 +378,10 @@ const Create = () => {
             <div
               className={infoOpen === true ? "tipmessage show" : "tipmessage"}
             >
-              tip txt value content
+              This fee will be paid to the owner of the portfolio every time
+              someone buys into the portfolio. For example, if the fee is 1%,
+              the owner will receive 1% of the assets bought when someone buys
+              into the portfolio. Rounded to 2 d.p.
             </div>
           </div>
         </div>
@@ -360,69 +389,46 @@ const Create = () => {
           <button className="btn btn-cta" onClick={goToStep2}>
             Back
           </button>
-          <button className="btn btn-cta" onClick={goToFinalStep}>
+          <button className="btn btn-cta" onClick={goToStep4}>
             Continue
           </button>
         </div>
       </section>
 
-      <section ref={FinalStep} id="last">
-        <h2>Final Step</h2>
-        <h1>Review And Deploy Your New ETF Token</h1>
+      <section ref={StepFour} id="step4">
+        <h2>Step 4</h2>
+        <h1>{stepFourText}</h1>
         <div className="btn-group">
           <div className="btn leftbox">
-            <p>token name: {tokenName}</p>
-            <p>user token: {tokenSymbol}</p>
             <div>
-              <YingtongPie2 List={list} />
+              <YingtongPie2 List={selectedTokenList} />
             </div>
-            <p>Token fee {ownerFee}%</p>
-            <button className="btn btn-cta" onClick={goToStep3}>
-              edit token
-            </button>
           </div>
           <div className="btn rightbox">
-            <p>Deplay your ETF token</p>
-            <div className="fn-clear">
-              <div className="fl">
-                Price to deplay token
-                <br /> in USD
-              </div>
-              <div className="fr">
-                0.0123ETH
-                <br />
-                <div className="price">
-                  $
-                  <FormControl
-                    fullWidth
-                    className="formline"
-                    variant="outlined"
-                  >
-                    <InputLabel htmlFor="outlined-adornment-amount">
-                      price
-                    </InputLabel>
-                    <OutlinedInput
-                      defaultValue={initialisationAmount}
-                      placeholder="input price"
-                      onChange={(e) => {
-                        setInitialisationAmount(e.target.value);
-                      }}
-                      labelWidth={30}
-                    />
-                  </FormControl>
-                </div>
-              </div>
-            </div>
+            <p>Name: {tokenName}</p>
+            <p>Symbol: {tokenSymbol}</p>
+            <p>Fee {ownerFee}%</p>
+            <button className="btn btn-cta" onClick={goToStep1}>
+              Edit
+            </button>
+            <button className="btn btn-cta" onClick={deployPortfolio}>
+              Deploy
+            </button>
           </div>
         </div>
         <div className="btn-scroll">
           <button className="btn btn-cta" onClick={goToStep3}>
             Back
           </button>
-          <button className="btn btn-cta" onClick={goToFinalStep}>
-            Deploy Token
+          <button className="btn btn-cta" onClick={goToStep5}>
+            Continue
           </button>
         </div>
+      </section>
+
+      <section ref={StepFive}>
+        <h2>Step 5</h2>
+        <h1>{stepFiveText}</h1>
       </section>
     </>
   );

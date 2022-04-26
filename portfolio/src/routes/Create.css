@@ -122,37 +122,37 @@ iframe {
   width: 300px;
   background-color: #fff;
 }
-#last .btn-group {
+#step4 .btn-group {
   width: 900px;
   margin: auto;
   background-color: #fff;
   display: flex;
   border-radius: 10px;
 }
-#last .btn-group .btn {
+#step4 .btn-group .btn {
   flex-grow: 1;
   color: #333;
   display: block;
 }
-#last .btn-group .btn p {
+#step4 .btn-group .btn p {
   display: block;
   width: 100%;
   font-size: 16px;
   line-height: 40px;
 }
-#last .btn-group .btn .btn-cta {
+#step4 .btn-group .btn .btn-cta {
   color: #fff;
 }
-#last .btn-group .rightbox .fn-clear {
+#step4 .btn-group .rightbox .fn-clear {
   overflow: hidden;
 }
-#last .btn-group .rightbox .fn-clear .fl {
+#step4 .btn-group .rightbox .fn-clear .fl {
   float: left;
 }
-#last .btn-group .rightbox .fn-clear .fr {
+#step4 .btn-group .rightbox .fn-clear .fr {
   float: right;
 }
-#last .btn-group .rightbox .fl,
-#last .btn-group .rightbox .fr {
+#step4 .btn-group .rightbox .fl,
+#step4 .btn-group .rightbox .fr {
   width: 50%;
 }
