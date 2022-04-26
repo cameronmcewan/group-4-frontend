@@ -5,24 +5,24 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-      <nav>
-          <ul>
-            <li>
-              <Link className="logo" to="/">
-                <img  src={Logo} alt="The Folio Logo" />
-              </Link>
-            </li>
-            <li>
-              <Link className="tab" to="explore">Explore</Link>
-            </li>
-            <li>
-              <Link className="tab" to="create">Create</Link>
-            </li>
-            <li className="right">
-              <MetaMask />
-            </li>
-          </ul>  
-      </nav>
+    <nav className="navbar sticky">
+    <ul>
+      <li>
+        <Link className="logo" to="/">
+          <img  src={Logo} alt="The Folio Logo" />
+        </Link>
+      </li>
+      <li>
+        <Link className="tab" to="explore">Explore</Link>
+      </li>
+      <li>
+        <Link className="tab" to="create">Create</Link>
+      </li>
+      <li className="right">
+        <MetaMask />
+      </li>
+    </ul>  
+</nav>
   );
 }
 

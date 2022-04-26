@@ -1,11 +1,20 @@
 // ======= Navbar ==========
-$nav-height: 100px;
+$nav-height: 80px;
+$nav-color: #000050;
 
 nav {
-    // width: 100vw;
+    background-color: $nav-color;
+    position: fixed;
     height: $nav-height;
     margin-right: 0 auto;
     text-align: center;
+}
+
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 nav ul {
@@ -33,14 +42,15 @@ nav ul li a{
 
 nav ul li a.logo {
     display: inline-block;
-    // margin-right: 50px;
     margin-right: 3vw;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
 
 nav ul li a img {
     width: 100%; 
     height: $nav-height;
-    opacity: .6;
+    opacity: 1;
     transition: .6s;
 }
 
@@ -87,9 +97,18 @@ li.right a {
 
 // ========== Footer styling ==========
 
-footer.logo {
+footer {
+    color: $white;
+    background-color: $nav-color;
+    padding: 1rem;
+    margin-top: auto;
+    border-top: 1px solid $grey;
+}
+
+footer .logo {
     display: inline-block;
-    width: 2rem;
+    height: 2rem;
+    margin-right: 3vw;
 }
 
 //  ========= Create page styling ===========
