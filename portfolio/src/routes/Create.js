@@ -106,19 +106,22 @@ const Create = () => {
   return (
     <>
       <section ref={Begin}>
-        <h1>Create Your Own ETF Token</h1>
-        <li className="block">
+        <h1>Create a PortFolio</h1>
+        <li className="createblock">
           <ul>
-            <h2>1. Choose Crypto Tokens To Add To Your ETF Token</h2>
+            <h2>1. Choose the crypto tokens to add to your PortFolio</h2>
           </ul>
           <ul>
-            <h2>2. Name Your ETF Token</h2>
+            <h2>2. Name your PortFolio</h2>
           </ul>
           <ul>
-            <h2>3. Set A Fee For Your ETF Token</h2>
+            <h2>3. Set a fee for using your PortFolio</h2>
           </ul>
           <ul>
-            <h2>4. Review Your Token And Deploy To The Kovan Testnet</h2>
+            <h2>4. Deploy your PortFolio</h2>
+          </ul>
+          <ul>
+            <h2>5. Initialise your PortFolio</h2>
           </ul>
         </li>
         <div className="btn-scroll">
