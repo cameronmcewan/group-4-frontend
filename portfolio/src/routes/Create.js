@@ -127,6 +127,8 @@ const Create = () => {
     }
   }, [tokenSearchText]);
 
+  const deployToken = () => {};
+
   const classes = useStyles();
   return (
     <>
@@ -347,56 +349,28 @@ const Create = () => {
         <h1>{stepFourText}</h1>
         <div className="btn-group">
           <div className="btn leftbox">
-            <p>token name: {tokenName}</p>
-            <p>user token: {tokenSymbol}</p>
             <div>
               <YingtongPie2 List={selectedTokenList} />
             </div>
-            <p>Token fee {ownerFee}%</p>
-            <button className="btn btn-cta" onClick={goToStep3}>
-              edit token
-            </button>
           </div>
           <div className="btn rightbox">
-            <p>Deplay your ETF token</p>
-            <div className="fn-clear">
-              <div className="fl">
-                Price to deplay token
-                <br /> in USD
-              </div>
-              <div className="fr">
-                0.0123ETH
-                <br />
-                <div className="price">
-                  $
-                  <FormControl
-                    fullWidth
-                    className="formline"
-                    variant="outlined"
-                  >
-                    <InputLabel htmlFor="outlined-adornment-amount">
-                      price
-                    </InputLabel>
-                    <OutlinedInput
-                      defaultValue={initialisationAmount}
-                      placeholder="input price"
-                      onChange={(e) => {
-                        setInitialisationAmount(e.target.value);
-                      }}
-                      labelWidth={30}
-                    />
-                  </FormControl>
-                </div>
-              </div>
-            </div>
+            <p>Name: {tokenName}</p>
+            <p>Symbol: {tokenSymbol}</p>
+            <p>Fee {ownerFee}%</p>
+            <button className="btn btn-cta" onClick={goToStep1}>
+              Edit
+            </button>
+            <button className="btn btn-cta" onClick={deployToken}>
+              Deploy
+            </button>
           </div>
         </div>
         <div className="btn-scroll">
           <button className="btn btn-cta" onClick={goToStep3}>
             Back
           </button>
-          <button className="btn btn-cta" onClick={goToStep4}>
-            Deploy Token
+          <button className="btn btn-cta" onClick={goToStep5}>
+            Continue
           </button>
         </div>
       </section>
