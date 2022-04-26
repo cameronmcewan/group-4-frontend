@@ -416,8 +416,9 @@ footer .logo {
 .block {
   background-color: #ffffff;
   color: #0000ff;
-  padding: 1rem  3rem;
+  padding: 1rem 2rem;
   margin: 1rem 4rem;
+  height: 100%;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;

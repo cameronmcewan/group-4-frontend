@@ -1,21 +1,8 @@
 #step1 {
   display: flex;
+  justify-content: space-between;
 }
-#step1 .makeStyles-root-14 {
-  width: 100%;
-}
-#step1 .topbox {
-  max-height: 300px;
-  overflow: auto;
-  padding: 0 10px;
-}
-#step1 .topbox .box .line.btn-group {
-  display: flex;
-}
-#step1 .topbox .box .line.btn-group .percentage {
-  width: 60px;
-  margin: 0 10px;
-}
+
 #step1 .box {
   padding: 30px;
   box-sizing: border-box;
@@ -23,21 +10,21 @@
   background-color: #fff;
   flex-grow: 1;
   margin: 0 30px;
-  display: inline-block;
-  width: 50%;
+  /* width: 500px; */
 }
-#step1 .box .MuiPaper-root {
-  margin: auto;
+#step1 .box.left {
+  display: flex;
+  flex: 3;
 }
-#step1 .box .liftline {
-  width: 100%;
+
+#step1 .box .btn-group .percentage {
+  /* width: 60px; */
+  /* margin: 0 10px; */
 }
-#step1 .box .line {
-  color: #000;
-}
+
 #step1 .box .line p,
 #step1 .box .line span {
-  color: #000;
+  color: $utpl;
 }
 #step1 .box .line {
   font-size: 14px;
@@ -48,25 +35,23 @@
   display: flex;
   color: #333;
 }
-#step1 .box .tit {
-  width: 120px;
-}
+
 #step1 .box .fr {
   float: right;
 }
-#step1 .rightbox {
+#step1 .right {
   display: flex;
   flex-direction: column;
+  flex = 2;
+  width: ; 
 }
-#step1 .rightbox .listscroll {
+#step1 .right .listscroll {
+  flex: 1;
   flex-grow: 1;
-  overflow: auto;
-  max-height: 800px;
-  padding-right: 30px;
+  overflow: auto; 
+  min-height: 200px; 
 }
-#step1 .rightbox span {
-  color: #333;
-}
+
 /* 强制隐藏iframe弹框 */
 iframe {
   display: none !important;

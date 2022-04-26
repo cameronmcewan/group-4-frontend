@@ -136,8 +136,9 @@ footer .logo {
 .block {
     background-color: $white;
     color: $blue;
-    padding: 1rem  3rem;
+    padding: 1rem 2rem;
     margin: 1rem 4rem;
+    height: 100%;
     width: fit-content;
     border-radius: 0.5rem;
     justify-content: center;
@@ -148,6 +149,7 @@ footer .logo {
     // animation-duration: 3s;
     box-shadow: 0 10px 30px $black;
 }
+
 .post {
 	display: flex;
     flex-direction: column;

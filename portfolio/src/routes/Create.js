@@ -217,12 +217,11 @@ const Create = () => {
         <h2>Step 1</h2>
         <h1>{stepOneText}</h1>
         <div className="row" id="step1">
-          <div className="col-12 box">
+          <div className="box left">
             <div className="topbox">
               {selectedTokenList.map((ele, i) => {
                 return (
-                  <div className="mainbox" key={i}>
-                    <p className="line btn-group">
+                  <div className="btn-group" key={i}>
                       <span>
                         {ele.name}&nbsp;<small>({ele.qname})</small>
                       </span>
@@ -236,7 +235,6 @@ const Create = () => {
                       >
                         <DeleteIcon />
                       </IconButton>
-                    </p>
                     <Slider
                       defaultValue={ele.scrollVal}
                       aria-labelledby="discrete-slider-custom"
@@ -255,7 +253,7 @@ const Create = () => {
             </div>
             <YingtongPie List={selectedTokenList} />
           </div>
-          <div className="col-12 box rightbox">
+          <div className="box right">
             <Paper component="form" className={classes.root}>
               <InputBase
                 defaultValue={tokenSearchText}
@@ -308,7 +306,7 @@ const Create = () => {
         <h2>Step 2</h2>
         <h1>{stepTwoText}</h1>
         <div id="Step2">
-          <FormControl fullWidth className="formline" variant="outlined">
+          <FormControl fullWidth className="" variant="outlined">
             <InputLabel htmlFor="outlined-adornment-amount">Name</InputLabel>
             <OutlinedInput
               defaultValue={tokenName}
