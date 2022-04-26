@@ -17,7 +17,7 @@ import OutlinedInput from "@material-ui/core/OutlinedInput";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import YingtongPie from "../components/YingtongPie";
 import YingtongPie2 from "../components/YingtongPie2";
-import name from "../helpers/name";
+import Tokens from "../helpers/Tokens";
 import Slider from "@material-ui/core/Slider";
 import "echarts/lib/chart/pie";
 import "echarts/lib/component/tooltip";
@@ -45,18 +45,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ListItemLink(props) {
-  return <ListItem button component="a" {...props} />;
-}
-
 const Create = () => {
   const Begin = useRef(null);
   const Step1 = useRef(null);
   const Step2 = useRef(null);
   const Step3 = useRef(null);
   const FinalStep = useRef(null);
+
+  const [tokenName, setTokenName] = useState("");
+  const [tokenSymbol, setTokenSymbol] = useState("");
   const [ownerFee, setOwnerFee] = useState(0);
-  const [infoOpen, setInfoOpen] = useState(false);
   const [initialisationAmount, setInitialisationAmount] = useState("");
   const [list, setList] = useState([
     {
@@ -67,10 +65,10 @@ const Create = () => {
       state: true,
     },
   ]);
-  const [searchList, setsearchList] = useState(name);
+
+  const [infoOpen, setInfoOpen] = useState(false);
+  const [searchList, setsearchList] = useState(Tokens);
   const [tokenSearchText, setTokenSearchText] = useState("");
-  const [tokenName, setTokenName] = useState("");
-  const [tokenSymbol, setTokenSymbol] = useState("");
 
   const goToBegin = () =>
     window.scrollTo({
@@ -224,7 +222,7 @@ const Create = () => {
                 className={classes.iconButton}
                 aria-label="search"
                 onClick={() => {
-                  let result = name().filter((ele) => {
+                  let result = Tokens().filter((ele) => {
                     return (
                       ele.name
                         .toLowerCase()
