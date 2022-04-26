@@ -47,10 +47,16 @@ const useStyles = makeStyles((theme) => ({
 
 const Create = () => {
   const Begin = useRef(null);
-  const Step1 = useRef(null);
-  const Step2 = useRef(null);
-  const Step3 = useRef(null);
-  const FinalStep = useRef(null);
+  const StepOne = useRef(null);
+  const stepOneText = "Add tokens to your PortFolio";
+  const StepTwo = useRef(null);
+  const stepTwoText = "Name your PortFolio";
+  const StepThree = useRef(null);
+  const stepThreeText = "Set a fee for using your PortFolio";
+  const StepFour = useRef(null);
+  const stepFourText = "Deploy your PortFolio";
+  const StepFive = useRef(null);
+  const stepFiveText = "Initialise your PortFolio";
 
   const [tokenName, setTokenName] = useState("");
   const [tokenSymbol, setTokenSymbol] = useState("");
@@ -78,27 +84,34 @@ const Create = () => {
 
   const goToStep1 = () =>
     window.scrollTo({
-      top: Step1.current.offsetTop,
+      top: StepOne.current.offsetTop,
       behavior: "smooth",
     });
 
   const goToStep2 = () =>
     window.scrollTo({
-      top: Step2.current.offsetTop,
+      top: StepTwo.current.offsetTop,
       behavior: "smooth",
     });
 
   const goToStep3 = () =>
     window.scrollTo({
-      top: Step3.current.offsetTop,
+      top: StepThree.current.offsetTop,
       behavior: "smooth",
     });
 
-  const goToFinalStep = () =>
+  const goToStep4 = () =>
     window.scrollTo({
-      top: FinalStep.current.offsetTop,
+      top: StepFour.current.offsetTop,
       behavior: "smooth",
     });
+
+  const goToStep5 = () =>
+    window.scrollTo({
+      top: StepFive.current.offsetTop,
+      behavior: "smooth",
+    });
+
   function valuetext(value) {
     return `${value}%`;
   }
@@ -109,19 +122,19 @@ const Create = () => {
         <h1>Create a PortFolio</h1>
         <li className="createblock">
           <ul>
-            <h2>1. Choose the crypto tokens to add to your PortFolio</h2>
+            <h2>1. {stepOneText}</h2>
           </ul>
           <ul>
-            <h2>2. Name your PortFolio</h2>
+            <h2>2. {stepTwoText}</h2>
           </ul>
           <ul>
-            <h2>3. Set a fee for using your PortFolio</h2>
+            <h2>3. {stepThreeText}</h2>
           </ul>
           <ul>
-            <h2>4. Deploy your PortFolio</h2>
+            <h2>4. {stepFourText}</h2>
           </ul>
           <ul>
-            <h2>5. Initialise your PortFolio</h2>
+            <h2>5. {stepFiveText}</h2>
           </ul>
         </li>
         <div className="btn-scroll">
@@ -131,9 +144,9 @@ const Create = () => {
         </div>
       </section>
 
-      <section ref={Step1}>
+      <section ref={StepOne}>
         <h2>Step 1</h2>
-        <h1>Add Crypto Tokens To Your ETF Token</h1>
+        <h1>{stepOneText}</h1>
         <div className="row" id="step1">
           <div className="col-12 box">
             <div className="topbox">
@@ -276,9 +289,9 @@ const Create = () => {
         </div>
       </section>
 
-      <section ref={Step2}>
+      <section ref={StepTwo}>
         <h2>Step 2</h2>
-        <h1>Add Basic Details</h1>
+        <h1>{stepTwoText}</h1>
         <div id="Step2">
           <FormControl fullWidth className="formline" variant="outlined">
             <InputLabel htmlFor="outlined-adornment-amount">
@@ -319,9 +332,9 @@ const Create = () => {
         </div>
       </section>
 
-      <section ref={Step3}>
+      <section ref={StepThree}>
         <h2>Step 3</h2>
-        <h1>Set A Fee For Your ETF Token</h1>
+        <h1>{stepThreeText}</h1>
         <div className="tokenline">
           <input
             max={100}
@@ -361,15 +374,15 @@ const Create = () => {
           <button className="btn btn-cta" onClick={goToStep2}>
             Back
           </button>
-          <button className="btn btn-cta" onClick={goToFinalStep}>
+          <button className="btn btn-cta" onClick={goToStep4}>
             Continue
           </button>
         </div>
       </section>
 
-      <section ref={FinalStep} id="last">
-        <h2>Final Step</h2>
-        <h1>Review And Deploy Your New ETF Token</h1>
+      <section ref={StepFour} id="last">
+        <h2>Step 4</h2>
+        <h1>{stepFourText}</h1>
         <div className="btn-group">
           <div className="btn leftbox">
             <p>token name: {tokenName}</p>
@@ -420,7 +433,7 @@ const Create = () => {
           <button className="btn btn-cta" onClick={goToStep3}>
             Back
           </button>
-          <button className="btn btn-cta" onClick={goToFinalStep}>
+          <button className="btn btn-cta" onClick={goToStep4}>
             Deploy Token
           </button>
         </div>
