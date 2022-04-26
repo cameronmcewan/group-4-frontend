@@ -112,6 +112,18 @@ const Create = () => {
       behavior: "smooth",
     });
 
+  const handleAssetLock = (i) => {
+    let datalist = list;
+    datalist[i].state = false;
+    setsearchList([...datalist]);
+  };
+
+  const handleAssetUnlock = (i) => {
+    let datalist = list;
+    datalist[i].state = false;
+    setsearchList([...datalist]);
+  };
+
   function valuetext(value) {
     return `${value}%`;
   }
@@ -161,29 +173,21 @@ const Create = () => {
                         value={ele.rate}
                         readOnly
                         className="percentage"
-                        placeholder="percentage"
-                        type="text"
+                        placeholder="weight"
+                        type="number"
                       ></input>
                       %
                       {ele.state === true ? (
                         <IconButton
                           type="button"
-                          onClick={() => {
-                            let datalist = list;
-                            datalist[i].state = false;
-                            setsearchList([...datalist]);
-                          }}
+                          onClick={() => handleAssetLock(i)}
                         >
                           <LockIcon />
                         </IconButton>
                       ) : (
                         <IconButton
                           type="button"
-                          onClick={() => {
-                            let datalist = list;
-                            datalist[i].state = true;
-                            setsearchList([...datalist]);
-                          }}
+                          onClick={() => handleAssetUnlock(i)}
                         >
                           <LockOpenIcon />
                         </IconButton>
