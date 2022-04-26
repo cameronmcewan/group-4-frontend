@@ -91,6 +91,8 @@ const MetaMask = () => {
       }}
       open={Boolean(anchorEl)}
       onClose={handleClose}>
+      <ul>
+      <li>
       <MenuItem onClick={handleClose}>
       {userContext.address && ( // Only displays the div below if the user address has been set
         <div>
@@ -98,13 +100,17 @@ const MetaMask = () => {
           </div>
       )}
       </MenuItem>
+      </li>
+      <li>
       <MenuItem onClick={handleClose}>
       {userContext.address && ( // Only displays the div below if the user address has been set
         <div>
           <h6>Balance: {userBalance}</h6>
         </div>      
         )}
-        </MenuItem>
+      </MenuItem> 
+      </li>
+      </ul>
     </Menu>
     </>
   );
