@@ -7,11 +7,17 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
       <footer>
+      <ul>
+      <li>
         <Link className="logo" to="/">
-          <img  src={PieLogo} alt="The Folio Logo" />
-        <h4>This is the footer</h4>
+          <img className='logo' src={PieLogo} alt="The Folio Logo" />
         </Link>
+      </li>
+      {/* <li>
+      <h4>This is the footer</h4>
+      </li> */}
 
+      </ul>
       </footer>
   )
 };
