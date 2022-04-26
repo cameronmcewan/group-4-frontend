@@ -1,10 +1,4 @@
-import React, {
-  useEffect,
-  useState,
-  useContext,
-  Component,
-  useRef,
-} from "react";
+import React, { useEffect, useState } from "react";
 // import ECharts main module
 import * as echarts from "echarts/lib/echarts.js";
 // import pie chart
@@ -28,7 +22,7 @@ function YingtongPie(props) {
     let datas = props.List.map((ele) => {
       return {
         name: ele.name,
-        value: ele.rate,
+        value: ele.weightVal,
       };
     });
     console.log(namelist);

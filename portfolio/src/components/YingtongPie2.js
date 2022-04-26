@@ -22,7 +22,7 @@ function Pie(props) {
     let datas = props.List.map((ele) => {
       return {
         name: ele.name,
-        value: ele.rate,
+        value: ele.weightVal,
       };
     });
     console.log(namelist);

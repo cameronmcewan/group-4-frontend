@@ -62,19 +62,20 @@ const Create = () => {
   const [tokenSymbol, setTokenSymbol] = useState("");
   const [ownerFee, setOwnerFee] = useState(0);
   const [initialisationAmount, setInitialisationAmount] = useState("");
-  const [list, setList] = useState([
-    {
-      name: "BTS",
-      qname: "BTS",
-      rate: 0,
-      scrollval: 0,
-      state: true,
-    },
-  ]);
+
+  // Each selected token looks like:
+  // {
+  //   name: "BTS",
+  //   qname: "BTS",
+  //   weightVal: 0,
+  //   scrollVal: 0,
+  //   unlocked: true,
+  // }
+  const [selectedTokenList, setSelectedTokenList] = useState([]);
+  const [searchList, setSearchList] = useState(Tokens);
+  const [tokenSearchText, setTokenSearchText] = useState("");
 
   const [infoOpen, setInfoOpen] = useState(false);
-  const [searchList, setsearchList] = useState(Tokens);
-  const [tokenSearchText, setTokenSearchText] = useState("");
 
   const goToBegin = () =>
     window.scrollTo({
@@ -113,15 +114,15 @@ const Create = () => {
     });
 
   const handleAssetLock = (i) => {
-    let datalist = list;
-    datalist[i].state = false;
-    setsearchList([...datalist]);
+    let datalist = selectedTokenList;
+    datalist[i].unlocked = false;
+    setSearchList([...datalist]);
   };
 
   const handleAssetUnlock = (i) => {
-    let datalist = list;
-    datalist[i].state = false;
-    setsearchList([...datalist]);
+    let datalist = selectedTokenList;
+    datalist[i].unlocked = true;
+    setSearchList([...datalist]);
   };
 
   function valuetext(value) {
@@ -162,7 +163,7 @@ const Create = () => {
         <div className="row" id="step1">
           <div className="col-12 box">
             <div className="topbox">
-              {list.map((ele, i) => {
+              {selectedTokenList.map((ele, i) => {
                 return (
                   <div className="mainbox" key={i}>
                     <p className="line btn-group">
@@ -170,14 +171,14 @@ const Create = () => {
                         {ele.name}&nbsp;<small>({ele.qname}&nbsp;)</small>
                       </span>
                       <input
-                        value={ele.rate}
+                        value={ele.weightVal}
                         readOnly
                         className="percentage"
-                        placeholder="weight"
+                        placeholder="weightVal"
                         type="number"
                       ></input>
                       %
-                      {ele.state === true ? (
+                      {ele.unlocked === true ? (
                         <IconButton
                           type="button"
                           onClick={() => handleAssetLock(i)}
@@ -195,17 +196,17 @@ const Create = () => {
                       <IconButton
                         type="button"
                         onClick={() => {
-                          let datalist = list;
+                          let datalist = selectedTokenList;
                           datalist.splice(i, 1);
-                          setsearchList([...datalist]);
+                          setSearchList([...datalist]);
                         }}
                       >
                         <Delete />
                       </IconButton>
                     </p>
                     <Slider
-                      disabled={ele.state}
-                      defaultValue={ele.scrollval}
+                      disabled={ele.unlocked}
+                      defaultValue={ele.scrollVal}
                       getAriaValueText={valuetext}
                       aria-labelledby="discrete-slider-custom"
                       step={1}
@@ -213,10 +214,10 @@ const Create = () => {
                       max={100}
                       valueLabelDisplay="auto"
                       onChange={(event, newValue) => {
-                        if (ele.state === false) {
-                          let mainlist = list;
-                          mainlist[i].rate = newValue;
-                          setList([...mainlist]);
+                        if (ele.unlocked === false) {
+                          let mainlist = selectedTokenList;
+                          mainlist[i].weightVal = newValue;
+                          setSelectedTokenList([...mainlist]);
                         }
                       }}
                     />
@@ -224,7 +225,7 @@ const Create = () => {
                 );
               })}
             </div>
-            <YingtongPie List={list} />
+            <YingtongPie List={selectedTokenList} />
           </div>
           <div className="col-12 box rightbox">
             <Paper component="form" className={classes.root}>
@@ -249,7 +250,7 @@ const Create = () => {
                         .indexOf(tokenSearchText.toLowerCase()) !== -1
                     );
                   });
-                  setsearchList([...result]);
+                  setSearchList([...result]);
                 }}
               >
                 <SearchIcon />
@@ -267,12 +268,12 @@ const Create = () => {
                     <ListItem
                       button
                       onClick={() => {
-                        let listdata = list;
+                        let listdata = selectedTokenList;
                         let result = ele;
-                        result.rate = "0";
-                        result.scrollval = "0";
-                        result.state = false;
-                        setList([...listdata, result]);
+                        result.weightVal = "0";
+                        result.scrollVal = "0";
+                        result.unlocked = false;
+                        setSelectedTokenList([...listdata, result]);
                       }}
                     >
                       <ListItemText primary={ele.name} />
@@ -392,7 +393,7 @@ const Create = () => {
             <p>token name: {tokenName}</p>
             <p>user token: {tokenSymbol}</p>
             <div>
-              <YingtongPie2 List={list} />
+              <YingtongPie2 List={selectedTokenList} />
             </div>
             <p>Token fee {ownerFee}%</p>
             <button className="btn btn-cta" onClick={goToStep3}>
