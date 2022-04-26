@@ -186,23 +186,25 @@ const Create = () => {
     <>
       <section ref={Begin}>
         <h1>Create a PortFolio</h1>
-        <li className="createblock">
-          <ul>
-            <h2>1. {stepOneText}</h2>
-          </ul>
-          <ul>
+        <div className="row center">
+        <ol className="block post">
+          <li>
+            <h2 className="post-title">1. {stepOneText}</h2>
+          </li>
+          <li>
             <h2>2. {stepTwoText}</h2>
-          </ul>
-          <ul>
+          </li>
+          <li>
             <h2>3. {stepThreeText}</h2>
-          </ul>
-          <ul>
+          </li>
+          <li>
             <h2>4. {stepFourText}</h2>
-          </ul>
-          <ul>
+          </li>
+          <li>
             <h2>5. {stepFiveText}</h2>
-          </ul>
-        </li>
+          </li>
+        </ol>
+        </div>
         <div className="btn-scroll">
         <button className="hollow large" onClick={goToStep1}>
         Start Creating! <br/>
