@@ -10,15 +10,13 @@ import Create from "./routes/Create";
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-    <div>
       <Routes>
-        <Route path="/" element={<App className="main" />}>
+        <Route path="/" element={<App />}>
           <Route index element={<Welcome />} />
           <Route path="explore" element={<Explore />} />
           <Route path="create" element={<Create />} />
         </Route>
       </Routes>
-    </div>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
