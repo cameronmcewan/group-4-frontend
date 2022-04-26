@@ -344,7 +344,7 @@ const Create = () => {
         </div>
       </section>
 
-      <section ref={StepFour} id="last">
+      <section ref={StepFour} id="step4">
         <h2>Step 4</h2>
         <h1>{stepFourText}</h1>
         <div className="btn-group">
@@ -373,6 +373,11 @@ const Create = () => {
             Continue
           </button>
         </div>
+      </section>
+
+      <section ref={StepFive}>
+        <h2>Step 5</h2>
+        <h1>{stepFiveText}</h1>
       </section>
     </>
   );
