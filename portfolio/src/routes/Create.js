@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
 import "./Create.css";
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
@@ -203,8 +204,9 @@ const Create = () => {
           </ul>
         </li>
         <div className="btn-scroll">
-          <button className="btn btn-cta" onClick={goToStep1}>
-            Begin
+        <button className="hollow large" onClick={goToStep1}>
+        Start Creating! <br/>
+        <ArrowDownwardIcon />
           </button>
         </div>
       </section>
@@ -291,11 +293,11 @@ const Create = () => {
           </div>
         </div>
         <div className="btn-scroll">
-          <button className="btn btn-cta" onClick={goToStep1}>
-            Back
+          <button className="btn-secondary" onClick={goToStep1}>
+            <h2>Back</h2>
           </button>
-          <button className="btn btn-cta" onClick={goToStep2}>
-            Continue
+          <button className="btn-primary" onClick={goToStep2}>
+            <h2>Continue</h2>
           </button>
         </div>
       </section>
@@ -330,11 +332,11 @@ const Create = () => {
           </FormControl>
         </div>
         <div className="btn-scroll">
-          <button className="btn btn-cta" onClick={goToStep1}>
-            Back
+          <button className="btn-secondary" onClick={goToStep1}>
+            <h2>Back</h2>
           </button>
-          <button className="btn btn-cta" onClick={goToStep3}>
-            Continue
+          <button className="btn-primary" onClick={goToStep3}>
+            <h2>Continue</h2>
           </button>
         </div>
       </section>
@@ -386,11 +388,11 @@ const Create = () => {
           </div>
         </div>
         <div className="btn-scroll">
-          <button className="btn btn-cta" onClick={goToStep2}>
-            Back
+          <button className="btn-secondary" onClick={goToStep2}>
+            <h2>Back</h2>
           </button>
-          <button className="btn btn-cta" onClick={goToStep4}>
-            Continue
+          <button className="btn-primary" onClick={goToStep4}>
+            <h2>Continue</h2>
           </button>
         </div>
       </section>
@@ -408,20 +410,20 @@ const Create = () => {
             <p>Name: {tokenName}</p>
             <p>Symbol: {tokenSymbol}</p>
             <p>Fee {ownerFee}%</p>
-            <button className="btn btn-cta" onClick={goToStep1}>
+            <button className="btn-secondary" onClick={goToStep1}>
               Edit
             </button>
-            <button className="btn btn-cta" onClick={deployPortfolio}>
+            <button className="btn-primary" onClick={deployPortfolio}>
               Deploy
             </button>
           </div>
         </div>
         <div className="btn-scroll">
-          <button className="btn btn-cta" onClick={goToStep3}>
-            Back
+          <button className="btn-secondary" onClick={goToStep3}>
+            <h2>Back</h2>
           </button>
-          <button className="btn btn-cta" onClick={goToStep5}>
-            Continue
+          <button className="btn-primary" onClick={goToStep5}>
+            <h2>Continue</h2>
           </button>
         </div>
       </section>

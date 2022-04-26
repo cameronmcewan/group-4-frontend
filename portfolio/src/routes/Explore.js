@@ -22,7 +22,7 @@ const Explore = () => {
         Easy access to ready made diversified crypto investment portfolios 
       </h1>
       <div className="btn-scroll">
-        <button className="btn hollow large" onClick={goToExplore}>
+        <button className="hollow large" onClick={goToExplore}>
         Explore Portfolios
         <br />
         <ArrowDownwardIcon />

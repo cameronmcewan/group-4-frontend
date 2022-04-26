@@ -160,11 +160,11 @@ button.metamask {
   max-width: 400px;
 }
 
-.btn.large {
+button.large {
   font-size: x-large;
 }
 
-.btn-primary {
+.btn-secondary {
   background: #ffffff;
   color: #0000ff;
   border-color: none;
@@ -173,13 +173,12 @@ button.metamask {
           box-shadow: 4px 4px 0 #eeeeee;
 }
 
-.btn-secondary {
+.btn-primary {
   border: 1px solid #ffffff;
-  background-color: transparent;
+  background: #0000ff;
   color: #ffffff;
   border-radius: 10rem;
   background-repeat: no-repeat;
-  background: transparent no-repeat;
   -webkit-box-shadow: 4px 4px 0 #eeeeee;
           box-shadow: 4px 4px 0 #eeeeee;
 }
@@ -193,22 +192,16 @@ button.large:hover {
           box-shadow: 4px 4px 0 #eeeeee, 0 0 5px #eeeeee;
 }
 
-.btn-primary {
-  background: #eeeeee;
-  color: #0000ff;
-  border-color: none;
-}
-
-.btn-primary:hover {
-  background: transparent;
+.btn-secondary:hover {
+  background: #c7c7ff;
   color: #ffffff;
   border: 1px solid #eeeeee;
   -webkit-box-shadow: 4px 4px 0 #eeeeee, 0 0 5px #eeeeee;
           box-shadow: 4px 4px 0 #eeeeee, 0 0 5px #eeeeee;
 }
 
-.btn-secondary:hover {
-  background: #ffffff;
+.btn-primary:hover {
+  background: #c7c7ff;
   color: #0000ff;
   border: 1px solid #eeeeee;
   -webkit-box-shadow: 4px 4px 0 #eeeeee, 0 0 5px #eeeeee;
