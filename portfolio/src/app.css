@@ -289,7 +289,7 @@ nav ul li a.logo {
 nav ul li a img {
   width: 100%;
   height: 70px;
-  opacity: .6;
+  opacity: 1;
   -webkit-transition: .6s;
   transition: .6s;
 }
