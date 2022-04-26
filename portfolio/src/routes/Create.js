@@ -76,8 +76,8 @@ const Create = () => {
       </h4>
     </div>
     <div className="btn-scroll">
-        <button className="btn btn-cta" onClick={goToStep1}>Back</button>
-        <button className="btn btn-cta" onClick={goToStep2}>Continue</button>
+        <button className="btn-secondary" onClick={goToStep1}><h3>Back</h3></button>
+        <button className="btn-primary" onClick={goToStep2}><h3>Continue</h3></button>
     </div>
     </section>
 
@@ -85,8 +85,8 @@ const Create = () => {
       <h2>Step 2</h2>
       <h1>Add Basic Details</h1>
       <div className="btn-scroll">
-        <button className="btn btn-cta" onClick={goToStep1}>Back</button>
-        <button className="btn btn-cta" onClick={goToStep3}>Continue</button>
+        <button className="btn-secondary" onClick={goToStep1}>Back</button>
+        <button className="btn-primary" onClick={goToStep3}>Continue</button>
       </div>
     </section>
 
@@ -94,8 +94,8 @@ const Create = () => {
       <h2>Step 3</h2>
       <h1>Set A Fee For Your ETF Token</h1>
       <div className="btn-scroll">
-        <button className="btn btn-cta" onClick={goToStep2}>Back</button>
-        <button className="btn btn-cta" onClick={goToFinalStep}>Continue</button>
+        <button className="btn-secondary" onClick={goToStep2}>Back</button>
+        <button className="btn-primary" onClick={goToFinalStep}>Continue</button>
       </div>
     </section>
 
@@ -103,8 +103,8 @@ const Create = () => {
       <h2>Final Step</h2>
       <h1>Review And Deploy Your New ETF Token</h1>
       <div className="btn-scroll">
-        <button className="btn btn-cta" onClick={goToStep3}>Back</button>
-        <button className="btn btn-cta" onClick={goToFinalStep}>Deploy Token</button>
+        <button className="btn-secondary" onClick={goToStep3}>Back</button>
+        <button className="btn-primary" onClick={goToFinalStep}>Deploy Token</button>
       </div>    
     </section>
     </>
