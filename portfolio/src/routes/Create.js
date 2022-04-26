@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./Create.css";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
@@ -17,7 +17,7 @@ import OutlinedInput from "@material-ui/core/OutlinedInput";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import YingtongPie from "../components/YingtongPie";
 import YingtongPie2 from "../components/YingtongPie2";
-import Tokens from "../helpers/Tokens";
+import KovanTokens from "../helpers/KovanTokens";
 import Slider from "@material-ui/core/Slider";
 import "echarts/lib/chart/pie";
 import "echarts/lib/component/tooltip";
@@ -72,7 +72,7 @@ const Create = () => {
   //   unlocked: true,
   // }
   const [selectedTokenList, setSelectedTokenList] = useState([]);
-  const [searchList, setSearchList] = useState(Tokens);
+  const [searchList, setSearchList] = useState(KovanTokens);
   const [tokenSearchText, setTokenSearchText] = useState("");
 
   const [infoOpen, setInfoOpen] = useState(false);
@@ -124,6 +124,24 @@ const Create = () => {
     datalist[i].unlocked = true;
     setSearchList([...datalist]);
   };
+
+  useEffect(() => {
+    let nameResults = KovanTokens().filter((ele) => {
+      return (
+        ele.name.toLowerCase().indexOf(tokenSearchText.toLowerCase()) !== -1
+      );
+    });
+    let qnameResults = KovanTokens().filter((ele) => {
+      return (
+        ele.qname.toLowerCase().indexOf(tokenSearchText.toLowerCase()) !== -1
+      );
+    });
+    if (nameResults.length !== 0) {
+      setSearchList([...nameResults]);
+    } else {
+      setSearchList([...qnameResults]);
+    }
+  }, [tokenSearchText]);
 
   function valuetext(value) {
     return `${value}%`;
@@ -238,23 +256,6 @@ const Create = () => {
                 placeholder="Search token"
                 inputProps={{ "aria-label": "search token" }}
               />
-              <IconButton
-                type="button"
-                className={classes.iconButton}
-                aria-label="search"
-                onClick={() => {
-                  let result = Tokens().filter((ele) => {
-                    return (
-                      ele.name
-                        .toLowerCase()
-                        .indexOf(tokenSearchText.toLowerCase()) !== -1
-                    );
-                  });
-                  setSearchList([...result]);
-                }}
-              >
-                <SearchIcon />
-              </IconButton>
             </Paper>
 
             <List
