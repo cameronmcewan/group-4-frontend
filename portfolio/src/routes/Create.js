@@ -4,12 +4,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
 import IconButton from "@material-ui/core/IconButton";
-import Delete from "@material-ui/icons/Delete";
-import SearchIcon from "@material-ui/icons/Search";
+import DeleteIcon from "@material-ui/icons/Delete";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import LockIcon from "@material-ui/icons/Lock";
-import LockOpenIcon from "@material-ui/icons/LockOpen";
 import ListItemText from "@material-ui/core/ListItemText";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -68,8 +65,7 @@ const Create = () => {
   //   name: "BTS",
   //   qname: "BTS",
   //   weightVal: 0,
-  //   scrollVal: 0,
-  //   unlocked: true,
+  //   scrollVal: 0
   // }
   const [selectedTokenList, setSelectedTokenList] = useState([]);
   const [searchList, setSearchList] = useState(KovanTokens);
@@ -113,18 +109,6 @@ const Create = () => {
       behavior: "smooth",
     });
 
-  const handleAssetLock = (i) => {
-    let datalist = selectedTokenList;
-    datalist[i].unlocked = false;
-    setSearchList([...datalist]);
-  };
-
-  const handleAssetUnlock = (i) => {
-    let datalist = selectedTokenList;
-    datalist[i].unlocked = true;
-    setSearchList([...datalist]);
-  };
-
   useEffect(() => {
     let nameResults = KovanTokens().filter((ele) => {
       return (
@@ -143,9 +127,6 @@ const Create = () => {
     }
   }, [tokenSearchText]);
 
-  function valuetext(value) {
-    return `${value}%`;
-  }
   const classes = useStyles();
   return (
     <>
@@ -185,58 +166,30 @@ const Create = () => {
                 return (
                   <div className="mainbox" key={i}>
                     <p className="line btn-group">
-                      <span className="tit">
-                        {ele.name}&nbsp;<small>({ele.qname}&nbsp;)</small>
+                      <span>
+                        {ele.name}&nbsp;<small>({ele.qname})</small>
                       </span>
-                      <input
-                        value={ele.weightVal}
-                        readOnly
-                        className="percentage"
-                        placeholder="weightVal"
-                        type="number"
-                      ></input>
-                      %
-                      {ele.unlocked === true ? (
-                        <IconButton
-                          type="button"
-                          onClick={() => handleAssetLock(i)}
-                        >
-                          <LockIcon />
-                        </IconButton>
-                      ) : (
-                        <IconButton
-                          type="button"
-                          onClick={() => handleAssetUnlock(i)}
-                        >
-                          <LockOpenIcon />
-                        </IconButton>
-                      )}
                       <IconButton
                         type="button"
                         onClick={() => {
-                          let datalist = selectedTokenList;
-                          datalist.splice(i, 1);
-                          setSearchList([...datalist]);
+                          let selectedTokens = selectedTokenList;
+                          selectedTokens.splice(i, 1);
+                          setSearchList([...selectedTokens]);
                         }}
                       >
-                        <Delete />
+                        <DeleteIcon />
                       </IconButton>
                     </p>
                     <Slider
-                      disabled={ele.unlocked}
                       defaultValue={ele.scrollVal}
-                      getAriaValueText={valuetext}
                       aria-labelledby="discrete-slider-custom"
                       step={1}
                       min={0}
                       max={100}
-                      valueLabelDisplay="auto"
                       onChange={(event, newValue) => {
-                        if (ele.unlocked === false) {
-                          let mainlist = selectedTokenList;
-                          mainlist[i].weightVal = newValue;
-                          setSelectedTokenList([...mainlist]);
-                        }
+                        let mainlist = selectedTokenList;
+                        mainlist[i].weightVal = newValue;
+                        setSelectedTokenList([...mainlist]);
                       }}
                     />
                   </div>
@@ -273,7 +226,6 @@ const Create = () => {
                         let result = ele;
                         result.weightVal = "0";
                         result.scrollVal = "0";
-                        result.unlocked = false;
                         setSelectedTokenList([...listdata, result]);
                       }}
                     >
