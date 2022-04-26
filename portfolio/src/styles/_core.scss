@@ -62,12 +62,6 @@ body {
     min-height: 100;
 }
 
-footer {
-    color: $white;
-    padding: 1rem;
-    margin-top: auto;
-    border-top: 1px solid $grey;
-}
 
 /* scroll behaviour */
 html {
@@ -140,6 +134,7 @@ section {
     // margin-bottom: 12rem;
 }
 
+
 /* each section will contain a h2 and h5 by default */
 section > h2, section > h5 {
     text-align: center;
@@ -209,14 +204,14 @@ a:hover {
     background: $red;
     color: $white;
     font-weight: 800;
-    box-shadow: 5px 5px 0 $grey;
+    box-shadow: 0 0 0 $grey;
 
 }
 .btn-cta:hover {
     background: $yellow;
     color: $red;
     border-color: transparent;
-    box-shadow: 2px 2px 5px $grey;
+    box-shadow: 0px 0px 10px $grey;
 }
 
 .btn-scroll {

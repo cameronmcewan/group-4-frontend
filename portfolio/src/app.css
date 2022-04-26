@@ -36,13 +36,6 @@ body {
   min-height: 100;
 }
 
-footer {
-  color: #ffffff;
-  padding: 1rem;
-  margin-top: auto;
-  border-top: 1px solid #eeeeee;
-}
-
 /* scroll behaviour */
 html {
   scroll-behavior: smooth;
@@ -64,17 +57,41 @@ ul {
   padding: 0;
 }
 
+button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  padding: 1rem 1rem;
+  margin: 1rem;
+  border-radius: 1.5rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  border: none;
+  -webkit-transition: all 400ms ease;
+  transition: all 400ms ease;
+  -webkit-box-shadow: 8px 8px 0 #eeeeee;
+          box-shadow: 8px 8px 0 #eeeeee;
+}
+
+button:hover {
+  margin-top: 1.4rem;
+  margin-left: 1.6rem;
+  -webkit-box-shadow: 0 0 10px #eeeeee;
+          box-shadow: 0 0 10px #eeeeee;
+}
+
 /* =============== General styles ============== */
 .container {
   width: 75%;
   margin: 0 auto;
 }
 
-h1, 
-h2, 
-h3,
-h4, 
-h5 {
+h1, h2, h3, h4, h5 {
   font-weight: 500;
 }
 
@@ -102,8 +119,7 @@ section {
 }
 
 /* each section will contain a h2 and h5 by default */
-section > h2, 
-section > h5 {
+section > h2, section > h5 {
   text-align: center;
   color: #ffffff;
 }
@@ -223,9 +239,23 @@ a:hover {
 }
 
 nav {
-  height: 100px;
+  background-color: #000050;
+  position: fixed;
+  height: 70px;
   margin-right: 0 auto;
   text-align: center;
+}
+
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 60px;
 }
 
 nav ul {
@@ -233,7 +263,7 @@ nav ul {
   padding-right: 100px;
   padding-left: 100px;
   width: 100vw;
-  height: 100px;
+  height: 70px;
   overflow: hidden;
   border-bottom: 1px solid #eeeeee;
   text-align: left;
@@ -258,10 +288,10 @@ nav ul li a.logo {
 
 nav ul li a img {
   width: 100%;
-  height: 100px;
-  opacity: 0.6;
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
+  height: 70px;
+  opacity: .6;
+  -webkit-transition: .6s;
+  transition: .6s;
 }
 
 nav ul li a img:hover {
@@ -308,9 +338,18 @@ li.right a {
   display: block;
 }
 
-footer.logo {
+footer {
+  color: #ffffff;
+  background-color: #000050;
+  padding: 1rem;
+  margin-top: auto;
+  border-top: 1px solid #eeeeee;
+}
+
+footer .logo {
   display: inline-block;
-  width: 2rem;
+  height: 2rem;
+  margin-right: 3vw;
 }
 
 .row {
@@ -353,25 +392,6 @@ footer.logo {
           box-shadow: 0 10px 30px #000000;
 }
 
-.createblock {
-  background-color: #ffffff;
-  color: #0000ff;
-  padding: 1rem 3rem;
-  margin: auto;
-  border-radius: 0.5rem;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-shadow: 0 2px 30px #000000;
-  box-shadow: 0 2px 30px #000000;
-  width: 40%;
-}
-
-.createblock:hover {
-  -webkit-box-shadow: 0 10px 30px #000000;
-  box-shadow: 0 10px 30px #000000;
-}
-
 .row.center {
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -394,8 +414,7 @@ input {
   width: 100%;
 }
 
-input[type="text"], 
-textarea {
+input[type="text"], textarea {
   background-color: #eeeeee;
   border: 4px solid #eeeeee;
   border-radius: 8px;
@@ -421,8 +440,7 @@ select {
           box-shadow: 0 2px 5px #eeeeee;
 }
 
-#landing footer, 
-#landing nav {
+#landing footer, #landing nav {
   visibility: hidden;
 }
 
