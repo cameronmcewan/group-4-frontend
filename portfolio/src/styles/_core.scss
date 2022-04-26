@@ -115,10 +115,11 @@ h1.hovereffect:hover {
 
 /* each component is wrapped in a section in its component.js file */
 section {
+    margin-top: 4rem;
     min-height: 90vh;
     padding: 4rem;
     padding-bottom: 12rem;
-    // margin-bottom: 12rem;
+    margin-bottom: 12rem;
 }
 
 
