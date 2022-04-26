@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import "./Create.css";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
@@ -16,6 +16,9 @@ import YingtongPie from "../components/YingtongPie";
 import YingtongPie2 from "../components/YingtongPie2";
 import KovanTokens from "../helpers/KovanTokens";
 import Slider from "@material-ui/core/Slider";
+import { UserContext } from "../helpers/UserContext";
+import { ethers } from "ethers";
+import PortfolioFactory from "../contracts/PortfolioFactory.json";
 import "echarts/lib/chart/pie";
 import "echarts/lib/component/tooltip";
 import "echarts/lib/component/title";
@@ -43,6 +46,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Create = () => {
+  const userContext = useContext(UserContext);
+
   const Begin = useRef(null);
   const StepOne = useRef(null);
   const stepOneText = "Add tokens to your PortFolio";
@@ -127,7 +132,53 @@ const Create = () => {
     }
   }, [tokenSearchText]);
 
-  const deployToken = () => {};
+  const deployPortfolio = async () => {
+    console.log("DEPLOY: function called");
+    const portfolioFactory = new ethers.Contract(
+      "0x46783Fc2f92AdC132F5DE2f4BDE4138e3Ed8673a",
+      PortfolioFactory.abi,
+      userContext.signer
+    );
+    let tokenAddresses = selectedTokenList.map((token) => token.address);
+    console.log(`DEPLOY: tokenAddresses length = ${tokenAddresses.length}`);
+    console.log(`DEPLOY: tokenAddresses first address = ${tokenAddresses[0]}`);
+    let percentageHoldings = standardiseHoldings(
+      selectedTokenList.map((token) => token.weightVal)
+    );
+    console.log(
+      `DEPLOY: percentageHoldings length = ${percentageHoldings.length}`
+    );
+    percentageHoldings.map((holding) => {
+      console.log(`DEPLOY: percentageHolding values = ${holding}`);
+    });
+
+    await portfolioFactory.create(
+      tokenName,
+      tokenSymbol,
+      tokenAddresses,
+      percentageHoldings,
+      ownerFee
+    );
+  };
+
+  const standardiseHoldings = (tokenWeights) => {
+    let weightSum = tokenWeights.reduce(
+      (accumulator, current) => accumulator + current
+    );
+    console.log(`DEPLOY: sum of holdings = ${weightSum}`);
+    let percentageHoldings = tokenWeights.map((weight) =>
+      Math.round((weight * 100) / weightSum)
+    );
+    let percentageSum = percentageHoldings.reduce(
+      (accumulator, current) => accumulator + current
+    );
+    if (percentageSum >= 100) {
+      percentageHoldings[0] -= percentageSum - 100;
+    } else if (percentageSum <= 100) {
+      percentageHoldings[0] += 100 - percentageSum;
+    }
+    return percentageHoldings;
+  };
 
   const classes = useStyles();
   return (
@@ -189,9 +240,9 @@ const Create = () => {
                       min={0}
                       max={100}
                       onChange={(event, newValue) => {
-                        let mainlist = selectedTokenList;
-                        mainlist[i].weightVal = newValue;
-                        setSelectedTokenList([...mainlist]);
+                        let tokenList = selectedTokenList;
+                        tokenList[i].weightVal = newValue;
+                        setSelectedTokenList([...tokenList]);
                       }}
                     />
                   </div>
@@ -360,7 +411,7 @@ const Create = () => {
             <button className="btn btn-cta" onClick={goToStep1}>
               Edit
             </button>
-            <button className="btn btn-cta" onClick={deployToken}>
+            <button className="btn btn-cta" onClick={deployPortfolio}>
               Deploy
             </button>
           </div>

@@ -81,18 +81,5 @@ function Pie(props) {
     </div>
   );
 }
-// class Pie extends Component {
-//   constructor(props) {
-//     super(props);
 
-//     this.state = {
-//       data1: 8,
-//       data2: 12
-//     }
-//   }
-
-//   render() {
-
-//   }
-// }
 export default Pie;
