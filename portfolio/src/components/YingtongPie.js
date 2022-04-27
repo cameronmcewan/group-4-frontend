@@ -6,7 +6,6 @@ import "echarts/lib/component/title";
 import "echarts/lib/component/legend";
 function YingtongPie(props) {
   useEffect(() => {
-    console.log(props);
     let namelist = props.List.map((ele) => {
       return ele.name;
     });
@@ -16,8 +15,6 @@ function YingtongPie(props) {
         value: ele.weightVal,
       };
     });
-    console.log(namelist);
-    console.log(namelist);
     let myChart = echarts.init(document.getElementById("pie"));
     myChart.setOption({
       tooltip: {

@@ -10,7 +10,6 @@ import "echarts/lib/component/title";
 import "echarts/lib/component/legend";
 function Pie(props) {
   useEffect(() => {
-    console.log(props);
     let namelist = props.List.map((ele) => {
       return ele.name;
     });
@@ -20,8 +19,6 @@ function Pie(props) {
         value: ele.weightVal,
       };
     });
-    console.log(namelist);
-    console.log(namelist);
     let myChart = echarts.init(document.getElementById("pie3"));
     myChart.setOption({
       tooltip: {

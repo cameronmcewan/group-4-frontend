@@ -46,20 +46,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const portfolioFactoryAddress = "0x46783Fc2f92AdC132F5DE2f4BDE4138e3Ed8673a";
+
 const Create = () => {
   const userContext = useContext(UserContext);
 
   const Begin = useRef(null);
   const StepOne = useRef(null);
-
   const StepTwo = useRef(null);
-
   const StepThree = useRef(null);
-
   const StepFour = useRef(null);
-
   const StepFive = useRef(null);
-
   const stages = [
     {
       number: 1,
@@ -83,11 +80,6 @@ const Create = () => {
     },
   ];
 
-  const [tokenName, setTokenName] = useState("");
-  const [tokenSymbol, setTokenSymbol] = useState("");
-  const [ownerFee, setOwnerFee] = useState(0);
-  const [initialisationAmount, setInitialisationAmount] = useState("");
-
   // Each selected token looks like:
   // {
   //   name: "BTS",
@@ -98,8 +90,13 @@ const Create = () => {
   const [selectedTokenList, setSelectedTokenList] = useState([]);
   const [searchList, setSearchList] = useState(KovanTokens);
   const [tokenSearchText, setTokenSearchText] = useState("");
-
   const [infoOpen, setInfoOpen] = useState(false);
+
+  const [tokenName, setTokenName] = useState("");
+  const [tokenSymbol, setTokenSymbol] = useState("");
+  const [ownerFee, setOwnerFee] = useState(0);
+  const [initialisationAmount, setInitialisationAmount] = useState("");
+  const [deployedContractAddress, setDeployedContractAddress] = useState("");
 
   const goToBegin = () =>
     window.scrollTo({
@@ -158,7 +155,7 @@ const Create = () => {
   const deployPortfolio = async () => {
     console.log("DEPLOY: function called");
     const portfolioFactory = new ethers.Contract(
-      "0x46783Fc2f92AdC132F5DE2f4BDE4138e3Ed8673a",
+      portfolioFactoryAddress,
       PortfolioFactory.abi,
       userContext.signer
     );
@@ -174,7 +171,17 @@ const Create = () => {
     percentageHoldings.map((holding) => {
       console.log(`DEPLOY: percentageHolding values = ${holding}`);
     });
-
+    console.log("DEPLOY: setting up filter for reading events");
+    let filter = portfolioFactory.filters.CreatePortfolio(
+      null,
+      tokenName,
+      tokenSymbol,
+      null,
+      null,
+      userContext.address,
+      null
+    );
+    console.log("DEPLOY: about to create contract");
     await portfolioFactory.create(
       tokenName,
       tokenSymbol,
@@ -182,7 +189,21 @@ const Create = () => {
       percentageHoldings,
       ownerFee
     );
+    // const filter = {
+    //   address: portfolioFactoryAddress,
+    //   topics: [
+    //       ethers.utils.id("Transfer(address,address,uint256)")
+    //   ]
+    // }
+    portfolioFactory.once(filter, (address_, name_) => {
+      console.log(`DEPLOY: deployed contract name is ${name_.toString()}`);
+      console.log(`DEPLOY: deployed contract address is ${address_}`);
+      console.log(`DEPLOY: setting deployedContractAddress = ${address_}`);
+      setDeployedContractAddress(address_);
+    });
   };
+
+  const initialisePortfolio = () => {};
 
   const standardiseHoldings = (tokenWeights) => {
     let weightSum = tokenWeights.reduce(
@@ -448,9 +469,22 @@ const Create = () => {
         </div>
       </section>
 
-      <section ref={StepFive}>
+      <section ref={StepFive} id="step4">
         <h2>Step 5</h2>
         <h1>{stages[4].name}</h1>
+        <div className="btn-group">
+          <div className="btn leftbox">
+            <h2>Name: {tokenName}</h2>
+            <h2>Symbol: {tokenSymbol}</h2>
+            <h2>Address:</h2>
+            <small>{deployedContractAddress}</small>
+          </div>
+          <div className="btn rightbox">
+            <button className="btn btn-cta" onClick={initialisePortfolio}>
+              Initialise
+            </button>
+          </div>
+        </div>
       </section>
     </>
   );
