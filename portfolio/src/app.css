@@ -57,17 +57,41 @@ ul {
   padding: 0;
 }
 
+button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  padding: 1rem 1rem;
+  margin: 1rem;
+  border-radius: 1.5rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  border: none;
+  -webkit-transition: all 400ms ease;
+  transition: all 400ms ease;
+  -webkit-box-shadow: 8px 8px 0 #eeeeee;
+          box-shadow: 8px 8px 0 #eeeeee;
+}
+
+button:hover {
+  margin-top: 1.4rem;
+  margin-left: 1.6rem;
+  -webkit-box-shadow: 0 0 10px #eeeeee;
+          box-shadow: 0 0 10px #eeeeee;
+}
+
 /* =============== General styles ============== */
 .container {
   width: 75%;
   margin: 0 auto;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
+h1, h2, h3, h4, h5 {
   font-weight: 500;
 }
 
@@ -214,6 +238,7 @@ button.large:hover {
   font-weight: 800;
   -webkit-box-shadow: 0 0 0 #eeeeee;
           box-shadow: 0 0 0 #eeeeee;
+
 }
 
 .btn-cta:hover {
