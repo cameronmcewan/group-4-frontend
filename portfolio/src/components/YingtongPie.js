@@ -1,21 +1,12 @@
-import React, { useEffect, useState } from "react";
-// import ECharts main module
+import React, { useEffect } from "react";
 import * as echarts from "echarts/lib/echarts.js";
-// import pie chart
 import "echarts/lib/chart/pie";
-// import prompt box and header components
 import "echarts/lib/component/tooltip";
 import "echarts/lib/component/title";
-// import legend components
 import "echarts/lib/component/legend";
 function YingtongPie(props) {
-  const [state, setState] = useState({
-    data1: 8,
-    data2: 12,
-  });
   useEffect(() => {
     console.log(props);
-    let list = props;
     let namelist = props.List.map((ele) => {
       return ele.name;
     });
@@ -28,21 +19,16 @@ function YingtongPie(props) {
     console.log(namelist);
     console.log(namelist);
     let myChart = echarts.init(document.getElementById("pie"));
-    // Charting
     myChart.setOption({
       tooltip: {
         trigger: "item",
-        formatter: "{a} <br/>{b}: {c} ({d}%)",
+        formatter: "{b}: {d}%",
       },
       legend: {
-        // orient: 'vertical',
-        // // x: 'center',
-        // top: '0',
         data: namelist,
       },
       series: [
         {
-          // name: '',
           type: "pie",
           radius: ["50%", "70%"],
           avoidLabelOverlap: false,
@@ -78,18 +64,5 @@ function YingtongPie(props) {
     </div>
   );
 }
-// class Pie extends Component {
-//   constructor(props) {
-//     super(props);
 
-//     this.state = {
-//       data1: 8,
-//       data2: 12
-//     }
-//   }
-
-//   render() {
-
-//   }
-// }
 export default YingtongPie;

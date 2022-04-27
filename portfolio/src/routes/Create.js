@@ -19,6 +19,7 @@ import Slider from "@material-ui/core/Slider";
 import { UserContext } from "../helpers/UserContext";
 import { ethers } from "ethers";
 import PortfolioFactory from "../contracts/PortfolioFactory.json";
+import MetaMask from "../components/MetaMask";
 import "echarts/lib/chart/pie";
 import "echarts/lib/component/tooltip";
 import "echarts/lib/component/title";
@@ -415,21 +416,26 @@ const Create = () => {
         <h2>Step 4</h2>
         <h1>{stages[3].name}</h1>
         <div className="btn-group">
+          <h2>HELLO</h2>
           <div className="btn leftbox">
             <div>
               <YingtongPie2 List={selectedTokenList} />
             </div>
           </div>
           <div className="btn rightbox">
-            <p>Name: {tokenName}</p>
-            <p>Symbol: {tokenSymbol}</p>
-            <p>Fee {ownerFee}%</p>
+            <h2>Name: {tokenName}</h2>
+            <h2>Symbol: {tokenSymbol}</h2>
+            <h2>Fee: {ownerFee}%</h2>
             <button className="btn btn-cta" onClick={goToStep1}>
               Edit
             </button>
-            <button className="btn btn-cta" onClick={deployPortfolio}>
-              Deploy
-            </button>
+            {userContext.address ? (
+              <button className="btn btn-cta" onClick={deployPortfolio}>
+                Deploy
+              </button>
+            ) : (
+              <MetaMask></MetaMask>
+            )}
           </div>
         </div>
         <div className="btn-scroll">
