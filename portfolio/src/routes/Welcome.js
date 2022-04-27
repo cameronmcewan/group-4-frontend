@@ -13,7 +13,7 @@ const Welcome = () => {
       <div className="row">
         <img className="folio col-1" src={Logo} alt="" />
         <h1 className="intro col-2">
-        Index-As-A-Token. <br /> Decentralized. <br /> Diversified. Crypto.
+        Decentralised. <br /> Diversified. Crypto.
         </h1>
       </div>
 

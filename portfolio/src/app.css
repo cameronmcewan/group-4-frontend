@@ -326,7 +326,7 @@ img.folio {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  height: 250px;
+  height: 170px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
