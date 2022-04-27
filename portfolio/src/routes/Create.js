@@ -19,6 +19,7 @@ import Slider from "@material-ui/core/Slider";
 import { UserContext } from "../helpers/UserContext";
 import { ethers } from "ethers";
 import PortfolioFactory from "../contracts/PortfolioFactory.json";
+import Portfolio from "../contracts/Portfolio.json";
 import MetaMask from "../components/MetaMask";
 import "echarts/lib/chart/pie";
 import "echarts/lib/component/tooltip";
@@ -91,11 +92,13 @@ const Create = () => {
   const [searchList, setSearchList] = useState(KovanTokens);
   const [tokenSearchText, setTokenSearchText] = useState("");
   const [infoOpen, setInfoOpen] = useState(false);
+  const [infoTwoOpen, setInfoTwoOpen] = useState(false);
 
   const [tokenName, setTokenName] = useState("");
   const [tokenSymbol, setTokenSymbol] = useState("");
   const [ownerFee, setOwnerFee] = useState(0);
-  const [initialisationAmount, setInitialisationAmount] = useState("");
+  const [initialisationAmountInWei, setInitialisationAmountInWei] =
+    useState("");
   const [deployedContractAddress, setDeployedContractAddress] = useState("");
 
   const goToBegin = () =>
@@ -203,8 +206,6 @@ const Create = () => {
     });
   };
 
-  const initialisePortfolio = () => {};
-
   const standardiseHoldings = (tokenWeights) => {
     let weightSum = tokenWeights.reduce(
       (accumulator, current) => accumulator + current
@@ -222,6 +223,22 @@ const Create = () => {
       percentageHoldings[0] += 100 - percentageSum;
     }
     return percentageHoldings;
+  };
+
+  const initialisePortfolio = async () => {
+    console.log("INIT: Instantiating contract");
+    const portfolio = new ethers.Contract(
+      deployedContractAddress,
+      Portfolio.abi,
+      userContext.signer
+    );
+    const tx = {
+      from: userContext.address,
+      value: initialisationAmountInWei,
+    };
+    console.log(`INIT: Initialising portfolio with ${tx.value} Wei`);
+    await portfolio.initialisePortfolio(tx);
+    console.log("INIT: Portfolio initialised");
   };
 
   const classes = useStyles();
@@ -464,7 +481,7 @@ const Create = () => {
             Back
           </button>
           <button className="btn btn-cta" onClick={goToStep5}>
-            Confirm
+            Continue
           </button>
         </div>
       </section>
@@ -472,18 +489,62 @@ const Create = () => {
       <section ref={StepFive} id="step4">
         <h2>Step 5</h2>
         <h1>{stages[4].name}</h1>
-        <div className="btn-group">
-          <div className="btn leftbox">
-            <h2>Name: {tokenName}</h2>
-            <h2>Symbol: {tokenSymbol}</h2>
-            <h2>Address:</h2>
-            <small>{deployedContractAddress}</small>
+        <h2>
+          {tokenName} ({tokenSymbol}): {deployedContractAddress}
+        </h2>
+        <div className="tokenline">
+          <span>Eth </span>
+          <input
+            type="number"
+            min="0.0001" // about £2 worth
+            max="10"
+            placeholder="0.0001"
+            value={initialisationAmountInWei / 1000000000000000000}
+            onChange={(e) => {
+              setInitialisationAmountInWei(
+                parseFloat(e.target.value) * 1000000000000000000
+              );
+            }}
+          ></input>
+          <p>=</p>
+          <span>Wei </span>
+          <input
+            type="number"
+            min="100000000000000"
+            max="10000000000000000000"
+            placeholder="100000000000000"
+            value={initialisationAmountInWei}
+            onChange={(e) => {
+              setInitialisationAmountInWei(parseFloat(e.target.value));
+            }}
+          ></input>
+          <div id="tipbox">
+            <IconButton
+              type="button"
+              onClick={() => {
+                setInfoTwoOpen(!infoTwoOpen);
+              }}
+            >
+              <InfoOutlinedIcon />
+            </IconButton>
+            <div
+              className={
+                infoTwoOpen === true ? "tipmessage show" : "tipmessage"
+              }
+            >
+              The initial investment amount, in Wei. The Eth will be spent on
+              the tokens specified in Step 1, which will be added to the
+              portfolio. <br /> 1 Eth = 1000000000000000000 Wei
+            </div>
           </div>
-          <div className="btn rightbox">
-            <button className="btn btn-cta" onClick={initialisePortfolio}>
-              Initialise
-            </button>
-          </div>
+        </div>
+        <div className="btn-scroll">
+          <button className="btn btn-cta" onClick={goToStep4}>
+            Back
+          </button>
+          <button className="btn btn-cta" onClick={initialisePortfolio}>
+            Initialise
+          </button>
         </div>
       </section>
     </>

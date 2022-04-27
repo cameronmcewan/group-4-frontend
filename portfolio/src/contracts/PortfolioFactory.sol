@@ -53,4 +53,10 @@ contract PortfolioFactory {
         );
         portfolios.push(address(portfolio));
     }
+
+    // -------- Helper functions for frontend ------- //
+
+    function getPortfolios() public view returns (address[] memory) {
+        return portfolios;
+    }
 }
