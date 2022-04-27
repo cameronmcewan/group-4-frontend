@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
-import "./Create.css";
+// import "./reate.css";
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
@@ -27,17 +28,17 @@ import "echarts/lib/component/markPoint";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: "2px 4px",
+    padding: "1px 1px",
     display: "flex",
-    alignItems: "center",
-    width: 400,
+    alignItems: "center"
+    // width: 100,
   },
   input: {
     marginLeft: theme.spacing(1),
     flex: 1,
   },
   iconButton: {
-    padding: 10,
+    padding: 1,
   },
   divider: {
     height: 28,
@@ -185,26 +186,29 @@ const Create = () => {
     <>
       <section ref={Begin}>
         <h1>Create a PortFolio</h1>
-        <li className="createblock">
-          <ul>
-            <h2>1. {stepOneText}</h2>
-          </ul>
-          <ul>
+        <div className="row center">
+        <ol className="block post">
+          <li>
+            <h2 className="post-title">1. {stepOneText}</h2>
+          </li>
+          <li>
             <h2>2. {stepTwoText}</h2>
-          </ul>
-          <ul>
+          </li>
+          <li>
             <h2>3. {stepThreeText}</h2>
-          </ul>
-          <ul>
+          </li>
+          <li>
             <h2>4. {stepFourText}</h2>
-          </ul>
-          <ul>
+          </li>
+          <li>
             <h2>5. {stepFiveText}</h2>
-          </ul>
-        </li>
+          </li>
+        </ol>
+        </div>
         <div className="btn-scroll">
-          <button className="btn btn-cta" onClick={goToStep1}>
-            Begin
+        <button className="hollow large" onClick={goToStep1}>
+        Start Creating! <br/>
+        <ArrowDownwardIcon />
           </button>
         </div>
       </section>

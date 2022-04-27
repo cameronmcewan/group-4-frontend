@@ -8,6 +8,8 @@ import "echarts/lib/component/tooltip";
 import "echarts/lib/component/title";
 // import legend components
 import "echarts/lib/component/legend";
+
+
 function YingtongPie(props) {
   const [state, setState] = useState({
     data1: 8,
