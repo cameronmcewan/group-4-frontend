@@ -417,17 +417,16 @@ footer .logo {
   background-color: #ffffff;
   color: #0000ff;
   padding: 1rem 2rem;
-  margin: 1rem 4rem;
+  margin: 1rem 1rem;
   height: 100%;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  max-height: 60vh;
   border-radius: 0.5rem;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-shadow: 0 2px 30px #000000;
           box-shadow: 0 2px 30px #000000;
+  overflow-y: scroll;
 }
 
 .block:hover {

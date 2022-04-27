@@ -3,29 +3,57 @@
   justify-content: space-between;
 }
 
-#step1 .box {
-  padding: 30px;
-  box-sizing: border-box;
-  border-radius: 10px;
-  background-color: #fff;
-  flex-grow: 1;
-  margin: 0 30px;
-  /* width: 500px; */
+#step1 .h-lim {
+  max-height: 60vh;
+  overflow: hidden;
 }
-#step1 .box.left {
+
+#step1 .topbox {
   display: flex;
-  flex: 3;
+  flex-direction: row;
+  max-height: 100px;
+  overflow-y: scroll;
+  /* padding: 0 10px; */
+}
+#step1 .fixed {
+  position: relative;
 }
 
-#step1 .box .btn-group .percentage {
-  /* width: 60px; */
-  /* margin: 0 10px; */
+#step1 .fixed-size {
+  height: 500px;
 }
 
-#step1 .box .line p,
-#step1 .box .line span {
-  color: $utpl;
+MuiIconButton-label {
+  width: 50px;
 }
+
+#step1 .topbox.btn-group {
+  display: flex;
+}
+
+#step1 .pie-chart {
+  display: flex;
+  position: relative;
+}
+
+/* #step1 .box {
+  /* padding: 30px; */
+  /* box-sizing: border-box; */
+  /* border-radius: 10px; */
+  /* background-color: #fff; */
+  /* flex-grow: 1; */
+  /* margin: 30px; */
+  /* width: 500px; */
+/* } */
+
+/* #step1 .left {
+  display: flex;
+  flex: 2;
+} */
+
+
+
+
 #step1 .box .line {
   font-size: 14px;
   line-height: 50px;
@@ -36,20 +64,20 @@
   color: #333;
 }
 
-#step1 .box .fr {
-  float: right;
-}
 #step1 .right {
   display: flex;
   flex-direction: column;
-  flex = 2;
-  width: ; 
+  flex: 2;  
+  width: fit-content; 
 }
-#step1 .right .listscroll {
-  flex: 1;
-  flex-grow: 1;
-  overflow: auto; 
-  min-height: 200px; 
+
+#step1 .listscroll {
+  display: flex;
+  color: #fff;
+  max-height: 20px;
+  overflow: scroll;
+  /* flex: 1; */
+  /* min-height: 200px;  */
 }
 
 /* 强制隐藏iframe弹框 */
@@ -108,12 +136,19 @@ iframe {
   background-color: #fff;
 }
 #step4 .btn-group {
-  width: 900px;
+  /* width: 900px; */
   margin: auto;
   background-color: #fff;
-  display: flex;
-  border-radius: 10px;
+  display: block;
+  /* border-radius: 10px; */
+  width: 60vw;
 }
+#step4 .btn-group .pie {
+  /* flex: col-2; */
+  justify-items: center;
+  float: left;
+}
+
 #step4 .btn-group .btn {
   flex-grow: 1;
   color: #333;
@@ -121,7 +156,7 @@ iframe {
 }
 #step4 .btn-group .btn p {
   display: block;
-  width: 100%;
+  width: 100px;
   font-size: 16px;
   line-height: 40px;
 }
@@ -129,7 +164,8 @@ iframe {
   color: #fff;
 }
 #step4 .btn-group .rightbox .fn-clear {
-  overflow: hidden;
+  flex: col-1;
+  overflow: scroll;
 }
 #step4 .btn-group .rightbox .fn-clear .fl {
   float: left;

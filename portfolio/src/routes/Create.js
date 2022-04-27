@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
-import "./Create.css";
+// import "./reate.css";
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
@@ -28,17 +28,17 @@ import "echarts/lib/component/markPoint";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: "2px 4px",
+    padding: "1px 1px",
     display: "flex",
-    alignItems: "center",
-    width: 400,
+    alignItems: "center"
+    // width: 100,
   },
   input: {
     marginLeft: theme.spacing(1),
     flex: 1,
   },
   iconButton: {
-    padding: 10,
+    padding: 1,
   },
   divider: {
     height: 28,
@@ -216,15 +216,15 @@ const Create = () => {
       <section ref={StepOne}>
         <h2>Step 1</h2>
         <h1>{stepOneText}</h1>
-        <div className="row" id="step1">
-          <div className="box left">
+        <div className="row h-lim" id="step1">
+          <div className="block col-2">
             <div className="topbox">
               {selectedTokenList.map((ele, i) => {
                 return (
                   <div className="btn-group" key={i}>
-                      <span>
-                        {ele.name}&nbsp;<small>({ele.qname})</small>
-                      </span>
+                      <h4>
+                      {ele.name}&nbsp;({ele.qname})
+                      </h4>
                       <IconButton
                         type="button"
                         onClick={() => {
@@ -233,7 +233,7 @@ const Create = () => {
                           setSearchList([...selectedTokens]);
                         }}
                       >
-                        <DeleteIcon />
+                        <DeleteIcon className="MuiIconButton-label"/>
                       </IconButton>
                     <Slider
                       defaultValue={ele.scrollVal}
@@ -241,7 +241,7 @@ const Create = () => {
                       step={1}
                       min={0}
                       max={100}
-                      onChange={(event, newValue) => {
+                      onChange={(event, newValue) => { 
                         let tokenList = selectedTokenList;
                         tokenList[i].weightVal = newValue;
                         setSelectedTokenList([...tokenList]);
@@ -251,10 +251,20 @@ const Create = () => {
                 );
               })}
             </div>
-            <YingtongPie List={selectedTokenList} />
+            <div>
+              <YingtongPie List={selectedTokenList} className="pie-chart"/>
+            </div>
           </div>
-          <div className="box right">
-            <Paper component="form" className={classes.root}>
+          <div className="block col-1">
+          <div className="topbox">
+            <Paper 
+            className="fixed"
+            component="form"  
+            style={{
+              width: "fit-content",
+              padding: 2,
+              backgroundColor: "lightgrey"
+            }}>
               <InputBase
                 defaultValue={tokenSearchText}
                 onChange={(e) => {
@@ -265,11 +275,15 @@ const Create = () => {
                 inputProps={{ "aria-label": "search token" }}
               />
             </Paper>
-
-            <List
-              component="nav"
+            </div>
+            <div className="listscroll">
+              <List
               aria-label="secondary mailbox folders"
-              className="listscroll"
+              height={400}
+              width={360}
+              itemSize={46}
+              itemCount={200}
+              overscanCount={5}
             >
               {searchList.map((ele, i) => {
                 return (
@@ -290,6 +304,7 @@ const Create = () => {
                 );
               })}
             </List>
+            </div>
           </div>
         </div>
         <div className="btn-scroll">
@@ -400,11 +415,9 @@ const Create = () => {
       <section ref={StepFour} id="step4">
         <h2>Step 4</h2>
         <h1>{stepFourText}</h1>
-        <div className="btn-group">
-          <div className="btn leftbox">
-            <div>
+        <div className="block btn-group">
+          <div className="pie">
               <YingtongPie2 List={selectedTokenList} />
-            </div>
           </div>
           <div className="btn rightbox">
             <p>Name: {tokenName}</p>
