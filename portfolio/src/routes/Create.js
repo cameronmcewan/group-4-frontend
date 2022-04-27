@@ -22,7 +22,7 @@ import PortfolioFactory from "../contracts/PortfolioFactory.json";
 import Portfolio from "../contracts/Portfolio.json";
 import MetaMask from "../components/MetaMask";
 import PortfolioAccordion from "../components/explore/PortfolioAccordion";
-import { CircularProgress, LinearProgress } from "@mui/material";
+import { LinearProgress } from "@mui/material";
 import "echarts/lib/chart/pie";
 import "echarts/lib/component/tooltip";
 import "echarts/lib/component/title";
@@ -83,7 +83,6 @@ const Create = () => {
       name: "Initialise your PortFolio",
     },
   ];
-  const [showStepFive, setShowStepFive] = useState(false);
   const [showStepSix, setShowStepSix] = useState(false);
 
   // Each selected token looks like:
@@ -135,7 +134,6 @@ const Create = () => {
     });
 
   const goToStep4 = () => {
-    setShowStepFive(true);
     window.scrollTo({
       top: StepFour.current.offsetTop,
       behavior: "smooth",
@@ -498,78 +496,76 @@ const Create = () => {
         </div>
       </section>
 
-      {showStepFive && (
-        <section ref={StepFive}>
-          <h2>Step 5</h2>
-          <h1>{stages[4].name}</h1>
-          <h2>
-            {tokenName} ({tokenSymbol})
-          </h2>
-          {deployedContractAddress ? (
-            <>
-              <h2>Address: {deployedContractAddress}</h2>
-              <div className="tokenline">
-                <span>Eth </span>
-                <input
-                  type="number"
-                  min="0.0001" // about £2 worth
-                  max="10"
-                  placeholder="0.0001"
-                  value={initialisationAmountInWei / 1000000000000000000}
-                  onChange={(e) => {
-                    setInitialisationAmountInWei(
-                      parseFloat(e.target.value) * 1000000000000000000
-                    );
+      <section ref={StepFive}>
+        <h2>Step 5</h2>
+        <h1>{stages[4].name}</h1>
+        <h2>{tokenName}</h2>
+        <h2>{tokenSymbol}</h2>
+        {deployedContractAddress ? (
+          <>
+            <h2>Address: {deployedContractAddress}</h2>
+            <div className="tokenline">
+              <span>Eth </span>
+              <input
+                type="number"
+                min="0.0001" // about £2 worth
+                max="10"
+                placeholder="0.0001"
+                value={initialisationAmountInWei / 1000000000000000000}
+                onChange={(e) => {
+                  setInitialisationAmountInWei(
+                    parseFloat(e.target.value) * 1000000000000000000
+                  );
+                }}
+              ></input>
+              <p>=</p>
+              <span>Wei </span>
+              <input
+                type="number"
+                min="100000000000000"
+                max="10000000000000000000"
+                placeholder="100000000000000"
+                value={initialisationAmountInWei}
+                onChange={(e) => {
+                  setInitialisationAmountInWei(parseFloat(e.target.value));
+                }}
+              ></input>
+              <div id="tipbox">
+                <IconButton
+                  type="button"
+                  onClick={() => {
+                    setInfoTwoOpen(!infoTwoOpen);
                   }}
-                ></input>
-                <p>=</p>
-                <span>Wei </span>
-                <input
-                  type="number"
-                  min="100000000000000"
-                  max="10000000000000000000"
-                  placeholder="100000000000000"
-                  value={initialisationAmountInWei}
-                  onChange={(e) => {
-                    setInitialisationAmountInWei(parseFloat(e.target.value));
-                  }}
-                ></input>
-                <div id="tipbox">
-                  <IconButton
-                    type="button"
-                    onClick={() => {
-                      setInfoTwoOpen(!infoTwoOpen);
-                    }}
-                  >
-                    <InfoOutlinedIcon />
-                  </IconButton>
-                  <div
-                    className={
-                      infoTwoOpen === true ? "tipmessage show" : "tipmessage"
-                    }
-                  >
-                    The initial investment amount, in Wei. The Eth will be spent
-                    on the tokens specified in Step 1, which will be added to
-                    the portfolio. <br /> 1 Eth = 1000000000000000000 Wei
-                  </div>
+                >
+                  <InfoOutlinedIcon />
+                </IconButton>
+                <div
+                  className={
+                    infoTwoOpen === true ? "tipmessage show" : "tipmessage"
+                  }
+                >
+                  The initial investment amount, in Wei. The Eth will be spent
+                  on the tokens specified in Step 1, which will be added to the
+                  portfolio. <br /> 1 Eth = 1000000000000000000 Wei
                 </div>
               </div>
-              <div className="btn-scroll">
-                <button className="btn btn-cta" onClick={goToStep4}>
-                  Back
-                </button>
-                <button className="btn btn-cta" onClick={initialisePortfolio}>
-                  Initialise
-                </button>
-              </div>
-            </>
-          ) : (
-            <div className="tokenline">
-              <CircularProgress />
             </div>
-          )}
-        </section>
-      )}
+            <div className="btn-scroll">
+              <button className="btn btn-cta" onClick={goToStep4}>
+                Back
+              </button>
+              <button className="btn btn-cta" onClick={initialisePortfolio}>
+                Initialise
+              </button>
+            </div>
+          </>
+        ) : (
+          <div className="tokenline">
+            <h2>Deploying PortFolio...</h2>
+            <LinearProgress />
+          </div>
+        )}
+      </section>
 
       {showStepSix && (
         <section ref={StepSix}>
@@ -577,7 +573,8 @@ const Create = () => {
           {initialisedToken ? (
             <PortfolioAccordion token={initialisedToken} />
           ) : (
-            <div id="Step2">
+            <div className="tokenline">
+              <h2>Initialising PortFolio...</h2>
               <LinearProgress />
             </div>
           )}
