@@ -112,11 +112,16 @@ footer .logo {
 }
 
 //  ========= Create page styling ===========
+// .row {
+//     display: flex;
+//     justify-content: center space-between;
+//     margin: 1rem 3rem;
+//     align-items: center;
+// }
 .row {
     display: flex;
-    justify-content: center space-between;
+    justify-content: space-between;
     margin: 1rem 3rem;
-    align-items: center;
 }
 .center {
     display: flex;
@@ -189,6 +194,10 @@ footer .logo {
 .post-title {
 	position: relative;
 	transition: .4s ease-out;
+}
+
+.row.center {
+    align-items: center;
 }
 
 form {

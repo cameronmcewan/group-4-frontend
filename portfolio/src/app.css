@@ -376,13 +376,10 @@ footer .logo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center space-between;
-      -ms-flex-pack: center space-between;
-          justify-content: center space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin: 1rem 3rem;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 .center {
@@ -485,6 +482,12 @@ footer .logo {
   position: relative;
   -webkit-transition: .4s ease-out;
   transition: .4s ease-out;
+}
+
+.row.center {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 form {
