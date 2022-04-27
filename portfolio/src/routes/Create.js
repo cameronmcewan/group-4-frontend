@@ -433,6 +433,7 @@ const Create = () => {
           <div id="tipbox">
             <IconButton
               type="button"
+              className="btn-info"
               onClick={() => {
                 let tipstate = infoOpen;
                 setInfoOpen(!tipstate);

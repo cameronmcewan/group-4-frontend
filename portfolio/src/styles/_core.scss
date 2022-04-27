@@ -64,9 +64,16 @@ body {
 
 footer {
     color: $white;
+    background-color: $nav-color;
     padding: 1rem;
     margin-top: auto;
     border-top: 1px solid $grey;
+}
+
+footer .logo {
+    display: inline-block;
+    height: 2rem;
+    margin-right: 3vw;
 }
 
 /* scroll behaviour */
@@ -103,8 +110,8 @@ button {
 }
 
 button:hover {
-    margin-top: 1.4rem;
-    margin-left: 1.6rem;
+    // margin-top: 1.4rem;
+    // margin-left: 1.6rem;
     box-shadow: 0 0 10px $grey;
 }
 

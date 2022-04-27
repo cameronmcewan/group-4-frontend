@@ -103,6 +103,13 @@ iframe {
 iframe {
   display: none !important;
 }
+.btn-info {
+  box-shadow: 0 0 0;
+}
+.btn-info:hover {
+  box-shadow: 0 0 0;
+  margin: 0;
+}
 #tipbox {
   position: relative;
   display: inline-block;

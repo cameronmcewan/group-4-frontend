@@ -8,7 +8,7 @@ const Footer = () => {
   return (
       <footer>
         <Link className="logo" to="/">
-          <img  src={PieLogo} alt="The Folio Logo" />
+          {/* <img  src={PieLogo} alt="The Folio Logo" /> */}
         <h4>This is the footer</h4>
         </Link>
 
