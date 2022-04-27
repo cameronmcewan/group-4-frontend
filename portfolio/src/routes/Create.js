@@ -50,15 +50,37 @@ const Create = () => {
 
   const Begin = useRef(null);
   const StepOne = useRef(null);
-  const stepOneText = "Add tokens to your PortFolio";
+
   const StepTwo = useRef(null);
-  const stepTwoText = "Name your PortFolio";
+
   const StepThree = useRef(null);
-  const stepThreeText = "Set a fee for your PortFolio";
+
   const StepFour = useRef(null);
-  const stepFourText = "Deploy your PortFolio";
+
   const StepFive = useRef(null);
-  const stepFiveText = "Initialise your PortFolio";
+
+  const stages = [
+    {
+      number: 1,
+      name: "Add tokens to your PortFolio",
+    },
+    {
+      number: 2,
+      name: "Name your PortFolio",
+    },
+    {
+      number: 3,
+      name: "Set a fee for your PortFolio",
+    },
+    {
+      number: 4,
+      name: "Deploy your PortFolio",
+    },
+    {
+      number: 5,
+      name: "Initialise your PortFolio",
+    },
+  ];
 
   const [tokenName, setTokenName] = useState("");
   const [tokenSymbol, setTokenSymbol] = useState("");
@@ -186,21 +208,15 @@ const Create = () => {
       <section ref={Begin}>
         <h1>Create a PortFolio</h1>
         <li className="createblock">
-          <ul>
-            <h2>1. {stepOneText}</h2>
-          </ul>
-          <ul>
-            <h2>2. {stepTwoText}</h2>
-          </ul>
-          <ul>
-            <h2>3. {stepThreeText}</h2>
-          </ul>
-          <ul>
-            <h2>4. {stepFourText}</h2>
-          </ul>
-          <ul>
-            <h2>5. {stepFiveText}</h2>
-          </ul>
+          {stages.map((stage) => {
+            return (
+              <ul>
+                <h2>
+                  {stage.number}. {stage.name}
+                </h2>
+              </ul>
+            );
+          })}
         </li>
         <div className="btn-scroll">
           <button className="btn btn-cta" onClick={goToStep1}>
@@ -211,7 +227,7 @@ const Create = () => {
 
       <section ref={StepOne}>
         <h2>Step 1</h2>
-        <h1>{stepOneText}</h1>
+        <h1>{stages[0].name}</h1>
         <div className="row" id="step1">
           <div className="col-12 box">
             <div className="topbox">
@@ -295,14 +311,14 @@ const Create = () => {
             Back
           </button>
           <button className="btn btn-cta" onClick={goToStep2}>
-            Continue
+            Confirm
           </button>
         </div>
       </section>
 
       <section ref={StepTwo}>
         <h2>Step 2</h2>
-        <h1>{stepTwoText}</h1>
+        <h1>{stages[1].name}</h1>
         <div id="Step2">
           <FormControl fullWidth className="formline" variant="outlined">
             <InputLabel htmlFor="outlined-adornment-amount">Name</InputLabel>
@@ -334,14 +350,14 @@ const Create = () => {
             Back
           </button>
           <button className="btn btn-cta" onClick={goToStep3}>
-            Continue
+            Confirm
           </button>
         </div>
       </section>
 
       <section ref={StepThree}>
         <h2>Step 3</h2>
-        <h1>{stepThreeText}</h1>
+        <h1>{stages[2].name}</h1>
         <div className="tokenline">
           <input
             type="number"
@@ -390,14 +406,14 @@ const Create = () => {
             Back
           </button>
           <button className="btn btn-cta" onClick={goToStep4}>
-            Continue
+            Confirm
           </button>
         </div>
       </section>
 
       <section ref={StepFour} id="step4">
         <h2>Step 4</h2>
-        <h1>{stepFourText}</h1>
+        <h1>{stages[3].name}</h1>
         <div className="btn-group">
           <div className="btn leftbox">
             <div>
@@ -421,14 +437,14 @@ const Create = () => {
             Back
           </button>
           <button className="btn btn-cta" onClick={goToStep5}>
-            Continue
+            Confirm
           </button>
         </div>
       </section>
 
       <section ref={StepFive}>
         <h2>Step 5</h2>
-        <h1>{stepFiveText}</h1>
+        <h1>{stages[4].name}</h1>
       </section>
     </>
   );
