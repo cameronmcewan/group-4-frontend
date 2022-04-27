@@ -9,13 +9,7 @@ import "echarts/lib/component/title";
 // import legend components
 import "echarts/lib/component/legend";
 function Pie(props) {
-  const [state, setState] = useState({
-    data1: 8,
-    data2: 12,
-  });
   useEffect(() => {
-    console.log(props);
-    let list = props;
     let namelist = props.List.map((ele) => {
       return ele.name;
     });
@@ -25,24 +19,17 @@ function Pie(props) {
         value: ele.weightVal,
       };
     });
-    console.log(namelist);
-    console.log(namelist);
     let myChart = echarts.init(document.getElementById("pie3"));
-    // Charting
     myChart.setOption({
       tooltip: {
         trigger: "item",
-        formatter: "{a} <br/>{b}: {c} ({d}%)",
+        formatter: "{b}: {d}%",
       },
       legend: {
-        // orient: 'vertical',
-        // // x: 'center',
-        // top: '0',
         data: namelist,
       },
       series: [
         {
-          // name: '',
           type: "pie",
           radius: ["50%", "70%"],
           avoidLabelOverlap: false,
