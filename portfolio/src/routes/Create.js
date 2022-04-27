@@ -200,7 +200,7 @@ const Create = () => {
       tokenSymbol,
       tokenAddresses,
       percentageHoldings,
-      ownerFee
+      Math.floor(ownerFee*100)
     );
     portfolioFactory.once(filter, (address_, name_) => {
       setDeployedContractAddress(address_);
@@ -421,16 +421,15 @@ const Create = () => {
               } else if (e.target.value < 0) {
                 setOwnerFee(0);
               } else {
-                  setOwnerFee(Math.round(e.target.value));
-                // if (e.target.value.includes(".")) {
-                //   setOwnerFee(parseInt(e.target.value).toFixed(2));
-                // } else {
-                //   setOwnerFee(parseInt(e.target.value));
-                // }
+                if (e.target.value.includes(".")) {
+                  setOwnerFee(parseFloat(e.target.value).toFixed(2));
+                } else {
+                  setOwnerFee(parseFloat(e.target.value));
+                }
               }
             }}
           ></input>
-          0 - 10,000
+          %
           <div id="tipbox">
             <IconButton
               type="button"
@@ -446,9 +445,9 @@ const Create = () => {
             >
               This fee will be paid to the owner of the portfolio every time
               someone buys into the portfolio. 
-              {/* For example, if the fee is 1%,
+              For example, if the fee is 1%,
               the owner will receive 1% of the assets bought when someone buys
-              into the portfolio. Rounded to 2 d.p. */}
+              into the portfolio. Rounded to 2 d.p.
             </div>
           </div>
         </div>
@@ -475,7 +474,7 @@ const Create = () => {
           <div className="btn rightbox">
             <h2>Name: {tokenName}</h2>
             <h2>Symbol: {tokenSymbol}</h2>
-            <h2>Fee: {ownerFee/100}%</h2>
+            <h2>Fee: {ownerFee}%</h2>
             <button className="btn btn-cta" onClick={goToStep1}>
               Edit
             </button>
