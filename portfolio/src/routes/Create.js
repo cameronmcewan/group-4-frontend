@@ -83,6 +83,8 @@ const Create = () => {
       name: "Initialise your PortFolio",
     },
   ];
+  const [showStepFive, setShowStepFive] = useState(false);
+  const [showStepSix, setShowStepSix] = useState(false);
 
   // Each selected token looks like:
   // {
@@ -132,23 +134,28 @@ const Create = () => {
       behavior: "smooth",
     });
 
-  const goToStep4 = () =>
+  const goToStep4 = () => {
+    setShowStepFive(true);
     window.scrollTo({
       top: StepFour.current.offsetTop,
       behavior: "smooth",
     });
+  };
 
-  const goToStep5 = () =>
+  const goToStep5 = () => {
+    setShowStepSix(true);
     window.scrollTo({
       top: StepFive.current.offsetTop,
       behavior: "smooth",
     });
+  };
 
-  const goToStep6 = () =>
+  const goToStep6 = () => {
     window.scrollTo({
       top: StepSix.current.offsetTop,
       behavior: "smooth",
     });
+  };
 
   useEffect(() => {
     let nameResults = KovanTokens().filter((ele) => {
@@ -169,7 +176,6 @@ const Create = () => {
   }, [tokenSearchText]);
 
   const deployPortfolio = async () => {
-    console.log("DEPLOY: function called");
     const portfolioFactory = new ethers.Contract(
       portfolioFactoryAddress,
       PortfolioFactory.abi,
@@ -191,7 +197,6 @@ const Create = () => {
       userContext.address,
       null
     );
-    console.log("DEPLOY: about to create contract");
     await portfolioFactory.create(
       tokenName,
       tokenSymbol,
@@ -200,9 +205,6 @@ const Create = () => {
       ownerFee
     );
     portfolioFactory.once(filter, (address_, name_) => {
-      console.log(`DEPLOY: deployed contract name is ${name_.toString()}`);
-      console.log(`DEPLOY: deployed contract address is ${address_}`);
-      console.log(`DEPLOY: setting deployedContractAddress = ${address_}`);
       setDeployedContractAddress(address_);
     });
   };
@@ -211,7 +213,6 @@ const Create = () => {
     let weightSum = tokenWeights.reduce(
       (accumulator, current) => accumulator + current
     );
-    console.log(`DEPLOY: sum of holdings = ${weightSum}`);
     let percentageHoldings = tokenWeights.map((weight) =>
       Math.round((weight * 100) / weightSum)
     );
@@ -227,8 +228,6 @@ const Create = () => {
   };
 
   const initialisePortfolio = async () => {
-    goToStep6();
-    console.log("INIT: Instantiating contract");
     const portfolio = new ethers.Contract(
       deployedContractAddress,
       Portfolio.abi,
@@ -238,12 +237,11 @@ const Create = () => {
       from: userContext.address,
       value: initialisationAmountInWei,
     };
-    console.log(`INIT: Initialising portfolio with ${opts.value} Wei`);
     // Ethers docs on how to wait for a transaction to be mined:
     // https://docs.ethers.io/v5/single-page/#/v5/api/contract/contract/-%23-contract-functionsSend
     let tx = await portfolio.initialisePortfolio(opts);
+    goToStep6();
     await tx.wait();
-    console.log("INIT: Transaction mined");
     const token = {
       address: deployedContractAddress,
       name: tokenName,
@@ -500,87 +498,91 @@ const Create = () => {
         </div>
       </section>
 
-      <section ref={StepFive}>
-        <h2>Step 5</h2>
-        <h1>{stages[4].name}</h1>
-        <h2>
-          {tokenName} ({tokenSymbol})
-        </h2>
-        {deployedContractAddress ? (
-          <>
-            <h2>Address: {deployedContractAddress}</h2>
-            <div className="tokenline">
-              <span>Eth </span>
-              <input
-                type="number"
-                min="0.0001" // about £2 worth
-                max="10"
-                placeholder="0.0001"
-                value={initialisationAmountInWei / 1000000000000000000}
-                onChange={(e) => {
-                  setInitialisationAmountInWei(
-                    parseFloat(e.target.value) * 1000000000000000000
-                  );
-                }}
-              ></input>
-              <p>=</p>
-              <span>Wei </span>
-              <input
-                type="number"
-                min="100000000000000"
-                max="10000000000000000000"
-                placeholder="100000000000000"
-                value={initialisationAmountInWei}
-                onChange={(e) => {
-                  setInitialisationAmountInWei(parseFloat(e.target.value));
-                }}
-              ></input>
-              <div id="tipbox">
-                <IconButton
-                  type="button"
-                  onClick={() => {
-                    setInfoTwoOpen(!infoTwoOpen);
+      {showStepFive && (
+        <section ref={StepFive}>
+          <h2>Step 5</h2>
+          <h1>{stages[4].name}</h1>
+          <h2>
+            {tokenName} ({tokenSymbol})
+          </h2>
+          {deployedContractAddress ? (
+            <>
+              <h2>Address: {deployedContractAddress}</h2>
+              <div className="tokenline">
+                <span>Eth </span>
+                <input
+                  type="number"
+                  min="0.0001" // about £2 worth
+                  max="10"
+                  placeholder="0.0001"
+                  value={initialisationAmountInWei / 1000000000000000000}
+                  onChange={(e) => {
+                    setInitialisationAmountInWei(
+                      parseFloat(e.target.value) * 1000000000000000000
+                    );
                   }}
-                >
-                  <InfoOutlinedIcon />
-                </IconButton>
-                <div
-                  className={
-                    infoTwoOpen === true ? "tipmessage show" : "tipmessage"
-                  }
-                >
-                  The initial investment amount, in Wei. The Eth will be spent
-                  on the tokens specified in Step 1, which will be added to the
-                  portfolio. <br /> 1 Eth = 1000000000000000000 Wei
+                ></input>
+                <p>=</p>
+                <span>Wei </span>
+                <input
+                  type="number"
+                  min="100000000000000"
+                  max="10000000000000000000"
+                  placeholder="100000000000000"
+                  value={initialisationAmountInWei}
+                  onChange={(e) => {
+                    setInitialisationAmountInWei(parseFloat(e.target.value));
+                  }}
+                ></input>
+                <div id="tipbox">
+                  <IconButton
+                    type="button"
+                    onClick={() => {
+                      setInfoTwoOpen(!infoTwoOpen);
+                    }}
+                  >
+                    <InfoOutlinedIcon />
+                  </IconButton>
+                  <div
+                    className={
+                      infoTwoOpen === true ? "tipmessage show" : "tipmessage"
+                    }
+                  >
+                    The initial investment amount, in Wei. The Eth will be spent
+                    on the tokens specified in Step 1, which will be added to
+                    the portfolio. <br /> 1 Eth = 1000000000000000000 Wei
+                  </div>
                 </div>
               </div>
+              <div className="btn-scroll">
+                <button className="btn btn-cta" onClick={goToStep4}>
+                  Back
+                </button>
+                <button className="btn btn-cta" onClick={initialisePortfolio}>
+                  Initialise
+                </button>
+              </div>
+            </>
+          ) : (
+            <div className="tokenline">
+              <CircularProgress />
             </div>
-            <div className="btn-scroll">
-              <button className="btn btn-cta" onClick={goToStep4}>
-                Back
-              </button>
-              <button className="btn btn-cta" onClick={initialisePortfolio}>
-                Initialise
-              </button>
-            </div>
-          </>
-        ) : (
-          <div className="tokenline">
-            <CircularProgress />
-          </div>
-        )}
-      </section>
+          )}
+        </section>
+      )}
 
-      <section ref={StepSix}>
-        <h1>Your PortFolio</h1>
-        {initialisedToken ? (
-          <PortfolioAccordion token={initialisedToken} />
-        ) : (
-          <div id="Step2">
-            <LinearProgress />
-          </div>
-        )}
-      </section>
+      {showStepSix && (
+        <section ref={StepSix}>
+          <h1>Your PortFolio</h1>
+          {initialisedToken ? (
+            <PortfolioAccordion token={initialisedToken} />
+          ) : (
+            <div id="Step2">
+              <LinearProgress />
+            </div>
+          )}
+        </section>
+      )}
     </>
   );
 };
