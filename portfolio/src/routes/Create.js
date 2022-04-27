@@ -216,15 +216,16 @@ const Create = () => {
       <section ref={StepOne}>
         <h2>Step 1</h2>
         <h1>{stepOneText}</h1>
-        <div className="row h-lim" id="step1">
-          <div className="block col-2">
+        <div className="row" id="step1">
+          <div className="col-12 box">
             <div className="topbox">
               {selectedTokenList.map((ele, i) => {
                 return (
-                  <div className="btn-group" key={i}>
-                      <h4>
-                      {ele.name}&nbsp;({ele.qname})
-                      </h4>
+                  <div className="mainbox" key={i}>
+                    <p className="line btn-group">
+                      <span>
+                        {ele.name}&nbsp;<small>({ele.qname})</small>
+                      </span>
                       <IconButton
                         type="button"
                         onClick={() => {
@@ -233,15 +234,16 @@ const Create = () => {
                           setSearchList([...selectedTokens]);
                         }}
                       >
-                        <DeleteIcon className="MuiIconButton-label"/>
+                        <DeleteIcon />
                       </IconButton>
+                    </p>
                     <Slider
                       defaultValue={ele.scrollVal}
                       aria-labelledby="discrete-slider-custom"
                       step={1}
                       min={0}
                       max={100}
-                      onChange={(event, newValue) => { 
+                      onChange={(event, newValue) => {
                         let tokenList = selectedTokenList;
                         tokenList[i].weightVal = newValue;
                         setSelectedTokenList([...tokenList]);
@@ -251,20 +253,10 @@ const Create = () => {
                 );
               })}
             </div>
-            <div>
-              <YingtongPie List={selectedTokenList} className="pie-chart"/>
-            </div>
+            <YingtongPie List={selectedTokenList} />
           </div>
-          <div className="block col-1">
-          <div className="topbox">
-            <Paper 
-            className="fixed"
-            component="form"  
-            style={{
-              width: "fit-content",
-              padding: 2,
-              backgroundColor: "lightgrey"
-            }}>
+          <div className="col-12 box rightbox">
+            <Paper component="form" className={classes.root}>
               <InputBase
                 defaultValue={tokenSearchText}
                 onChange={(e) => {
@@ -275,15 +267,11 @@ const Create = () => {
                 inputProps={{ "aria-label": "search token" }}
               />
             </Paper>
-            </div>
-            <div className="listscroll">
-              <List
+
+            <List
+              component="nav"
               aria-label="secondary mailbox folders"
-              height={400}
-              width={360}
-              itemSize={46}
-              itemCount={200}
-              overscanCount={5}
+              className="listscroll"
             >
               {searchList.map((ele, i) => {
                 return (
@@ -304,15 +292,14 @@ const Create = () => {
                 );
               })}
             </List>
-            </div>
           </div>
         </div>
         <div className="btn-scroll">
-          <button className="btn-secondary" onClick={goToStep1}>
-            <h2>Back</h2>
+          <button className="btn btn-cta" onClick={goToStep1}>
+            Back
           </button>
-          <button className="btn-primary" onClick={goToStep2}>
-            <h2>Continue</h2>
+          <button className="btn btn-cta" onClick={goToStep2}>
+            Continue
           </button>
         </div>
       </section>
@@ -321,7 +308,7 @@ const Create = () => {
         <h2>Step 2</h2>
         <h1>{stepTwoText}</h1>
         <div id="Step2">
-          <FormControl fullWidth className="" variant="outlined">
+          <FormControl fullWidth className="formline" variant="outlined">
             <InputLabel htmlFor="outlined-adornment-amount">Name</InputLabel>
             <OutlinedInput
               defaultValue={tokenName}
@@ -347,11 +334,11 @@ const Create = () => {
           </FormControl>
         </div>
         <div className="btn-scroll">
-          <button className="btn-secondary" onClick={goToStep1}>
-            <h2>Back</h2>
+          <button className="btn btn-cta" onClick={goToStep1}>
+            Back
           </button>
-          <button className="btn-primary" onClick={goToStep3}>
-            <h2>Continue</h2>
+          <button className="btn btn-cta" onClick={goToStep3}>
+            Continue
           </button>
         </div>
       </section>
@@ -403,11 +390,11 @@ const Create = () => {
           </div>
         </div>
         <div className="btn-scroll">
-          <button className="btn-secondary" onClick={goToStep2}>
-            <h2>Back</h2>
+          <button className="btn btn-cta" onClick={goToStep2}>
+            Back
           </button>
-          <button className="btn-primary" onClick={goToStep4}>
-            <h2>Continue</h2>
+          <button className="btn btn-cta" onClick={goToStep4}>
+            Continue
           </button>
         </div>
       </section>
@@ -415,28 +402,30 @@ const Create = () => {
       <section ref={StepFour} id="step4">
         <h2>Step 4</h2>
         <h1>{stepFourText}</h1>
-        <div className="block btn-group">
-          <div className="pie">
+        <div className="btn-group">
+          <div className="btn leftbox">
+            <div>
               <YingtongPie2 List={selectedTokenList} />
+            </div>
           </div>
           <div className="btn rightbox">
             <p>Name: {tokenName}</p>
             <p>Symbol: {tokenSymbol}</p>
             <p>Fee {ownerFee}%</p>
-            <button className="btn-secondary" onClick={goToStep1}>
+            <button className="btn btn-cta" onClick={goToStep1}>
               Edit
             </button>
-            <button className="btn-primary" onClick={deployPortfolio}>
+            <button className="btn btn-cta" onClick={deployPortfolio}>
               Deploy
             </button>
           </div>
         </div>
         <div className="btn-scroll">
-          <button className="btn-secondary" onClick={goToStep3}>
-            <h2>Back</h2>
+          <button className="btn btn-cta" onClick={goToStep3}>
+            Back
           </button>
-          <button className="btn-primary" onClick={goToStep5}>
-            <h2>Continue</h2>
+          <button className="btn btn-cta" onClick={goToStep5}>
+            Continue
           </button>
         </div>
       </section>
