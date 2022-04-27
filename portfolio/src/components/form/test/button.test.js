@@ -15,7 +15,7 @@ it('Renders with a className equal to the variant', () => {
 });
 });
 
-// testing on Buy button tests done on baises pf class names 
+// testing on Buy button tests done on baises of class names 
 describe("Button test", () =>{
     it('Renders with a className equal to the variant', () => {
         const { container } = render(<Button variant="btn" />)
