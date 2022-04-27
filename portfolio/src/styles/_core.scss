@@ -113,21 +113,20 @@ h1, h2, h3, h4, h5 {
 }
 
 h1 {
-    font-size: 5rem;
+    font-size: 4rem;
     font-weight: 600;
     text-align: center;
+    line-height: 1.1;
 }
 h1.intro {
     text-align: center;
     font-weight: 400;
-    line-height: 1.4;
-    padding-bottom: 1rem;
 }
 
 
 /* each component is wrapped in a section in its component.js file */
 section {
-    margin-top: 4rem;
+    margin-top: 8rem;
     min-height: 90vh;
     padding: 4rem;
     padding-bottom: 12rem;
@@ -142,6 +141,7 @@ section > h2, section > h5 {
 }
 
 section > h2 {
+    margin-top: 2rem;
     color: $white;
     margin-bottom: 1rem;
 }
@@ -204,31 +204,30 @@ button.metamask {
 .welcome {
     display: flex;
     vertical-align: middle;
+    padding-top: 5rem;
 }
 .btn-welcome {
     justify-content: center;
     margin: 0 auto;
-    padding-left: 30px;
+    text-align: center;
     justify-content: center;
-    align-items: center;
-    width: 300px;
-    height: fit-content;
+    width: 250px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     font-size: xx-large;
-    border: 1px solid $white;
-    outline: 2px $white;
-    background-color: transparent;
+    border: 2px solid $white;
     color: $white;
     background-repeat:no-repeat;
     background: transparent no-repeat;
     border-radius: 10rem;
-    box-shadow: 4px 4px 50px $grey;
+    box-shadow: 0 0 100px $white;
 }
 
 .btn-welcome:hover {
     background: $white;
     color: $blue;
     border-color: none;
-    box-shadow: 4px 4px 50px $grey;
+    box-shadow: 0 0 50px $grey;
 }
 
 .btn-secondary {
@@ -304,7 +303,7 @@ button.large:hover {
     }
 
     section {
-        margin-top: 6rem;
+        margin-top: 4rem;
     }
 }
 

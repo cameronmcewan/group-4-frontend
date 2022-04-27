@@ -256,7 +256,8 @@ const Create = () => {
   return (
     <>
       <section ref={Begin}>
-        <h1>Create a PortFolio</h1>
+        <h1 className="">Create Your PortFolio</h1>
+        <h4>Create your own index made up of digital assets and deploy on Kovan Testnet as a single token. Avoid paying gas fees on multiple transactions and earn a reward if others decide to invest in your index token. You're just five simple steps away from being the owner of a crypto index token on the blockchain!</h4> <br />
         <li className="block">
           {stages.map((stage) => {
             return (
@@ -468,7 +469,7 @@ const Create = () => {
         <h2>Step 4</h2>
         <h1>{stages[3].name}</h1>
         <div className="btn-group">
-          <h2>HELLO</h2>
+          {/* <h2>HELLO</h2> */}
           <div className="btn leftbox">
             <div>
               <YingtongPie2 List={selectedTokenList} />

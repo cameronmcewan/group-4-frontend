@@ -2,6 +2,19 @@
 $nav-height: 80px;
 $nav-color: #000050;
 
+img.folio {
+    display: block;
+    width: fit-content;
+    height: 250px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 6vw;
+    padding-right: -50px;
+    margin-top: -10px;
+    padding-bottom: -120px;
+}
+
+
 nav {
     // width: 100vw;
     height: $nav-height;
@@ -186,7 +199,7 @@ select {
 
 // ========== Welcome Page ===========
 #landing {
-    footer, nav{
+    #footer, #nav{
         visibility: hidden;
         }
         

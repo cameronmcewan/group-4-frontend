@@ -150,6 +150,10 @@ iframe {
 #step4 .btn-group .btn .btn-cta {
   color: #fff;
 }
+
+#step4 .btn-group .leftbox {
+  margin-left: 140px;
+}
 #step4 .btn-group .rightbox .fn-clear {
   overflow: hidden;
 }

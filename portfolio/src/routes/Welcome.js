@@ -3,26 +3,31 @@ import PortfolioAccordion from "../components/explore/PortfolioAccordion";
 import portfolios from "../helpers/portfolios.json";
 import { Link } from "react-router-dom";
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import Logo from "../assets/logos/folio_clean_2.svg";
 
 const Welcome = () => {
-
-
   return (
+    <>
     <section id="Landing">
-      <h1 className="intro">
-         Index-As-A-Token. Decentralized. Diversified. Crypto.
-      </h1>
-      <div className="row welcome">
-        <Link className="btn-welcome hollow" to="explore">
-          Explore Existing PortFolios
-        </Link>  
 
-        <Link className="btn-welcome hollow" to="create">
-          Create Your Own PortFolio
+      <div className="row">
+        <img className="folio col-1" src={Logo} alt="" />
+        <h1 className="intro col-2">
+        Index-As-A-Token. <br /> Decentralized. <br /> Diversified. Crypto.
+        </h1>
+      </div>
+
+      <div className="row welcome">
+        <Link className="btn-welcome" to="explore">
+          Explore
+        </Link>
+        <Link className="btn-welcome" to="create">
+          Create
         </Link>
       </div>
-  
+
     </section>
+    </>
   );
 };
 

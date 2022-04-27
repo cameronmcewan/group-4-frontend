@@ -94,21 +94,20 @@ h1, h2, h3, h4, h5 {
 }
 
 h1 {
-  font-size: 5rem;
+  font-size: 4rem;
   font-weight: 600;
   text-align: center;
+  line-height: 1.1;
 }
 
 h1.intro {
   text-align: center;
   font-weight: 400;
-  line-height: 1.4;
-  padding-bottom: 1rem;
 }
 
 /* each component is wrapped in a section in its component.js file */
 section {
-  margin-top: 4rem;
+  margin-top: 8rem;
   min-height: 90vh;
   padding: 4rem;
   padding-bottom: 12rem;
@@ -121,6 +120,7 @@ section > h2, section > h5 {
 }
 
 section > h2 {
+  margin-top: 2rem;
   color: #ffffff;
   margin-bottom: 1rem;
 }
@@ -191,6 +191,7 @@ button.metamask {
   display: -ms-flexbox;
   display: flex;
   vertical-align: middle;
+  padding-top: 5rem;
 }
 
 .btn-welcome {
@@ -198,33 +199,27 @@ button.metamask {
       -ms-flex-pack: center;
           justify-content: center;
   margin: 0 auto;
-  padding-left: 30px;
+  text-align: center;
   justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 300px;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
+  width: 250px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   font-size: xx-large;
-  border: 1px solid #ffffff;
-  outline: 2px #ffffff;
-  background-color: transparent;
+  border: 2px solid #ffffff;
   color: #ffffff;
   background-repeat: no-repeat;
   background: transparent no-repeat;
   border-radius: 10rem;
-  -webkit-box-shadow: 4px 4px 50px #eeeeee;
-          box-shadow: 4px 4px 50px #eeeeee;
+  -webkit-box-shadow: 0 0 100px #ffffff;
+          box-shadow: 0 0 100px #ffffff;
 }
 
 .btn-welcome:hover {
   background: #ffffff;
   color: #0000ff;
   border-color: none;
-  -webkit-box-shadow: 4px 4px 50px #eeeeee;
-          box-shadow: 4px 4px 50px #eeeeee;
+  -webkit-box-shadow: 0 0 50px #eeeeee;
+          box-shadow: 0 0 50px #eeeeee;
 }
 
 .btn-secondary {
@@ -309,7 +304,7 @@ button.large:hover {
     font-size: 2.5rem;
   }
   section {
-    margin-top: 6rem;
+    margin-top: 4rem;
   }
 }
 
@@ -324,6 +319,24 @@ button.large:hover {
   section > h2 {
     margin-top: 2rem;
   }
+}
+
+img.folio {
+  display: block;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 250px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 6vw;
+  padding-right: -50px;
+  margin-top: -10px;
+  padding-bottom: -120px;
 }
 
 nav {
@@ -527,7 +540,7 @@ select {
           box-shadow: 0 2px 5px #eeeeee;
 }
 
-#landing footer, #landing nav {
+#landing #footer, #landing #nav {
   visibility: hidden;
 }
 
