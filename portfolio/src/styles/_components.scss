@@ -1,11 +1,17 @@
 // ======= Navbar ==========
-$nav-height: 100px;
+$nav-height: 80px;
+$nav-color: #000050;
 
 nav {
     // width: 100vw;
     height: $nav-height;
     margin-right: 0 auto;
     text-align: center;
+}
+
+.navbar {
+    background-color: $nav-color;
+    position: fixed;
 }
 
 nav ul {
