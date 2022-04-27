@@ -102,6 +102,8 @@ h1 {
 h1.intro {
   text-align: center;
   font-weight: 400;
+  line-height: 1.4;
+  padding-bottom: 1rem;
 }
 
 /* each component is wrapped in a section in its component.js file */
@@ -143,6 +145,9 @@ a:hover {
   display: inline-block;
   width: 100%;
   max-width: 300px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 1rem 1rem;
   margin: 1rem;
   border-radius: 1.5rem;
@@ -177,6 +182,49 @@ button.metamask {
   background: #ffffff;
   color: #0000ff;
   border-color: none;
+  -webkit-box-shadow: 0 0 10px #eeeeee;
+          box-shadow: 0 0 10px #eeeeee;
+}
+
+.welcome {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  vertical-align: middle;
+}
+
+.btn-welcome {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 auto;
+  padding-left: 30px;
+  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 300px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  font-size: xx-large;
+  border: 1px solid #ffffff;
+  outline: 2px #ffffff;
+  background-color: transparent;
+  color: #ffffff;
+  background-repeat: no-repeat;
+  background: transparent no-repeat;
+  border-radius: 10rem;
+  -webkit-box-shadow: 4px 4px 50px #eeeeee;
+          box-shadow: 4px 4px 50px #eeeeee;
+}
+
+.btn-welcome:hover {
+  background: #ffffff;
+  color: #0000ff;
+  border-color: none;
+  -webkit-box-shadow: 4px 4px 50px #eeeeee;
+          box-shadow: 4px 4px 50px #eeeeee;
 }
 
 .btn-secondary {
@@ -395,7 +443,7 @@ footer.logo {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin: 1rem 3rem;
+  margin: 1rem 2rem;
 }
 
 .col-1 {
@@ -432,6 +480,9 @@ footer.logo {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 form {

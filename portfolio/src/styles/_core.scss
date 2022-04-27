@@ -120,6 +120,8 @@ h1 {
 h1.intro {
     text-align: center;
     font-weight: 400;
+    line-height: 1.4;
+    padding-bottom: 1rem;
 }
 
 
@@ -163,6 +165,7 @@ a:hover {
     display: inline-block;
     width: 100%;
     max-width: 300px;
+    justify-content: center;
     padding: 1rem 1rem;
     margin: 1rem;
     border-radius: 1.5rem;
@@ -195,7 +198,39 @@ button.metamask {
     background: $white;
     color: $blue;
     border-color: none;
+    box-shadow: 0 0 10px $grey;
 }
+
+.welcome {
+    display: flex;
+    vertical-align: middle;
+}
+.btn-welcome {
+    justify-content: center;
+    margin: 0 auto;
+    padding-left: 30px;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: fit-content;
+    font-size: xx-large;
+    border: 1px solid $white;
+    outline: 2px $white;
+    background-color: transparent;
+    color: $white;
+    background-repeat:no-repeat;
+    background: transparent no-repeat;
+    border-radius: 10rem;
+    box-shadow: 4px 4px 50px $grey;
+}
+
+.btn-welcome:hover {
+    background: $white;
+    color: $blue;
+    border-color: none;
+    box-shadow: 4px 4px 50px $grey;
+}
+
 .btn-secondary {
     background: $white;
     color: $blue;

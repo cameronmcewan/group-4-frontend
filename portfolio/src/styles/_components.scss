@@ -115,7 +115,7 @@ footer.logo {
 .row {
     display: flex;
     justify-content: space-between;
-    margin: 1rem 3rem;
+    margin: 1rem 2rem;
 }
 
 .col-1 {
@@ -143,6 +143,7 @@ footer.logo {
 
 .row.center {
     align-items: center;
+    justify-content: center;
 }
 
 form {
