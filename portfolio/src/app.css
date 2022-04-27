@@ -36,13 +36,6 @@ body {
   min-height: 100;
 }
 
-footer {
-  color: #ffffff;
-  padding: 1rem;
-  margin-top: auto;
-  border-top: 1px solid #eeeeee;
-}
-
 /* scroll behaviour */
 html {
   scroll-behavior: smooth;
@@ -86,8 +79,6 @@ button {
 }
 
 button:hover {
-  margin-top: 1.4rem;
-  margin-left: 1.6rem;
   -webkit-box-shadow: 0 0 10px #eeeeee;
           box-shadow: 0 0 10px #eeeeee;
 }
@@ -108,18 +99,14 @@ h1 {
   text-align: center;
 }
 
-h1.hovereffect {
+h1.intro {
   text-align: center;
-}
-
-h1.hovereffect:hover {
   font-weight: 400;
-  -webkit-transition: 0s;
-  transition: 0s;
 }
 
 /* each component is wrapped in a section in its component.js file */
 section {
+  margin-top: 4rem;
   min-height: 90vh;
   padding: 4rem;
   padding-bottom: 12rem;
@@ -173,6 +160,12 @@ a:hover {
   background-repeat: no-repeat;
   background: transparent no-repeat;
   border-radius: 10rem;
+  -webkit-box-shadow: 4px 4px 0 #eeeeee;
+          box-shadow: 4px 4px 0 #eeeeee;
+}
+
+button.metamask {
+  max-width: 400px;
 }
 
 .btn.large {
@@ -186,26 +179,66 @@ a:hover {
   border-color: none;
 }
 
+.btn-secondary {
+  background: #ffffff;
+  color: #0000ff;
+  font-weight: 800;
+  border-color: none;
+  border-radius: 10rem;
+  -webkit-box-shadow: 4px 4px 0 #eeeeee;
+          box-shadow: 4px 4px 0 #eeeeee;
+}
+
 .btn-primary {
-  background: #eeeeee;
+  border: 1px solid #ffffff;
+  background: #0000ff;
+  color: #ffffff;
+  font-weight: 800;
+  border-radius: 10rem;
+  background-repeat: no-repeat;
+  -webkit-box-shadow: 4px 4px 0 #eeeeee;
+          box-shadow: 4px 4px 0 #eeeeee;
+}
+
+/* buttons will have hover effect */
+button.large:hover {
+  background: #ffffff;
   color: #0000ff;
   border-color: none;
+  -webkit-box-shadow: 4px 4px 0 #eeeeee, 0 0 5px #eeeeee;
+          box-shadow: 4px 4px 0 #eeeeee, 0 0 5px #eeeeee;
+}
+
+.btn-secondary:hover {
+  background: #c7c7ff;
+  color: #ffffff;
+  border: 1px solid #eeeeee;
+  -webkit-box-shadow: 4px 4px 0 #eeeeee, 0 0 5px #eeeeee;
+          box-shadow: 4px 4px 0 #eeeeee, 0 0 5px #eeeeee;
+}
+
+.btn-primary:hover {
+  background: #c7c7ff;
+  color: #0000ff;
+  border: 1px solid #eeeeee;
+  -webkit-box-shadow: 4px 4px 0 #eeeeee, 0 0 5px #eeeeee;
+          box-shadow: 4px 4px 0 #eeeeee, 0 0 5px #eeeeee;
 }
 
 .btn-cta {
   background: #ff0000;
   color: #ffffff;
   font-weight: 800;
-  -webkit-box-shadow: 5px 5px 0 #eeeeee;
-          box-shadow: 5px 5px 0 #eeeeee;
+  -webkit-box-shadow: 0 0 0 #eeeeee;
+          box-shadow: 0 0 0 #eeeeee;
 }
 
 .btn-cta:hover {
   background: #e5ff00;
   color: #ff0000;
   border-color: transparent;
-  -webkit-box-shadow: 2px 2px 5px #eeeeee;
-          box-shadow: 2px 2px 5px #eeeeee;
+  -webkit-box-shadow: 0px 0px 10px #eeeeee;
+          box-shadow: 0px 0px 10px #eeeeee;
 }
 
 .btn-scroll {
@@ -249,6 +282,20 @@ nav {
   height: 80px;
   margin-right: 0 auto;
   text-align: center;
+}
+
+footer {
+  color: #ffffff;
+  background-color: #000050;
+  padding: 1rem;
+  margin-top: auto;
+  border-top: 1px solid #eeeeee;
+}
+
+footer .logo {
+  display: inline-block;
+  height: 2rem;
+  margin-right: 3vw;
 }
 
 .navbar {

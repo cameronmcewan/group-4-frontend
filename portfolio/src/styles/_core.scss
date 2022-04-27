@@ -62,20 +62,6 @@ body {
     min-height: 100;
 }
 
-footer {
-    color: $white;
-    background-color: $nav-color;
-    padding: 1rem;
-    margin-top: auto;
-    border-top: 1px solid $grey;
-}
-
-footer .logo {
-    display: inline-block;
-    height: 2rem;
-    margin-right: 3vw;
-}
-
 /* scroll behaviour */
 html {
     scroll-behavior: smooth;
@@ -131,21 +117,21 @@ h1 {
     font-weight: 600;
     text-align: center;
 }
-h1.hovereffect {
+h1.intro {
     text-align: center;
-}
-h1.hovereffect:hover {
     font-weight: 400;
-    transition: 0s;
 }
+
 
 /* each component is wrapped in a section in its component.js file */
 section {
+    margin-top: 4rem;
     min-height: 90vh;
     padding: 4rem;
     padding-bottom: 12rem;
     // margin-bottom: 12rem;
 }
+
 
 /* each section will contain a h2 and h5 by default */
 section > h2, section > h5 {
@@ -193,6 +179,11 @@ a:hover {
     background-repeat:no-repeat;
     background: transparent no-repeat;
     border-radius: 10rem;
+    box-shadow: 4px 4px 0 $grey;
+}
+
+button.metamask {
+    max-width: 400px;
 }
 
 .btn.large { 
@@ -205,25 +196,59 @@ a:hover {
     color: $blue;
     border-color: none;
 }
+.btn-secondary {
+    background: $white;
+    color: $blue;
+    font-weight: 800;
+    border-color: none;
+    border-radius: 10rem;
+    box-shadow: 4px 4px 0 $grey;
+}
 
 .btn-primary {
-    background: $grey;
+    border: 1px solid $white;
+    background: $blue;
+    color: $white;
+    font-weight: 800;
+    border-radius: 10rem;
+    background-repeat:no-repeat;
+    // background: transparent no-repeat;
+    box-shadow: 4px 4px 0 $grey;
+}
+
+/* buttons will have hover effect */
+button.large:hover {
+    background: $white;
     color: $blue;
     border-color: none;
+    box-shadow: 4px 4px 0 $grey, 0 0 5px $grey;
+}
+
+.btn-secondary:hover {    
+    background: #c7c7ff;
+    color: $white;
+    border: 1px solid $grey;
+    box-shadow: 4px 4px 0 $grey, 0 0 5px $grey;
+}
+.btn-primary:hover {
+    background: #c7c7ff;
+    color: $blue;
+    border: 1px solid $grey;
+    box-shadow: 4px 4px 0 $grey, 0 0 5px $grey;
 }
 
 .btn-cta {
     background: $red;
     color: $white;
     font-weight: 800;
-    box-shadow: 5px 5px 0 $grey;
+    box-shadow: 0 0 0 $grey;
 
 }
 .btn-cta:hover {
     background: $yellow;
     color: $red;
     border-color: transparent;
-    box-shadow: 2px 2px 5px $grey;
+    box-shadow: 0px 0px 10px $grey;
 }
 
 .btn-scroll {

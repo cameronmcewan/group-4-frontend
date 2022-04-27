@@ -18,8 +18,8 @@ const Explore = () => {
   return (
     <>
     <section>
-      <h1 className="hovereffect">
-        Easy access to ready made diversified crypto investment portfolios 
+      <h1 className="intro">
+        Decentralized. Diversified. Crypto Index Tokens with Folio.
       </h1>
       <div className="btn-scroll">
         <button className="btn hollow large" onClick={goToExplore}>
