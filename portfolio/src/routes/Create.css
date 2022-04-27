@@ -103,6 +103,13 @@ iframe {
 iframe {
   display: none !important;
 }
+.btn-info {
+  box-shadow: 0 0 0;
+}
+.btn-info:hover {
+  box-shadow: 0 0 0;
+  margin: 0;
+}
 #tipbox {
   position: relative;
   display: inline-block;
@@ -142,6 +149,10 @@ iframe {
 }
 #step4 .btn-group .btn .btn-cta {
   color: #fff;
+}
+
+#step4 .btn-group .leftbox {
+  margin-left: 140px;
 }
 #step4 .btn-group .rightbox .fn-clear {
   overflow: hidden;

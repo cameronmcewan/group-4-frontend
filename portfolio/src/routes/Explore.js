@@ -18,8 +18,8 @@ const Explore = () => {
   return (
     <>
     <section>
-      <h1 className="hovereffect">
-        Easy access to ready made diversified crypto investment portfolios 
+      <h1 className="intro gap">
+        Browse Crypto Index Tokens. <br /> Made by our experts or our expert community.
       </h1>
       <div className="btn-scroll">
         <button className="btn hollow large" onClick={goToExplore}>
@@ -30,10 +30,8 @@ const Explore = () => {
       </div>
     </section>
     <section ref={Explore}>
-      <h3>
-        Search for the name of an existing Portfolio or token to filter the
-        results
-      </h3>
+    <h1>Browse existing PortFolios</h1>
+    <h2>Connect to your Metamask wallet and click any PortFolio bar to view more details about it. You can also buy, sell and redeem PortFolio tokens from here.</h2>
       {/* <input type={"text"} className="search" placeholder="Search"></input> */}
       <PortfolioAccordion token={portfolios.kovan.first} />
       <PortfolioAccordion token={portfolios.kovan.second} />

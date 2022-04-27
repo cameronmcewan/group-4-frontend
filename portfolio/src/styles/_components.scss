@@ -1,11 +1,43 @@
 // ======= Navbar ==========
-$nav-height: 100px;
+$nav-height: 80px;
+$nav-color: #000050;
+
+img.folio {
+    display: block;
+    width: fit-content;
+    height: 170px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 6vw;
+    padding-right: -50px;
+    margin-top: -10px;
+    padding-bottom: -120px;
+}
+
 
 nav {
     // width: 100vw;
     height: $nav-height;
     margin-right: 0 auto;
     text-align: center;
+}
+footer {
+    color: $white;
+    background-color: $nav-color;
+    padding: 1rem;
+    margin-top: auto;
+    border-top: 1px solid $grey;
+}
+
+footer .logo {
+    display: inline-block;
+    height: 2rem;
+    margin-right: 3vw;
+}
+
+.navbar {
+    background-color: $nav-color;
+    position: fixed;
 }
 
 nav ul {
@@ -96,7 +128,7 @@ footer.logo {
 .row {
     display: flex;
     justify-content: space-between;
-    margin: 1rem 3rem;
+    margin: 1rem 2rem;
 }
 
 .col-1 {
@@ -115,7 +147,6 @@ footer.logo {
     border-radius: 0.5rem;
     justify-content: center;
     box-shadow: 0 2px 30px $black;
-
 }
 
 .block:hover {
@@ -125,6 +156,7 @@ footer.logo {
 
 .row.center {
     align-items: center;
+    justify-content: center;
 }
 
 form {
@@ -167,7 +199,7 @@ select {
 
 // ========== Welcome Page ===========
 #landing {
-    footer, nav{
+    #footer, #nav{
         visibility: hidden;
         }
         

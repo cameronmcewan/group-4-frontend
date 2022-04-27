@@ -22,6 +22,7 @@ import PortfolioFactory from "../contracts/PortfolioFactory.json";
 import Portfolio from "../contracts/Portfolio.json";
 import MetaMask from "../components/MetaMask";
 import PortfolioAccordion from "../components/explore/PortfolioAccordion";
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { LinearProgress } from "@mui/material";
 import "echarts/lib/chart/pie";
 import "echarts/lib/component/tooltip";
@@ -255,8 +256,9 @@ const Create = () => {
   return (
     <>
       <section ref={Begin}>
-        <h1>Create a PortFolio</h1>
-        <li className="createblock">
+        <h1 className="">Create Your PortFolio</h1>
+        <h4>Create your own index made up of digital assets and deploy on Kovan Testnet as a single token. Avoid paying gas fees on multiple transactions and earn a reward if others decide to invest in your index token. You're just five simple steps away from being the owner of a crypto index token on the blockchain!</h4> <br />
+        <li className="block">
           {stages.map((stage) => {
             return (
               <ul>
@@ -268,8 +270,9 @@ const Create = () => {
           })}
         </li>
         <div className="btn-scroll">
-          <button className="btn btn-cta" onClick={goToStep1}>
-            Begin
+          <button className="btn hollow large" onClick={goToStep1}>
+            Begin <br/>
+          <ArrowDownwardIcon />
           </button>
         </div>
       </section>
@@ -356,10 +359,10 @@ const Create = () => {
           </div>
         </div>
         <div className="btn-scroll">
-          <button className="btn btn-cta" onClick={goToStep1}>
+          <button className="btn btn-secondary" onClick={goToStep1}>
             Back
           </button>
-          <button className="btn btn-cta" onClick={goToStep2}>
+          <button className="btn btn-primary" onClick={goToStep2}>
             Confirm
           </button>
         </div>
@@ -395,10 +398,10 @@ const Create = () => {
           </FormControl>
         </div>
         <div className="btn-scroll">
-          <button className="btn btn-cta" onClick={goToStep1}>
+          <button className="btn btn-secondary" onClick={goToStep1}>
             Back
           </button>
-          <button className="btn btn-cta" onClick={goToStep3}>
+          <button className="btn btn-primary" onClick={goToStep3}>
             Confirm
           </button>
         </div>
@@ -433,6 +436,7 @@ const Create = () => {
           <div id="tipbox">
             <IconButton
               type="button"
+              className="btn-info"
               onClick={() => {
                 let tipstate = infoOpen;
                 setInfoOpen(!tipstate);
@@ -452,10 +456,10 @@ const Create = () => {
           </div>
         </div>
         <div className="btn-scroll">
-          <button className="btn btn-cta" onClick={goToStep2}>
+          <button className="btn btn-secondary" onClick={goToStep2}>
             Back
           </button>
-          <button className="btn btn-cta" onClick={goToStep4}>
+          <button className="btn btn-primary" onClick={goToStep4}>
             Confirm
           </button>
         </div>
@@ -465,7 +469,7 @@ const Create = () => {
         <h2>Step 4</h2>
         <h1>{stages[3].name}</h1>
         <div className="btn-group">
-          <h2>HELLO</h2>
+          {/* <h2>HELLO</h2> */}
           <div className="btn leftbox">
             <div>
               <YingtongPie2 List={selectedTokenList} />
@@ -475,7 +479,7 @@ const Create = () => {
             <h2>Name: {tokenName}</h2>
             <h2>Symbol: {tokenSymbol}</h2>
             <h2>Fee: {ownerFee}%</h2>
-            <button className="btn btn-cta" onClick={goToStep1}>
+            <button className="btn btn-secondary" onClick={goToStep1}>
               Edit
             </button>
             {userContext.address ? (
@@ -488,10 +492,10 @@ const Create = () => {
           </div>
         </div>
         <div className="btn-scroll">
-          <button className="btn btn-cta" onClick={goToStep3}>
+          <button className="btn btn-secondary" onClick={goToStep3}>
             Back
           </button>
-          <button className="btn btn-cta" onClick={goToStep5}>
+          <button className="btn btn-primary" onClick={goToStep5}>
             Continue
           </button>
         </div>
@@ -552,10 +556,10 @@ const Create = () => {
               </div>
             </div>
             <div className="btn-scroll">
-              <button className="btn btn-cta" onClick={goToStep4}>
+              <button className="btn btn-secondary" onClick={goToStep4}>
                 Back
               </button>
-              <button className="btn btn-cta" onClick={initialisePortfolio}>
+              <button className="btn btn-primary" onClick={initialisePortfolio}>
                 Initialise
               </button>
             </div>
