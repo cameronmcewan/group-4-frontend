@@ -22,7 +22,7 @@ import PortfolioFactory from "../contracts/PortfolioFactory.json";
 import Portfolio from "../contracts/Portfolio.json";
 import MetaMask from "../components/MetaMask";
 import PortfolioAccordion from "../components/explore/PortfolioAccordion";
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { LinearProgress } from "@mui/material";
 import "echarts/lib/chart/pie";
 import "echarts/lib/component/tooltip";
@@ -201,7 +201,7 @@ const Create = () => {
       tokenSymbol,
       tokenAddresses,
       percentageHoldings,
-      Math.floor(ownerFee*100)
+      Math.floor(ownerFee * 100)
     );
     portfolioFactory.once(filter, (address_, name_) => {
       setDeployedContractAddress(address_);
@@ -256,8 +256,7 @@ const Create = () => {
   return (
     <>
       <section ref={Begin}>
-        <h1 className="">Create Your PortFolio</h1>
-        <h4>Create your own index made up of digital assets and deploy on Kovan Testnet as a single token. Avoid paying gas fees on multiple transactions and earn a reward if others decide to invest in your index token. You're just five simple steps away from being the owner of a crypto index token on the blockchain!</h4> <br />
+        <h1>Create Your PortFolio</h1>
         <li className="block">
           {stages.map((stage) => {
             return (
@@ -271,8 +270,8 @@ const Create = () => {
         </li>
         <div className="btn-scroll">
           <button className="btn hollow large" onClick={goToStep1}>
-            Begin <br/>
-          <ArrowDownwardIcon />
+            Begin <br />
+            <ArrowDownwardIcon />
           </button>
         </div>
       </section>
@@ -449,8 +448,7 @@ const Create = () => {
               className={infoOpen === true ? "tipmessage show" : "tipmessage"}
             >
               This fee will be paid to the owner of the portfolio every time
-              someone buys into the portfolio. 
-              For example, if the fee is 1%,
+              someone buys into the portfolio. For example, if the fee is 1%,
               the owner will receive 1% of the assets bought when someone buys
               into the portfolio. Rounded to 2 d.p.
             </div>

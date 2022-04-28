@@ -56,6 +56,9 @@ const PortfolioDetail = (props) => {
     portfolioContract.balanceOf(userContext.address).then((res) => {
       setUserBalance(res.toString());
     });
+    portfolioContract.totalSupply().then((totalSupply) => {
+      setTotalSupply(totalSupply.toString());
+    });
     setUserBalanceLoading(false);
   };
 
@@ -66,6 +69,9 @@ const PortfolioDetail = (props) => {
     portfolioContract.balanceOf(userContext.address).then((res) => {
       setUserBalance(res.toString());
     });
+    portfolioContract.totalSupply().then((totalSupply) => {
+      setTotalSupply(totalSupply.toString());
+    });
     setUserBalanceLoading(false);
   };
 
@@ -75,6 +81,9 @@ const PortfolioDetail = (props) => {
     await tx.wait();
     portfolioContract.balanceOf(userContext.address).then((res) => {
       setUserBalance(res.toString());
+    });
+    portfolioContract.totalSupply().then((totalSupply) => {
+      setTotalSupply(totalSupply.toString());
     });
     setUserBalanceLoading(false);
   };
@@ -89,13 +98,12 @@ const PortfolioDetail = (props) => {
       </div>
       <div className="block col-1">
         <h2>Circulating Supply:</h2>
-        <p>{totalSupply} tokens</p>
+        {userBalanceLoading ? <LinearProgress /> : <p>{totalSupply} tokens</p>}
         <h2>Your Balance:</h2>
         {userBalanceLoading ? <LinearProgress /> : <p>{userBalance} tokens</p>}
         <br></br>
         <FormControl fullWidth className="formline" variant="outlined">
           <OutlinedInput
-            defaultValue={setEthAmountInWei}
             placeholder="Buy amount (Wei)"
             onChange={(e) => {
               setEthAmountInWei(e.target.value);
