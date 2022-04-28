@@ -213,7 +213,7 @@ select {
 
 
 /* Responsive layout - when the screen is less than 600px wide, make the three columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
     .column {
         width: 100%;
     }
@@ -225,7 +225,9 @@ select {
     // }
 
     nav {
+        display: flex;
         height: fit-content;
+        justify-content: center;
     }
 
     nav ul {
@@ -233,10 +235,24 @@ select {
         height: fit-content;
         justify-content: center;
         justify-items: center;
+        padding-right: 40px;
+        padding-left: 40px;
+    }
+    nav ul li {
+        display: flex;
+        float: none;
+        justify-items: center;
+        align-items: center;
+        justify-content: center;
+    }
+    nav ul li a.logo {
+        display: inline-block;
+        margin: 0 auto;
     }
     nav ul li.right {
-        display: block;
-        padding-left: 100px;
+        padding-right: 0;
+        padding-left: 0;
+        position: relative;
     }
 
     .block {

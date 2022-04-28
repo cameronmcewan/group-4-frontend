@@ -303,7 +303,22 @@ button.large:hover {
     font-size: 3rem;
   }
   section {
-    margin-top: 4rem;
+    margin-top: 12rem;
+  }
+  button.metamask {
+    display: inline-block;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 2px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-size: x-small;
   }
 }
 
@@ -551,7 +566,7 @@ select {
 }
 
 /* Responsive layout - when the screen is less than 600px wide, make the three columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
   .column {
     width: 100%;
   }
@@ -560,9 +575,15 @@ select {
     float: none;
   }
   nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
     height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
   nav ul {
     display: block;
@@ -573,10 +594,30 @@ select {
         -ms-flex-pack: center;
             justify-content: center;
     justify-items: center;
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+  nav ul li {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    float: none;
+    justify-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  nav ul li a.logo {
+    display: inline-block;
+    margin: 0 auto;
   }
   nav ul li.right {
-    display: block;
-    padding-left: 100px;
+    padding-right: 0;
+    padding-left: 0;
+    position: relative;
   }
   .block {
     padding: 1rem  1rem;
