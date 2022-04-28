@@ -292,6 +292,7 @@ const Create = () => {
                       </span>
                       <IconButton
                         type="button"
+                        className="btn-delete"
                         onClick={() => {
                           let selectedTokens = selectedTokenList;
                           selectedTokens.splice(i, 1);

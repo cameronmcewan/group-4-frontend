@@ -48,6 +48,12 @@
   display: flex;
   color: #333;
 }
+
+#step1 .btn-delete{
+  margin: 0 auto;
+  box-shadow: 0 0 0;
+}
+
 #step1 .box .tit {
   width: 120px;
 }
