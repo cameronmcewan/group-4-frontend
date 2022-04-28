@@ -195,12 +195,11 @@ button.metamask {
 }
 
 .btn-welcome {
+  margin: 0 auto;
+  text-align: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin: 0 auto;
-  text-align: center;
-  justify-content: center;
   width: 250px;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -301,7 +300,7 @@ button.large:hover {
     width: 86%;
   }
   h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
   }
   section {
     margin-top: 4rem;
@@ -314,7 +313,10 @@ button.large:hover {
     width: 90%;
   }
   h1 {
-    font-size: 2rem;
+    font-size: 1.5rem;
+  }
+  h2 {
+    font-size: 0.8rem;
   }
   section > h2 {
     margin-top: 2rem;
@@ -556,6 +558,29 @@ select {
   ul.topnav li.right,
   ul.topnav li {
     float: none;
+  }
+  nav {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  nav ul {
+    display: block;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    justify-items: center;
+  }
+  nav ul li.right {
+    display: block;
+    padding-left: 100px;
+  }
+  .block {
+    padding: 1rem  1rem;
+    margin: 1rem 1rem;
   }
 }
 /*# sourceMappingURL=app.css.map */

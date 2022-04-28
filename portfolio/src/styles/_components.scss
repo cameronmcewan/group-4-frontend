@@ -21,6 +21,7 @@ nav {
     margin-right: 0 auto;
     text-align: center;
 }
+
 footer {
     color: $white;
     background-color: $nav-color;
@@ -218,6 +219,31 @@ select {
     }
     ul.topnav li.right, 
     ul.topnav li {float: none;}
+
+    // nav {
+    //     // max-height: 0.2vh;
+    // }
+
+    nav {
+        height: fit-content;
+    }
+
+    nav ul {
+        display: block;
+        height: fit-content;
+        justify-content: center;
+        justify-items: center;
+    }
+    nav ul li.right {
+        display: block;
+        padding-left: 100px;
+    }
+
+    .block {
+        padding: 1rem  1rem;
+        margin: 1rem 1rem;
+    }
   }
+
 
 
