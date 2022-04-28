@@ -171,6 +171,8 @@ a:hover {
 
 button.metamask {
   max-width: 400px;
+  -webkit-box-shadow: 0 0 10px #ffffff;
+          box-shadow: 0 0 10px #ffffff;
 }
 
 .btn.large {
