@@ -187,6 +187,8 @@ a:hover {
 
 button.metamask {
     max-width: 400px;
+    box-shadow: 0 0 10px $white;
+
 }
 
 .btn.large { 
@@ -207,7 +209,6 @@ button.metamask {
     padding-top: 5rem;
 }
 .btn-welcome {
-    justify-content: center;
     margin: 0 auto;
     text-align: center;
     justify-content: center;
@@ -276,7 +277,6 @@ button.large:hover {
     color: $white;
     font-weight: 800;
     box-shadow: 0 0 0 $grey;
-
 }
 .btn-cta:hover {
     background: $yellow;
@@ -299,11 +299,22 @@ button.large:hover {
     }
 
     h1 {
-        font-size: 2.5rem;
+        font-size: 3rem;
     }
 
     section {
-        margin-top: 4rem;
+        margin-top: 12rem;
+    }
+    button.metamask {
+        display: inline-block;
+        justify-content: center;
+        width: fit-content;
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-top: 2px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        font-size: x-small;
     }
 }
 
@@ -314,8 +325,12 @@ button.large:hover {
     }
 
     h1 {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
+    h2 {
+        font-size: 0.8rem;
+    }
+
 
     section > h2 {
         margin-top: 2rem;

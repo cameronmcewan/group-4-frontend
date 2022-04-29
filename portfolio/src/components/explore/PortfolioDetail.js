@@ -3,6 +3,8 @@ import { UserContext } from "../../helpers/UserContext";
 import { ethers } from "ethers";
 import Portfolio from "../../contracts/Portfolio.json";
 import CustomPieChart from "./CustomPieChart";
+import { FormControl, OutlinedInput } from "@mui/material";
+import { LinearProgress } from "@mui/material";
 
 const PortfolioDetail = (props) => {
   const userContext = useContext(UserContext);
@@ -13,8 +15,8 @@ const PortfolioDetail = (props) => {
   const [userBalance, setUserBalance] = useState("");
   const [tokenAddresses, setTokenAddresses] = useState([]);
   const [percentageHoldings, setPercentageHoldings] = useState([]);
+  const [userBalanceLoading, setUserBalanceLoading] = useState(false);
 
-  // Runs when component renders or userContext.address changes
   useEffect(() => {
     const signerOrProvider = userContext.signer
       ? userContext.signer
@@ -44,19 +46,46 @@ const PortfolioDetail = (props) => {
   }, [userContext.address]);
 
   const buy = async () => {
-    const tx = {
+    setUserBalanceLoading(true);
+    const opts = {
       from: userContext.address,
       value: weiToSpend,
     };
-    await portfolioContract.buy(tx);
+    let tx = await portfolioContract.buy(opts);
+    await tx.wait();
+    portfolioContract.balanceOf(userContext.address).then((res) => {
+      setUserBalance(res.toString());
+    });
+    portfolioContract.totalSupply().then((totalSupply) => {
+      setTotalSupply(totalSupply.toString());
+    });
+    setUserBalanceLoading(false);
   };
 
   const sellAssets = async () => {
-    await portfolioContract.sellAssets(tokensToSell);
+    setUserBalanceLoading(true);
+    let tx = await portfolioContract.sellAssets(tokensToSell);
+    await tx.wait();
+    portfolioContract.balanceOf(userContext.address).then((res) => {
+      setUserBalance(res.toString());
+    });
+    portfolioContract.totalSupply().then((totalSupply) => {
+      setTotalSupply(totalSupply.toString());
+    });
+    setUserBalanceLoading(false);
   };
 
   const redeemAssets = async () => {
-    await portfolioContract.redeemAssets(tokensToSell);
+    setUserBalanceLoading(true);
+    let tx = await portfolioContract.redeemAssets(tokensToSell);
+    await tx.wait();
+    portfolioContract.balanceOf(userContext.address).then((res) => {
+      setUserBalance(res.toString());
+    });
+    portfolioContract.totalSupply().then((totalSupply) => {
+      setTotalSupply(totalSupply.toString());
+    });
+    setUserBalanceLoading(false);
   };
 
   return (
@@ -68,60 +97,47 @@ const PortfolioDetail = (props) => {
         />
       </div>
       <div className="block col-1">
-        <p>Circulating Supply:</p>
-        <p>{totalSupply}</p>
-        <p>Your Balance:</p>
-        <p>{userBalance}</p>
-        <table>
-          <tr>
-            <td>Amount (WEI) :</td>
-            <td>
-              <input
-                type="number"
-                min="0"
-                value={weiToSpend}
-                onChange={(e) => setEthAmountInWei(e.target.value)}
-              />
-            </td>
-            <td>
-              <button className="btn btn-cta" onClick={buy}>
-                Buy
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>Portfolio Tokens :</td>
-            <td>
-              <input
-                type="number"
-                min="0"
-                value={tokensToSell}
-                onChange={(e) => setTokensToSell(e.target.value)}
-              />
-            </td>
-            <td>
-              <button className="btn btn-cta" onClick={sellAssets}>
-                Sell Assets
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>Portfolio Tokens :</td>
-            <td>
-              <input
-                type="number"
-                min="0"
-                value={tokensToSell}
-                onChange={(e) => setTokensToSell(e.target.value)}
-              />
-            </td>
-            <td>
-              <button className="btn btn-cta" onClick={redeemAssets}>
-                Redeem Assets
-              </button>
-            </td>
-          </tr>
-        </table>
+        <h2>Circulating Supply:</h2>
+        {userBalanceLoading ? <LinearProgress /> : <p>{totalSupply} tokens</p>}
+        <h2>Your Balance:</h2>
+        {userBalanceLoading ? <LinearProgress /> : <p>{userBalance} tokens</p>}
+        <br></br>
+        <FormControl fullWidth className="formline" variant="outlined">
+          <OutlinedInput
+            placeholder="Buy amount (Wei)"
+            onChange={(e) => {
+              setEthAmountInWei(e.target.value);
+            }}
+            labelWidth={240}
+          />
+          <button className="btn btn-primary" onClick={buy}>
+            Buy
+          </button>
+        </FormControl>
+        <FormControl fullWidth className="formline" variant="outlined">
+          <OutlinedInput
+            placeholder="Tokens to sell"
+            labelWidth={240}
+            onChange={(e) => {
+              setTokensToSell(e.target.value);
+            }}
+          />
+          <button className="btn btn-primary" onClick={sellAssets}>
+            Sell Assets
+          </button>
+        </FormControl>
+        <FormControl fullWidth className="formline" variant="outlined">
+          <OutlinedInput
+            placeholder="Tokens to redeem"
+            labelWidth={240}
+            onChange={(e) => {
+              setTokensToSell(e.target.value);
+            }}
+          />
+          <button className="btn btn-primary" onClick={redeemAssets}>
+            Redeem Assets
+          </button>
+        </FormControl>
       </div>
     </div>
   );
