@@ -209,7 +209,15 @@ select {
         }
 }
 
+// ====== Explore ======
 
+input[type=text] {
+    font: inherit;
+    width: fit-content;
+    padding: 5px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
 
 
 /* Responsive layout - when the screen is less than 600px wide, make the three columns stack on top of each other instead of next to each other */

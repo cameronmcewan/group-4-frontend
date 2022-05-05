@@ -3,8 +3,11 @@ import { UserContext } from "../../helpers/UserContext";
 import { ethers } from "ethers";
 import Portfolio from "../../contracts/Portfolio.json";
 import CustomPieChart from "./CustomPieChart";
-import { FormControl, OutlinedInput } from "@mui/material";
+import { FormControl, Input } from "@mui/material";
 import { LinearProgress } from "@mui/material";
+import Icon from "react-crypto-icons";
+import InputAdornment from '@mui/material/InputAdornment';
+
 
 const PortfolioDetail = (props) => {
   const userContext = useContext(UserContext);
@@ -90,54 +93,76 @@ const PortfolioDetail = (props) => {
 
   return (
     <div className="row">
-      <div className="col-2" style={{ height: "500px", width: "400px" }}>
+      <div className="col-1" style={{ height: "15rem"}}>
         <CustomPieChart
           tokenAddresses={tokenAddresses}
           percentageHoldings={percentageHoldings}
         />
-      </div>
-      <div className="block col-1">
-        <h2>Circulating Supply:</h2>
+        <h3>Circulating Supply:</h3>
         {userBalanceLoading ? <LinearProgress /> : <p>{totalSupply} tokens</p>}
-        <h2>Your Balance:</h2>
+        <h3>Your Balance:</h3>
         {userBalanceLoading ? <LinearProgress /> : <p>{userBalance} tokens</p>}
-        <br></br>
-        <FormControl fullWidth className="formline" variant="outlined">
-          <OutlinedInput
-            placeholder="Buy amount (Wei)"
-            onChange={(e) => {
-              setEthAmountInWei(e.target.value);
-            }}
-            labelWidth={240}
-          />
-          <button className="btn btn-primary" onClick={buy}>
-            Buy
-          </button>
+      </div>
+
+      <div className="col-1">
+
+      <h4>All amounts are input in Wei</h4>
+
+        <FormControl fullWidth>
+          <div className="row">
+            <input
+              type="text"
+              className="col-2"
+              placeholder="Amount to Buy"
+              onChange={(e) => {
+                setEthAmountInWei(e.target.value);
+              }}
+              startAdornment={
+                <InputAdornment position="start">
+                  <Icon name="wei" size={25} />
+                </InputAdornment>
+              }
+            />
+            <button className="btn btn-primary col-1" onClick={buy}>
+              Buy
+            </button>
+          </div>
         </FormControl>
-        <FormControl fullWidth className="formline" variant="outlined">
-          <OutlinedInput
-            placeholder="Tokens to sell"
+
+        <FormControl fullWidth>
+          <div className="row">
+            <input
+              type="text"
+              className="col-2"
+              placeholder="Amount to Sell"
+              labelWidth={240}
+              onChange={(e) => {
+                setTokensToSell(e.target.value);
+              }}
+            />
+            <button className="btn btn-primary col-1" onClick={sellAssets}>
+              Sell
+            </button>
+          </div>
+        </FormControl>
+
+        <FormControl fullWidth>
+          <div className="row">
+          <input
+            type="text"
+            className="col-2"
+            placeholder="Amount to Redeem"
             labelWidth={240}
             onChange={(e) => {
               setTokensToSell(e.target.value);
             }}
           />
-          <button className="btn btn-primary" onClick={sellAssets}>
-            Sell Assets
+          <button className="btn btn-primary col-1" onClick={redeemAssets}>
+            Redeem
           </button>
+          </div>
         </FormControl>
-        <FormControl fullWidth className="formline" variant="outlined">
-          <OutlinedInput
-            placeholder="Tokens to redeem"
-            labelWidth={240}
-            onChange={(e) => {
-              setTokensToSell(e.target.value);
-            }}
-          />
-          <button className="btn btn-primary" onClick={redeemAssets}>
-            Redeem Assets
-          </button>
-        </FormControl>
+
       </div>
     </div>
   );

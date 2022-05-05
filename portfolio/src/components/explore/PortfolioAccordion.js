@@ -17,7 +17,10 @@ const PortfolioAccordion = (props) => {
         aria-controls="panel1bh-content"
         id="panel1bh-header"
       >
-        <PortfolioExplore token={props.token} />
+        {/* <PortfolioExplore token={props.token} /> */}
+        <h2>
+          {props.token.name} <span className="light">{props.token.symbol}</span>
+        </h2>
       </AccordionSummary>
       <AccordionDetails>
         {userContext.address ? (
