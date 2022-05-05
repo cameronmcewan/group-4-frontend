@@ -490,6 +490,12 @@ footer.logo {
           flex: 2;
 }
 
+.col-3 {
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+}
+
 .block {
   background-color: #ffffff;
   color: #0000ff;
@@ -534,9 +540,11 @@ input {
 }
 
 input[type="text"], textarea {
+  font: inherit;
   background-color: #eeeeee;
   border: 4px solid #eeeeee;
   border-radius: 8px;
+  padding: 0.5rem;
 }
 
 select {
@@ -565,17 +573,6 @@ select {
 
 #landing .header {
   display: none !important;
-}
-
-input[type=text] {
-  font: inherit;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  padding: 5px 10px;
-  margin: 8px 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
 }
 
 /* Responsive layout - when the screen is less than 600px wide, make the three columns stack on top of each other instead of next to each other */

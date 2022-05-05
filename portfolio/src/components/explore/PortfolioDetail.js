@@ -93,7 +93,7 @@ const PortfolioDetail = (props) => {
 
   return (
     <div className="row">
-      <div className="col-1" style={{ height: "15rem"}}>
+      <div className="col-2" style={{ height: "15rem"}}>
         <CustomPieChart
           tokenAddresses={tokenAddresses}
           percentageHoldings={percentageHoldings}
@@ -104,9 +104,9 @@ const PortfolioDetail = (props) => {
         {userBalanceLoading ? <LinearProgress /> : <p>{userBalance} tokens</p>}
       </div>
 
-      <div className="col-1">
+      <div className="col-3">
 
-      <h4>All amounts are input in Wei</h4>
+      <h4>All amounts should be input in Wei</h4>
 
         <FormControl fullWidth>
           <div className="row">
@@ -117,11 +117,6 @@ const PortfolioDetail = (props) => {
               onChange={(e) => {
                 setEthAmountInWei(e.target.value);
               }}
-              startAdornment={
-                <InputAdornment position="start">
-                  <Icon name="wei" size={25} />
-                </InputAdornment>
-              }
             />
             <button className="btn btn-primary col-1" onClick={buy}>
               Buy

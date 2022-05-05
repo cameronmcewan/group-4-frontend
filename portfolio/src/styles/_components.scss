@@ -140,6 +140,10 @@ footer.logo {
     flex: 2;
 }
 
+.col-3 {
+    flex: 3;
+}
+
 .block {
     background-color: $white;
     color: $blue;
@@ -174,9 +178,11 @@ input {
 }
 
 input[type="text"], textarea {
+    font: inherit;
     background-color : $grey;
     border: 4px solid $grey;
     border-radius: 8px;
+    padding: 0.5rem;
 }
 
 
@@ -209,15 +215,6 @@ select {
         }
 }
 
-// ====== Explore ======
-
-input[type=text] {
-    font: inherit;
-    width: fit-content;
-    padding: 5px 10px;
-    margin: 8px 0;
-    box-sizing: border-box;
-}
 
 
 /* Responsive layout - when the screen is less than 600px wide, make the three columns stack on top of each other instead of next to each other */
