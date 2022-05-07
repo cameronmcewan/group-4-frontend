@@ -536,6 +536,7 @@ const Create = () => {
               ></input>
               <div id="tipbox">
                 <IconButton
+                  className="btn-info"
                   type="button"
                   onClick={() => {
                     setInfoTwoOpen(!infoTwoOpen);
