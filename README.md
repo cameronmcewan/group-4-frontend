@@ -2,6 +2,8 @@
 
 This repository contains the frontend code for the PortFolio project, written in JavaScript using the React framework. 
 
+The application is deployed [here](http://folio-dapp.s3-website-us-east-1.amazonaws.com/). If the link doesn't work, we ran out of AWS credit...
+
 ## Motivation
 
 A PortFolio is an [ERC20 token](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol) representing a pre-defined 'basket of goods' (a portfolio) of crypto assets. These assets are themselves other ERC20 tokens on the Ethereum blockchain. 
