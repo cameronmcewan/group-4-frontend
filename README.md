@@ -37,6 +37,9 @@ The smart contracts that this app connects to are:
 
 2. PortfolioFactory.sol - a contract used to create new Portfolios and track existing Portfolios\
     + Address (Kovan): *0x46783Fc2f92AdC132F5DE2f4BDE4138e3Ed8673a*
+    
+## Back-end repository
+The back-end repository containing the smart contracts can be found here: https://github.com/cameronmcewan/group-4-backend
 
 ## Contributors
 
