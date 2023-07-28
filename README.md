@@ -2,7 +2,11 @@
 
 This repository contains the frontend code for the PortFolio project, written in JavaScript using the React framework. 
 
-The application is deployed [here](http://folio-dapp.s3-website-us-east-1.amazonaws.com/). If the link doesn't work, we ran out of AWS credit...
+<s>The application is deployed [here](http://folio-dapp.s3-website-us-east-1.amazonaws.com/). If the link doesn't work, we ran out of AWS credit...</s>
+
+*** UPDATE: The application has now been deployed with Vercel here: https://folio-dapp.vercel.app/ ***
+
+**Back-end Repository (Smart Contracts)**: https://github.com/cameronmcewan/group-4-backend
 
 ## Motivation
 
@@ -37,8 +41,8 @@ The smart contracts that this app connects to are:
 
 2. PortfolioFactory.sol - a contract used to create new Portfolios and track existing Portfolios\
     + Address (Kovan): *0x46783Fc2f92AdC132F5DE2f4BDE4138e3Ed8673a*
-    
-## Back-end repository
+
+## Back-end Repository
 The back-end repository containing the smart contracts can be found here: https://github.com/cameronmcewan/group-4-backend
 
 ## Contributors
